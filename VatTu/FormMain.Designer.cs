@@ -1,6 +1,6 @@
 ﻿namespace VatTu
 {
-    partial class Form1
+    partial class FormChinh
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChinh));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem_Login = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Info = new DevExpress.XtraBars.BarButtonItem();
@@ -122,6 +122,7 @@
             this.barButtonItem_ListEmployee.Id = 6;
             this.barButtonItem_ListEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem_ListEmployee.ImageOptions.SvgImage")));
             this.barButtonItem_ListEmployee.Name = "barButtonItem_ListEmployee";
+            this.barButtonItem_ListEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_ListEmployee_ItemClick);
             // 
             // barButtonItem_listProduct
             // 
@@ -209,16 +210,17 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // Form1
+            // FormChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 447);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
-            this.Name = "Form1";
+            this.Name = "FormChinh";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Form1";
+            this.Text = "FormChinh";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();

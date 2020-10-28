@@ -34,22 +34,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_Username = new System.Windows.Forms.TextBox();
             this.textBox_Password = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_Login = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox_ChiNhanh = new System.Windows.Forms.ComboBox();
-            this.dS_DSPM = new VatTu.DS_DSPM();
-            this.dSDSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vDSPHANMANHBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.v_DS_PHANMANHTableAdapter = new VatTu.DS_DSPMTableAdapters.V_DS_PHANMANHTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSDSPMBindingSource)).BeginInit();
+            this.qLVT_DATHANGDataSet = new VatTu.QLVT_DATHANGDataSet();
+            this.v_DS_PHANMANHTableAdapter = new VatTu.QLVT_DATHANGDataSetTableAdapters.V_DS_PHANMANHTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.vDSPHANMANHBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLVT_DATHANGDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(355, 105);
+            this.label1.Location = new System.Drawing.Point(316, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -80,6 +78,7 @@
             this.textBox_Username.Name = "textBox_Username";
             this.textBox_Username.Size = new System.Drawing.Size(254, 20);
             this.textBox_Username.TabIndex = 3;
+            this.textBox_Username.TextChanged += new System.EventHandler(this.TextBox_Username_TextChanged);
             // 
             // textBox_Password
             // 
@@ -88,15 +87,17 @@
             this.textBox_Password.Size = new System.Drawing.Size(254, 20);
             this.textBox_Password.TabIndex = 4;
             this.textBox_Password.UseSystemPasswordChar = true;
+            this.textBox_Password.TextChanged += new System.EventHandler(this.TextBox_Password_TextChanged);
             // 
-            // button1
+            // button_Login
             // 
-            this.button1.Location = new System.Drawing.Point(340, 273);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_Login.Location = new System.Drawing.Point(310, 257);
+            this.button_Login.Name = "button_Login";
+            this.button_Login.Size = new System.Drawing.Size(75, 23);
+            this.button_Login.TabIndex = 5;
+            this.button_Login.Text = "Login";
+            this.button_Login.UseVisualStyleBackColor = true;
+            this.button_Login.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label4
             // 
@@ -118,22 +119,17 @@
             this.comboBox_ChiNhanh.Size = new System.Drawing.Size(254, 21);
             this.comboBox_ChiNhanh.TabIndex = 7;
             this.comboBox_ChiNhanh.ValueMember = "TENSERVER";
-            this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ChiNhanh_SelectedIndexChanged);
-            // 
-            // dS_DSPM
-            // 
-            this.dS_DSPM.DataSetName = "DS_DSPM";
-            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dSDSPMBindingSource
-            // 
-            this.dSDSPMBindingSource.DataSource = this.dS_DSPM;
-            this.dSDSPMBindingSource.Position = 0;
+            this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // vDSPHANMANHBindingSource
             // 
             this.vDSPHANMANHBindingSource.DataMember = "V_DS_PHANMANH";
-            this.vDSPHANMANHBindingSource.DataSource = this.dSDSPMBindingSource;
+            this.vDSPHANMANHBindingSource.DataSource = this.qLVT_DATHANGDataSet;
+            // 
+            // qLVT_DATHANGDataSet
+            // 
+            this.qLVT_DATHANGDataSet.DataSetName = "QLVT_DATHANGDataSet";
+            this.qLVT_DATHANGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // v_DS_PHANMANHTableAdapter
             // 
@@ -146,7 +142,7 @@
             this.ClientSize = new System.Drawing.Size(723, 363);
             this.Controls.Add(this.comboBox_ChiNhanh);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Login);
             this.Controls.Add(this.textBox_Password);
             this.Controls.Add(this.textBox_Username);
             this.Controls.Add(this.label3);
@@ -155,9 +151,8 @@
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSDSPMBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vDSPHANMANHBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLVT_DATHANGDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,12 +165,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_Username;
         private System.Windows.Forms.TextBox textBox_Password;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_Login;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox_ChiNhanh;
-        private System.Windows.Forms.BindingSource dSDSPMBindingSource;
-        private DS_DSPM dS_DSPM;
+        private QLVT_DATHANGDataSet qLVT_DATHANGDataSet;
         private System.Windows.Forms.BindingSource vDSPHANMANHBindingSource;
-        private DS_DSPMTableAdapters.V_DS_PHANMANHTableAdapter v_DS_PHANMANHTableAdapter;
+        private QLVT_DATHANGDataSetTableAdapters.V_DS_PHANMANHTableAdapter v_DS_PHANMANHTableAdapter;
     }
 }
