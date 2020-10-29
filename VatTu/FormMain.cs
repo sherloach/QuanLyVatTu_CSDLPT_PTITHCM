@@ -37,5 +37,11 @@ namespace VatTu
             FormNhanVien frmNV = new FormNhanVien();
             frmNV.ShowDialog();
         }
+
+        private void BarButtonItem_donDatHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Frpt_PhieuNvLapTrongNamTheoLoai frmPNV = new Frpt_PhieuNvLapTrongNamTheoLoai();
+            frmPNV.ShowDialog();
+        }
     }
 }
