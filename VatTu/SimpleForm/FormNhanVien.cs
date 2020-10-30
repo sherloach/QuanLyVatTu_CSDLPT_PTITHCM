@@ -68,11 +68,11 @@ namespace VatTu
             this.nhanVienTableAdapter.Fill(this.dS.NhanVien);
 
             // TODO: This line of code loads data into the 'dS.DatHang' table. You can move, or remove it, as needed.
-            this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
             this.datHangTableAdapter.Fill(this.dS.DatHang);
 
             // TODO: This line of code loads data into the 'dS.PhieuNhap' table. You can move, or remove it, as needed.
-            this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
             this.phieuNhapTableAdapter.Fill(this.dS.PhieuNhap);
 
             maCN = ((DataRowView)bdsNV[0])["MACN"].ToString(); // Lúc đúng lúc sai, tìm cách khác.

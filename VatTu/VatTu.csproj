@@ -73,28 +73,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="SimpleForm\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="SimpleForm\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNhanVien.cs">
+    <Compile Include="SimpleForm\FormNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNhanVien.Designer.cs">
+    <Compile Include="SimpleForm\FormNhanVien.Designer.cs">
       <DependentUpon>FormNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frpt_PhieuNvLapTrongNamTheoLoai.cs">
+    <Compile Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frpt_PhieuNvLapTrongNamTheoLoai.Designer.cs">
+    <Compile Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="SimpleForm\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
+    <Compile Include="SimpleForm\Form2.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -104,22 +104,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLVT_DATHANGDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Xrpt_PhieuLapTrongNamTheoLoai.cs">
+    <Compile Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Xrpt_PhieuLapTrongNamTheoLoai.Designer.cs">
+    <Compile Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="SimpleForm\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNhanVien.resx">
+    <EmbeddedResource Include="SimpleForm\FormNhanVien.resx">
       <DependentUpon>FormNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frpt_PhieuNvLapTrongNamTheoLoai.resx">
+    <EmbeddedResource Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.resx">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="SimpleForm\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -132,7 +132,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Xrpt_PhieuLapTrongNamTheoLoai.resx">
+    <EmbeddedResource Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.resx">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
@@ -167,6 +167,9 @@
     <None Include="QLVT_DATHANGDataSet.xss">
       <DependentUpon>QLVT_DATHANGDataSet.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SubForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

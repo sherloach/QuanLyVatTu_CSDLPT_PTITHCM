@@ -31,9 +31,6 @@ namespace VatTu
 
         private void ComboBox_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Trường hợp chưa kịp chọn CN, thuộc tính index ở combobox sẽ thay đổi
-            // "System.Data.DataRowView" sẽ xuất hiện và tất nhiên hệ thống sẽ không thể
-            // nhận diện được tên server "System.Data.DataRowView".
             if (comboBox_ChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView") return;
 
             // Lấy tên server

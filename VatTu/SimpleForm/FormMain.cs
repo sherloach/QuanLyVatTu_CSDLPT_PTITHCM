@@ -16,6 +16,14 @@ namespace VatTu
             InitializeComponent();
         }
 
+        private Form CheckExists(Type ftype)
+        {
+            foreach (Form f in this.MdiChildren)
+                if (f.GetType() == ftype)
+                    return f;
+            return null;
+        }
+
         private void BarButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form2 frm2 = new Form2();
@@ -34,8 +42,14 @@ namespace VatTu
 
         private void BarButtonItem_ListEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormNhanVien frmNV = new FormNhanVien();
-            frmNV.ShowDialog();
+            Form frmChinh = this.CheckExists(typeof(FormNhanVien));
+            if (frmChinh != null) frmChinh.Activate();
+            else
+            {
+                FormNhanVien frmNhanVien = new FormNhanVien();
+                frmNhanVien.MdiParent = this;
+                frmNhanVien.Show();
+            }
         }
 
         private void BarButtonItem_donDatHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
