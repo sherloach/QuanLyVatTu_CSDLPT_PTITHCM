@@ -130,6 +130,7 @@
             this.barButtonItem_listProduct.Id = 7;
             this.barButtonItem_listProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem_listProduct.ImageOptions.SvgImage")));
             this.barButtonItem_listProduct.Name = "barButtonItem_listProduct";
+            this.barButtonItem_listProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_listProduct_ItemClick);
             // 
             // barButtonItem_donDatHang
             // 

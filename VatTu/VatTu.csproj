@@ -91,6 +91,12 @@
     <Compile Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimpleForm\FormVatTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimpleForm\FormVatTu.Designer.cs">
+      <DependentUpon>FormVatTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimpleForm\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.resx">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleForm\FormVatTu.resx">
+      <DependentUpon>FormVatTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimpleForm\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

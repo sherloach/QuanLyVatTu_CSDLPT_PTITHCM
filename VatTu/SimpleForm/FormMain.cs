@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VatTu.SimpleForm;
 
 namespace VatTu
 {
@@ -56,6 +57,18 @@ namespace VatTu
         {
             Frpt_PhieuNvLapTrongNamTheoLoai frmPNV = new Frpt_PhieuNvLapTrongNamTheoLoai();
             frmPNV.ShowDialog();
+        }
+
+        private void BarButtonItem_listProduct_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormVatTu));
+            if (form != null) form.Activate();
+            else
+            {
+                FormVatTu frmVatTu = new FormVatTu();
+                frmVatTu.MdiParent = this;
+                frmVatTu.Show();
+            }
         }
     }
 }
