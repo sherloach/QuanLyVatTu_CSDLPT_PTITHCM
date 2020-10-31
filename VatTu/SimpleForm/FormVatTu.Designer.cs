@@ -35,10 +35,10 @@
             System.Windows.Forms.Label sOLUONGTONLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVatTu));
             this.dS = new VatTu.DS();
-            this.vattuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsVatTu = new System.Windows.Forms.BindingSource(this.components);
             this.vattuTableAdapter = new VatTu.DSTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new VatTu.DSTableAdapters.TableAdapterManager();
-            this.vattuGridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridVatTu = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,8 +69,8 @@
             dVTLabel = new System.Windows.Forms.Label();
             sOLUONGTONLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vattuBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsVatTu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridVatTu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcInfoVatTu)).BeginInit();
             this.gcInfoVatTu.SuspendLayout();
@@ -119,10 +119,10 @@
             this.dS.DataSetName = "DS";
             this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // vattuBindingSource
+            // bdsVatTu
             // 
-            this.vattuBindingSource.DataMember = "Vattu";
-            this.vattuBindingSource.DataSource = this.dS;
+            this.bdsVatTu.DataMember = "Vattu";
+            this.bdsVatTu.DataSource = this.dS;
             // 
             // vattuTableAdapter
             // 
@@ -143,18 +143,17 @@
             this.tableAdapterManager.UpdateOrder = VatTu.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = this.vattuTableAdapter;
             // 
-            // vattuGridControl
+            // gridVatTu
             // 
-            this.vattuGridControl.DataSource = this.vattuBindingSource;
-            this.vattuGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.vattuGridControl.Location = new System.Drawing.Point(0, 24);
-            this.vattuGridControl.MainView = this.gridView1;
-            this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(800, 255);
-            this.vattuGridControl.TabIndex = 1;
-            this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridVatTu.DataSource = this.bdsVatTu;
+            this.gridVatTu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridVatTu.Location = new System.Drawing.Point(0, 24);
+            this.gridVatTu.MainView = this.gridView1;
+            this.gridVatTu.Name = "gridVatTu";
+            this.gridVatTu.Size = new System.Drawing.Size(800, 255);
+            this.gridVatTu.TabIndex = 1;
+            this.gridVatTu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.vattuGridControl.Click += new System.EventHandler(this.VattuGridControl_Click);
             // 
             // gridView1
             // 
@@ -163,7 +162,7 @@
             this.colTENVT,
             this.colDVT,
             this.colSOLUONGTON});
-            this.gridView1.GridControl = this.vattuGridControl;
+            this.gridView1.GridControl = this.gridVatTu;
             this.gridView1.Name = "gridView1";
             // 
             // colMAVT
@@ -217,7 +216,7 @@
             // 
             // numSLT
             // 
-            this.numSLT.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vattuBindingSource, "SOLUONGTON", true));
+            this.numSLT.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsVatTu, "SOLUONGTON", true));
             this.numSLT.Location = new System.Drawing.Point(489, 116);
             this.numSLT.Name = "numSLT";
             this.numSLT.Size = new System.Drawing.Size(120, 21);
@@ -225,7 +224,7 @@
             // 
             // txtDVT
             // 
-            this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vattuBindingSource, "DVT", true));
+            this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "DVT", true));
             this.txtDVT.Location = new System.Drawing.Point(214, 113);
             this.txtDVT.Name = "txtDVT";
             this.txtDVT.Size = new System.Drawing.Size(120, 21);
@@ -233,15 +232,15 @@
             // 
             // txtTenVT
             // 
-            this.txtTenVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vattuBindingSource, "TENVT", true));
-            this.txtTenVT.Location = new System.Drawing.Point(489, 61);
+            this.txtTenVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "TENVT", true));
+            this.txtTenVT.Location = new System.Drawing.Point(489, 64);
             this.txtTenVT.Name = "txtTenVT";
             this.txtTenVT.Size = new System.Drawing.Size(120, 21);
             this.txtTenVT.TabIndex = 3;
             // 
             // txtMaVT
             // 
-            this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vattuBindingSource, "MAVT", true));
+            this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "MAVT", true));
             this.txtMaVT.Location = new System.Drawing.Point(214, 64);
             this.txtMaVT.Name = "txtMaVT";
             this.txtMaVT.Size = new System.Drawing.Size(120, 21);
@@ -311,6 +310,7 @@
             this.btnThem.Id = 0;
             this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
             this.btnThem.Name = "btnThem";
+            this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnThem_ItemClick);
             // 
             // btnXoa
             // 
@@ -318,6 +318,7 @@
             this.btnXoa.Id = 1;
             this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXoa_ItemClick);
             // 
             // btnGhi
             // 
@@ -333,6 +334,7 @@
             this.btnUndo.Id = 3;
             this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
             this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnUndo_ItemClick);
             // 
             // btnReload
             // 
@@ -340,6 +342,7 @@
             this.btnReload.Id = 4;
             this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
             this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnReload_ItemClick);
             // 
             // btnThoat
             // 
@@ -347,6 +350,7 @@
             this.btnThoat.Id = 5;
             this.btnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoat.ImageOptions.SvgImage")));
             this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnThoat_ItemClick);
             // 
             // bar5
             // 
@@ -398,7 +402,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gcInfoVatTu);
-            this.Controls.Add(this.vattuGridControl);
+            this.Controls.Add(this.gridVatTu);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -407,8 +411,8 @@
             this.Text = "FormVatTu";
             this.Load += new System.EventHandler(this.FormVatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vattuBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsVatTu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridVatTu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcInfoVatTu)).EndInit();
             this.gcInfoVatTu.ResumeLayout(false);
@@ -423,10 +427,10 @@
         #endregion
 
         private DS dS;
-        private System.Windows.Forms.BindingSource vattuBindingSource;
+        private System.Windows.Forms.BindingSource bdsVatTu;
         private DSTableAdapters.VattuTableAdapter vattuTableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraGrid.GridControl vattuGridControl;
+        private DevExpress.XtraGrid.GridControl gridVatTu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colTENVT;

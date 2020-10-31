@@ -12,7 +12,7 @@ namespace VatTu
 {
     public partial class FormNhanVien : Form
     {
-        int viTri = 0;
+        int position = 0;
         string maCN = "";
 
         public FormNhanVien()
@@ -149,8 +149,8 @@ namespace VatTu
 
         private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            viTri = bdsNV.Position;
-            groupControl2.Enabled = true;
+            position = bdsNV.Position;
+            gcInfoNhanVien.Enabled = true;
             bdsNV.AddNew();
             txtMaCN.Text = maCN;
             dteNgaySinh.EditValue = "";
@@ -201,7 +201,7 @@ namespace VatTu
             btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = false;
 
-            groupControl2.Enabled = false;
+            gcInfoNhanVien.Enabled = false;
         }
     }
 }

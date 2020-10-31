@@ -69,7 +69,7 @@
             this.colLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.gcInfoNhanVien = new DevExpress.XtraEditors.GroupControl();
             this.cbTTXoa = new System.Windows.Forms.CheckBox();
             this.txtMaCN = new DevExpress.XtraEditors.TextEdit();
             this.txtLuong = new System.Windows.Forms.TextBox();
@@ -97,8 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcInfoNhanVien)).BeginInit();
+            this.gcInfoNhanVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteNgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteNgaySinh.Properties)).BeginInit();
@@ -362,6 +362,9 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ChiNhanhTableAdapter = null;
+            this.tableAdapterManager.CTDDHTableAdapter = null;
+            this.tableAdapterManager.CTPNTableAdapter = null;
+            this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = this.nhanVienTableAdapter;
@@ -469,31 +472,31 @@
             this.colTrangThaiXoa.VisibleIndex = 7;
             this.colTrangThaiXoa.Width = 69;
             // 
-            // groupControl2
+            // gcInfoNhanVien
             // 
-            this.groupControl2.Controls.Add(trangThaiXoaLabel);
-            this.groupControl2.Controls.Add(this.cbTTXoa);
-            this.groupControl2.Controls.Add(mACNLabel);
-            this.groupControl2.Controls.Add(this.txtMaCN);
-            this.groupControl2.Controls.Add(lUONGLabel);
-            this.groupControl2.Controls.Add(this.txtLuong);
-            this.groupControl2.Controls.Add(dIACHILabel);
-            this.groupControl2.Controls.Add(this.txtDiaChi);
-            this.groupControl2.Controls.Add(nGAYSINHLabel);
-            this.groupControl2.Controls.Add(this.dteNgaySinh);
-            this.groupControl2.Controls.Add(tENLabel);
-            this.groupControl2.Controls.Add(this.txtTen);
-            this.groupControl2.Controls.Add(hOLabel);
-            this.groupControl2.Controls.Add(this.txtHo);
-            this.groupControl2.Controls.Add(mANVLabel);
-            this.groupControl2.Controls.Add(this.txtMaNV);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 286);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(931, 165);
-            this.groupControl2.TabIndex = 10;
-            this.groupControl2.Text = "groupControl2";
-            this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.GroupControl2_Paint);
+            this.gcInfoNhanVien.Controls.Add(trangThaiXoaLabel);
+            this.gcInfoNhanVien.Controls.Add(this.cbTTXoa);
+            this.gcInfoNhanVien.Controls.Add(mACNLabel);
+            this.gcInfoNhanVien.Controls.Add(this.txtMaCN);
+            this.gcInfoNhanVien.Controls.Add(lUONGLabel);
+            this.gcInfoNhanVien.Controls.Add(this.txtLuong);
+            this.gcInfoNhanVien.Controls.Add(dIACHILabel);
+            this.gcInfoNhanVien.Controls.Add(this.txtDiaChi);
+            this.gcInfoNhanVien.Controls.Add(nGAYSINHLabel);
+            this.gcInfoNhanVien.Controls.Add(this.dteNgaySinh);
+            this.gcInfoNhanVien.Controls.Add(tENLabel);
+            this.gcInfoNhanVien.Controls.Add(this.txtTen);
+            this.gcInfoNhanVien.Controls.Add(hOLabel);
+            this.gcInfoNhanVien.Controls.Add(this.txtHo);
+            this.gcInfoNhanVien.Controls.Add(mANVLabel);
+            this.gcInfoNhanVien.Controls.Add(this.txtMaNV);
+            this.gcInfoNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcInfoNhanVien.Location = new System.Drawing.Point(0, 286);
+            this.gcInfoNhanVien.Name = "gcInfoNhanVien";
+            this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 165);
+            this.gcInfoNhanVien.TabIndex = 10;
+            this.gcInfoNhanVien.Text = "Thông Tin";
+            this.gcInfoNhanVien.Paint += new System.Windows.Forms.PaintEventHandler(this.GroupControl2_Paint);
             // 
             // cbTTXoa
             // 
@@ -591,7 +594,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 471);
-            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.gcInfoNhanVien);
             this.Controls.Add(this.gridNhanVien);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -609,9 +612,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcInfoNhanVien)).EndInit();
+            this.gcInfoNhanVien.ResumeLayout(false);
+            this.gcInfoNhanVien.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteNgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteNgaySinh.Properties)).EndInit();
@@ -647,7 +650,7 @@
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl gridNhanVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl gcInfoNhanVien;
         private DevExpress.XtraGrid.Columns.GridColumn colMANV;
         private DevExpress.XtraGrid.Columns.GridColumn colHO;
         private DevExpress.XtraGrid.Columns.GridColumn colTEN;
