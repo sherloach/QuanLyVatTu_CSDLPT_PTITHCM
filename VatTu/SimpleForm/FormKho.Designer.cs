@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKho));
             System.Windows.Forms.Label mACNLabel;
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label tENKHOLabel;
             System.Windows.Forms.Label mAKHOLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKho));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -52,14 +52,14 @@
             this.khoTableAdapter = new VatTu.DSTableAdapters.KhoTableAdapter();
             this.tableAdapterManager = new VatTu.DSTableAdapters.TableAdapterManager();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.label_ChiNhanh = new System.Windows.Forms.Label();
+            this.comboBox_ChiNhanh = new System.Windows.Forms.ComboBox();
             this.khoGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.label_ChiNhanh = new System.Windows.Forms.Label();
-            this.comboBox_ChiNhanh = new System.Windows.Forms.ComboBox();
             this.gcInfoKho = new DevExpress.XtraEditors.GroupControl();
             this.txtMaCN = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -80,6 +80,42 @@
             this.gcInfoKho.SuspendLayout();
             this.SuspendLayout();
             // 
+            // mACNLabel
+            // 
+            mACNLabel.AutoSize = true;
+            mACNLabel.Location = new System.Drawing.Point(89, 85);
+            mACNLabel.Name = "mACNLabel";
+            mACNLabel.Size = new System.Drawing.Size(38, 13);
+            mACNLabel.TabIndex = 14;
+            mACNLabel.Text = "Mã CN";
+            // 
+            // dIACHILabel
+            // 
+            dIACHILabel.AutoSize = true;
+            dIACHILabel.Location = new System.Drawing.Point(273, 85);
+            dIACHILabel.Name = "dIACHILabel";
+            dIACHILabel.Size = new System.Drawing.Size(41, 13);
+            dIACHILabel.TabIndex = 12;
+            dIACHILabel.Text = "Địa Chỉ";
+            // 
+            // tENKHOLabel
+            // 
+            tENKHOLabel.AutoSize = true;
+            tENKHOLabel.Location = new System.Drawing.Point(273, 50);
+            tENKHOLabel.Name = "tENKHOLabel";
+            tENKHOLabel.Size = new System.Drawing.Size(46, 13);
+            tENKHOLabel.TabIndex = 10;
+            tENKHOLabel.Text = "Tên Kho";
+            // 
+            // mAKHOLabel
+            // 
+            mAKHOLabel.AutoSize = true;
+            mAKHOLabel.Location = new System.Drawing.Point(89, 50);
+            mAKHOLabel.Name = "mAKHOLabel";
+            mAKHOLabel.Size = new System.Drawing.Size(42, 13);
+            mAKHOLabel.TabIndex = 8;
+            mAKHOLabel.Text = "Mã Kho";
+            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -95,7 +131,7 @@
             this.btnXoa,
             this.btnGhi,
             this.btnUndo,
-            this.barButtonItem5,
+            this.btnReload,
             this.btnThoat});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 6;
@@ -112,7 +148,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem5, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -150,13 +186,13 @@
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnUndo_ItemClick);
             // 
-            // barButtonItem5
+            // btnReload
             // 
-            this.barButtonItem5.Caption = "Reload";
-            this.barButtonItem5.Id = 4;
-            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem5_ItemClick);
+            this.btnReload.Caption = "Reload";
+            this.btnReload.Id = 4;
+            this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
+            this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnReload_ItemClick);
             // 
             // btnThoat
             // 
@@ -248,7 +284,25 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(808, 71);
             this.groupControl1.TabIndex = 5;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "Chi Nhánh";
+            // 
+            // label_ChiNhanh
+            // 
+            this.label_ChiNhanh.AutoSize = true;
+            this.label_ChiNhanh.Location = new System.Drawing.Point(116, 38);
+            this.label_ChiNhanh.Name = "label_ChiNhanh";
+            this.label_ChiNhanh.Size = new System.Drawing.Size(56, 13);
+            this.label_ChiNhanh.TabIndex = 3;
+            this.label_ChiNhanh.Text = "Chi Nhánh";
+            // 
+            // comboBox_ChiNhanh
+            // 
+            this.comboBox_ChiNhanh.FormattingEnabled = true;
+            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(178, 35);
+            this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
+            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(266, 21);
+            this.comboBox_ChiNhanh.TabIndex = 2;
+            this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ChiNhanh_SelectedIndexChanged);
             // 
             // khoGridControl
             // 
@@ -309,23 +363,6 @@
             this.colMACN.VisibleIndex = 3;
             this.colMACN.Width = 263;
             // 
-            // label_ChiNhanh
-            // 
-            this.label_ChiNhanh.AutoSize = true;
-            this.label_ChiNhanh.Location = new System.Drawing.Point(116, 38);
-            this.label_ChiNhanh.Name = "label_ChiNhanh";
-            this.label_ChiNhanh.Size = new System.Drawing.Size(56, 13);
-            this.label_ChiNhanh.TabIndex = 3;
-            this.label_ChiNhanh.Text = "Chi Nhánh";
-            // 
-            // comboBox_ChiNhanh
-            // 
-            this.comboBox_ChiNhanh.FormattingEnabled = true;
-            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(178, 35);
-            this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
-            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(266, 21);
-            this.comboBox_ChiNhanh.TabIndex = 2;
-            // 
             // gcInfoKho
             // 
             this.gcInfoKho.Controls.Add(mACNLabel);
@@ -343,15 +380,6 @@
             this.gcInfoKho.TabIndex = 13;
             this.gcInfoKho.Text = "Thông Tin Kho";
             // 
-            // mACNLabel
-            // 
-            mACNLabel.AutoSize = true;
-            mACNLabel.Location = new System.Drawing.Point(89, 85);
-            mACNLabel.Name = "mACNLabel";
-            mACNLabel.Size = new System.Drawing.Size(38, 13);
-            mACNLabel.TabIndex = 14;
-            mACNLabel.Text = "Mã CN";
-            // 
             // txtMaCN
             // 
             this.txtMaCN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "MACN", true));
@@ -359,15 +387,6 @@
             this.txtMaCN.Name = "txtMaCN";
             this.txtMaCN.Size = new System.Drawing.Size(100, 21);
             this.txtMaCN.TabIndex = 15;
-            // 
-            // dIACHILabel
-            // 
-            dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(273, 85);
-            dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(41, 13);
-            dIACHILabel.TabIndex = 12;
-            dIACHILabel.Text = "Địa Chỉ";
             // 
             // txtDiaChi
             // 
@@ -377,15 +396,6 @@
             this.txtDiaChi.Size = new System.Drawing.Size(165, 21);
             this.txtDiaChi.TabIndex = 13;
             // 
-            // tENKHOLabel
-            // 
-            tENKHOLabel.AutoSize = true;
-            tENKHOLabel.Location = new System.Drawing.Point(273, 50);
-            tENKHOLabel.Name = "tENKHOLabel";
-            tENKHOLabel.Size = new System.Drawing.Size(46, 13);
-            tENKHOLabel.TabIndex = 10;
-            tENKHOLabel.Text = "Tên Kho";
-            // 
             // txtTenKho
             // 
             this.txtTenKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "TENKHO", true));
@@ -393,15 +403,6 @@
             this.txtTenKho.Name = "txtTenKho";
             this.txtTenKho.Size = new System.Drawing.Size(165, 21);
             this.txtTenKho.TabIndex = 11;
-            // 
-            // mAKHOLabel
-            // 
-            mAKHOLabel.AutoSize = true;
-            mAKHOLabel.Location = new System.Drawing.Point(89, 50);
-            mAKHOLabel.Name = "mAKHOLabel";
-            mAKHOLabel.Size = new System.Drawing.Size(42, 13);
-            mAKHOLabel.TabIndex = 8;
-            mAKHOLabel.Text = "Mã Kho";
             // 
             // txtMaKho
             // 
@@ -450,7 +451,7 @@
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnGhi;
         private DevExpress.XtraBars.BarButtonItem btnUndo;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem btnReload;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;

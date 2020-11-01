@@ -248,6 +248,7 @@
             this.btnUndo.Id = 3;
             this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
             this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnUndo_ItemClick);
             // 
             // btnReload
             // 
@@ -255,6 +256,7 @@
             this.btnReload.Id = 4;
             this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
             this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnReload_ItemClick);
             // 
             // btnChuyenChiNhanh
             // 
@@ -262,6 +264,7 @@
             this.btnChuyenChiNhanh.Id = 5;
             this.btnChuyenChiNhanh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnChuyenChiNhanh.ImageOptions.SvgImage")));
             this.btnChuyenChiNhanh.Name = "btnChuyenChiNhanh";
+            this.btnChuyenChiNhanh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnChuyenChiNhanh_ItemClick);
             // 
             // btnThoat
             // 
@@ -269,6 +272,7 @@
             this.btnThoat.Id = 6;
             this.btnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoat.ImageOptions.SvgImage")));
             this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnThoat_ItemClick);
             // 
             // bar3
             // 
@@ -323,7 +327,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(931, 71);
             this.groupControl1.TabIndex = 4;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "Chi Nhánh";
             // 
             // label_ChiNhanh
             // 
@@ -333,7 +337,6 @@
             this.label_ChiNhanh.Size = new System.Drawing.Size(56, 13);
             this.label_ChiNhanh.TabIndex = 1;
             this.label_ChiNhanh.Text = "Chi Nhánh";
-            this.label_ChiNhanh.Click += new System.EventHandler(this.Label1_Click);
             // 
             // comboBox_ChiNhanh
             // 
@@ -496,7 +499,6 @@
             this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 166);
             this.gcInfoNhanVien.TabIndex = 10;
             this.gcInfoNhanVien.Text = "Thông Tin";
-            this.gcInfoNhanVien.Paint += new System.Windows.Forms.PaintEventHandler(this.GroupControl2_Paint);
             // 
             // cbTTXoa
             // 
@@ -553,7 +555,6 @@
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(100, 21);
             this.txtTen.TabIndex = 5;
-            this.txtTen.TextChanged += new System.EventHandler(this.TENTextBox_TextChanged);
             // 
             // txtHo
             // 

@@ -20,44 +20,6 @@ namespace VatTu
             InitializeComponent();
         }
 
-        private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Int32 manv = 0;
-            if (bdsDH.Count > 0)
-            {
-                MessageBox.Show("Không thể xóa nhân viên này vì đã lập đơn đặt hàng", "",
-                       MessageBoxButtons.OK);
-                return;
-            }
-            if (bdsPN.Count > 0)
-            {
-                MessageBox.Show("Không thể xóa nhân viên này vì đã lập phiếu phập", "",
-                       MessageBoxButtons.OK);
-                return;
-            }
-            if (MessageBox.Show("Bạn có thật sự muốn xóa nhân viên này ?? ", "Xác nhận",
-                       MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                try
-                {
-                    manv = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString()); // giữ lại để khi xóa bij lỗi thì ta sẽ quay về lại
-                    bdsNV.RemoveCurrent();
-                    this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.nhanVienTableAdapter.Update(this.dS.NhanVien);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi xóa nhân viên. Bạn hãy xóa lại\n" + ex.Message, "",
-                        MessageBoxButtons.OK);
-                    this.nhanVienTableAdapter.Fill(this.dS.NhanVien);
-                    bdsNV.Position = bdsNV.Find("MANV", manv);
-                    return;
-                }
-            }
-
-            if (bdsNV.Count == 0) btnXoa.Enabled = false;
-        }
-
         private void FormNhanVien_Load(object sender, EventArgs e)
         {
             // Không kiểm tra khóa ngoại
@@ -84,13 +46,15 @@ namespace VatTu
             // Phân Quyền
             // TODO: CONGTY thì comboBox sáng lên, các nút chức năng PHẢI mờ
             //       Không phải công ty thì comboBox mờ, các nút chức năng cần thiết PHẢI sáng.
-            if (Program.mGroup == "CONGTY") comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
-            else comboBox_ChiNhanh.Enabled = false;
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
+            if (Program.mGroup == "CONGTY")
+            {
+                comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
+                btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = btnUndo.Links[0].Visible = btnChuyenChiNhanh.Links[0].Visible = false;
+            }
+            else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
+            {
+                comboBox_ChiNhanh.Enabled = false;
+            }
         }
 
         private void NhanVienBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -98,16 +62,6 @@ namespace VatTu
             this.Validate();
             this.bdsNV.EndEdit();
             this.tableAdapterManager.UpdateAll(this.dS);
-
-        }
-
-        private void TENTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GroupControl2_Paint(object sender, PaintEventArgs e)
-        {
 
         }
 
@@ -159,6 +113,43 @@ namespace VatTu
             btnGhi.Enabled = btnUndo.Enabled = true;
             gridNhanVien.Enabled = false;
         }
+        private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Int32 manv = 0;
+            if (bdsDH.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa nhân viên này vì đã lập đơn đặt hàng", "",
+                       MessageBoxButtons.OK);
+                return;
+            }
+            if (bdsPN.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa nhân viên này vì đã lập phiếu phập", "",
+                       MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thật sự muốn xóa nhân viên này ?? ", "Xác nhận",
+                       MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    manv = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString()); // giữ lại để khi xóa bij lỗi thì ta sẽ quay về lại
+                    bdsNV.RemoveCurrent();
+                    this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.nhanVienTableAdapter.Update(this.dS.NhanVien);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa nhân viên. Bạn hãy xóa lại\n" + ex.Message, "",
+                        MessageBoxButtons.OK);
+                    this.nhanVienTableAdapter.Fill(this.dS.NhanVien);
+                    bdsNV.Position = bdsNV.Find("MANV", manv);
+                    return;
+                }
+            }
+
+            if (bdsNV.Count == 0) btnXoa.Enabled = false;
+        }
 
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -202,6 +193,26 @@ namespace VatTu
             btnGhi.Enabled = btnUndo.Enabled = false;
 
             gcInfoNhanVien.Enabled = false;
+        }
+
+        private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void BtnChuyenChiNhanh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void BtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

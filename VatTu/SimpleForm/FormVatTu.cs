@@ -62,7 +62,7 @@ namespace VatTu.SimpleForm
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại! \n" + ex.Message, "Thông báo lỗi",
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.vattuTableAdapter.Fill(this.dS.Vattu);
                     bdsVatTu.Position = bdsVatTu.Find("MAVT", maVT);
@@ -102,13 +102,13 @@ namespace VatTu.SimpleForm
 
             if (txtMaVT.Text.Trim().Length > 4)
             {
-                MessageBox.Show("Mã vật tư không được quá 4 kí tự!", "Cảnh báo",
+                MessageBox.Show("Mã vật tư không được quá 4 kí tự!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (txtMaVT.Text.Contains(" "))
             {
-                MessageBox.Show("Mã vật tư không được chứa khoảng trắng!", "Cảnh báo",
+                MessageBox.Show("Mã vật tư không được chứa khoảng trắng!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -116,11 +116,12 @@ namespace VatTu.SimpleForm
             int checkMaVT = bdsVatTu.Find("TENVT", txtTenVT.Text);
             if (checkMaVT != -1 && (checkMaVT != bdsVatTu.Position))
             {
-                MessageBox.Show("Tên vật tư trùng. Vui lòng chọn tên vật tư khác!", "Cảnh báo",
+                MessageBox.Show("Tên vật tư trùng. Vui lòng chọn tên vật tư khác!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Có cần thiết chạy SP không trong khi VATTU là nhân bản???
             String query = "DECLARE	@return_value int " +
                            "EXEC @return_value = [dbo].[SP_CHECKID] " +
                            "@p1, @p2 " +
@@ -136,7 +137,7 @@ namespace VatTu.SimpleForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Cảnh báo",
+                MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -163,8 +164,8 @@ namespace VatTu.SimpleForm
                     try
                     {
                         //Program.flagCloseFormVT = true; // Bật cờ cho phép tắt Form NV
-                        btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = btnGhi.Enabled = true;
-                        btnUndo.Enabled = gcInfoVatTu.Enabled = false;
+                        btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = true;
+                        btnUndo.Enabled = false;
                         this.bdsVatTu.EndEdit();
                         this.vattuTableAdapter.Update(this.dS.Vattu);
                         bdsVatTu.Position = position;
