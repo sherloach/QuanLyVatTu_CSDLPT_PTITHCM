@@ -40,9 +40,8 @@ namespace VatTu.SimpleForm
         {
             position = bdsVatTu.Position;
             this.bdsVatTu.AddNew();
-            gcInfoVatTu.Enabled = true;
             btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = false;
-            btnUndo.Enabled = btnGhi.Enabled = true;
+            btnUndo.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = true;
 
             //Program.flagCloseFormVT = false; //Bật cờ lên để chặn tắt Form đột ngột khi nhập liệu
             numSLT.Value = 0;
@@ -50,22 +49,48 @@ namespace VatTu.SimpleForm
 
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string maVT = "";
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa vật tư này?", "Xác nhận",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                try
+                {
+                    maVT = ((DataRowView)bdsVatTu[bdsVatTu.Position])["MAVT"].ToString(); // Giữ lại mã để khi bị lỗi có thể quay về
+                    bdsVatTu.RemoveCurrent();
+                    this.vattuTableAdapter.Update(this.dS.Vattu);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại! \n" + ex.Message, "Thông báo lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.vattuTableAdapter.Fill(this.dS.Vattu);
+                    bdsVatTu.Position = bdsVatTu.Find("MAVT", maVT);
+                    return;
+                }
+            }
 
+            // Unable nút xóa nếu không có vật tư nào
+            if (bdsVatTu.Count == 0) btnXoa.Enabled = false;
         }
 
         private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = true;
+            btnUndo.Enabled = false;
+            //Program.flagCloseFormVT = true; // Undo lại thì cho phép thoát mà ko kiểm tra dữ liệu
+            bdsVatTu.CancelEdit();
+            bdsVatTu.Position = position;
         }
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            this.vattuTableAdapter.Fill(this.dS.Vattu);
         }
 
         private void BtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            this.Close();
         }
 
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -138,8 +163,8 @@ namespace VatTu.SimpleForm
                     try
                     {
                         //Program.flagCloseFormVT = true; // Bật cờ cho phép tắt Form NV
-                        btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = true;
-                        btnUndo.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = false;
+                        btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = btnGhi.Enabled = true;
+                        btnUndo.Enabled = gcInfoVatTu.Enabled = false;
                         this.bdsVatTu.EndEdit();
                         this.vattuTableAdapter.Update(this.dS.Vattu);
                         bdsVatTu.Position = position;
