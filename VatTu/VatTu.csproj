@@ -73,6 +73,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SimpleForm\FormKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimpleForm\FormKho.Designer.cs">
+      <DependentUpon>FormKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimpleForm\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     <Compile Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SimpleForm\FormKho.resx">
+      <DependentUpon>FormKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SimpleForm\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

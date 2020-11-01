@@ -321,14 +321,14 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(931, 72);
+            this.groupControl1.Size = new System.Drawing.Size(931, 71);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "groupControl1";
             // 
             // label_ChiNhanh
             // 
             this.label_ChiNhanh.AutoSize = true;
-            this.label_ChiNhanh.Location = new System.Drawing.Point(130, 44);
+            this.label_ChiNhanh.Location = new System.Drawing.Point(118, 38);
             this.label_ChiNhanh.Name = "label_ChiNhanh";
             this.label_ChiNhanh.Size = new System.Drawing.Size(56, 13);
             this.label_ChiNhanh.TabIndex = 1;
@@ -338,9 +338,9 @@
             // comboBox_ChiNhanh
             // 
             this.comboBox_ChiNhanh.FormattingEnabled = true;
-            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(192, 41);
+            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(180, 35);
             this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
-            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(328, 21);
+            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(269, 21);
             this.comboBox_ChiNhanh.TabIndex = 0;
             this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ChiNhanh_SelectedIndexChanged);
             // 
@@ -377,7 +377,7 @@
             // 
             this.gridNhanVien.DataSource = this.bdsNV;
             this.gridNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridNhanVien.Location = new System.Drawing.Point(0, 96);
+            this.gridNhanVien.Location = new System.Drawing.Point(0, 95);
             this.gridNhanVien.MainView = this.gridView1;
             this.gridNhanVien.MenuManager = this.barManager1;
             this.gridNhanVien.Name = "gridNhanVien";
@@ -491,9 +491,9 @@
             this.gcInfoNhanVien.Controls.Add(mANVLabel);
             this.gcInfoNhanVien.Controls.Add(this.txtMaNV);
             this.gcInfoNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcInfoNhanVien.Location = new System.Drawing.Point(0, 286);
+            this.gcInfoNhanVien.Location = new System.Drawing.Point(0, 285);
             this.gcInfoNhanVien.Name = "gcInfoNhanVien";
-            this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 165);
+            this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 166);
             this.gcInfoNhanVien.TabIndex = 10;
             this.gcInfoNhanVien.Text = "Thông Tin";
             this.gcInfoNhanVien.Paint += new System.Windows.Forms.PaintEventHandler(this.GroupControl2_Paint);
@@ -602,7 +602,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormNhanVien";
-            this.Text = "FormNhanVien";
+            this.Text = "Nhân Viên";
             this.Load += new System.EventHandler(this.FormNhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

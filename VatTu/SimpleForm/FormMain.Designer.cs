@@ -50,6 +50,7 @@
             this.DonHang = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barButtonItem_ListKho = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -69,13 +70,14 @@
             this.barButtonItem_listProduct,
             this.barButtonItem_donDatHang,
             this.barButtonItem_phieuNhap,
-            this.barButtonItem_phieuXuat});
+            this.barButtonItem_phieuXuat,
+            this.barButtonItem_ListKho});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 11;
+            this.ribbonControl1.MaxItemId = 12;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ThongTin,
             this.DanhSach,
+            this.ThongTin,
             this.DonHang});
             this.ribbonControl1.Size = new System.Drawing.Size(812, 158);
             this.ribbonControl1.Click += new System.EventHandler(this.RibbonControl1_Click);
@@ -118,7 +120,7 @@
             // 
             // barButtonItem_ListEmployee
             // 
-            this.barButtonItem_ListEmployee.Caption = "Danh sách nhân viên";
+            this.barButtonItem_ListEmployee.Caption = "Nhân Viên";
             this.barButtonItem_ListEmployee.Id = 6;
             this.barButtonItem_ListEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem_ListEmployee.ImageOptions.SvgImage")));
             this.barButtonItem_ListEmployee.Name = "barButtonItem_ListEmployee";
@@ -126,7 +128,7 @@
             // 
             // barButtonItem_listProduct
             // 
-            this.barButtonItem_listProduct.Caption = "Danh sách vật tư";
+            this.barButtonItem_listProduct.Caption = "Vật Tư";
             this.barButtonItem_listProduct.Id = 7;
             this.barButtonItem_listProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem_listProduct.ImageOptions.SvgImage")));
             this.barButtonItem_listProduct.Name = "barButtonItem_listProduct";
@@ -191,8 +193,9 @@
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem_ListEmployee);
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem_listProduct);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem_ListKho);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Danh Sách";
             // 
             // DonHang
             // 
@@ -211,6 +214,14 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // barButtonItem_ListKho
+            // 
+            this.barButtonItem_ListKho.Caption = "Kho";
+            this.barButtonItem_ListKho.Id = 11;
+            this.barButtonItem_ListKho.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barButtonItem_ListKho.Name = "barButtonItem_ListKho";
+            this.barButtonItem_ListKho.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_ListKho_ItemClick);
             // 
             // FormChinh
             // 
@@ -253,6 +264,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage DonHang;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_ListKho;
     }
 }
 

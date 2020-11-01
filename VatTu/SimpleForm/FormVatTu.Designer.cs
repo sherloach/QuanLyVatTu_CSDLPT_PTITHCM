@@ -408,7 +408,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormVatTu";
-            this.Text = "FormVatTu";
+            this.Text = "Vật Tư";
             this.Load += new System.EventHandler(this.FormVatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsVatTu)).EndInit();

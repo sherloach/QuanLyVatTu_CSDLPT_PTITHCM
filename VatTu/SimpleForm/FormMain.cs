@@ -70,5 +70,17 @@ namespace VatTu
                 frmVatTu.Show();
             }
         }
+
+        private void BarButtonItem_ListKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormKho));
+            if (form != null) form.Activate();
+            else
+            {
+                FormKho frmKho = new FormKho();
+                frmKho.MdiParent = this;
+                frmKho.Show();
+            }
+        }
     }
 }
