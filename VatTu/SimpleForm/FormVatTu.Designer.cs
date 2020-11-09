@@ -409,6 +409,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormVatTu";
             this.Text = "Vật Tư";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormVatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsVatTu)).EndInit();

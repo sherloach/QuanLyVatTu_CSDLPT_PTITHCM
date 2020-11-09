@@ -214,9 +214,9 @@ namespace VatTu.SimpleForm
                     try
                     {
                         //Program.flagCloseFormKho = true; //Bật cờ cho phép tắt Form NV
-                        btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = true;
+                        btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = gcInfoKho.Enabled = true;
                         btnReload.Enabled = btnGhi.Enabled = true;
-                        btnUndo.Enabled = gcInfoKho.Enabled = false;
+                        btnUndo.Enabled = false;
                         this.bdsKho.EndEdit();
                         this.khoTableAdapter.Update(this.dS.Kho);
                         bdsKho.Position = position;
