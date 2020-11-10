@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,11 +21,7 @@ namespace VatTu.SimpleForm
             InitializeComponent();
         }
 
-        private void BarButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
+        
         private void DatHangBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -37,7 +34,8 @@ namespace VatTu.SimpleForm
         {
             gcDDH.Height = 250;
             gcPX.Height = 250;
-            
+            gcPN.Height = 250;
+
             // Không kiểm tra khóa ngoại
             dS.EnforceConstraints = false;
 
@@ -107,12 +105,31 @@ namespace VatTu.SimpleForm
 
 
         // -- SWITCH TYPE --
-        private void switchPanel(string type, Bitmap image, GroupControl groupControl)
+        private void BtnDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switchPanel("Đặt Hàng", gcDDH, gridDDH);
+        }
+
+        private void BtnPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switchPanel("Phiếu Nhập", gcPN, gridDDH);
+        }
+
+        private void BtnPX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switchPanel("Phiếu Xuất", gcPX, gridPX);
+        }
+
+        private void switchPanel(string type, GroupControl groupControl, GridControl gridControl)
         {
             btnSwitch.Links[0].Caption = type;
-            btnSwitch.Links[0].ImageOptions.Image = image;
+            //btnSwitch.Links[0].ImageOptions.Image = image;
             gcDDH.Visible = false;
             gcPX.Visible = false;
+            gcPN.Visible = false;
+            gridDDH.Visible = false;
+            gridPX.Visible = false;
+            gridControl.Visible = true;
             groupControl.Visible = true;
         }
     }
