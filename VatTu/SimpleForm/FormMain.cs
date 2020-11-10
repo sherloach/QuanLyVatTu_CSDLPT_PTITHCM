@@ -82,5 +82,17 @@ namespace VatTu
                 frmKho.Show();
             }
         }
+
+        private void btnLapPhieu_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormLapPhieu));
+            if (form != null) form.Activate();
+            else
+            {
+                FormLapPhieu frm = new FormLapPhieu();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }
