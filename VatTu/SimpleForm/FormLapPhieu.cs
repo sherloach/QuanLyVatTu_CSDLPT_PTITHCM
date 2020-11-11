@@ -163,7 +163,27 @@ namespace VatTu.SimpleForm
 
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            // Check ràng buộc text box
+            //if (!Validate(txtMaDDH, "Mã đơn hàng không được để trống!")) return;
+            //if (!Validate(txtNhaCC, "Tên kho không được để trống!")) return;
+            //if (!Validate(txtDiaChi, "Địa chỉ không được để trống!")) return;
+            //if (txtMaDDH.Text.Trim().Length > 4)
+            //{
+            //    MessageBox.Show("Mã đơn hàng không được quá 4 kí tự!", "Thông báo",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else if (txtMaDDH.Text.Contains(" "))
+            //{
+            //    MessageBox.Show("Mã đơn hàng không được chứa khoảng trắng!", "Thông báo",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                txtMaDDH.Text = ((DataRowView)bdsDH[bdsDH.Position])["MANV"].ToString();
+                btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = true;
+            }
         }
 
         // ------ SWITCH TYPE ------
@@ -195,5 +215,119 @@ namespace VatTu.SimpleForm
             groupControl.Visible = true;
         }
 
+        // ------ Utils Methods ------
+        private bool Validate(TextBox tb, string str)
+        {
+            if (tb.Text.Trim().Equals(""))
+            {
+                MessageBox.Show(str, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tb.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        // ------ Checked Methods ------
+        private void TxtMaDDH_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMaDDH.Text))
+            {
+                e.Cancel = true;
+                txtMaDDH.Focus();
+                errorProvider.SetError(txtMaDDH, "Mã DH không được để trống!");
+            }
+            else if (txtMaDDH.Text.Contains(" "))
+            {
+                e.Cancel = true;
+                txtMaDDH.Focus();
+                errorProvider.SetError(txtMaDDH, "Mã DH không được chứa khoảng trắng!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtMaDDH, "");
+            }
+        }
+
+        private void TxtNhaCC_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNhaCC.Text))
+            {
+                e.Cancel = true;
+                txtNhaCC.Focus();
+                errorProvider.SetError(txtNhaCC, "Nhà cung cấp không được để trống!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtNhaCC, "");
+            }
+        }
+
+        private void TxtMaPX_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMaPX.Text))
+            {
+                e.Cancel = true;
+                txtMaPX.Focus();
+                errorProvider.SetError(txtMaPX, "Mã PX không được để trống!");
+            }
+            else if (txtMaPX.Text.Contains(" "))
+            {
+                e.Cancel = true;
+                txtMaPX.Focus();
+                errorProvider.SetError(txtMaPX, "Mã PX không được chứa khoảng trắng!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtMaPX, "");
+            }
+        }
+
+        private void TxtTenKH_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTenKH.Text))
+            {
+                e.Cancel = true;
+                txtTenKH.Focus();
+                errorProvider.SetError(txtTenKH, "Tên khách hàng không được để trống!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtTenKH, "");
+            }
+        }
+
+        private void TxtMaKho_PX_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMaKho_PX.Text))
+            {
+                e.Cancel = true;
+                txtMaKho_PX.Focus();
+                errorProvider.SetError(txtMaKho_PX, "Vui lòng chọn mã kho!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtMaKho_PX, "");
+            }
+        }
+
+        private void TxtMaKho_DH_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMaKho_DH.Text))
+            {
+                e.Cancel = true;
+                txtMaKho_DH.Focus();
+                errorProvider.SetError(txtMaKho_DH, "Vui lòng chọn mã kho!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtMaKho_DH, "");
+            }
+        }
     }
 }

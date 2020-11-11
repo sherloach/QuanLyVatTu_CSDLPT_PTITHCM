@@ -121,6 +121,7 @@
             this.colMasoDDH2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMANV2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             mAKHOLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -157,6 +158,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // mAKHOLabel
@@ -352,7 +354,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 930);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 928);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
             // 
@@ -362,7 +364,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 906);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 904);
             // 
             // barDockControlRight
             // 
@@ -370,7 +372,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 906);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 904);
             // 
             // groupControl1
             // 
@@ -631,7 +633,7 @@
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcDDH.Location = new System.Drawing.Point(0, 519);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1132, 67);
+            this.gcDDH.Size = new System.Drawing.Size(1132, 153);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -644,7 +646,7 @@
             this.gridCTDDH.MainView = this.gridView2;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(635, 42);
+            this.gridCTDDH.Size = new System.Drawing.Size(635, 128);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -714,7 +716,7 @@
             this.gbInfoDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoDDH.Location = new System.Drawing.Point(2, 23);
             this.gbInfoDDH.Name = "gbInfoDDH";
-            this.gbInfoDDH.Size = new System.Drawing.Size(493, 42);
+            this.gbInfoDDH.Size = new System.Drawing.Size(493, 128);
             this.gbInfoDDH.TabIndex = 0;
             this.gbInfoDDH.TabStop = false;
             this.gbInfoDDH.Text = "Thông Tin";
@@ -737,6 +739,7 @@
             this.txtMaKho_DH.ReadOnly = true;
             this.txtMaKho_DH.Size = new System.Drawing.Size(164, 21);
             this.txtMaKho_DH.TabIndex = 12;
+            this.txtMaKho_DH.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaKho_DH_Validating);
             // 
             // txtNhaCC
             // 
@@ -745,6 +748,7 @@
             this.txtNhaCC.Name = "txtNhaCC";
             this.txtNhaCC.Size = new System.Drawing.Size(164, 21);
             this.txtNhaCC.TabIndex = 10;
+            this.txtNhaCC.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNhaCC_Validating);
             // 
             // txtMaDDH
             // 
@@ -753,15 +757,16 @@
             this.txtMaDDH.Name = "txtMaDDH";
             this.txtMaDDH.Size = new System.Drawing.Size(164, 21);
             this.txtMaDDH.TabIndex = 8;
+            this.txtMaDDH.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaDDH_Validating);
             // 
             // gcPX
             // 
             this.gcPX.Controls.Add(this.gridCTPX);
             this.gcPX.Controls.Add(this.gbInfoPX);
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPX.Location = new System.Drawing.Point(0, 586);
+            this.gcPX.Location = new System.Drawing.Point(0, 672);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1132, 160);
+            this.gcPX.Size = new System.Drawing.Size(1132, 72);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -775,7 +780,7 @@
             this.gridCTPX.MainView = this.gridView4;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(635, 135);
+            this.gridCTPX.Size = new System.Drawing.Size(635, 47);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -845,7 +850,7 @@
             this.gbInfoPX.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoPX.Location = new System.Drawing.Point(2, 23);
             this.gbInfoPX.Name = "gbInfoPX";
-            this.gbInfoPX.Size = new System.Drawing.Size(493, 135);
+            this.gbInfoPX.Size = new System.Drawing.Size(493, 47);
             this.gbInfoPX.TabIndex = 0;
             this.gbInfoPX.TabStop = false;
             this.gbInfoPX.Text = "Thông Tin";
@@ -858,6 +863,7 @@
             this.txtMaKho_PX.ReadOnly = true;
             this.txtMaKho_PX.Size = new System.Drawing.Size(166, 21);
             this.txtMaKho_PX.TabIndex = 16;
+            this.txtMaKho_PX.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaKho_PX_Validating);
             // 
             // txtTenKH
             // 
@@ -866,6 +872,7 @@
             this.txtTenKH.Name = "txtTenKH";
             this.txtTenKH.Size = new System.Drawing.Size(166, 21);
             this.txtTenKH.TabIndex = 15;
+            this.txtTenKH.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTenKH_Validating);
             // 
             // txtMaPX
             // 
@@ -874,6 +881,7 @@
             this.txtMaPX.Name = "txtMaPX";
             this.txtMaPX.Size = new System.Drawing.Size(167, 21);
             this.txtMaPX.TabIndex = 14;
+            this.txtMaPX.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaPX_Validating);
             // 
             // btnGridKho2
             // 
@@ -890,7 +898,7 @@
             this.gcPN.Controls.Add(this.gridCTPN);
             this.gcPN.Controls.Add(this.gridPN);
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPN.Location = new System.Drawing.Point(0, 746);
+            this.gcPN.Location = new System.Drawing.Point(0, 744);
             this.gcPN.Name = "gcPN";
             this.gcPN.Size = new System.Drawing.Size(1132, 184);
             this.gcPN.TabIndex = 36;
@@ -1043,6 +1051,10 @@
             this.colMAKHO2.VisibleIndex = 4;
             this.colMAKHO2.Width = 87;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FormLapPhieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1096,6 +1108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1188,5 +1201,6 @@
         public System.Windows.Forms.TextBox txtMaKho_DH;
         public DevExpress.XtraBars.BarSubItem btnSwitch;
         public System.Windows.Forms.TextBox txtMaKho_PX;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
