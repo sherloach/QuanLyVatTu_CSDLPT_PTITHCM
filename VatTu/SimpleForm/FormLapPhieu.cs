@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VatTu.SubForm;
 
 namespace VatTu.SimpleForm
 {
@@ -20,7 +21,6 @@ namespace VatTu.SimpleForm
         {
             InitializeComponent();
         }
-
         
         private void DatHangBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -66,6 +66,7 @@ namespace VatTu.SimpleForm
             else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
             {
                 comboBox_ChiNhanh.Enabled = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = false;
             }
         }
 
@@ -103,8 +104,69 @@ namespace VatTu.SimpleForm
             }
         }
 
+        // ------ pre CRUD ------
+        private void BtnGridKho_Click(object sender, EventArgs e)
+        {
+            Program.subFormKho = new SubFormKho();
+            Program.subFormKho.Show();
+            Program.formMain.Enabled = false;
+        }
 
-        // -- SWITCH TYPE --
+        // __ Chọn Kho của PX __
+        private void BtnGridKho2_Click(object sender, EventArgs e)
+        {
+            Program.subFormKho = new SubFormKho();
+            Program.subFormKho.Show();
+            Program.formMain.Enabled = false;
+        }
+
+        // ------ CRUD ------
+        private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Tùy từng type trong Form Lập phiếu mà chọn ra binding source tương ứng.
+            BindingSource current_bds = null;
+            GridControl current_gc = null;
+            GroupBox current_gb = null;
+
+            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                current_bds = bdsPX;
+                current_gc = gridPX;
+                current_gb = gbInfoPX;
+            }
+            else
+            {
+                current_bds = bdsDH;
+                current_gc = gridDDH;
+                current_gb = gbInfoDDH;
+            }
+            // Giữ lại vị trí trước khi CRUD
+            position = current_bds.Position;
+
+            current_bds.AddNew();
+            btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = false;
+            current_gc.Enabled = btnReload.Enabled = false;
+            current_gb.Enabled = btnGhi.Enabled = true;
+            ((DataRowView)current_bds[current_bds.Position])["MANV"] = Program.maNV;
+            ((DataRowView)current_bds[current_bds.Position])["NGAY"] = DateTime.Today;
+        }
+
+        private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        // ------ SWITCH TYPE ------
         private void BtnDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switchPanel("Đặt Hàng", gcDDH, gridDDH);
@@ -132,5 +194,6 @@ namespace VatTu.SimpleForm
             gridControl.Visible = true;
             groupControl.Visible = true;
         }
+
     }
 }

@@ -103,12 +103,6 @@
     <Compile Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="SimpleForm\FormPhieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimpleForm\FormPhieu.Designer.cs">
-      <DependentUpon>FormPhieu.cs</DependentUpon>
-    </Compile>
     <Compile Include="SimpleForm\FormVatTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +128,12 @@
     <Compile Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\SubFormKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\SubFormKho.Designer.cs">
+      <DependentUpon>SubFormKho.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="SimpleForm\FormKho.resx">
       <DependentUpon>FormKho.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,9 +148,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.resx">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SimpleForm\FormPhieu.resx">
-      <DependentUpon>FormPhieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimpleForm\FormVatTu.resx">
       <DependentUpon>FormVatTu.cs</DependentUpon>
@@ -170,6 +167,9 @@
     </Compile>
     <EmbeddedResource Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.resx">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\SubFormKho.resx">
+      <DependentUpon>SubFormKho.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DS.xsc">
@@ -204,9 +204,7 @@
       <DependentUpon>QLVT_DATHANGDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SubForm\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

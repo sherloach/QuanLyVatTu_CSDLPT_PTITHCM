@@ -89,9 +89,10 @@ namespace VatTu
             if (form != null) form.Activate();
             else
             {
-                FormLapPhieu frm = new FormLapPhieu();
-                frm.MdiParent = this;
-                frm.Show();
+                Program.formLapPhieu = new FormLapPhieu();
+                Program.formLapPhieu.MdiParent = this;
+                Program.formLapPhieu.Show();
+                Program.formLapPhieu.btnSwitch.Links[0].Caption = "Đặt Hàng";
             }
         }
     }

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubFormKho));
             this.dS = new VatTu.DS();
-            this.khoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsKho = new System.Windows.Forms.BindingSource(this.components);
             this.khoTableAdapter = new VatTu.DSTableAdapters.KhoTableAdapter();
             this.tableAdapterManager = new VatTu.DSTableAdapters.TableAdapterManager();
             this.khoGridControl = new DevExpress.XtraGrid.GridControl();
@@ -40,8 +40,9 @@
             this.colTENKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnKho = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsKho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.khoGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +52,10 @@
             this.dS.DataSetName = "DS";
             this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // khoBindingSource
+            // bdsKho
             // 
-            this.khoBindingSource.DataMember = "Kho";
-            this.khoBindingSource.DataSource = this.dS;
+            this.bdsKho.DataMember = "Kho";
+            this.bdsKho.DataSource = this.dS;
             // 
             // khoTableAdapter
             // 
@@ -77,12 +78,12 @@
             // 
             // khoGridControl
             // 
-            this.khoGridControl.DataSource = this.khoBindingSource;
+            this.khoGridControl.DataSource = this.bdsKho;
             this.khoGridControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.khoGridControl.Location = new System.Drawing.Point(0, 0);
             this.khoGridControl.MainView = this.gridView1;
             this.khoGridControl.Name = "khoGridControl";
-            this.khoGridControl.Size = new System.Drawing.Size(465, 220);
+            this.khoGridControl.Size = new System.Drawing.Size(465, 236);
             this.khoGridControl.TabIndex = 1;
             this.khoGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -130,20 +131,32 @@
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 3;
             // 
+            // btnKho
+            // 
+            this.btnKho.Location = new System.Drawing.Point(378, 242);
+            this.btnKho.Name = "btnKho";
+            this.btnKho.Size = new System.Drawing.Size(75, 23);
+            this.btnKho.TabIndex = 2;
+            this.btnKho.Text = "Chọn";
+            this.btnKho.UseVisualStyleBackColor = true;
+            this.btnKho.Click += new System.EventHandler(this.BtnKho_Click);
+            // 
             // SubFormKho
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 306);
+            this.ClientSize = new System.Drawing.Size(465, 271);
+            this.Controls.Add(this.btnKho);
             this.Controls.Add(this.khoGridControl);
             this.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SubFormKho.IconOptions.LargeImage")));
             this.Name = "SubFormKho";
             this.Text = "Danh Sách Kho";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SubFormKho_FormClosing);
             this.Load += new System.EventHandler(this.SubFormKho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsKho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.khoGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -153,7 +166,7 @@
         #endregion
 
         private DS dS;
-        private System.Windows.Forms.BindingSource khoBindingSource;
+        private System.Windows.Forms.BindingSource bdsKho;
         private DSTableAdapters.KhoTableAdapter khoTableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl khoGridControl;
@@ -162,5 +175,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTENKHO;
         private DevExpress.XtraGrid.Columns.GridColumn colDIACHI;
         private DevExpress.XtraGrid.Columns.GridColumn colMACN;
+        private System.Windows.Forms.Button btnKho;
     }
 }

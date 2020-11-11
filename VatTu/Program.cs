@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using VatTu.SimpleForm;
+using VatTu.SubForm;
 
 namespace VatTu
 {
@@ -34,10 +36,16 @@ namespace VatTu
         public static String passwordDN = "";
         public static String mGroup = "";
         public static String mHoten = "";
+        public static int maNV = 0;
         public static int mChinhanh = 0;
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
+
+        // -- FORMS --
         public static FormChinh formMain;
+        public static FormLapPhieu formLapPhieu;
+        public static FormKho formnv;
+        public static SubFormKho subFormKho;
 
         public static int KetNoi()
         {

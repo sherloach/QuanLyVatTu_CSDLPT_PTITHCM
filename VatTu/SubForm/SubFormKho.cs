@@ -21,16 +21,38 @@ namespace VatTu.SubForm
         private void KhoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.khoBindingSource.EndEdit();
+            this.bdsKho.EndEdit();
             this.tableAdapterManager.UpdateAll(this.dS);
 
         }
 
         private void SubFormKho_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dS.Kho' table. You can move, or remove it, as needed.
-            this.khoTableAdapter.Fill(this.dS.Kho);
+            // Không kiểm tra khóa ngoại
+            dS.EnforceConstraints = false;
 
+            this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.khoTableAdapter.Fill(this.dS.Kho);
+        }
+
+        private void BtnKho_Click(object sender, EventArgs e)
+        {
+            String maKho = ((DataRowView)bdsKho.Current)["MAKHO"].ToString();
+            if (Program.formLapPhieu.btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                Program.formLapPhieu.txtMaKho_PX.Text = maKho;
+            }
+            else
+            {
+                Program.formLapPhieu.txtMaKho_DH.Text = maKho;
+            }
+            
+            this.Close();
+        }
+
+        private void SubFormKho_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.formMain.Enabled = true;
         }
     }
 }

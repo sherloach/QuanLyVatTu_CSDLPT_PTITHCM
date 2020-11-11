@@ -74,6 +74,8 @@ namespace VatTu
                 MessageBox.Show("Login của bạn không có quyền truy cập dữ liệu", "", MessageBoxButtons.OK);
                 return;
             }
+
+            Program.maNV = int.Parse(Program.username);
             Program.mHoten = myReader.GetString(1);
             Program.mGroup = myReader.GetString(2);
             myReader.Close();
