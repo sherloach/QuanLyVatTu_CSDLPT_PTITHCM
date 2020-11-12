@@ -159,9 +159,9 @@ namespace VatTu.SimpleForm
 
             // == Query tìm TENKHO ==
             String query_TENKHO = "DECLARE	@return_value int " +
-                           "EXEC @return_value = [dbo].[SP_CHECKID] " +
-                           "@p1, @p2 " +
-                           "SELECT 'Return Value' = @return_value";
+                                  "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                                  "@p1, @p2 " +
+                                  "SELECT 'Return Value' = @return_value";
             sqlCommand = new SqlCommand(query_TENKHO, Program.conn);
             sqlCommand.Parameters.AddWithValue("@p1", txtTenKho.Text);
             sqlCommand.Parameters.AddWithValue("@p2", "TENKHO");

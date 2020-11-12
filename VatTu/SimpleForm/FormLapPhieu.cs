@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VatTu.DSTableAdapters;
 using VatTu.SubForm;
 
 namespace VatTu.SimpleForm
@@ -66,7 +68,7 @@ namespace VatTu.SimpleForm
             else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
             {
                 comboBox_ChiNhanh.Enabled = false;
-                gbInfoDDH.Enabled = gbInfoPX.Enabled = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = btnGhi.Enabled = false;
             }
         }
 
@@ -163,26 +165,102 @@ namespace VatTu.SimpleForm
 
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // Check ràng buộc text box
-            //if (!Validate(txtMaDDH, "Mã đơn hàng không được để trống!")) return;
-            //if (!Validate(txtNhaCC, "Tên kho không được để trống!")) return;
-            //if (!Validate(txtDiaChi, "Địa chỉ không được để trống!")) return;
-            //if (txtMaDDH.Text.Trim().Length > 4)
-            //{
-            //    MessageBox.Show("Mã đơn hàng không được quá 4 kí tự!", "Thông báo",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //else if (txtMaDDH.Text.Contains(" "))
-            //{
-            //    MessageBox.Show("Mã đơn hàng không được chứa khoảng trắng!", "Thông báo",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            // TODO: thêm ddh, phiếu xuất dùng chung hàm
+            //       xử lý right-click cho từng type :((
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                txtMaDDH.Text = ((DataRowView)bdsDH[bdsDH.Position])["MANV"].ToString();
-                btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = true;
+                BindingSource current_bds = null;
+                String type = "";
+                TextBox tb_maPhieu = null;
+                GridControl current_gc = null;
+                GroupBox current_gb = null;
+                if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+                {
+                    current_bds = bdsPX;
+                    tb_maPhieu = txtMaPX;
+                    type = "MAPX";
+                    current_gc = gridPX;
+                    current_gb = gbInfoPX;
+                }
+                else
+                {
+                    current_bds = bdsDH;
+                    tb_maPhieu = txtMaDDH;
+                    type = "MasoDDH";
+                    current_gc = gridDDH;
+                    current_gb = gbInfoDDH;
+                }
+
+                String query = "DECLARE	@return_value int " +
+                           "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                           "@p1, @p2 " +
+                           "SELECT 'Return Value' = @return_value";
+                SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
+                sqlCommand.Parameters.AddWithValue("@p1", tb_maPhieu.Text);
+                sqlCommand.Parameters.AddWithValue("@p2", type);
+                SqlDataReader dataReader = null;
+
+                try
+                {
+                    dataReader = sqlCommand.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Đọc và lấy result
+                dataReader.Read();
+                int result_value = int.Parse(dataReader.GetValue(0).ToString());
+                dataReader.Close();
+
+                // Check ràng buộc mã các phiếu
+                int indexMaPhieu = current_bds.Find(type, tb_maPhieu.Text);
+                int indexCurrent = current_bds.Position;
+                if (result_value == 1 && (indexMaPhieu != indexCurrent))
+                {
+                    MessageBox.Show("Mã phiếu đã tồn tại ở chi chánh hiện tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else if (result_value == 2)
+                {
+                    MessageBox.Show("Mã phiếu đã tồn tại ở chi chánh khác!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.OK)
+                    {
+                        try
+                        {
+                            current_gb.Enabled = false;
+                            btnThem.Enabled = btnXoa.Enabled = current_gc.Enabled = true;
+                            btnReload.Enabled = btnGhi.Enabled = btnSwitch.Enabled = true;
+                            current_bds.EndEdit();
+                            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+                            {
+                                this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
+                            }
+                            else
+                            {
+                                this.datHangTableAdapter.Update(this.dS.DatHang);
+                            }
+                            current_bds.Position = position;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Khi Update database lỗi thì xóa record vừa thêm trong bds
+                            current_bds.RemoveCurrent();
+                            MessageBox.Show("Thất bại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
             }
         }
 

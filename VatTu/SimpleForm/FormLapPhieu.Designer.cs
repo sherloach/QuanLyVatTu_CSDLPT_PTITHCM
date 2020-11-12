@@ -354,7 +354,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 928);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 799);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
             // 
@@ -364,7 +364,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 904);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 775);
             // 
             // barDockControlRight
             // 
@@ -372,7 +372,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 904);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 775);
             // 
             // groupControl1
             // 
@@ -633,7 +633,7 @@
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcDDH.Location = new System.Drawing.Point(0, 519);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1132, 153);
+            this.gcDDH.Size = new System.Drawing.Size(1132, 56);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -646,7 +646,7 @@
             this.gridCTDDH.MainView = this.gridView2;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(635, 128);
+            this.gridCTDDH.Size = new System.Drawing.Size(635, 31);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -716,7 +716,7 @@
             this.gbInfoDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoDDH.Location = new System.Drawing.Point(2, 23);
             this.gbInfoDDH.Name = "gbInfoDDH";
-            this.gbInfoDDH.Size = new System.Drawing.Size(493, 128);
+            this.gbInfoDDH.Size = new System.Drawing.Size(493, 31);
             this.gbInfoDDH.TabIndex = 0;
             this.gbInfoDDH.TabStop = false;
             this.gbInfoDDH.Text = "Thông Tin";
@@ -754,6 +754,7 @@
             // 
             this.txtMaDDH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDH, "MasoDDH", true));
             this.txtMaDDH.Location = new System.Drawing.Point(167, 65);
+            this.txtMaDDH.MaxLength = 8;
             this.txtMaDDH.Name = "txtMaDDH";
             this.txtMaDDH.Size = new System.Drawing.Size(164, 21);
             this.txtMaDDH.TabIndex = 8;
@@ -764,9 +765,9 @@
             this.gcPX.Controls.Add(this.gridCTPX);
             this.gcPX.Controls.Add(this.gbInfoPX);
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPX.Location = new System.Drawing.Point(0, 672);
+            this.gcPX.Location = new System.Drawing.Point(0, 575);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1132, 72);
+            this.gcPX.Size = new System.Drawing.Size(1132, 40);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -780,7 +781,7 @@
             this.gridCTPX.MainView = this.gridView4;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(635, 47);
+            this.gridCTPX.Size = new System.Drawing.Size(635, 15);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -850,7 +851,7 @@
             this.gbInfoPX.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoPX.Location = new System.Drawing.Point(2, 23);
             this.gbInfoPX.Name = "gbInfoPX";
-            this.gbInfoPX.Size = new System.Drawing.Size(493, 47);
+            this.gbInfoPX.Size = new System.Drawing.Size(493, 15);
             this.gbInfoPX.TabIndex = 0;
             this.gbInfoPX.TabStop = false;
             this.gbInfoPX.Text = "Thông Tin";
@@ -878,6 +879,7 @@
             // 
             this.txtMaPX.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPX, "MAPX", true));
             this.txtMaPX.Location = new System.Drawing.Point(163, 67);
+            this.txtMaPX.MaxLength = 8;
             this.txtMaPX.Name = "txtMaPX";
             this.txtMaPX.Size = new System.Drawing.Size(167, 21);
             this.txtMaPX.TabIndex = 14;
@@ -898,7 +900,7 @@
             this.gcPN.Controls.Add(this.gridCTPN);
             this.gcPN.Controls.Add(this.gridPN);
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPN.Location = new System.Drawing.Point(0, 744);
+            this.gcPN.Location = new System.Drawing.Point(0, 615);
             this.gcPN.Name = "gcPN";
             this.gcPN.Size = new System.Drawing.Size(1132, 184);
             this.gcPN.TabIndex = 36;
@@ -999,7 +1001,7 @@
             this.gridView6.Name = "gridView6";
             this.gridView6.OptionsView.ShowGroupPanel = false;
             this.gridView6.OptionsView.ShowViewCaption = true;
-            this.gridView6.ViewCaption = "Danh Sách Phiếu Nhập";
+            this.gridView6.ViewCaption = "Danh Sách Phiếu Nhập Của Đơn Hàng";
             // 
             // colMAPN
             // 
