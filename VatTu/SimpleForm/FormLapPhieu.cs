@@ -1,5 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Utils.Menu;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -264,6 +266,31 @@ namespace VatTu.SimpleForm
             }
         }
 
+        // ------ POPUP MENU ------
+        // ______ CTDDH ______
+        private void GvCTDDH_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.MenuType == GridMenuType.Row)
+            {
+                //DXMenuItem menuThemCTDDH = createMenuItem("Thêm chi tiết DDH", null);
+                DXMenuItem menuItemUp = new DXMenuItem("Move Up");
+                //menuThemCTDDH.Click += new EventHandler(menuAddChiTietDDH_Click);
+                //e.Menu.Items.Add(menuThemCTDDH);
+                e.Menu.Items.Add(menuItemUp);
+            }
+        }
+
+        private void GridCTDDH_MouseHover(object sender, EventArgs e)
+        {
+            gridCTDDH.ContextMenuStrip = check_owner(bdsDH, gvDDH) ? cmsCTDDH : null;
+        }
+
+        // ______ CTDDH ______
+        private void GridCTPX_MouseHover(object sender, EventArgs e)
+        {
+            gridCTPX.ContextMenuStrip = check_owner(bdsPX, gvPX) ? cmsCTPX : null;
+        }
+
         // ------ SWITCH TYPE ------
         private void BtnDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -303,6 +330,25 @@ namespace VatTu.SimpleForm
                 return false;
             }
             return true;
+        }
+
+        private DXMenuItem createMenuItem(string caption, Bitmap image)
+        {
+            DXMenuItem menuItem = new DXMenuItem();
+            menuItem.Image = image;
+            menuItem.Caption = caption;
+            return menuItem;
+        }
+
+        // Kiểm tra manv login có trùng với manv của phiếu đang xét không
+        private bool check_owner(BindingSource current_bds, GridView current_gv)
+        {
+            int maNV = 0;
+            if (current_gv.GetRowCellValue(current_bds.Position, "MANV") != null)
+            {
+                maNV = int.Parse(current_gv.GetRowCellValue(current_bds.Position, "MANV").ToString().Trim());
+            }
+            return (maNV == Program.maNV);
         }
 
         // ------ Checked Methods ------
@@ -407,5 +453,6 @@ namespace VatTu.SimpleForm
                 errorProvider.SetError(txtMaKho_DH, "");
             }
         }
+
     }
 }

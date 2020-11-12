@@ -61,7 +61,7 @@
             this.tableAdapterManager = new VatTu.DSTableAdapters.TableAdapterManager();
             this.cTDDHTableAdapter = new VatTu.DSTableAdapters.CTDDHTableAdapter();
             this.gridDDH = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvDDH = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,7 +71,7 @@
             this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
             this.phieuXuatTableAdapter = new VatTu.DSTableAdapters.PhieuXuatTableAdapter();
             this.gridPX = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvPX = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPX = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGAY1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHOTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,7 +85,7 @@
             this.cTPXTableAdapter = new VatTu.DSTableAdapters.CTPXTableAdapter();
             this.gcDDH = new DevExpress.XtraEditors.GroupControl();
             this.gridCTDDH = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvCTDDH = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMasoDDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -97,7 +97,7 @@
             this.txtMaDDH = new System.Windows.Forms.TextBox();
             this.gcPX = new DevExpress.XtraEditors.GroupControl();
             this.gridCTPX = new DevExpress.XtraGrid.GridControl();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvCTPX = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPX1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONG2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -122,6 +122,10 @@
             this.colMANV2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmsCTDDH = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miThemCTDDH = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCTPX = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miThemCTPX = new System.Windows.Forms.ToolStripMenuItem();
             mAKHOLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -134,23 +138,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDDH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDDH)).BeginInit();
             this.gcDDH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCTDDH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCTDDH)).BeginInit();
             this.gbInfoDDH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPX)).BeginInit();
             this.gcPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCTPX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCTPX)).BeginInit();
             this.gbInfoPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPN)).BeginInit();
             this.gcPN.SuspendLayout();
@@ -159,6 +163,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.cmsCTDDH.SuspendLayout();
+            this.cmsCTPX.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAKHOLabel
@@ -354,7 +360,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 799);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 936);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
             // 
@@ -364,7 +370,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 775);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 912);
             // 
             // barDockControlRight
             // 
@@ -372,7 +378,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 775);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 912);
             // 
             // groupControl1
             // 
@@ -441,24 +447,24 @@
             this.gridDDH.DataSource = this.bdsDH;
             this.gridDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridDDH.Location = new System.Drawing.Point(0, 89);
-            this.gridDDH.MainView = this.gridView1;
+            this.gridDDH.MainView = this.gvDDH;
             this.gridDDH.MenuManager = this.barManager1;
             this.gridDDH.Name = "gridDDH";
             this.gridDDH.Size = new System.Drawing.Size(1132, 215);
             this.gridDDH.TabIndex = 6;
             this.gridDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvDDH});
             // 
-            // gridView1
+            // gvDDH
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvDDH.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMasoDDH,
             this.colNGAY,
             this.colNhaCC,
             this.colMANV,
             this.colMAKHO});
-            this.gridView1.GridControl = this.gridDDH;
-            this.gridView1.Name = "gridView1";
+            this.gvDDH.GridControl = this.gridDDH;
+            this.gvDDH.Name = "gvDDH";
             // 
             // colMasoDDH
             // 
@@ -529,25 +535,25 @@
             this.gridPX.DataSource = this.bdsPX;
             this.gridPX.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridPX.Location = new System.Drawing.Point(0, 304);
-            this.gridPX.MainView = this.gridView3;
+            this.gridPX.MainView = this.gvPX;
             this.gridPX.MenuManager = this.barManager1;
             this.gridPX.Name = "gridPX";
             this.gridPX.Size = new System.Drawing.Size(1132, 215);
             this.gridPX.TabIndex = 11;
             this.gridPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
+            this.gvPX});
             this.gridPX.Visible = false;
             // 
-            // gridView3
+            // gvPX
             // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvPX.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAPX,
             this.colNGAY1,
             this.colHOTENKH,
             this.colMANV1,
             this.colMAKHO1});
-            this.gridView3.GridControl = this.gridPX;
-            this.gridView3.Name = "gridView3";
+            this.gvPX.GridControl = this.gridPX;
+            this.gvPX.Name = "gvPX";
             // 
             // colMAPX
             // 
@@ -633,7 +639,7 @@
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcDDH.Location = new System.Drawing.Point(0, 519);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1132, 56);
+            this.gcDDH.Size = new System.Drawing.Size(1132, 73);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -643,26 +649,28 @@
             this.gridCTDDH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCTDDH.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridCTDDH.Location = new System.Drawing.Point(495, 23);
-            this.gridCTDDH.MainView = this.gridView2;
+            this.gridCTDDH.MainView = this.gvCTDDH;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(635, 31);
+            this.gridCTDDH.Size = new System.Drawing.Size(635, 48);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gvCTDDH});
+            this.gridCTDDH.MouseHover += new System.EventHandler(this.GridCTDDH_MouseHover);
             // 
-            // gridView2
+            // gvCTDDH
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvCTDDH.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMasoDDH1,
             this.colMAVT,
             this.colSOLUONG,
             this.colDONGIA});
-            this.gridView2.GridControl = this.gridCTDDH;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            this.gridView2.OptionsView.ShowViewCaption = true;
-            this.gridView2.ViewCaption = "Chi Tiết Đơn Đặt Hàng";
+            this.gvCTDDH.GridControl = this.gridCTDDH;
+            this.gvCTDDH.Name = "gvCTDDH";
+            this.gvCTDDH.OptionsView.ShowGroupPanel = false;
+            this.gvCTDDH.OptionsView.ShowViewCaption = true;
+            this.gvCTDDH.ViewCaption = "Chi Tiết Đơn Đặt Hàng";
+            this.gvCTDDH.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.GvCTDDH_PopupMenuShowing);
             // 
             // colMasoDDH1
             // 
@@ -716,7 +724,7 @@
             this.gbInfoDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoDDH.Location = new System.Drawing.Point(2, 23);
             this.gbInfoDDH.Name = "gbInfoDDH";
-            this.gbInfoDDH.Size = new System.Drawing.Size(493, 31);
+            this.gbInfoDDH.Size = new System.Drawing.Size(493, 48);
             this.gbInfoDDH.TabIndex = 0;
             this.gbInfoDDH.TabStop = false;
             this.gbInfoDDH.Text = "Thông Tin";
@@ -765,9 +773,9 @@
             this.gcPX.Controls.Add(this.gridCTPX);
             this.gcPX.Controls.Add(this.gbInfoPX);
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPX.Location = new System.Drawing.Point(0, 575);
+            this.gcPX.Location = new System.Drawing.Point(0, 592);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1132, 40);
+            this.gcPX.Size = new System.Drawing.Size(1132, 160);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -778,26 +786,27 @@
             this.gridCTPX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCTPX.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridCTPX.Location = new System.Drawing.Point(495, 23);
-            this.gridCTPX.MainView = this.gridView4;
+            this.gridCTPX.MainView = this.gvCTPX;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(635, 15);
+            this.gridCTPX.Size = new System.Drawing.Size(635, 135);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView4});
+            this.gvCTPX});
+            this.gridCTPX.MouseHover += new System.EventHandler(this.GridCTPX_MouseHover);
             // 
-            // gridView4
+            // gvCTPX
             // 
-            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvCTPX.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAPX1,
             this.colMAVT2,
             this.colSOLUONG2,
             this.colDONGIA2});
-            this.gridView4.GridControl = this.gridCTPX;
-            this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsView.ShowGroupPanel = false;
-            this.gridView4.OptionsView.ShowViewCaption = true;
-            this.gridView4.ViewCaption = "Chi Tiết Phiếu Xuất";
+            this.gvCTPX.GridControl = this.gridCTPX;
+            this.gvCTPX.Name = "gvCTPX";
+            this.gvCTPX.OptionsView.ShowGroupPanel = false;
+            this.gvCTPX.OptionsView.ShowViewCaption = true;
+            this.gvCTPX.ViewCaption = "Chi Tiết Phiếu Xuất";
             // 
             // colMAPX1
             // 
@@ -851,7 +860,7 @@
             this.gbInfoPX.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoPX.Location = new System.Drawing.Point(2, 23);
             this.gbInfoPX.Name = "gbInfoPX";
-            this.gbInfoPX.Size = new System.Drawing.Size(493, 15);
+            this.gbInfoPX.Size = new System.Drawing.Size(493, 135);
             this.gbInfoPX.TabIndex = 0;
             this.gbInfoPX.TabStop = false;
             this.gbInfoPX.Text = "Thông Tin";
@@ -900,7 +909,7 @@
             this.gcPN.Controls.Add(this.gridCTPN);
             this.gcPN.Controls.Add(this.gridPN);
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPN.Location = new System.Drawing.Point(0, 615);
+            this.gcPN.Location = new System.Drawing.Point(0, 752);
             this.gcPN.Name = "gcPN";
             this.gcPN.Size = new System.Drawing.Size(1132, 184);
             this.gcPN.TabIndex = 36;
@@ -1057,6 +1066,36 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // cmsCTDDH
+            // 
+            this.cmsCTDDH.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsCTDDH.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miThemCTDDH});
+            this.cmsCTDDH.Name = "cmsCTDDH";
+            this.cmsCTDDH.Size = new System.Drawing.Size(201, 26);
+            // 
+            // miThemCTDDH
+            // 
+            this.miThemCTDDH.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miThemCTDDH.Name = "miThemCTDDH";
+            this.miThemCTDDH.Size = new System.Drawing.Size(200, 22);
+            this.miThemCTDDH.Text = "Thêm chi tiết đơn ĐH";
+            // 
+            // cmsCTPX
+            // 
+            this.cmsCTPX.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsCTPX.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miThemCTPX});
+            this.cmsCTPX.Name = "cmsCTPX";
+            this.cmsCTPX.Size = new System.Drawing.Size(220, 26);
+            // 
+            // miThemCTPX
+            // 
+            this.miThemCTPX.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miThemCTPX.Name = "miThemCTPX";
+            this.miThemCTPX.Size = new System.Drawing.Size(219, 22);
+            this.miThemCTPX.Text = "Thêm chi tiết phiếu xuất";
+            // 
             // FormLapPhieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1084,24 +1123,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDDH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDDH)).EndInit();
             this.gcDDH.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCTDDH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCTDDH)).EndInit();
             this.gbInfoDDH.ResumeLayout(false);
             this.gbInfoDDH.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPX)).EndInit();
             this.gcPX.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCTPX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCTPX)).EndInit();
             this.gbInfoPX.ResumeLayout(false);
             this.gbInfoPX.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPN)).EndInit();
@@ -1111,6 +1150,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.cmsCTDDH.ResumeLayout(false);
+            this.cmsCTPX.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1141,7 +1182,7 @@
         private DSTableAdapters.DatHangTableAdapter datHangTableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl gridDDH;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvDDH;
         private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
         private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
         private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
@@ -1152,7 +1193,7 @@
         private System.Windows.Forms.BindingSource bdsPX;
         private DSTableAdapters.PhieuXuatTableAdapter phieuXuatTableAdapter;
         private DevExpress.XtraGrid.GridControl gridPX;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPX;
         private DevExpress.XtraGrid.Columns.GridColumn colMAPX;
         private DevExpress.XtraGrid.Columns.GridColumn colNGAY1;
         private DevExpress.XtraGrid.Columns.GridColumn colHOTENKH;
@@ -1166,7 +1207,7 @@
         private DSTableAdapters.CTPXTableAdapter cTPXTableAdapter;
         private DevExpress.XtraEditors.GroupControl gcDDH;
         private DevExpress.XtraGrid.GridControl gridCTDDH;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvCTDDH;
         private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH1;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
@@ -1195,7 +1236,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMANV2;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKHO2;
         private DevExpress.XtraGrid.GridControl gridCTPX;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvCTPX;
         private DevExpress.XtraGrid.Columns.GridColumn colMAPX1;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT2;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG2;
@@ -1204,5 +1245,9 @@
         public DevExpress.XtraBars.BarSubItem btnSwitch;
         public System.Windows.Forms.TextBox txtMaKho_PX;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ContextMenuStrip cmsCTDDH;
+        private System.Windows.Forms.ToolStripMenuItem miThemCTDDH;
+        private System.Windows.Forms.ContextMenuStrip cmsCTPX;
+        private System.Windows.Forms.ToolStripMenuItem miThemCTPX;
     }
 }
