@@ -152,6 +152,7 @@
             this.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SubFormKho.IconOptions.LargeImage")));
             this.Name = "SubFormKho";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Kho";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SubFormKho_FormClosing);
             this.Load += new System.EventHandler(this.SubFormKho_Load);

@@ -44,7 +44,7 @@ namespace VatTu
         // -- FORMS --
         public static FormChinh formMain;
         public static FormLapPhieu formLapPhieu;
-        public static FormKho formnv;
+        public static SubFormCTDDH subFormCTDDH;
         public static SubFormKho subFormKho;
 
         public static int KetNoi()

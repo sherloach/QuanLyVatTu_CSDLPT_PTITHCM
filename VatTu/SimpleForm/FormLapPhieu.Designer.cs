@@ -126,6 +126,8 @@
             this.miThemCTDDH = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsCTPX = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miThemCTPX = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsPN = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miThemPN = new System.Windows.Forms.ToolStripMenuItem();
             mAKHOLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -165,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.cmsCTDDH.SuspendLayout();
             this.cmsCTPX.SuspendLayout();
+            this.cmsPN.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAKHOLabel
@@ -354,15 +357,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1132, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1149, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 936);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1149, 20);
             // 
             // barDockControlLeft
             // 
@@ -370,15 +373,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 912);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 705);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1149, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 912);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 705);
             // 
             // groupControl1
             // 
@@ -387,7 +390,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1132, 65);
+            this.groupControl1.Size = new System.Drawing.Size(1149, 65);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Chi Nhánh";
             // 
@@ -450,7 +453,7 @@
             this.gridDDH.MainView = this.gvDDH;
             this.gridDDH.MenuManager = this.barManager1;
             this.gridDDH.Name = "gridDDH";
-            this.gridDDH.Size = new System.Drawing.Size(1132, 215);
+            this.gridDDH.Size = new System.Drawing.Size(1149, 215);
             this.gridDDH.TabIndex = 6;
             this.gridDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDDH});
@@ -538,7 +541,7 @@
             this.gridPX.MainView = this.gvPX;
             this.gridPX.MenuManager = this.barManager1;
             this.gridPX.Name = "gridPX";
-            this.gridPX.Size = new System.Drawing.Size(1132, 215);
+            this.gridPX.Size = new System.Drawing.Size(1149, 215);
             this.gridPX.TabIndex = 11;
             this.gridPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPX});
@@ -639,7 +642,7 @@
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcDDH.Location = new System.Drawing.Point(0, 519);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1132, 73);
+            this.gcDDH.Size = new System.Drawing.Size(1149, 44);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -652,7 +655,7 @@
             this.gridCTDDH.MainView = this.gvCTDDH;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(635, 48);
+            this.gridCTDDH.Size = new System.Drawing.Size(652, 19);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTDDH});
@@ -724,7 +727,7 @@
             this.gbInfoDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoDDH.Location = new System.Drawing.Point(2, 23);
             this.gbInfoDDH.Name = "gbInfoDDH";
-            this.gbInfoDDH.Size = new System.Drawing.Size(493, 48);
+            this.gbInfoDDH.Size = new System.Drawing.Size(493, 19);
             this.gbInfoDDH.TabIndex = 0;
             this.gbInfoDDH.TabStop = false;
             this.gbInfoDDH.Text = "Thông Tin";
@@ -773,9 +776,9 @@
             this.gcPX.Controls.Add(this.gridCTPX);
             this.gcPX.Controls.Add(this.gbInfoPX);
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPX.Location = new System.Drawing.Point(0, 592);
+            this.gcPX.Location = new System.Drawing.Point(0, 563);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1132, 160);
+            this.gcPX.Size = new System.Drawing.Size(1149, 38);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -789,7 +792,7 @@
             this.gridCTPX.MainView = this.gvCTPX;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(635, 135);
+            this.gridCTPX.Size = new System.Drawing.Size(652, 13);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTPX});
@@ -860,7 +863,7 @@
             this.gbInfoPX.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoPX.Location = new System.Drawing.Point(2, 23);
             this.gbInfoPX.Name = "gbInfoPX";
-            this.gbInfoPX.Size = new System.Drawing.Size(493, 135);
+            this.gbInfoPX.Size = new System.Drawing.Size(493, 13);
             this.gbInfoPX.TabIndex = 0;
             this.gbInfoPX.TabStop = false;
             this.gbInfoPX.Text = "Thông Tin";
@@ -909,9 +912,9 @@
             this.gcPN.Controls.Add(this.gridCTPN);
             this.gcPN.Controls.Add(this.gridPN);
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPN.Location = new System.Drawing.Point(0, 752);
+            this.gcPN.Location = new System.Drawing.Point(0, 601);
             this.gcPN.Name = "gcPN";
-            this.gcPN.Size = new System.Drawing.Size(1132, 184);
+            this.gcPN.Size = new System.Drawing.Size(1149, 79);
             this.gcPN.TabIndex = 36;
             this.gcPN.Text = "Phiếu Nhập";
             this.gcPN.Visible = false;
@@ -925,7 +928,7 @@
             this.gridCTPN.MainView = this.gridView5;
             this.gridCTPN.MenuManager = this.barManager1;
             this.gridCTPN.Name = "gridCTPN";
-            this.gridCTPN.Size = new System.Drawing.Size(495, 159);
+            this.gridCTPN.Size = new System.Drawing.Size(512, 54);
             this.gridCTPN.TabIndex = 1;
             this.gridCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -992,7 +995,7 @@
             this.gridPN.MainView = this.gridView6;
             this.gridPN.MenuManager = this.barManager1;
             this.gridPN.Name = "gridPN";
-            this.gridPN.Size = new System.Drawing.Size(633, 159);
+            this.gridPN.Size = new System.Drawing.Size(633, 54);
             this.gridPN.TabIndex = 0;
             this.gridPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView6});
@@ -1080,6 +1083,7 @@
             this.miThemCTDDH.Name = "miThemCTDDH";
             this.miThemCTDDH.Size = new System.Drawing.Size(200, 22);
             this.miThemCTDDH.Text = "Thêm chi tiết đơn ĐH";
+            this.miThemCTDDH.Click += new System.EventHandler(this.MiThemCTDDH_Click);
             // 
             // cmsCTPX
             // 
@@ -1095,6 +1099,21 @@
             this.miThemCTPX.Name = "miThemCTPX";
             this.miThemCTPX.Size = new System.Drawing.Size(219, 22);
             this.miThemCTPX.Text = "Thêm chi tiết phiếu xuất";
+            this.miThemCTPX.Click += new System.EventHandler(this.MiThemCTPX_Click);
+            // 
+            // cmsPN
+            // 
+            this.cmsPN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miThemPN});
+            this.cmsPN.Name = "cmsPN";
+            this.cmsPN.Size = new System.Drawing.Size(181, 48);
+            // 
+            // miThemPN
+            // 
+            this.miThemPN.Name = "miThemPN";
+            this.miThemPN.Size = new System.Drawing.Size(180, 22);
+            this.miThemPN.Text = "Thêm phiếu nhập";
+            this.miThemPN.Click += new System.EventHandler(this.MiThemPN_Click);
             // 
             // FormLapPhieu
             // 
@@ -1152,6 +1171,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.cmsCTDDH.ResumeLayout(false);
             this.cmsCTPX.ResumeLayout(false);
+            this.cmsPN.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1249,5 +1269,7 @@
         private System.Windows.Forms.ToolStripMenuItem miThemCTDDH;
         private System.Windows.Forms.ContextMenuStrip cmsCTPX;
         private System.Windows.Forms.ToolStripMenuItem miThemCTPX;
+        private System.Windows.Forms.ContextMenuStrip cmsPN;
+        private System.Windows.Forms.ToolStripMenuItem miThemPN;
     }
 }

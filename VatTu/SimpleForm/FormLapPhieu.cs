@@ -280,12 +280,29 @@ namespace VatTu.SimpleForm
             }
         }
 
+        private void MiThemCTDDH_Click(object sender, EventArgs e)
+        {
+            Program.subFormCTDDH = new SubFormCTDDH();
+            Program.subFormCTDDH.Show();
+            Program.formMain.Enabled = false;
+        }
+
+        private void MiThemCTPX_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MiThemPN_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void GridCTDDH_MouseHover(object sender, EventArgs e)
         {
             gridCTDDH.ContextMenuStrip = check_owner(bdsDH, gvDDH) ? cmsCTDDH : null;
         }
 
-        // ______ CTDDH ______
+        // ______ CTPX ______
         private void GridCTPX_MouseHover(object sender, EventArgs e)
         {
             gridCTPX.ContextMenuStrip = check_owner(bdsPX, gvPX) ? cmsCTPX : null;
@@ -452,6 +469,12 @@ namespace VatTu.SimpleForm
                 e.Cancel = false;
                 errorProvider.SetError(txtMaKho_DH, "");
             }
+        }
+
+        // ------ Getter để các form khác có thể sử dụng binding source của form này ------
+        public BindingSource getBdsCTDDH()
+        {
+            return this.bdsCTDDH;
         }
 
     }
