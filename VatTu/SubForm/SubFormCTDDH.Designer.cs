@@ -53,6 +53,7 @@
             this.numSL = new System.Windows.Forms.NumericUpDown();
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaDDH = new System.Windows.Forms.TextBox();
+            this.btnGhi = new System.Windows.Forms.Button();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
@@ -145,7 +146,7 @@
             this.vattuGridControl.Location = new System.Drawing.Point(375, 0);
             this.vattuGridControl.MainView = this.gvVT;
             this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(408, 226);
+            this.vattuGridControl.Size = new System.Drawing.Size(408, 245);
             this.vattuGridControl.TabIndex = 1;
             this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvVT});
@@ -163,6 +164,7 @@
             this.gvVT.OptionsView.ShowViewCaption = true;
             this.gvVT.ViewCaption = "Vật Tư";
             this.gvVT.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GvVT_RowClick);
+            this.gvVT.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.GvVT_RowCellClick);
             // 
             // colMAVT
             // 
@@ -171,6 +173,7 @@
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
+            this.colMAVT.Width = 81;
             // 
             // colTENVT
             // 
@@ -179,6 +182,7 @@
             this.colTENVT.Name = "colTENVT";
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
+            this.colTENVT.Width = 156;
             // 
             // colDVT
             // 
@@ -187,6 +191,7 @@
             this.colDVT.Name = "colDVT";
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
+            this.colDVT.Width = 72;
             // 
             // colSOLUONGTON
             // 
@@ -195,6 +200,7 @@
             this.colSOLUONGTON.Name = "colSOLUONGTON";
             this.colSOLUONGTON.Visible = true;
             this.colSOLUONGTON.VisibleIndex = 3;
+            this.colSOLUONGTON.Width = 74;
             // 
             // bdsCTDDH
             // 
@@ -225,9 +231,9 @@
             this.groupBox1.Controls.Add(masoDDHLabel);
             this.groupBox1.Controls.Add(this.txtMaDDH);
             this.groupBox1.Font = new System.Drawing.Font("SF Pro Display", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(30, 12);
+            this.groupBox1.Location = new System.Drawing.Point(27, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(324, 189);
+            this.groupBox1.Size = new System.Drawing.Size(324, 182);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin";
@@ -236,7 +242,7 @@
             // 
             this.numDG.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsCTDDH, "DONGIA", true));
             this.numDG.DecimalPlaces = 2;
-            this.numDG.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDG.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numDG.Increment = new decimal(new int[] {
             1,
             0,
@@ -249,13 +255,13 @@
             0,
             0});
             this.numDG.Name = "numDG";
-            this.numDG.Size = new System.Drawing.Size(181, 21);
+            this.numDG.Size = new System.Drawing.Size(181, 22);
             this.numDG.TabIndex = 16;
             // 
             // numSL
             // 
             this.numSL.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsCTDDH, "SOLUONG", true));
-            this.numSL.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numSL.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSL.Location = new System.Drawing.Point(108, 104);
             this.numSL.Minimum = new decimal(new int[] {
             1,
@@ -263,7 +269,7 @@
             0,
             0});
             this.numSL.Name = "numSL";
-            this.numSL.Size = new System.Drawing.Size(181, 21);
+            this.numSL.Size = new System.Drawing.Size(181, 22);
             this.numSL.TabIndex = 14;
             this.numSL.Value = new decimal(new int[] {
             1,
@@ -274,28 +280,40 @@
             // txtMaVT
             // 
             this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTDDH, "MAVT", true));
-            this.txtMaVT.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaVT.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaVT.Location = new System.Drawing.Point(108, 68);
             this.txtMaVT.Name = "txtMaVT";
             this.txtMaVT.ReadOnly = true;
-            this.txtMaVT.Size = new System.Drawing.Size(181, 21);
+            this.txtMaVT.Size = new System.Drawing.Size(181, 22);
             this.txtMaVT.TabIndex = 12;
             // 
             // txtMaDDH
             // 
             this.txtMaDDH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTDDH, "MasoDDH", true));
-            this.txtMaDDH.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaDDH.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaDDH.Location = new System.Drawing.Point(108, 32);
             this.txtMaDDH.Name = "txtMaDDH";
             this.txtMaDDH.ReadOnly = true;
-            this.txtMaDDH.Size = new System.Drawing.Size(181, 21);
+            this.txtMaDDH.Size = new System.Drawing.Size(181, 22);
             this.txtMaDDH.TabIndex = 10;
+            // 
+            // btnGhi
+            // 
+            this.btnGhi.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGhi.Location = new System.Drawing.Point(249, 200);
+            this.btnGhi.Name = "btnGhi";
+            this.btnGhi.Size = new System.Drawing.Size(67, 23);
+            this.btnGhi.TabIndex = 10;
+            this.btnGhi.Text = "Ghi";
+            this.btnGhi.UseVisualStyleBackColor = true;
+            this.btnGhi.Click += new System.EventHandler(this.BtnGhi_Click);
             // 
             // SubFormCTDDH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 226);
+            this.ClientSize = new System.Drawing.Size(783, 245);
+            this.Controls.Add(this.btnGhi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.vattuGridControl);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("SubFormCTDDH.IconOptions.SvgImage")));
@@ -339,5 +357,6 @@
         private System.Windows.Forms.NumericUpDown numSL;
         private System.Windows.Forms.TextBox txtMaVT;
         private System.Windows.Forms.TextBox txtMaDDH;
+        private System.Windows.Forms.Button btnGhi;
     }
 }

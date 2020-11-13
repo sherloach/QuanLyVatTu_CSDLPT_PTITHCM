@@ -41,12 +41,27 @@ namespace VatTu.SubForm
         private void SubFormCTDDH_Shown(object sender, EventArgs e)
         {
             this.bdsCTDDH.AddNew();
-            txtMaVT.Text = ((DataRowView)bdsVT[bdsVT.Position])["MAVT"].ToString().Trim();
+            txtMaVT.Text = getDataRow(bdsVT, "MAVT");
         }
 
         private void GvVT_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            txtMaVT.Text = ((DataRowView)bdsVT[bdsVT.Position])["MAVT"].ToString().Trim();
+            txtMaVT.Text = getDataRow(bdsVT, "MAVT");
+        }
+
+        private void GvVT_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            txtMaVT.Text = getDataRow(bdsVT, "MAVT");
+        }
+
+        private string getDataRow(BindingSource bindingSource, string column)
+        {
+            return ((DataRowView)bindingSource[bindingSource.Position])[column].ToString().Trim();
+        }
+
+        private void BtnGhi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

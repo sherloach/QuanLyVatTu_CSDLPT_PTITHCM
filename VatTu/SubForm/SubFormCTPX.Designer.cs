@@ -40,7 +40,7 @@
             this.tableAdapterManager = new VatTu.DSTableAdapters.TableAdapterManager();
             this.cTPXTableAdapter = new VatTu.DSTableAdapters.CTPXTableAdapter();
             this.vattuGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvVT = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,6 +51,7 @@
             this.sOLUONGNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.mAVTTextBox = new System.Windows.Forms.TextBox();
             this.mAPXTextBox = new System.Windows.Forms.TextBox();
+            this.btnGhi = new System.Windows.Forms.Button();
             mAPXLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvVT)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dONGIANumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPXBindingSource)).BeginInit();
@@ -69,7 +70,7 @@
             // 
             mAPXLabel.AutoSize = true;
             mAPXLabel.Font = new System.Drawing.Font("SF Pro Display", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mAPXLabel.Location = new System.Drawing.Point(47, 36);
+            mAPXLabel.Location = new System.Drawing.Point(45, 36);
             mAPXLabel.Name = "mAPXLabel";
             mAPXLabel.Size = new System.Drawing.Size(45, 14);
             mAPXLabel.TabIndex = 0;
@@ -79,7 +80,7 @@
             // 
             mAVTLabel.AutoSize = true;
             mAVTLabel.Font = new System.Drawing.Font("SF Pro Display", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mAVTLabel.Location = new System.Drawing.Point(47, 72);
+            mAVTLabel.Location = new System.Drawing.Point(44, 72);
             mAVTLabel.Name = "mAVTLabel";
             mAVTLabel.Size = new System.Drawing.Size(44, 14);
             mAVTLabel.TabIndex = 2;
@@ -89,7 +90,7 @@
             // 
             sOLUONGLabel.AutoSize = true;
             sOLUONGLabel.Font = new System.Drawing.Font("SF Pro Display", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sOLUONGLabel.Location = new System.Drawing.Point(47, 107);
+            sOLUONGLabel.Location = new System.Drawing.Point(44, 107);
             sOLUONGLabel.Name = "sOLUONGLabel";
             sOLUONGLabel.Size = new System.Drawing.Size(60, 14);
             sOLUONGLabel.TabIndex = 4;
@@ -99,7 +100,7 @@
             // 
             dONGIALabel.AutoSize = true;
             dONGIALabel.Font = new System.Drawing.Font("SF Pro Display", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dONGIALabel.Location = new System.Drawing.Point(47, 143);
+            dONGIALabel.Location = new System.Drawing.Point(44, 143);
             dONGIALabel.Name = "dONGIALabel";
             dONGIALabel.Size = new System.Drawing.Size(52, 14);
             dONGIALabel.TabIndex = 6;
@@ -143,25 +144,25 @@
             this.vattuGridControl.DataSource = this.bdsVT;
             this.vattuGridControl.Dock = System.Windows.Forms.DockStyle.Right;
             this.vattuGridControl.Location = new System.Drawing.Point(375, 0);
-            this.vattuGridControl.MainView = this.gridView1;
+            this.vattuGridControl.MainView = this.gvVT;
             this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(408, 226);
+            this.vattuGridControl.Size = new System.Drawing.Size(408, 245);
             this.vattuGridControl.TabIndex = 1;
             this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvVT});
             // 
-            // gridView1
+            // gvVT
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvVT.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAVT,
             this.colTENVT,
             this.colDVT,
             this.colSOLUONGTON});
-            this.gridView1.GridControl = this.vattuGridControl;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowViewCaption = true;
-            this.gridView1.ViewCaption = "Vật Tư";
+            this.gvVT.GridControl = this.vattuGridControl;
+            this.gvVT.Name = "gvVT";
+            this.gvVT.OptionsView.ShowGroupPanel = false;
+            this.gvVT.OptionsView.ShowViewCaption = true;
+            this.gvVT.ViewCaption = "Vật Tư";
             // 
             // colMAVT
             // 
@@ -170,6 +171,7 @@
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
+            this.colMAVT.Width = 73;
             // 
             // colTENVT
             // 
@@ -178,6 +180,7 @@
             this.colTENVT.Name = "colTENVT";
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
+            this.colTENVT.Width = 157;
             // 
             // colDVT
             // 
@@ -186,6 +189,7 @@
             this.colDVT.Name = "colDVT";
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
+            this.colDVT.Width = 70;
             // 
             // colSOLUONGTON
             // 
@@ -194,6 +198,7 @@
             this.colSOLUONGTON.Name = "colSOLUONGTON";
             this.colSOLUONGTON.Visible = true;
             this.colSOLUONGTON.VisibleIndex = 3;
+            this.colSOLUONGTON.Width = 83;
             // 
             // groupBox1
             // 
@@ -206,9 +211,9 @@
             this.groupBox1.Controls.Add(mAPXLabel);
             this.groupBox1.Controls.Add(this.mAPXTextBox);
             this.groupBox1.Font = new System.Drawing.Font("SF Pro Display", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(30, 12);
+            this.groupBox1.Location = new System.Drawing.Point(27, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(324, 197);
+            this.groupBox1.Size = new System.Drawing.Size(324, 182);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin";
@@ -275,11 +280,22 @@
             this.mAPXTextBox.Size = new System.Drawing.Size(181, 21);
             this.mAPXTextBox.TabIndex = 1;
             // 
+            // btnGhi
+            // 
+            this.btnGhi.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGhi.Location = new System.Drawing.Point(249, 200);
+            this.btnGhi.Name = "btnGhi";
+            this.btnGhi.Size = new System.Drawing.Size(67, 23);
+            this.btnGhi.TabIndex = 11;
+            this.btnGhi.Text = "Ghi";
+            this.btnGhi.UseVisualStyleBackColor = true;
+            // 
             // SubFormCTPX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 226);
+            this.ClientSize = new System.Drawing.Size(783, 245);
+            this.Controls.Add(this.btnGhi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.vattuGridControl);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("SubFormCTPX.IconOptions.SvgImage")));
@@ -290,7 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvVT)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dONGIANumericUpDown)).EndInit();
@@ -307,7 +323,7 @@
         private DSTableAdapters.VattuTableAdapter vattuTableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl vattuGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvVT;
         private System.Windows.Forms.GroupBox groupBox1;
         private DSTableAdapters.CTPXTableAdapter cTPXTableAdapter;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
@@ -319,5 +335,6 @@
         private System.Windows.Forms.NumericUpDown sOLUONGNumericUpDown;
         private System.Windows.Forms.TextBox mAVTTextBox;
         private System.Windows.Forms.TextBox mAPXTextBox;
+        private System.Windows.Forms.Button btnGhi;
     }
 }
