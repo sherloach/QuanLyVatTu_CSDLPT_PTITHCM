@@ -38,7 +38,6 @@
             this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
             this.vattuTableAdapter = new VatTu.DSTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new VatTu.DSTableAdapters.TableAdapterManager();
-            this.cTPXTableAdapter = new VatTu.DSTableAdapters.CTPXTableAdapter();
             this.vattuGridControl = new DevExpress.XtraGrid.GridControl();
             this.gvVT = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,12 +45,16 @@
             this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONGTON = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dONGIANumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.cTPXBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sOLUONGNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.mAVTTextBox = new System.Windows.Forms.TextBox();
-            this.mAPXTextBox = new System.Windows.Forms.TextBox();
+            this.numDG = new System.Windows.Forms.NumericUpDown();
+            this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
+            this.numSL = new System.Windows.Forms.NumericUpDown();
+            this.txtMaVT = new System.Windows.Forms.TextBox();
+            this.txtMaPX = new System.Windows.Forms.TextBox();
             this.btnGhi = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.phieuXuatTableAdapter = new VatTu.DSTableAdapters.PhieuXuatTableAdapter();
+            this.cTPXTableAdapter = new VatTu.DSTableAdapters.CTPXTableAdapter();
             mAPXLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -61,9 +64,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVT)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dONGIANumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cTPXBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sOLUONGNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // mAPXLabel
@@ -126,7 +131,7 @@
             this.tableAdapterManager.ChiNhanhTableAdapter = null;
             this.tableAdapterManager.CTDDHTableAdapter = null;
             this.tableAdapterManager.CTPNTableAdapter = null;
-            this.tableAdapterManager.CTPXTableAdapter = this.cTPXTableAdapter;
+            this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
@@ -134,10 +139,6 @@
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = VatTu.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = this.vattuTableAdapter;
-            // 
-            // cTPXTableAdapter
-            // 
-            this.cTPXTableAdapter.ClearBeforeFill = true;
             // 
             // vattuGridControl
             // 
@@ -160,9 +161,11 @@
             this.colSOLUONGTON});
             this.gvVT.GridControl = this.vattuGridControl;
             this.gvVT.Name = "gvVT";
+            this.gvVT.OptionsBehavior.Editable = false;
             this.gvVT.OptionsView.ShowGroupPanel = false;
             this.gvVT.OptionsView.ShowViewCaption = true;
             this.gvVT.ViewCaption = "Vật Tư";
+            this.gvVT.Click += new System.EventHandler(this.GvVT_Click);
             // 
             // colMAVT
             // 
@@ -203,13 +206,13 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(dONGIALabel);
-            this.groupBox1.Controls.Add(this.dONGIANumericUpDown);
+            this.groupBox1.Controls.Add(this.numDG);
             this.groupBox1.Controls.Add(sOLUONGLabel);
-            this.groupBox1.Controls.Add(this.sOLUONGNumericUpDown);
+            this.groupBox1.Controls.Add(this.numSL);
             this.groupBox1.Controls.Add(mAVTLabel);
-            this.groupBox1.Controls.Add(this.mAVTTextBox);
+            this.groupBox1.Controls.Add(this.txtMaVT);
             this.groupBox1.Controls.Add(mAPXLabel);
-            this.groupBox1.Controls.Add(this.mAPXTextBox);
+            this.groupBox1.Controls.Add(this.txtMaPX);
             this.groupBox1.Font = new System.Drawing.Font("SF Pro Display", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 8);
             this.groupBox1.Name = "groupBox1";
@@ -218,67 +221,82 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin";
             // 
-            // dONGIANumericUpDown
+            // numDG
             // 
-            this.dONGIANumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cTPXBindingSource, "DONGIA", true));
-            this.dONGIANumericUpDown.DecimalPlaces = 2;
-            this.dONGIANumericUpDown.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dONGIANumericUpDown.Increment = new decimal(new int[] {
+            this.numDG.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsCTPX, "DONGIA", true));
+            this.numDG.DecimalPlaces = 2;
+            this.numDG.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDG.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.dONGIANumericUpDown.Location = new System.Drawing.Point(108, 140);
-            this.dONGIANumericUpDown.Maximum = new decimal(new int[] {
+            this.numDG.Location = new System.Drawing.Point(108, 140);
+            this.numDG.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
-            this.dONGIANumericUpDown.Name = "dONGIANumericUpDown";
-            this.dONGIANumericUpDown.Size = new System.Drawing.Size(181, 21);
-            this.dONGIANumericUpDown.TabIndex = 7;
+            this.numDG.Name = "numDG";
+            this.numDG.Size = new System.Drawing.Size(181, 22);
+            this.numDG.TabIndex = 7;
+            this.numDG.ThousandsSeparator = true;
+            this.numDG.Validating += new System.ComponentModel.CancelEventHandler(this.NumDG_Validating);
             // 
-            // cTPXBindingSource
+            // bdsCTPX
             // 
-            this.cTPXBindingSource.DataMember = "CTPX";
-            this.cTPXBindingSource.DataSource = this.dS;
+            this.bdsCTPX.DataMember = "FK_CTPX_PX";
+            this.bdsCTPX.DataSource = this.bdsPX;
             // 
-            // sOLUONGNumericUpDown
+            // bdsPX
             // 
-            this.sOLUONGNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cTPXBindingSource, "SOLUONG", true));
-            this.sOLUONGNumericUpDown.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sOLUONGNumericUpDown.Location = new System.Drawing.Point(108, 104);
-            this.sOLUONGNumericUpDown.Minimum = new decimal(new int[] {
+            this.bdsPX.DataMember = "PhieuXuat";
+            this.bdsPX.DataSource = this.dS;
+            // 
+            // numSL
+            // 
+            this.numSL.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsCTPX, "SOLUONG", true));
+            this.numSL.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numSL.Location = new System.Drawing.Point(108, 104);
+            this.numSL.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numSL.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.sOLUONGNumericUpDown.Name = "sOLUONGNumericUpDown";
-            this.sOLUONGNumericUpDown.Size = new System.Drawing.Size(181, 21);
-            this.sOLUONGNumericUpDown.TabIndex = 5;
-            this.sOLUONGNumericUpDown.Value = new decimal(new int[] {
+            this.numSL.Name = "numSL";
+            this.numSL.Size = new System.Drawing.Size(181, 22);
+            this.numSL.TabIndex = 5;
+            this.numSL.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.numSL.Validating += new System.ComponentModel.CancelEventHandler(this.NumSL_Validating);
             // 
-            // mAVTTextBox
+            // txtMaVT
             // 
-            this.mAVTTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cTPXBindingSource, "MAVT", true));
-            this.mAVTTextBox.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mAVTTextBox.Location = new System.Drawing.Point(108, 68);
-            this.mAVTTextBox.Name = "mAVTTextBox";
-            this.mAVTTextBox.Size = new System.Drawing.Size(181, 21);
-            this.mAVTTextBox.TabIndex = 3;
+            this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "MAVT", true));
+            this.txtMaVT.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaVT.Location = new System.Drawing.Point(108, 68);
+            this.txtMaVT.Name = "txtMaVT";
+            this.txtMaVT.ReadOnly = true;
+            this.txtMaVT.Size = new System.Drawing.Size(181, 22);
+            this.txtMaVT.TabIndex = 3;
             // 
-            // mAPXTextBox
+            // txtMaPX
             // 
-            this.mAPXTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cTPXBindingSource, "MAPX", true));
-            this.mAPXTextBox.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mAPXTextBox.Location = new System.Drawing.Point(108, 32);
-            this.mAPXTextBox.Name = "mAPXTextBox";
-            this.mAPXTextBox.Size = new System.Drawing.Size(181, 21);
-            this.mAPXTextBox.TabIndex = 1;
+            this.txtMaPX.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "MAPX", true));
+            this.txtMaPX.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaPX.Location = new System.Drawing.Point(108, 32);
+            this.txtMaPX.Name = "txtMaPX";
+            this.txtMaPX.ReadOnly = true;
+            this.txtMaPX.Size = new System.Drawing.Size(181, 22);
+            this.txtMaPX.TabIndex = 1;
             // 
             // btnGhi
             // 
@@ -289,6 +307,19 @@
             this.btnGhi.TabIndex = 11;
             this.btnGhi.Text = "Ghi";
             this.btnGhi.UseVisualStyleBackColor = true;
+            this.btnGhi.Click += new System.EventHandler(this.BtnGhi_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // phieuXuatTableAdapter
+            // 
+            this.phieuXuatTableAdapter.ClearBeforeFill = true;
+            // 
+            // cTPXTableAdapter
+            // 
+            this.cTPXTableAdapter.ClearBeforeFill = true;
             // 
             // SubFormCTPX
             // 
@@ -302,16 +333,20 @@
             this.Name = "SubFormCTPX";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Phiếu Xuất";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SubFormCTPX_FormClosing);
             this.Load += new System.EventHandler(this.SubFormCTPX_Load);
+            this.Shown += new System.EventHandler(this.SubFormCTPX_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVT)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dONGIANumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cTPXBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sOLUONGNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,16 +360,19 @@
         private DevExpress.XtraGrid.GridControl vattuGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gvVT;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DSTableAdapters.CTPXTableAdapter cTPXTableAdapter;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
         private DevExpress.XtraGrid.Columns.GridColumn colDVT;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONGTON;
-        private System.Windows.Forms.BindingSource cTPXBindingSource;
-        private System.Windows.Forms.NumericUpDown dONGIANumericUpDown;
-        private System.Windows.Forms.NumericUpDown sOLUONGNumericUpDown;
-        private System.Windows.Forms.TextBox mAVTTextBox;
-        private System.Windows.Forms.TextBox mAPXTextBox;
+        private System.Windows.Forms.NumericUpDown numDG;
+        private System.Windows.Forms.NumericUpDown numSL;
+        private System.Windows.Forms.TextBox txtMaVT;
+        private System.Windows.Forms.TextBox txtMaPX;
         private System.Windows.Forms.Button btnGhi;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.BindingSource bdsPX;
+        private DSTableAdapters.PhieuXuatTableAdapter phieuXuatTableAdapter;
+        private System.Windows.Forms.BindingSource bdsCTPX;
+        private DSTableAdapters.CTPXTableAdapter cTPXTableAdapter;
     }
 }

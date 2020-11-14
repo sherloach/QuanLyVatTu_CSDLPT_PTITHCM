@@ -193,9 +193,9 @@ namespace VatTu.SimpleForm
                 }
 
                 String query = "DECLARE	@return_value int " +
-                           "EXEC @return_value = [dbo].[SP_CHECKID] " +
-                           "@p1, @p2 " +
-                           "SELECT 'Return Value' = @return_value";
+                               "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                               "@p1, @p2 " +
+                               "SELECT 'Return Value' = @return_value";
                 SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
                 sqlCommand.Parameters.AddWithValue("@p1", tb_maPhieu.Text);
                 sqlCommand.Parameters.AddWithValue("@p2", type);
@@ -288,7 +288,9 @@ namespace VatTu.SimpleForm
 
         private void MiThemCTPX_Click(object sender, EventArgs e)
         {
-
+            Program.subFormCTPX = new SubFormCTPX();
+            Program.subFormCTPX.Show();
+            Program.formMain.Enabled = false;
         }
 
         private void MiThemPN_Click(object sender, EventArgs e)
@@ -479,6 +481,16 @@ namespace VatTu.SimpleForm
         public BindingSource getBdsDDH()
         {
             return this.bdsDH;
+        }
+
+        public BindingSource getBdsPX()
+        {
+            return this.bdsPX;
+        }
+
+        public BindingSource getBdsCTPX()
+        {
+            return this.bdsCTPX;
         }
 
         public DS getDataset()

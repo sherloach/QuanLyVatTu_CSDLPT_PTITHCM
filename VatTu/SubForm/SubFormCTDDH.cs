@@ -70,7 +70,7 @@ namespace VatTu.SubForm
                 int indexMaVT = bdsCTDDH.Find("MAVT", txtMaVT.Text);
                 if (indexMaVT != -1 && (indexMaVT != bdsCTDDH.Position))
                 {
-                    MessageBox.Show("Đã tồn tại mã vật tư và mã đơn hàng!", "Thông báo",
+                    MessageBox.Show("Đã tồn tại mã vật tư cùng với mã đơn hàng!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

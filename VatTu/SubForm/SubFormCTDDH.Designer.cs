@@ -267,6 +267,11 @@
             this.numSL.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsCTDDH, "SOLUONG", true));
             this.numSL.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSL.Location = new System.Drawing.Point(108, 104);
+            this.numSL.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numSL.Minimum = new decimal(new int[] {
             1,
             0,

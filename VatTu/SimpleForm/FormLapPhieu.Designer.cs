@@ -1106,12 +1106,12 @@
             this.cmsPN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miThemPN});
             this.cmsPN.Name = "cmsPN";
-            this.cmsPN.Size = new System.Drawing.Size(181, 48);
+            this.cmsPN.Size = new System.Drawing.Size(168, 26);
             // 
             // miThemPN
             // 
             this.miThemPN.Name = "miThemPN";
-            this.miThemPN.Size = new System.Drawing.Size(180, 22);
+            this.miThemPN.Size = new System.Drawing.Size(167, 22);
             this.miThemPN.Text = "Thêm phiếu nhập";
             this.miThemPN.Click += new System.EventHandler(this.MiThemPN_Click);
             // 
@@ -1133,7 +1133,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormLapPhieu";
-            this.Text = "FormLapPhieu";
+            this.Text = "Lập Phiếu";
             this.Load += new System.EventHandler(this.FormLapPhieu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
