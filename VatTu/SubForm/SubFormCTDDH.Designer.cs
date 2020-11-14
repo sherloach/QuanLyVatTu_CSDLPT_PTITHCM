@@ -54,6 +54,7 @@
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaDDH = new System.Windows.Forms.TextBox();
             this.btnGhi = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dONGIALabel
@@ -160,11 +162,11 @@
             this.colSOLUONGTON});
             this.gvVT.GridControl = this.vattuGridControl;
             this.gvVT.Name = "gvVT";
+            this.gvVT.OptionsBehavior.Editable = false;
             this.gvVT.OptionsView.ShowGroupPanel = false;
             this.gvVT.OptionsView.ShowViewCaption = true;
             this.gvVT.ViewCaption = "Vật Tư";
             this.gvVT.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GvVT_RowClick);
-            this.gvVT.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.GvVT_RowCellClick);
             // 
             // colMAVT
             // 
@@ -257,6 +259,8 @@
             this.numDG.Name = "numDG";
             this.numDG.Size = new System.Drawing.Size(181, 22);
             this.numDG.TabIndex = 16;
+            this.numDG.ThousandsSeparator = true;
+            this.numDG.Validating += new System.ComponentModel.CancelEventHandler(this.NumDG_Validating);
             // 
             // numSL
             // 
@@ -276,6 +280,7 @@
             0,
             0,
             0});
+            this.numSL.Validating += new System.ComponentModel.CancelEventHandler(this.NumSL_Validating);
             // 
             // txtMaVT
             // 
@@ -308,6 +313,10 @@
             this.btnGhi.UseVisualStyleBackColor = true;
             this.btnGhi.Click += new System.EventHandler(this.BtnGhi_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // SubFormCTDDH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,6 +329,7 @@
             this.Name = "SubFormCTDDH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Đơn Đặt Hàng";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SubFormCTDDH_FormClosing);
             this.Load += new System.EventHandler(this.SubFormCTDDH_Load);
             this.Shown += new System.EventHandler(this.SubFormCTDDH_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
@@ -332,6 +342,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,5 +369,6 @@
         private System.Windows.Forms.TextBox txtMaVT;
         private System.Windows.Forms.TextBox txtMaDDH;
         private System.Windows.Forms.Button btnGhi;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

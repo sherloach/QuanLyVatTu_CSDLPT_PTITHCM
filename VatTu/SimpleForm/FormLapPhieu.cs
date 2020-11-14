@@ -168,7 +168,6 @@ namespace VatTu.SimpleForm
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // TODO: thêm ddh, phiếu xuất dùng chung hàm
-            //       xử lý right-click cho từng type :((
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 BindingSource current_bds = null;
@@ -477,5 +476,14 @@ namespace VatTu.SimpleForm
             return this.bdsCTDDH;
         }
 
+        public BindingSource getBdsDDH()
+        {
+            return this.bdsDH;
+        }
+
+        public DS getDataset()
+        {
+            return this.dS;
+        }
     }
 }
