@@ -46,6 +46,7 @@ namespace VatTu
         public static FormLapPhieu formLapPhieu;
         public static SubFormCTDDH subFormCTDDH;
         public static SubFormCTPX subFormCTPX;
+        public static SubFormPN subFormPN;
         public static SubFormKho subFormKho;
 
         public static int KetNoi()

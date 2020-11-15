@@ -286,21 +286,120 @@ namespace VatTu.SimpleForm
             Program.formMain.Enabled = false;
         }
 
-        private void MiThemCTPX_Click(object sender, EventArgs e)
+        private void GridCTDDH_MouseHover(object sender, EventArgs e)
         {
-            Program.subFormCTPX = new SubFormCTPX();
-            Program.subFormCTPX.Show();
-            Program.formMain.Enabled = false;
+            gridCTDDH.ContextMenuStrip = check_owner(bdsDH, gvDDH) ? cmsCTDDH : null;
+        }
+
+        // ______ PN ______
+        private void GridPN_MouseHover(object sender, EventArgs e)
+        {
+            if (check_owner(bdsDH, gvDDH))
+            {
+                if (this.bdsPN.Count > 0)
+                {
+                    cmsPN.Items[0].Text = "Đã thêm phiếu nhập";
+                    cmsPN.Items[0].Enabled = false;
+                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = true;
+                }
+                else
+                {
+                    cmsPN.Items[0].Text = "Thêm phiếu nhập";
+                    cmsPN.Items[0].Enabled = true;
+                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = false;
+                }
+                gridPN.ContextMenuStrip = cmsPN;
+            }
+            else
+            {
+                gridPN.ContextMenuStrip = cmsChecked;
+            }
         }
 
         private void MiThemPN_Click(object sender, EventArgs e)
         {
+            //Program.subFormPN = new SubFormPN();
+            //Program.subFormPN.Show();
+            //Program.formMain.Enabled = false;
+            this.bdsPN.AddNew();
 
+            cmsPN.Items[2].Enabled = true;
+
+            // Set value cho mẩu tin
+            //string maDDH = ((DataRowView)bdsDH[bdsDH.Position])["MasoDDH"].ToString().Trim();
+            //((DataRowView)bdsPN[bdsPN.Position])["MasoDDH"] = maDDH;
+            string maKho = ((DataRowView)bdsDH[bdsDH.Position])["MAKHO"].ToString().Trim();
+            ((DataRowView)bdsPN[bdsPN.Position])["MAKHO"] = maKho;
+            ((DataRowView)bdsPN[bdsPN.Position])["MANV"] = Program.maNV;
+            ((DataRowView)bdsPN[bdsPN.Position])["NGAY"] = DateTime.Today;
         }
 
-        private void GridCTDDH_MouseHover(object sender, EventArgs e)
+        private void MiGhiPN_Click(object sender, EventArgs e)
         {
-            gridCTDDH.ContextMenuStrip = check_owner(bdsDH, gvDDH) ? cmsCTDDH : null;
+            string maPN = this.gvPN.GetRowCellValue(bdsPN.Position, "MAPN").ToString();
+            String query = "DECLARE	@return_value int " +
+                            "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                            "@p1, @p2 " +
+                            "SELECT 'Return Value' = @return_value";
+            SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
+            sqlCommand.Parameters.AddWithValue("@p1", maPN);
+            sqlCommand.Parameters.AddWithValue("@p2", "MAPN");
+            SqlDataReader dataReader = null;
+
+            try
+            {
+                dataReader = sqlCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Đọc và lấy result
+            dataReader.Read();
+            int result_value = int.Parse(dataReader.GetValue(0).ToString());
+            dataReader.Close();
+
+            // Check ràng buộc mã các phiếu
+            //int indexMaPhieu = bdsPN.Find("MAPN", maPN);
+            //int indexCurrent = bdsPN.Position;
+            if (result_value == 1)
+            {
+                MessageBox.Show("Mã phiếu đã tồn tại ở chi chánh hiện tại!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (result_value == 2)
+            {
+                MessageBox.Show("Mã phiếu đã tồn tại ở chi chánh khác!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    try
+                    {
+                        this.bdsPN.EndEdit();
+                        this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
+                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Khi Update database lỗi thì xóa record vừa thêm trong bds
+                        bdsPN.RemoveCurrent();
+                        cmsPN.Items[0].Enabled = true;
+                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = false;
+                        MessageBox.Show("Thất bại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         // ______ CTPX ______
@@ -309,20 +408,29 @@ namespace VatTu.SimpleForm
             gridCTPX.ContextMenuStrip = check_owner(bdsPX, gvPX) ? cmsCTPX : null;
         }
 
+        private void MiThemCTPX_Click(object sender, EventArgs e)
+        {
+            Program.subFormCTPX = new SubFormCTPX();
+            Program.subFormCTPX.Show();
+            Program.formMain.Enabled = false;
+        }
         // ------ SWITCH TYPE ------
         private void BtnDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switchPanel("Đặt Hàng", gcDDH, gridDDH);
+            btnThem.Enabled = btnXoa.Enabled = true;
         }
 
         private void BtnPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switchPanel("Phiếu Nhập", gcPN, gridDDH);
+            btnThem.Enabled = btnXoa.Enabled = false;
         }
 
         private void BtnPX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switchPanel("Phiếu Xuất", gcPX, gridPX);
+            btnThem.Enabled = btnXoa.Enabled = true;
         }
 
         private void switchPanel(string type, GroupControl groupControl, GridControl gridControl)
@@ -472,6 +580,34 @@ namespace VatTu.SimpleForm
             }
         }
 
+        private void GvPN_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            object val = e.Value;
+
+            if (view.FocusedColumn.FieldName == "MAPN")
+            {
+                if (val == null || string.IsNullOrWhiteSpace(e.Value.ToString()))
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Vui lòng nhập mã phiếu nhập!";
+                }
+                else if (val.ToString().Contains(" "))
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Mã phiếu nhập không được chứa khoảng trắng!";
+                }
+            }
+        }
+
+        private void GvPN_ShownEditor(object sender, EventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            view.ActiveEditor.IsModified = true;
+        }
+
         // ------ Getter để các form khác có thể sử dụng binding source của form này ------
         public BindingSource getBdsCTDDH()
         {
@@ -493,9 +629,20 @@ namespace VatTu.SimpleForm
             return this.bdsCTPX;
         }
 
+        public BindingSource getBdsPN()
+        {
+            return this.bdsPN;
+        }
+        public BindingSource getBdsCTPN()
+        {
+            return this.bdsCTPN;
+        }
+
         public DS getDataset()
         {
             return this.dS;
         }
+
+        
     }
 }

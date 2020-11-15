@@ -108,19 +108,20 @@
             this.txtMaPX = new System.Windows.Forms.TextBox();
             this.btnGridKho2 = new System.Windows.Forms.Button();
             this.gcPN = new DevExpress.XtraEditors.GroupControl();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gridPN = new DevExpress.XtraGrid.GridControl();
+            this.gvPN = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMAPN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNGAY2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMasoDDH2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMANV2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMAKHO2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCTPN = new DevExpress.XtraGrid.GridControl();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONG1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridPN = new DevExpress.XtraGrid.GridControl();
-            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMAPN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNGAY2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMasoDDH2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMANV2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMAKHO2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmsCTDDH = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miThemCTDDH = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,6 +129,11 @@
             this.miThemCTPX = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsPN = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miThemPN = new System.Windows.Forms.ToolStripMenuItem();
+            this.miXoaPN = new System.Windows.Forms.ToolStripMenuItem();
+            this.miGhiPN = new System.Windows.Forms.ToolStripMenuItem();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.cmsChecked = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             mAKHOLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -160,14 +166,20 @@
             this.gbInfoPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPN)).BeginInit();
             this.gcPN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.cmsCTDDH.SuspendLayout();
             this.cmsCTPX.SuspendLayout();
             this.cmsPN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            this.cmsChecked.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAKHOLabel
@@ -357,15 +369,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1149, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1132, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 737);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1149, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
             // 
             // barDockControlLeft
             // 
@@ -373,15 +385,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 705);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 713);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1149, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 705);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 713);
             // 
             // groupControl1
             // 
@@ -390,7 +402,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1149, 65);
+            this.groupControl1.Size = new System.Drawing.Size(1132, 65);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Chi Nhánh";
             // 
@@ -453,7 +465,7 @@
             this.gridDDH.MainView = this.gvDDH;
             this.gridDDH.MenuManager = this.barManager1;
             this.gridDDH.Name = "gridDDH";
-            this.gridDDH.Size = new System.Drawing.Size(1149, 215);
+            this.gridDDH.Size = new System.Drawing.Size(1132, 215);
             this.gridDDH.TabIndex = 6;
             this.gridDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDDH});
@@ -541,7 +553,7 @@
             this.gridPX.MainView = this.gvPX;
             this.gridPX.MenuManager = this.barManager1;
             this.gridPX.Name = "gridPX";
-            this.gridPX.Size = new System.Drawing.Size(1149, 215);
+            this.gridPX.Size = new System.Drawing.Size(1132, 215);
             this.gridPX.TabIndex = 11;
             this.gridPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPX});
@@ -549,6 +561,10 @@
             // 
             // gvPX
             // 
+            this.gvPX.Appearance.HeaderPanel.BackColor = System.Drawing.Color.LightGreen;
+            this.gvPX.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.LightGreen;
+            this.gvPX.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gvPX.Appearance.HeaderPanel.Options.UseBorderColor = true;
             this.gvPX.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAPX,
             this.colNGAY1,
@@ -642,7 +658,7 @@
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcDDH.Location = new System.Drawing.Point(0, 519);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1149, 44);
+            this.gcDDH.Size = new System.Drawing.Size(1132, 29);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -655,7 +671,7 @@
             this.gridCTDDH.MainView = this.gvCTDDH;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(652, 19);
+            this.gridCTDDH.Size = new System.Drawing.Size(635, 4);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTDDH});
@@ -727,7 +743,7 @@
             this.gbInfoDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoDDH.Location = new System.Drawing.Point(2, 23);
             this.gbInfoDDH.Name = "gbInfoDDH";
-            this.gbInfoDDH.Size = new System.Drawing.Size(493, 19);
+            this.gbInfoDDH.Size = new System.Drawing.Size(493, 4);
             this.gbInfoDDH.TabIndex = 0;
             this.gbInfoDDH.TabStop = false;
             this.gbInfoDDH.Text = "Thông Tin";
@@ -776,9 +792,9 @@
             this.gcPX.Controls.Add(this.gridCTPX);
             this.gcPX.Controls.Add(this.gbInfoPX);
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPX.Location = new System.Drawing.Point(0, 563);
+            this.gcPX.Location = new System.Drawing.Point(0, 548);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1149, 38);
+            this.gcPX.Size = new System.Drawing.Size(1132, 38);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -792,7 +808,7 @@
             this.gridCTPX.MainView = this.gvCTPX;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(652, 13);
+            this.gridCTPX.Size = new System.Drawing.Size(635, 13);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTPX});
@@ -909,27 +925,138 @@
             // 
             // gcPN
             // 
-            this.gcPN.Controls.Add(this.gridCTPN);
-            this.gcPN.Controls.Add(this.gridPN);
+            this.gcPN.Controls.Add(this.splitContainer1);
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPN.Location = new System.Drawing.Point(0, 601);
+            this.gcPN.Location = new System.Drawing.Point(0, 586);
             this.gcPN.Name = "gcPN";
-            this.gcPN.Size = new System.Drawing.Size(1149, 79);
+            this.gcPN.Size = new System.Drawing.Size(1132, 151);
             this.gcPN.TabIndex = 36;
             this.gcPN.Text = "Phiếu Nhập";
             this.gcPN.Visible = false;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(2, 23);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.gridPN);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.gridCTPN);
+            this.splitContainer1.Size = new System.Drawing.Size(1128, 126);
+            this.splitContainer1.SplitterDistance = 619;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // gridPN
+            // 
+            this.gridPN.DataSource = this.bdsPN;
+            this.gridPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPN.EmbeddedNavigator.Appearance.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.gridPN.EmbeddedNavigator.Appearance.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridPN.EmbeddedNavigator.Appearance.Options.UseBorderColor = true;
+            this.gridPN.EmbeddedNavigator.Appearance.Options.UseFont = true;
+            this.gridPN.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridPN.Location = new System.Drawing.Point(0, 0);
+            this.gridPN.MainView = this.gvPN;
+            this.gridPN.MenuManager = this.barManager1;
+            this.gridPN.Name = "gridPN";
+            this.gridPN.Size = new System.Drawing.Size(619, 126);
+            this.gridPN.TabIndex = 1;
+            this.gridPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvPN});
+            this.gridPN.MouseHover += new System.EventHandler(this.GridPN_MouseHover);
+            // 
+            // gvPN
+            // 
+            this.gvPN.Appearance.HeaderPanel.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.gvPN.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.SeaGreen;
+            this.gvPN.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gvPN.Appearance.HeaderPanel.Options.UseBorderColor = true;
+            this.gvPN.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gvPN.Appearance.VertLine.Options.UseBorderColor = true;
+            this.gvPN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMAPN,
+            this.colNGAY2,
+            this.colMasoDDH2,
+            this.colMANV2,
+            this.colMAKHO2});
+            this.gvPN.GridControl = this.gridPN;
+            this.gvPN.Name = "gvPN";
+            this.gvPN.OptionsView.ShowGroupPanel = false;
+            this.gvPN.OptionsView.ShowViewCaption = true;
+            this.gvPN.ViewCaption = "Phiếu Nhập Của Đơn Hàng";
+            this.gvPN.ShownEditor += new System.EventHandler(this.GvPN_ShownEditor);
+            this.gvPN.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.GvPN_ValidatingEditor);
+            // 
+            // colMAPN
+            // 
+            this.colMAPN.Caption = "Mã PN";
+            this.colMAPN.FieldName = "MAPN";
+            this.colMAPN.MinWidth = 23;
+            this.colMAPN.Name = "colMAPN";
+            this.colMAPN.Visible = true;
+            this.colMAPN.VisibleIndex = 0;
+            this.colMAPN.Width = 87;
+            // 
+            // colNGAY2
+            // 
+            this.colNGAY2.Caption = "Ngày";
+            this.colNGAY2.FieldName = "NGAY";
+            this.colNGAY2.MinWidth = 23;
+            this.colNGAY2.Name = "colNGAY2";
+            this.colNGAY2.OptionsColumn.AllowEdit = false;
+            this.colNGAY2.Visible = true;
+            this.colNGAY2.VisibleIndex = 1;
+            this.colNGAY2.Width = 87;
+            // 
+            // colMasoDDH2
+            // 
+            this.colMasoDDH2.Caption = "Mã DDH";
+            this.colMasoDDH2.FieldName = "MasoDDH";
+            this.colMasoDDH2.MinWidth = 23;
+            this.colMasoDDH2.Name = "colMasoDDH2";
+            this.colMasoDDH2.OptionsColumn.AllowEdit = false;
+            this.colMasoDDH2.Visible = true;
+            this.colMasoDDH2.VisibleIndex = 2;
+            this.colMasoDDH2.Width = 87;
+            // 
+            // colMANV2
+            // 
+            this.colMANV2.Caption = "Mã NV";
+            this.colMANV2.FieldName = "MANV";
+            this.colMANV2.MinWidth = 23;
+            this.colMANV2.Name = "colMANV2";
+            this.colMANV2.OptionsColumn.AllowEdit = false;
+            this.colMANV2.Visible = true;
+            this.colMANV2.VisibleIndex = 3;
+            this.colMANV2.Width = 87;
+            // 
+            // colMAKHO2
+            // 
+            this.colMAKHO2.Caption = "Mã Kho";
+            this.colMAKHO2.FieldName = "MAKHO";
+            this.colMAKHO2.MinWidth = 23;
+            this.colMAKHO2.Name = "colMAKHO2";
+            this.colMAKHO2.OptionsColumn.AllowEdit = false;
+            this.colMAKHO2.Visible = true;
+            this.colMAKHO2.VisibleIndex = 4;
+            this.colMAKHO2.Width = 87;
             // 
             // gridCTPN
             // 
             this.gridCTPN.DataSource = this.bdsCTPN;
             this.gridCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCTPN.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridCTPN.Location = new System.Drawing.Point(635, 23);
+            this.gridCTPN.Location = new System.Drawing.Point(0, 0);
             this.gridCTPN.MainView = this.gridView5;
             this.gridCTPN.MenuManager = this.barManager1;
             this.gridCTPN.Name = "gridCTPN";
-            this.gridCTPN.Size = new System.Drawing.Size(512, 54);
-            this.gridCTPN.TabIndex = 1;
+            this.gridCTPN.Size = new System.Drawing.Size(505, 126);
+            this.gridCTPN.TabIndex = 2;
             this.gridCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
             // 
@@ -952,6 +1079,7 @@
             this.colMAPN1.FieldName = "MAPN";
             this.colMAPN1.MinWidth = 23;
             this.colMAPN1.Name = "colMAPN1";
+            this.colMAPN1.OptionsColumn.AllowEdit = false;
             this.colMAPN1.Visible = true;
             this.colMAPN1.VisibleIndex = 0;
             this.colMAPN1.Width = 87;
@@ -985,85 +1113,6 @@
             this.colDONGIA1.Visible = true;
             this.colDONGIA1.VisibleIndex = 3;
             this.colDONGIA1.Width = 87;
-            // 
-            // gridPN
-            // 
-            this.gridPN.DataSource = this.bdsPN;
-            this.gridPN.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gridPN.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridPN.Location = new System.Drawing.Point(2, 23);
-            this.gridPN.MainView = this.gridView6;
-            this.gridPN.MenuManager = this.barManager1;
-            this.gridPN.Name = "gridPN";
-            this.gridPN.Size = new System.Drawing.Size(633, 54);
-            this.gridPN.TabIndex = 0;
-            this.gridPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView6});
-            // 
-            // gridView6
-            // 
-            this.gridView6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
-            this.gridView6.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMAPN,
-            this.colNGAY2,
-            this.colMasoDDH2,
-            this.colMANV2,
-            this.colMAKHO2});
-            this.gridView6.GridControl = this.gridPN;
-            this.gridView6.Name = "gridView6";
-            this.gridView6.OptionsView.ShowGroupPanel = false;
-            this.gridView6.OptionsView.ShowViewCaption = true;
-            this.gridView6.ViewCaption = "Danh Sách Phiếu Nhập Của Đơn Hàng";
-            // 
-            // colMAPN
-            // 
-            this.colMAPN.Caption = "Mã PN";
-            this.colMAPN.FieldName = "MAPN";
-            this.colMAPN.MinWidth = 23;
-            this.colMAPN.Name = "colMAPN";
-            this.colMAPN.Visible = true;
-            this.colMAPN.VisibleIndex = 0;
-            this.colMAPN.Width = 87;
-            // 
-            // colNGAY2
-            // 
-            this.colNGAY2.Caption = "Ngày";
-            this.colNGAY2.FieldName = "NGAY";
-            this.colNGAY2.MinWidth = 23;
-            this.colNGAY2.Name = "colNGAY2";
-            this.colNGAY2.Visible = true;
-            this.colNGAY2.VisibleIndex = 1;
-            this.colNGAY2.Width = 87;
-            // 
-            // colMasoDDH2
-            // 
-            this.colMasoDDH2.Caption = "Mã DDH";
-            this.colMasoDDH2.FieldName = "MasoDDH";
-            this.colMasoDDH2.MinWidth = 23;
-            this.colMasoDDH2.Name = "colMasoDDH2";
-            this.colMasoDDH2.Visible = true;
-            this.colMasoDDH2.VisibleIndex = 2;
-            this.colMasoDDH2.Width = 87;
-            // 
-            // colMANV2
-            // 
-            this.colMANV2.Caption = "Mã NV";
-            this.colMANV2.FieldName = "MANV";
-            this.colMANV2.MinWidth = 23;
-            this.colMANV2.Name = "colMANV2";
-            this.colMANV2.Visible = true;
-            this.colMANV2.VisibleIndex = 3;
-            this.colMANV2.Width = 87;
-            // 
-            // colMAKHO2
-            // 
-            this.colMAKHO2.Caption = "Mã Kho";
-            this.colMAKHO2.FieldName = "MAKHO";
-            this.colMAKHO2.MinWidth = 23;
-            this.colMAKHO2.Name = "colMAKHO2";
-            this.colMAKHO2.Visible = true;
-            this.colMAKHO2.VisibleIndex = 4;
-            this.colMAKHO2.Width = 87;
             // 
             // errorProvider
             // 
@@ -1104,9 +1153,11 @@
             // cmsPN
             // 
             this.cmsPN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miThemPN});
+            this.miThemPN,
+            this.miXoaPN,
+            this.miGhiPN});
             this.cmsPN.Name = "cmsPN";
-            this.cmsPN.Size = new System.Drawing.Size(168, 26);
+            this.cmsPN.Size = new System.Drawing.Size(168, 70);
             // 
             // miThemPN
             // 
@@ -1114,6 +1165,35 @@
             this.miThemPN.Size = new System.Drawing.Size(167, 22);
             this.miThemPN.Text = "Thêm phiếu nhập";
             this.miThemPN.Click += new System.EventHandler(this.MiThemPN_Click);
+            // 
+            // miXoaPN
+            // 
+            this.miXoaPN.Enabled = false;
+            this.miXoaPN.Name = "miXoaPN";
+            this.miXoaPN.Size = new System.Drawing.Size(167, 22);
+            this.miXoaPN.Text = "Xóa phiếu nhập";
+            // 
+            // miGhiPN
+            // 
+            this.miGhiPN.Enabled = false;
+            this.miGhiPN.Name = "miGhiPN";
+            this.miGhiPN.Size = new System.Drawing.Size(167, 22);
+            this.miGhiPN.Text = "Ghi phiếu nhập";
+            this.miGhiPN.Click += new System.EventHandler(this.MiGhiPN_Click);
+            // 
+            // cmsChecked
+            // 
+            this.cmsChecked.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem});
+            this.cmsChecked.Name = "cmsChecked";
+            this.cmsChecked.Size = new System.Drawing.Size(269, 26);
+            // 
+            // bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem
+            // 
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Enabled = false;
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Name = "bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem";
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Text = "Bạn không phải người lập phiếu này.";
             // 
             // FormLapPhieu
             // 
@@ -1164,14 +1244,20 @@
             this.gbInfoPX.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPN)).EndInit();
             this.gcPN.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.cmsCTDDH.ResumeLayout(false);
             this.cmsCTPX.ResumeLayout(false);
             this.cmsPN.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            this.cmsChecked.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1242,19 +1328,6 @@
         private System.Windows.Forms.TextBox txtMaPX;
         private System.Windows.Forms.Button btnGridKho2;
         private DevExpress.XtraEditors.GroupControl gcPN;
-        private DevExpress.XtraGrid.GridControl gridCTPN;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAPN1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAVT1;
-        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG1;
-        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA1;
-        private DevExpress.XtraGrid.GridControl gridPN;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAPN;
-        private DevExpress.XtraGrid.Columns.GridColumn colNGAY2;
-        private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH2;
-        private DevExpress.XtraGrid.Columns.GridColumn colMANV2;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAKHO2;
         private DevExpress.XtraGrid.GridControl gridCTPX;
         private DevExpress.XtraGrid.Views.Grid.GridView gvCTPX;
         private DevExpress.XtraGrid.Columns.GridColumn colMAPX1;
@@ -1271,5 +1344,24 @@
         private System.Windows.Forms.ToolStripMenuItem miThemCTPX;
         private System.Windows.Forms.ContextMenuStrip cmsPN;
         private System.Windows.Forms.ToolStripMenuItem miThemPN;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private DevExpress.XtraGrid.GridControl gridPN;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPN;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAPN;
+        private DevExpress.XtraGrid.Columns.GridColumn colNGAY2;
+        private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH2;
+        private DevExpress.XtraGrid.Columns.GridColumn colMANV2;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAKHO2;
+        private DevExpress.XtraGrid.GridControl gridCTPN;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAPN1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAVT1;
+        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA1;
+        private System.Windows.Forms.ToolStripMenuItem miXoaPN;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private System.Windows.Forms.ToolStripMenuItem miGhiPN;
+        private System.Windows.Forms.ContextMenuStrip cmsChecked;
+        private System.Windows.Forms.ToolStripMenuItem bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem;
     }
 }

@@ -69,6 +69,7 @@
             this.colLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gcInfoNhanVien = new DevExpress.XtraEditors.GroupControl();
             this.cbTTXoa = new System.Windows.Forms.CheckBox();
             this.txtMaCN = new DevExpress.XtraEditors.TextEdit();
@@ -97,6 +98,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcInfoNhanVien)).BeginInit();
             this.gcInfoNhanVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCN.Properties)).BeginInit();
@@ -384,7 +387,9 @@
             this.gridNhanVien.MainView = this.gridView1;
             this.gridNhanVien.MenuManager = this.barManager1;
             this.gridNhanVien.Name = "gridNhanVien";
-            this.gridNhanVien.Size = new System.Drawing.Size(931, 190);
+            this.gridNhanVien.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1});
+            this.gridNhanVien.Size = new System.Drawing.Size(931, 218);
             this.gridNhanVien.TabIndex = 9;
             this.gridNhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -402,6 +407,7 @@
             this.colTrangThaiXoa});
             this.gridView1.GridControl = this.gridNhanVien;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // colMANV
             // 
@@ -475,6 +481,15 @@
             this.colTrangThaiXoa.VisibleIndex = 7;
             this.colTrangThaiXoa.Width = 69;
             // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
             // gcInfoNhanVien
             // 
             this.gcInfoNhanVien.Controls.Add(trangThaiXoaLabel);
@@ -494,9 +509,9 @@
             this.gcInfoNhanVien.Controls.Add(mANVLabel);
             this.gcInfoNhanVien.Controls.Add(this.txtMaNV);
             this.gcInfoNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcInfoNhanVien.Location = new System.Drawing.Point(0, 285);
+            this.gcInfoNhanVien.Location = new System.Drawing.Point(0, 313);
             this.gcInfoNhanVien.Name = "gcInfoNhanVien";
-            this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 166);
+            this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 138);
             this.gcInfoNhanVien.TabIndex = 10;
             this.gcInfoNhanVien.Text = "Thông Tin";
             // 
@@ -613,6 +628,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcInfoNhanVien)).EndInit();
             this.gcInfoNhanVien.ResumeLayout(false);
             this.gcInfoNhanVien.PerformLayout();
@@ -672,5 +689,6 @@
         private DSTableAdapters.PhieuNhapTableAdapter phieuNhapTableAdapter;
         private DevExpress.XtraEditors.TextEdit txtMaCN;
         private System.Windows.Forms.CheckBox cbTTXoa;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }

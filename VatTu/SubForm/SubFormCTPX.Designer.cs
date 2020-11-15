@@ -143,11 +143,10 @@
             // vattuGridControl
             // 
             this.vattuGridControl.DataSource = this.bdsVT;
-            this.vattuGridControl.Dock = System.Windows.Forms.DockStyle.Right;
             this.vattuGridControl.Location = new System.Drawing.Point(375, 0);
             this.vattuGridControl.MainView = this.gvVT;
             this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(408, 245);
+            this.vattuGridControl.Size = new System.Drawing.Size(405, 241);
             this.vattuGridControl.TabIndex = 1;
             this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvVT});
