@@ -36,6 +36,12 @@ namespace VatTu.SimpleForm
             // TODO: This line of code loads data into the 'dS.Kho' table. You can move, or remove it, as needed.
             this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
             this.khoTableAdapter.Fill(this.dS.Kho);
+            this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.datHangTableAdapter.Fill(this.dS.DatHang);
+            this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuNhapTableAdapter.Fill(this.dS.PhieuNhap);
+            this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuXuatTableAdapter.Fill(this.dS.PhieuXuat);
 
             if (Program.mGroup == "CONGTY")
             {
@@ -71,6 +77,24 @@ namespace VatTu.SimpleForm
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string maKho = "";
+            if (bdsDH.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa kho này vì đã lập đơn đặt hàng", "Lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (bdsPN.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa kho này vì đã lập phiếu nhập", "Lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (bdsPX.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa kho này vì đã lập phiếu xuất", "Lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult dr = MessageBox.Show("Bạn có thực sự muốn xóa kho này không?", "Xác nhận",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)

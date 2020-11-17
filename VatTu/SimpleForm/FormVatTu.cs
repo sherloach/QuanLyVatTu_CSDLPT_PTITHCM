@@ -29,6 +29,15 @@ namespace VatTu.SimpleForm
             this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
             this.vattuTableAdapter.Fill(this.dS.Vattu);
 
+            this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.cTDDHTableAdapter.Fill(this.dS.CTDDH);
+
+            this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.cTPNTableAdapter.Fill(this.dS.CTPN);
+
+            this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.cTPXTableAdapter.Fill(this.dS.CTPX);
+
             if (Program.mGroup == "CONGTY")
             {
                 btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
@@ -50,6 +59,24 @@ namespace VatTu.SimpleForm
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string maVT = "";
+            if (bdsCTDDH.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa vật tư này vì đã lập chi tiết đặt hàng", "Lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (bdsCTPN.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa vật tư này vì đã lập chi tiết phiếu nhập", "Lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (bdsCTPX.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa vật tư này vì đã lập chi tiết phiếu xuất", "Lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa vật tư này?", "Xác nhận",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)

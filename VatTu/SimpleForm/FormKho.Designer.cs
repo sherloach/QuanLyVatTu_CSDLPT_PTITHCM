@@ -65,6 +65,12 @@
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtTenKho = new System.Windows.Forms.TextBox();
             this.txtMaKho = new System.Windows.Forms.TextBox();
+            this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
+            this.phieuXuatTableAdapter = new VatTu.DSTableAdapters.PhieuXuatTableAdapter();
+            this.bdsPN = new System.Windows.Forms.BindingSource(this.components);
+            this.phieuNhapTableAdapter = new VatTu.DSTableAdapters.PhieuNhapTableAdapter();
+            this.bdsDH = new System.Windows.Forms.BindingSource(this.components);
+            this.datHangTableAdapter = new VatTu.DSTableAdapters.DatHangTableAdapter();
             mACNLabel = new System.Windows.Forms.Label();
             dIACHILabel = new System.Windows.Forms.Label();
             tENKHOLabel = new System.Windows.Forms.Label();
@@ -78,6 +84,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcInfoKho)).BeginInit();
             this.gcInfoKho.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).BeginInit();
             this.SuspendLayout();
             // 
             // mACNLabel
@@ -412,6 +421,33 @@
             this.txtMaKho.Size = new System.Drawing.Size(100, 21);
             this.txtMaKho.TabIndex = 9;
             // 
+            // bdsPX
+            // 
+            this.bdsPX.DataMember = "FK_PhieuXuat_Kho";
+            this.bdsPX.DataSource = this.bdsKho;
+            // 
+            // phieuXuatTableAdapter
+            // 
+            this.phieuXuatTableAdapter.ClearBeforeFill = true;
+            // 
+            // bdsPN
+            // 
+            this.bdsPN.DataMember = "FK_PhieuNhap_Kho";
+            this.bdsPN.DataSource = this.bdsKho;
+            // 
+            // phieuNhapTableAdapter
+            // 
+            this.phieuNhapTableAdapter.ClearBeforeFill = true;
+            // 
+            // bdsDH
+            // 
+            this.bdsDH.DataMember = "FK_DatHang_Kho";
+            this.bdsDH.DataSource = this.bdsKho;
+            // 
+            // datHangTableAdapter
+            // 
+            this.datHangTableAdapter.ClearBeforeFill = true;
+            // 
             // FormKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +474,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcInfoKho)).EndInit();
             this.gcInfoKho.ResumeLayout(false);
             this.gcInfoKho.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,5 +515,11 @@
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtTenKho;
         private System.Windows.Forms.TextBox txtMaKho;
+        private System.Windows.Forms.BindingSource bdsPX;
+        private DSTableAdapters.PhieuXuatTableAdapter phieuXuatTableAdapter;
+        private System.Windows.Forms.BindingSource bdsPN;
+        private DSTableAdapters.PhieuNhapTableAdapter phieuNhapTableAdapter;
+        private System.Windows.Forms.BindingSource bdsDH;
+        private DSTableAdapters.DatHangTableAdapter datHangTableAdapter;
     }
 }

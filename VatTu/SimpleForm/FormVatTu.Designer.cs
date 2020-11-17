@@ -64,6 +64,12 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
+            this.cTPXTableAdapter = new VatTu.DSTableAdapters.CTPXTableAdapter();
+            this.bdsCTPN = new System.Windows.Forms.BindingSource(this.components);
+            this.cTPNTableAdapter = new VatTu.DSTableAdapters.CTPNTableAdapter();
+            this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
+            this.cTDDHTableAdapter = new VatTu.DSTableAdapters.CTDDHTableAdapter();
             mAVTLabel = new System.Windows.Forms.Label();
             tENVTLabel = new System.Windows.Forms.Label();
             dVTLabel = new System.Windows.Forms.Label();
@@ -76,6 +82,9 @@
             this.gcInfoVatTu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSLT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
             this.SuspendLayout();
             // 
             // mAVTLabel
@@ -150,7 +159,7 @@
             this.gridVatTu.Location = new System.Drawing.Point(0, 24);
             this.gridVatTu.MainView = this.gridView1;
             this.gridVatTu.Name = "gridVatTu";
-            this.gridVatTu.Size = new System.Drawing.Size(800, 255);
+            this.gridVatTu.Size = new System.Drawing.Size(816, 255);
             this.gridVatTu.TabIndex = 1;
             this.gridVatTu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -210,7 +219,7 @@
             this.gcInfoVatTu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcInfoVatTu.Location = new System.Drawing.Point(0, 279);
             this.gcInfoVatTu.Name = "gcInfoVatTu";
-            this.gcInfoVatTu.Size = new System.Drawing.Size(800, 151);
+            this.gcInfoVatTu.Size = new System.Drawing.Size(816, 157);
             this.gcInfoVatTu.TabIndex = 2;
             this.gcInfoVatTu.Text = "Thông Tin";
             // 
@@ -370,15 +379,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(800, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(816, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 430);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 436);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(800, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(816, 20);
             // 
             // barDockControlLeft
             // 
@@ -386,21 +395,48 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 406);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 412);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(800, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(816, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 406);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 412);
+            // 
+            // bdsCTPX
+            // 
+            this.bdsCTPX.DataMember = "FK_CTPX_VatTu";
+            this.bdsCTPX.DataSource = this.bdsVatTu;
+            // 
+            // cTPXTableAdapter
+            // 
+            this.cTPXTableAdapter.ClearBeforeFill = true;
+            // 
+            // bdsCTPN
+            // 
+            this.bdsCTPN.DataMember = "FK_CTPN_VatTu";
+            this.bdsCTPN.DataSource = this.bdsVatTu;
+            // 
+            // cTPNTableAdapter
+            // 
+            this.cTPNTableAdapter.ClearBeforeFill = true;
+            // 
+            // bdsCTDDH
+            // 
+            this.bdsCTDDH.DataMember = "FK_CTDDH_VatTu";
+            this.bdsCTDDH.DataSource = this.bdsVatTu;
+            // 
+            // cTDDHTableAdapter
+            // 
+            this.cTDDHTableAdapter.ClearBeforeFill = true;
             // 
             // FormVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(816, 456);
             this.Controls.Add(this.gcInfoVatTu);
             this.Controls.Add(this.gridVatTu);
             this.Controls.Add(this.barDockControlLeft);
@@ -420,6 +456,9 @@
             this.gcInfoVatTu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSLT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,5 +496,11 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private System.Windows.Forms.BindingSource bdsCTPX;
+        private DSTableAdapters.CTPXTableAdapter cTPXTableAdapter;
+        private System.Windows.Forms.BindingSource bdsCTPN;
+        private DSTableAdapters.CTPNTableAdapter cTPNTableAdapter;
+        private System.Windows.Forms.BindingSource bdsCTDDH;
+        private DSTableAdapters.CTDDHTableAdapter cTDDHTableAdapter;
     }
 }

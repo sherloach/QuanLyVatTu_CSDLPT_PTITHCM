@@ -323,6 +323,7 @@ namespace VatTu.SimpleForm
             //Program.formMain.Enabled = false;
             this.bdsPN.AddNew();
 
+            gridDDH.Enabled = false;
             cmsPN.Items[2].Enabled = true;
 
             // Set value cho mẩu tin
@@ -387,12 +388,14 @@ namespace VatTu.SimpleForm
                     {
                         this.bdsPN.EndEdit();
                         this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
+                        gridDDH.Enabled = true;
                         cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = true;
                     }
                     catch (Exception ex)
                     {
                         // Khi Update database lỗi thì xóa record vừa thêm trong bds
                         bdsPN.RemoveCurrent();
+                        gridDDH.Enabled = true;
                         cmsPN.Items[0].Enabled = true;
                         cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = false;
                         MessageBox.Show("Thất bại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
