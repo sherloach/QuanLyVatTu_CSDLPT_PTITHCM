@@ -131,6 +131,7 @@
             this.miThemPN = new System.Windows.Forms.ToolStripMenuItem();
             this.miXoaPN = new System.Windows.Forms.ToolStripMenuItem();
             this.miGhiPN = new System.Windows.Forms.ToolStripMenuItem();
+            this.miThemCTPN = new System.Windows.Forms.ToolStripMenuItem();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.cmsChecked = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -948,7 +949,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridCTPN);
             this.splitContainer1.Size = new System.Drawing.Size(1128, 126);
-            this.splitContainer1.SplitterDistance = 619;
+            this.splitContainer1.SplitterDistance = 618;
             this.splitContainer1.TabIndex = 2;
             // 
             // gridPN
@@ -964,7 +965,7 @@
             this.gridPN.MainView = this.gvPN;
             this.gridPN.MenuManager = this.barManager1;
             this.gridPN.Name = "gridPN";
-            this.gridPN.Size = new System.Drawing.Size(619, 126);
+            this.gridPN.Size = new System.Drawing.Size(618, 126);
             this.gridPN.TabIndex = 1;
             this.gridPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPN});
@@ -1055,7 +1056,7 @@
             this.gridCTPN.MainView = this.gridView5;
             this.gridCTPN.MenuManager = this.barManager1;
             this.gridCTPN.Name = "gridCTPN";
-            this.gridCTPN.Size = new System.Drawing.Size(505, 126);
+            this.gridCTPN.Size = new System.Drawing.Size(506, 126);
             this.gridCTPN.TabIndex = 2;
             this.gridCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1155,14 +1156,15 @@
             this.cmsPN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miThemPN,
             this.miXoaPN,
-            this.miGhiPN});
+            this.miGhiPN,
+            this.miThemCTPN});
             this.cmsPN.Name = "cmsPN";
-            this.cmsPN.Size = new System.Drawing.Size(168, 70);
+            this.cmsPN.Size = new System.Drawing.Size(207, 92);
             // 
             // miThemPN
             // 
             this.miThemPN.Name = "miThemPN";
-            this.miThemPN.Size = new System.Drawing.Size(167, 22);
+            this.miThemPN.Size = new System.Drawing.Size(206, 22);
             this.miThemPN.Text = "Thêm phiếu nhập";
             this.miThemPN.Click += new System.EventHandler(this.MiThemPN_Click);
             // 
@@ -1170,16 +1172,23 @@
             // 
             this.miXoaPN.Enabled = false;
             this.miXoaPN.Name = "miXoaPN";
-            this.miXoaPN.Size = new System.Drawing.Size(167, 22);
+            this.miXoaPN.Size = new System.Drawing.Size(206, 22);
             this.miXoaPN.Text = "Xóa phiếu nhập";
             // 
             // miGhiPN
             // 
             this.miGhiPN.Enabled = false;
             this.miGhiPN.Name = "miGhiPN";
-            this.miGhiPN.Size = new System.Drawing.Size(167, 22);
+            this.miGhiPN.Size = new System.Drawing.Size(206, 22);
             this.miGhiPN.Text = "Ghi phiếu nhập";
             this.miGhiPN.Click += new System.EventHandler(this.MiGhiPN_Click);
+            // 
+            // miThemCTPN
+            // 
+            this.miThemCTPN.Name = "miThemCTPN";
+            this.miThemCTPN.Size = new System.Drawing.Size(206, 22);
+            this.miThemCTPN.Text = "Thêm chi tiết phiếu nhập";
+            this.miThemCTPN.Click += new System.EventHandler(this.MiThemCTPN_Click);
             // 
             // cmsChecked
             // 
@@ -1363,5 +1372,6 @@
         private System.Windows.Forms.ToolStripMenuItem miGhiPN;
         private System.Windows.Forms.ContextMenuStrip cmsChecked;
         private System.Windows.Forms.ToolStripMenuItem bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miThemCTPN;
     }
 }

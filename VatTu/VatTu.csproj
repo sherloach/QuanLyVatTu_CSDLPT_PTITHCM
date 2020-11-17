@@ -134,6 +134,12 @@
     <Compile Include="SubForm\SubFormCTDDH.Designer.cs">
       <DependentUpon>SubFormCTDDH.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\SubFormCTPN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\SubFormCTPN.Designer.cs">
+      <DependentUpon>SubFormCTPN.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\SubFormCTPX.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\SubFormCTDDH.resx">
       <DependentUpon>SubFormCTDDH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\SubFormCTPN.resx">
+      <DependentUpon>SubFormCTPN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\SubFormCTPX.resx">
       <DependentUpon>SubFormCTPX.cs</DependentUpon>

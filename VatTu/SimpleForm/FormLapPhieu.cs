@@ -300,13 +300,13 @@ namespace VatTu.SimpleForm
                 {
                     cmsPN.Items[0].Text = "Đã thêm phiếu nhập";
                     cmsPN.Items[0].Enabled = false;
-                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = true;
+                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = true;
                 }
                 else
                 {
                     cmsPN.Items[0].Text = "Thêm phiếu nhập";
                     cmsPN.Items[0].Enabled = true;
-                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = false;
+                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = false;
                 }
                 gridPN.ContextMenuStrip = cmsPN;
             }
@@ -387,19 +387,39 @@ namespace VatTu.SimpleForm
                     {
                         this.bdsPN.EndEdit();
                         this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
-                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = true;
+                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = true;
                     }
                     catch (Exception ex)
                     {
                         // Khi Update database lỗi thì xóa record vừa thêm trong bds
                         bdsPN.RemoveCurrent();
                         cmsPN.Items[0].Enabled = true;
-                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = false;
+                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = false;
                         MessageBox.Show("Thất bại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+
+        // ______ CTPN ______
+        private void MiThemCTPN_Click(object sender, EventArgs e)
+        {
+            if (bdsCTDDH.Count == 0)
+            {
+                MessageBox.Show("Đơn đặt hàng chưa lập chi tiết đơn đặt hàng!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (bdsCTDDH.Count == bdsCTPN.Count)
+            {
+                MessageBox.Show("Đơn đặt hàng này đã lập đủ chi tiết phiếu nhập!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Program.subFormCTPN = new SubFormCTPN();
+            Program.subFormCTPN.Show();
+            Program.formMain.Enabled = false;
         }
 
         // ______ CTPX ______
@@ -643,6 +663,5 @@ namespace VatTu.SimpleForm
             return this.dS;
         }
 
-        
     }
 }
