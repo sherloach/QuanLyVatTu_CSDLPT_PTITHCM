@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VatTu.SubForm;
 
 namespace VatTu
 {
@@ -36,6 +38,9 @@ namespace VatTu
             // TODO: This line of code loads data into the 'dS.PhieuNhap' table. You can move, or remove it, as needed.
             this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
             this.phieuNhapTableAdapter.Fill(this.dS.PhieuNhap);
+
+            this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.phieuXuatTableAdapter.Fill(this.dS.PhieuXuat);
 
             maCN = ((DataRowView)bdsNV[0])["MACN"].ToString(); // Lúc đúng lúc sai, tìm cách khác.
             comboBox_ChiNhanh.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
@@ -205,9 +210,54 @@ namespace VatTu
 
         }
 
+        String CNchuyen;
+        public void GETVALUE(String index)
+        {
+            CNchuyen = index;
+            string maCN = "";
+            if (CNchuyen.Contains("2"))
+            {
+                maCN = "CN2";
+            } else if (CNchuyen.Contains("1"))
+            {
+                maCN = "CN1";
+            }
+            Console.WriteLine("CHI NHANH DUOC CHON LA: " + CNchuyen);
+
+            String maNV = ((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString();
+            Program.conn = new SqlConnection(Program.connstr);
+            Program.conn.Open();
+            SqlCommand cmd = new SqlCommand("SP_CHUYENCHINHANH_NV", Program.conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@MANV", maNV));
+            cmd.Parameters.Add(new SqlParameter("@MACN", maCN));
+            SqlDataReader myReader = null;
+            try
+            {
+                myReader = cmd.ExecuteReader();
+                MessageBox.Show("Chuyển nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.nhanVienTableAdapter.Fill(this.dS.NhanVien);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
         private void BtnChuyenChiNhanh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            int trangThaiXoa = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["TrangThaiXoa"].ToString());
+            if (trangThaiXoa == 0)
+            {
+                FormChuyenCN pickCN = new FormChuyenCN();
+                pickCN.mydata = new FormChuyenCN.GETDATA(GETVALUE);
+                pickCN.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nhân viên hiện không có ở chi nhánh này", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
 
         private void BtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

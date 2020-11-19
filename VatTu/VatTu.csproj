@@ -73,6 +73,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_NHANVIEN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_NHANVIEN.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReport_DSNhanVien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_DSNhanVien.Designer.cs">
+      <DependentUpon>XtraReport_DSNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReport_ChitietHangNhapXuat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_ChitietHangNhapXuat.Designer.cs">
+      <DependentUpon>XtraReport_ChitietHangNhapXuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReport_TonghopNhapXuat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_TonghopNhapXuat.Designer.cs">
+      <DependentUpon>XtraReport_TonghopNhapXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimpleForm\FormKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +126,18 @@
     <Compile Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimpleForm\FormSupportReport3_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimpleForm\FormSupportReport3_3.Designer.cs">
+      <DependentUpon>FormSupportReport3_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleForm\FormTaoTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimpleForm\FormTaoTaiKhoan.Designer.cs">
+      <DependentUpon>FormTaoTaiKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimpleForm\FormVatTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +162,12 @@
     </Compile>
     <Compile Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.Designer.cs">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\FormChuyenCN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\FormChuyenCN.Designer.cs">
+      <DependentUpon>FormChuyenCN.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\SubFormCTDDH.cs">
       <SubType>Form</SubType>
@@ -158,6 +199,15 @@
     <Compile Include="SubForm\SubFormPN.Designer.cs">
       <DependentUpon>SubFormPN.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\XtraReport_DSNhanVien.resx">
+      <DependentUpon>XtraReport_DSNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport_ChitietHangNhapXuat.resx">
+      <DependentUpon>XtraReport_ChitietHangNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport_TonghopNhapXuat.resx">
+      <DependentUpon>XtraReport_TonghopNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SimpleForm\FormKho.resx">
       <DependentUpon>FormKho.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +222,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Frpt_PhieuNvLapTrongNamTheoLoai.resx">
       <DependentUpon>Frpt_PhieuNvLapTrongNamTheoLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleForm\FormSupportReport3_3.resx">
+      <DependentUpon>FormSupportReport3_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleForm\FormTaoTaiKhoan.resx">
+      <DependentUpon>FormTaoTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimpleForm\FormVatTu.resx">
       <DependentUpon>FormVatTu.cs</DependentUpon>
@@ -191,6 +247,9 @@
     </Compile>
     <EmbeddedResource Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.resx">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\FormChuyenCN.resx">
+      <DependentUpon>FormChuyenCN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\SubFormCTDDH.resx">
       <DependentUpon>SubFormCTDDH.cs</DependentUpon>
@@ -218,6 +277,17 @@
     </None>
     <None Include="DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="DS_NHANVIEN.xsc">
+      <DependentUpon>DS_NHANVIEN.xsd</DependentUpon>
+    </None>
+    <None Include="DS_NHANVIEN.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_NHANVIEN.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_NHANVIEN.xss">
+      <DependentUpon>DS_NHANVIEN.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

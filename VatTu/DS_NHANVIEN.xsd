@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_NHANVIEN" targetNamespace="http://tempuri.org/DS_NHANVIEN.xsd" xmlns:mstns="http://tempuri.org/DS_NHANVIEN.xsd" xmlns="http://tempuri.org/DS_NHANVIEN.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLVT_DATHANGConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLVT_DATHANGConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.VatTu.Properties.Settings.GlobalReference.Default.QLVT_DATHANGConnectionString2" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="V_DS_NHANVIENTableAdapter" GeneratorDataComponentClassName="V_DS_NHANVIENTableAdapter" Name="V_DS_NHANVIEN" UserDataComponentName="V_DS_NHANVIENTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLVT_DATHANGConnectionString2 (Settings)" DbObjectName="QLVT_DATHANG.dbo.V_DS_NHANVIEN" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT MANV, HOTEN FROM dbo.V_DS_NHANVIEN</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MANV" DataSetColumn="MANV" />
+              <Mapping SourceColumn="HOTEN" DataSetColumn="HOTEN" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_NHANVIEN" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DS_NHANVIEN" msprop:Generator_UserDSName="DS_NHANVIEN">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="V_DS_NHANVIEN" msprop:Generator_TableClassName="V_DS_NHANVIENDataTable" msprop:Generator_TableVarName="tableV_DS_NHANVIEN" msprop:Generator_TablePropName="V_DS_NHANVIEN" msprop:Generator_RowDeletingName="V_DS_NHANVIENRowDeleting" msprop:Generator_RowChangingName="V_DS_NHANVIENRowChanging" msprop:Generator_RowEvHandlerName="V_DS_NHANVIENRowChangeEventHandler" msprop:Generator_RowDeletedName="V_DS_NHANVIENRowDeleted" msprop:Generator_UserTableName="V_DS_NHANVIEN" msprop:Generator_RowChangedName="V_DS_NHANVIENRowChanged" msprop:Generator_RowEvArgName="V_DS_NHANVIENRowChangeEvent" msprop:Generator_RowClassName="V_DS_NHANVIENRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MANV" msprop:Generator_ColumnVarNameInTable="columnMANV" msprop:Generator_ColumnPropNameInRow="MANV" msprop:Generator_ColumnPropNameInTable="MANVColumn" msprop:Generator_UserColumnName="MANV" type="xs:int" />
+              <xs:element name="HOTEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHOTEN" msprop:Generator_ColumnPropNameInRow="HOTEN" msprop:Generator_ColumnPropNameInTable="HOTENColumn" msprop:Generator_UserColumnName="HOTEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:V_DS_NHANVIEN" />
+      <xs:field xpath="mstns:MANV" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -83,6 +83,8 @@
             this.datHangTableAdapter = new VatTu.DSTableAdapters.DatHangTableAdapter();
             this.bdsPN = new System.Windows.Forms.BindingSource(this.components);
             this.phieuNhapTableAdapter = new VatTu.DSTableAdapters.PhieuNhapTableAdapter();
+            this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
+            this.phieuXuatTableAdapter = new VatTu.DSTableAdapters.PhieuXuatTableAdapter();
             mANVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -107,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dteNgaySinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
             this.SuspendLayout();
             // 
             // mANVLabel
@@ -295,15 +298,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(931, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1053, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 451);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 458);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(931, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1053, 20);
             // 
             // barDockControlLeft
             // 
@@ -311,15 +314,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 427);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 434);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(931, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1053, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 427);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 434);
             // 
             // groupControl1
             // 
@@ -328,7 +331,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(931, 71);
+            this.groupControl1.Size = new System.Drawing.Size(1053, 71);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Chi Nhánh";
             // 
@@ -389,7 +392,7 @@
             this.gridNhanVien.Name = "gridNhanVien";
             this.gridNhanVien.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridNhanVien.Size = new System.Drawing.Size(931, 218);
+            this.gridNhanVien.Size = new System.Drawing.Size(1053, 218);
             this.gridNhanVien.TabIndex = 9;
             this.gridNhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -511,7 +514,7 @@
             this.gcInfoNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcInfoNhanVien.Location = new System.Drawing.Point(0, 313);
             this.gcInfoNhanVien.Name = "gcInfoNhanVien";
-            this.gcInfoNhanVien.Size = new System.Drawing.Size(931, 138);
+            this.gcInfoNhanVien.Size = new System.Drawing.Size(1053, 145);
             this.gcInfoNhanVien.TabIndex = 10;
             this.gcInfoNhanVien.Text = "Thông Tin";
             // 
@@ -605,11 +608,20 @@
             // 
             this.phieuNhapTableAdapter.ClearBeforeFill = true;
             // 
+            // bdsPX
+            // 
+            this.bdsPX.DataMember = "FK_PX_NhanVien";
+            this.bdsPX.DataSource = this.bdsNV;
+            // 
+            // phieuXuatTableAdapter
+            // 
+            this.phieuXuatTableAdapter.ClearBeforeFill = true;
+            // 
             // FormNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 471);
+            this.ClientSize = new System.Drawing.Size(1053, 478);
             this.Controls.Add(this.gcInfoNhanVien);
             this.Controls.Add(this.gridNhanVien);
             this.Controls.Add(this.groupControl1);
@@ -638,6 +650,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dteNgaySinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -690,5 +703,7 @@
         private DevExpress.XtraEditors.TextEdit txtMaCN;
         private System.Windows.Forms.CheckBox cbTTXoa;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private System.Windows.Forms.BindingSource bdsPX;
+        private DSTableAdapters.PhieuXuatTableAdapter phieuXuatTableAdapter;
     }
 }

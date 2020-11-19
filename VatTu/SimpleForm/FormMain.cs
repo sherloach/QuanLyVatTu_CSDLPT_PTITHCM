@@ -95,5 +95,28 @@ namespace VatTu
                 Program.formLapPhieu.btnSwitch.Links[0].Caption = "Đặt Hàng";
             }
         }
+
+        private void BarButtonItem_CreateAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormTaoTaiKhoan));
+            if (form != null) form.Activate();
+            else
+            {
+                FormTaoTaiKhoan formTaoTaiKhoan = new FormTaoTaiKhoan();
+                formTaoTaiKhoan.MdiParent = this;
+                formTaoTaiKhoan.Show();
+            }
+        }
+
+        private void BarButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormSupportReport3_3));
+            if (form != null) form.Activate();
+            else
+            {
+                FormSupportReport3_3 f = new FormSupportReport3_3();
+                f.ShowDialog();
+            }
+        }
     }
 }

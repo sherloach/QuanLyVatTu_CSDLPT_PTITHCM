@@ -44,5 +44,15 @@ namespace VatTu.Properties {
                 return ((string)(this["QLVT_DATHANGConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-8M2NJ75;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123")]
+        public string QLVT_DATHANGConnectionString2 {
+            get {
+                return ((string)(this["QLVT_DATHANGConnectionString2"]));
+            }
+        }
     }
 }
