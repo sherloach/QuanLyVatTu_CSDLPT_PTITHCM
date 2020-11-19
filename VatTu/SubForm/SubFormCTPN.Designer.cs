@@ -190,6 +190,7 @@
             this.gvCTDDH.OptionsView.ShowViewCaption = true;
             this.gvCTDDH.ViewCaption = "Chi Tiết Đơn Đặt Hàng";
             this.gvCTDDH.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GvCTDDH_RowClick);
+            this.gvCTDDH.CustomRowFilter += new DevExpress.XtraGrid.Views.Base.RowFilterEventHandler(this.GvCTDDH_CustomRowFilter);
             // 
             // colMasoDDH
             // 

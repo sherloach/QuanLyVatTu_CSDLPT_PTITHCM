@@ -27,6 +27,41 @@ namespace VatTu.SubForm
 
         }
 
+        private void showNonCreatedImportDetail(BindingSource bds)
+        {
+            
+            int count = gvCTDDH.RowCount;
+            for (int i = 0; i <= count; i++)
+            {
+                string maVT = gvCTDDH.GetRowCellValue(i, "MAVT").ToString().Trim();
+                int indexMaVT = bdsCTPN.Find("MAVT", maVT);
+                if (indexMaVT != -1)
+                {
+                    
+                }
+            }
+
+        }
+
+        private void GvCTDDH_CustomRowFilter(object sender, DevExpress.XtraGrid.Views.Base.RowFilterEventArgs e)
+        {
+            int count = gvCTDDH.RowCount;
+            for (int i = 0; i < count; i++)
+            {
+                string maVT = gvCTDDH.GetRowCellValue(i, "MAVT").ToString().Trim();
+                int indexMaVT = bdsCTPN.Find("MAVT", maVT);
+                if (indexMaVT != -1)
+                {
+                    if (e.ListSourceRow == i)
+                    {
+                        e.Visible = false;
+                        e.Handled = true;
+                    }
+                }
+            }
+            
+        }
+
         private void SubFormCTPN_Load(object sender, EventArgs e)
         {
             dS.EnforceConstraints = false;
@@ -65,9 +100,13 @@ namespace VatTu.SubForm
         {
             if (bdsCTDDH.Position != -1) // Nếu có dữ liệu
             {
-                txtMaVT.Text = gvCTDDH.GetRowCellValue(bdsCTDDH.Position, "MAVT").ToString().Trim();
-                numSL.Maximum = int.Parse(gvCTDDH.GetRowCellValue(bdsCTDDH.Position, "SOLUONG").ToString().Trim());
-                numDG.Value = int.Parse(gvCTDDH.GetRowCellValue(bdsCTDDH.Position, "DONGIA").ToString().Trim());
+                txtMaVT.Text = gvCTDDH.GetFocusedRowCellValue(gvCTDDH.Columns["MAVT"]).ToString().Trim();
+                numSL.Maximum = int.Parse(gvCTDDH.GetFocusedRowCellValue(gvCTDDH.Columns["SOLUONG"]).ToString().Trim());
+                numDG.Value = int.Parse(gvCTDDH.GetFocusedRowCellValue(gvCTDDH.Columns["DONGIA"]).ToString().Trim());
+
+                //txtMaVT.Text = gvCTDDH.GetRowCellValue(e., "MAVT").ToString().Trim();
+                //numSL.Maximum = int.Parse(gvCTDDH.GetRowCellValue(g, "SOLUONG").ToString().Trim());
+                //numDG.Value = int.Parse(gvCTDDH.GetRowCellValue(gvCTDDH.SelectedRowsCount, "DONGIA").ToString().Trim());
             }
         }
 
@@ -152,5 +191,6 @@ namespace VatTu.SubForm
                 }
             }
         }
+
     }
 }
