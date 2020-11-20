@@ -78,6 +78,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_NHANVIEN.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QLVT_DATHANGDataSet_Report.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLVT_DATHANGDataSet_Report.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Xrpt_HoatDongCuaNhanVien1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Xrpt_HoatDongCuaNhanVien1.Designer.cs">
+      <DependentUpon>Xrpt_HoatDongCuaNhanVien1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Xrpt_HoatDongCuaNhanVien2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Xrpt_HoatDongCuaNhanVien2.Designer.cs">
+      <DependentUpon>Xrpt_HoatDongCuaNhanVien2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\XtraReport_DSNhanVien.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -199,6 +216,12 @@
     <Compile Include="SubForm\SubFormPN.Designer.cs">
       <DependentUpon>SubFormPN.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\Xrpt_HoatDongCuaNhanVien1.resx">
+      <DependentUpon>Xrpt_HoatDongCuaNhanVien1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Xrpt_HoatDongCuaNhanVien2.resx">
+      <DependentUpon>Xrpt_HoatDongCuaNhanVien2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_DSNhanVien.resx">
       <DependentUpon>XtraReport_DSNhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,6 +331,17 @@
     </None>
     <None Include="QLVT_DATHANGDataSet.xss">
       <DependentUpon>QLVT_DATHANGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLVT_DATHANGDataSet_Report.xsc">
+      <DependentUpon>QLVT_DATHANGDataSet_Report.xsd</DependentUpon>
+    </None>
+    <None Include="QLVT_DATHANGDataSet_Report.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLVT_DATHANGDataSet_Report.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLVT_DATHANGDataSet_Report.xss">
+      <DependentUpon>QLVT_DATHANGDataSet_Report.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup />

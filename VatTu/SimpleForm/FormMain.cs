@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -117,6 +118,13 @@ namespace VatTu
                 FormSupportReport3_3 f = new FormSupportReport3_3();
                 f.ShowDialog();
             }
+        }
+
+        private void BarButtonItem_HDNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Report.Xrpt_HoatDongCuaNhanVien2 reportHoatDongNhanVien = new Report.Xrpt_HoatDongCuaNhanVien2();
+            ReportPrintTool rpt = new ReportPrintTool(reportHoatDongNhanVien);
+            reportHoatDongNhanVien.ShowPreviewDialog();
         }
     }
 }

@@ -27,22 +27,6 @@ namespace VatTu.SubForm
 
         }
 
-        private void showNonCreatedImportDetail(BindingSource bds)
-        {
-            
-            int count = gvCTDDH.RowCount;
-            for (int i = 0; i <= count; i++)
-            {
-                string maVT = gvCTDDH.GetRowCellValue(i, "MAVT").ToString().Trim();
-                int indexMaVT = bdsCTPN.Find("MAVT", maVT);
-                if (indexMaVT != -1)
-                {
-                    
-                }
-            }
-
-        }
-
         private void GvCTDDH_CustomRowFilter(object sender, DevExpress.XtraGrid.Views.Base.RowFilterEventArgs e)
         {
             int count = gvCTDDH.RowCount;

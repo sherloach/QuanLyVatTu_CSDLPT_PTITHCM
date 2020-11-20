@@ -67,7 +67,7 @@ namespace VatTu.SimpleForm
 
             Program.conn = new SqlConnection(Program.connstr);
             Program.conn.Open();
-            SqlCommand cmd = new SqlCommand("SP_TAOTK", Program.conn);
+            SqlCommand cmd = new SqlCommand("SP_TAOACCOUNT", Program.conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@LGNAME", login));
             cmd.Parameters.Add(new SqlParameter("@PASS", password));
