@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using VatTu.SimpleForm;
 using VatTu.SubForm;
+using VatTu.Report;
 
 namespace VatTu
 {
@@ -49,6 +50,7 @@ namespace VatTu
         public static SubFormPN subFormPN;
         public static SubFormCTPN subFormCTPN;
         public static SubFormKho subFormKho;
+        public static Frpt_HoatDongCuaNhanVien frpt_HoatDongCuaNhanVien;
 
         public static int KetNoi()
         {

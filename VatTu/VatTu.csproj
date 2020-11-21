@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLVT_DATHANGDataSet_Report.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\Frpt_HoatDongCuaNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Frpt_HoatDongCuaNhanVien.Designer.cs">
+      <DependentUpon>Frpt_HoatDongCuaNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\Xrpt_HoatDongCuaNhanVien1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     <Compile Include="SubForm\SubFormPN.Designer.cs">
       <DependentUpon>SubFormPN.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\Frpt_HoatDongCuaNhanVien.resx">
+      <DependentUpon>Frpt_HoatDongCuaNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_HoatDongCuaNhanVien1.resx">
       <DependentUpon>Xrpt_HoatDongCuaNhanVien1.cs</DependentUpon>
     </EmbeddedResource>

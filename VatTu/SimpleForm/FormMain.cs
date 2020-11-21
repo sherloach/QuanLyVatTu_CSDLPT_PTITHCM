@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VatTu.Report;
 using VatTu.SimpleForm;
 
 namespace VatTu
@@ -122,9 +123,9 @@ namespace VatTu
 
         private void BarButtonItem_HDNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Report.Xrpt_HoatDongCuaNhanVien2 reportHoatDongNhanVien = new Report.Xrpt_HoatDongCuaNhanVien2();
-            ReportPrintTool rpt = new ReportPrintTool(reportHoatDongNhanVien);
-            reportHoatDongNhanVien.ShowPreviewDialog();
+            Program.frpt_HoatDongCuaNhanVien = new Frpt_HoatDongCuaNhanVien();
+            Program.frpt_HoatDongCuaNhanVien.Show();
+            Program.formMain.Enabled = false;
         }
     }
 }
