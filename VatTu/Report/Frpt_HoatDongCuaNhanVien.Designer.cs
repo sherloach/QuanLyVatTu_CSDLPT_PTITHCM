@@ -231,6 +231,8 @@
             this.cbMaNV.Size = new System.Drawing.Size(46, 21);
             this.cbMaNV.TabIndex = 17;
             this.cbMaNV.ValueMember = "MANV";
+            this.cbMaNV.SelectionChangeCommitted += new System.EventHandler(this.CbMaNV_SelectionChangeCommitted);
+            this.cbMaNV.ContextMenuStripChanged += new System.EventHandler(this.CbMaNV_ContextMenuStripChanged);
             this.cbMaNV.TextChanged += new System.EventHandler(this.CbMaNV_TextChanged);
             // 
             // vDSNHANVIENBindingSource
