@@ -45,14 +45,14 @@ namespace VatTu.Report
             String type = (rbNhap.Checked) ? "N" : "X";
 
             Xrpt_HoatDongCuaNhanVien2 rpt = new Xrpt_HoatDongCuaNhanVien2(maNV, deFrom.DateTime, deTo.DateTime, type);
-            rpt.xrlMaNV.Text = maNV.ToString().Trim();
+            /*rpt.xrlMaNV.Text = maNV.ToString().Trim();
             rpt.xrlHoTen.Text = tenNV;
             rpt.xrlNgaySinh.Text = ngaySinh;
             rpt.xrlDiaChi.Text = diaChi;
             rpt.xrlLuong.Text = luong.ToString().Trim();
             rpt.xrlCN.Text = maCN;
             rpt.xrTitle.Text = "BẢNG KÊ CHỨNG TỪ PHIẾU ";
-            rpt.xrTitle.Text += (type == "N") ? "NHẬP" : "XUẤT";
+            rpt.xrTitle.Text += (type == "N") ? "NHẬP" : "XUẤT";*/
 
             ReportPrintTool print = new ReportPrintTool(rpt);
             rpt.ShowPreviewDialog();

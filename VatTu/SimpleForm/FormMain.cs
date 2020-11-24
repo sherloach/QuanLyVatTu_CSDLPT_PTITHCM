@@ -127,5 +127,16 @@ namespace VatTu
             Program.frpt_HoatDongCuaNhanVien.Show();
             Program.formMain.Enabled = false;
         }
+
+        private void BarButtonItem_THNX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormSupportReport3_6));
+            if (form != null) form.Activate();
+            else
+            {
+                FormSupportReport3_6 f = new FormSupportReport3_6();
+                f.ShowDialog();
+            }
+        }
     }
 }

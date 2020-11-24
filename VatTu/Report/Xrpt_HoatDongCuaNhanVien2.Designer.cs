@@ -37,6 +37,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Xrpt_HoatDongCuaNhanVien2));
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery2 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter5 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter6 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter7 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter8 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.GroupCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -111,6 +116,7 @@
             this.label7 = new DevExpress.XtraReports.UI.XRLabel();
             this.qlvT_DATHANGDataSet_Report1 = new VatTu.QLVT_DATHANGDataSet_Report();
             this.sP_RP_HoatDongCuaNhanVienTableAdapter = new VatTu.QLVT_DATHANGDataSet_ReportTableAdapters.SP_RP_HoatDongCuaNhanVienTableAdapter();
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
@@ -1096,6 +1102,32 @@
             // 
             this.sP_RP_HoatDongCuaNhanVienTableAdapter.ClearBeforeFill = true;
             // 
+            // sqlDataSource2
+            // 
+            this.sqlDataSource2.ConnectionName = "VatTu.Properties.Settings.QLVT_DATHANGConnectionString1";
+            this.sqlDataSource2.Name = "sqlDataSource2";
+            storedProcQuery2.Name = "SP_RP_HoatDongCuaNhanVien";
+            queryParameter5.Name = "@MANV";
+            queryParameter5.Type = typeof(int);
+            queryParameter5.ValueInfo = "7";
+            queryParameter6.Name = "@FROM";
+            queryParameter6.Type = typeof(System.DateTime);
+            queryParameter6.ValueInfo = "2017-01-01";
+            queryParameter7.Name = "@TO";
+            queryParameter7.Type = typeof(System.DateTime);
+            queryParameter7.ValueInfo = "2021-01-01";
+            queryParameter8.Name = "@LOAI";
+            queryParameter8.Type = typeof(char);
+            queryParameter8.ValueInfo = "N";
+            storedProcQuery2.Parameters.Add(queryParameter5);
+            storedProcQuery2.Parameters.Add(queryParameter6);
+            storedProcQuery2.Parameters.Add(queryParameter7);
+            storedProcQuery2.Parameters.Add(queryParameter8);
+            storedProcQuery2.StoredProcName = "SP_RP_HoatDongCuaNhanVien";
+            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery2});
+            this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
+            // 
             // Xrpt_HoatDongCuaNhanVien2
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1110,8 +1142,11 @@
             this.ReportFooter});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1,
-            this.qlvT_DATHANGDataSet_Report1});
+            this.qlvT_DATHANGDataSet_Report1,
+            this.sqlDataSource2});
             this.DataAdapter = this.sP_RP_HoatDongCuaNhanVienTableAdapter;
+            this.DataMember = "SP_RP_HoatDongCuaNhanVien";
+            this.DataSource = this.sqlDataSource2;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(22, 24, 14, 146);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
@@ -1215,5 +1250,6 @@
         public DevExpress.XtraReports.UI.XRLabel xrlLuong;
         public DevExpress.XtraReports.UI.XRLabel xrlCN;
         public DevExpress.XtraReports.UI.XRLabel xrTitle;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
     }
 }

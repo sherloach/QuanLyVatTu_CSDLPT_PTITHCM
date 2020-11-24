@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -114,13 +115,17 @@ namespace VatTu
             txtMaCN.Text = maCN;
             dteNgaySinh.EditValue = "";
 
-            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = gridNhanVien.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
-            gridNhanVien.Enabled = false;
         }
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Int32 manv = 0;
+            if (cbTTXoa.Checked == true)
+            {
+                MessageBox.Show("Nhân viên đã bị xóa, đang ở chi nhánh khác", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (bdsDH.Count > 0)
             {
                 MessageBox.Show("Không thể xóa nhân viên này vì đã lập đơn đặt hàng", "",
@@ -133,7 +138,12 @@ namespace VatTu
                        MessageBoxButtons.OK);
                 return;
             }
-            if (MessageBox.Show("Bạn có thật sự muốn xóa nhân viên này ?? ", "Xác nhận",
+            if (bdsPX.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa nhân viên vì đã lập phiếu xuất", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thật sự muốn xóa nhân viên này không?? ", "Xác nhận",
                        MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try
@@ -158,46 +168,81 @@ namespace VatTu
 
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (txtMaNV.Text.Trim() == "")
-            {
-                MessageBox.Show("Mã nhân viên không được thiếu!", "", MessageBoxButtons.OK);
-                txtMaNV.Focus();
-                return;
-            }
-            if (txtHo.Text.Trim() == "")
-            {
-                MessageBox.Show("Họ nhân viên không được thiếu!", "", MessageBoxButtons.OK);
-                txtHo.Focus();
-                return;
-            }
-            if (txtTen.Text.Trim() == "")
-            {
-                MessageBox.Show("Tên nhân viên không được thiếu!", "", MessageBoxButtons.OK);
-                txtTen.Focus();
-                return;
-            }
+            // Check ràng buộc text box
+            if (!Validate(txtMaNV, "Mã nhân viên không được để trống!")) return;
+            if (!Validate(txtHo, "Họ nhân viên không được để trống!")) return;
+            if (!Validate(txtTen, "Tên nhân viên không được để trống!")) return;
+            if (!Validate(txtDiaChi, "Địa chỉ không được để trống!")) return;
+            if (!Validate(txtLuong, "Lương không được để trống!")) return;
+            if (!Validate(dteNgaySinh, "Ngày sinh không được để trống!")) return;
+            txtMaNV.Text = txtMaNV.Text.Trim();
             // Kiểm tra MACN, PHAI, NGAYSINH  phải có
             // LUONg thỏa Miền giá trị
-            // MANV không được trùng trên các phân mảnh
+
+            String maNV = txtMaNV.Text;
+            String query_MANV = "DECLARE @return_value int " +
+                           "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                           "@p1, @p2 " +
+                           "SELECT 'Return Value' = @return_value";
+            SqlCommand sqlCommand = new SqlCommand(query_MANV, Program.conn);
+            sqlCommand.Parameters.AddWithValue("@p1", maNV);
+            sqlCommand.Parameters.AddWithValue("@p2", "MANV");
+            SqlDataReader dataReader = null;
 
             try
             {
-                bdsNV.EndEdit();
-                bdsNV.ResetCurrentItem();
-                this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.nhanVienTableAdapter.Update(this.dS.NhanVien);
-
+                dataReader = sqlCommand.ExecuteReader();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi ghi nhân viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            gridNhanVien.Enabled = true;
-            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-            btnGhi.Enabled = btnUndo.Enabled = false;
+            // Đọc và lấy result
+            dataReader.Read();
+            int result_value_MANV = int.Parse(dataReader.GetValue(0).ToString());
+            dataReader.Close();
+            // Check ràng buộc MANV
+            int indexMaNV = bdsNV.Find("MANV", txtMaNV.Text);
 
-            gcInfoNhanVien.Enabled = false;
+            int indexCurrent = bdsNV.Position;
+            if (result_value_MANV == 1 && (indexMaNV != indexCurrent))
+            {
+                MessageBox.Show("Mã NV đã tồn tại ở chi chánh hiện tại!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (result_value_MANV == 2)
+            {
+                MessageBox.Show("Mã NV đã tồn tại ở chi nhánh khác!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            else
+            {
+                DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    try
+                    {
+                        //Program.flagCloseFormKho = true; //Bật cờ cho phép tắt Form NV
+                        btnThem.Enabled = btnXoa.Enabled = gridNhanVien.Enabled = gcInfoNhanVien.Enabled = true;
+                        btnReload.Enabled = btnGhi.Enabled = true;
+                        btnUndo.Enabled = false;
+                        this.bdsNV.EndEdit();
+                        this.nhanVienTableAdapter.Update(this.dS.NhanVien);
+                        bdsNV.Position = position;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Khi Update database lỗi thì xóa record vừa thêm trong bds
+                        bdsNV.RemoveCurrent();
+                        MessageBox.Show("Thất bại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -207,7 +252,16 @@ namespace VatTu
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            try
+            {
+                this.nhanVienTableAdapter.Fill(this.dS.NhanVien);
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi Reload :" + ex.Message, "", MessageBoxButtons.OK);
+                return;
+            }
         }
 
         String CNchuyen;
@@ -262,7 +316,51 @@ namespace VatTu
 
         private void BtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.Close();
+        }
 
+        private bool Validate(TextBox tb, string str)
+        {
+            if (tb.Text.Trim().Equals(""))
+            {
+                MessageBox.Show(str, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tb.Focus();
+                return false;
+            }
+            return true;
+        }
+        private bool Validate(DateEdit date, string str)
+        {
+            if (date.Text.Trim().Equals(""))
+            {
+                MessageBox.Show(str, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                date.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private void TxtLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtMaNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -35,6 +35,7 @@
             this.button_Submit = new System.Windows.Forms.Button();
             this.dteDate_To = new DevExpress.XtraEditors.DateEdit();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate_From.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate_From.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate_To.Properties.CalendarTimeProperties)).BeginInit();
@@ -105,7 +106,7 @@
             this.button_Submit.Name = "button_Submit";
             this.button_Submit.Size = new System.Drawing.Size(125, 41);
             this.button_Submit.TabIndex = 5;
-            this.button_Submit.Text = "Xác nhận";
+            this.button_Submit.Text = "Preview";
             this.button_Submit.UseVisualStyleBackColor = true;
             this.button_Submit.Click += new System.EventHandler(this.Button_Submit_Click);
             // 
@@ -143,11 +144,22 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "-";
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.button1.Location = new System.Drawing.Point(603, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 41);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Print";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FormSupportReport3_3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 602);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dteDate_To);
             this.Controls.Add(this.button_Submit);
@@ -181,5 +193,7 @@
         #region Windows Form Designer generated code
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
     }
 }
