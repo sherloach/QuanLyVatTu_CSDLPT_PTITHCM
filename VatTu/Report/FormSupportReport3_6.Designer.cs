@@ -45,7 +45,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(473, 135);
+            this.label3.Location = new System.Drawing.Point(152, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 19);
             this.label3.TabIndex = 14;
@@ -55,7 +55,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 135);
+            this.label2.Location = new System.Drawing.Point(41, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 10;
@@ -64,7 +64,7 @@
             // dateEditFrom
             // 
             this.dateEditFrom.EditValue = null;
-            this.dateEditFrom.Location = new System.Drawing.Point(257, 127);
+            this.dateEditFrom.Location = new System.Drawing.Point(127, 54);
             this.dateEditFrom.Name = "dateEditFrom";
             this.dateEditFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -76,7 +76,7 @@
             // dateEditTo
             // 
             this.dateEditTo.EditValue = null;
-            this.dateEditTo.Location = new System.Drawing.Point(555, 128);
+            this.dateEditTo.Location = new System.Drawing.Point(253, 54);
             this.dateEditTo.Name = "dateEditTo";
             this.dateEditTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -88,9 +88,9 @@
             // buttonPrint
             // 
             this.buttonPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.buttonPrint.Location = new System.Drawing.Point(425, 289);
+            this.buttonPrint.Location = new System.Drawing.Point(207, 141);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(125, 41);
+            this.buttonPrint.Size = new System.Drawing.Size(125, 35);
             this.buttonPrint.TabIndex = 18;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@
             // buttonPreview
             // 
             this.buttonPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.buttonPreview.Location = new System.Drawing.Point(257, 289);
+            this.buttonPreview.Location = new System.Drawing.Point(29, 141);
             this.buttonPreview.Name = "buttonPreview";
-            this.buttonPreview.Size = new System.Drawing.Size(125, 41);
+            this.buttonPreview.Size = new System.Drawing.Size(125, 35);
             this.buttonPreview.TabIndex = 17;
             this.buttonPreview.Text = "Preview";
             this.buttonPreview.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(508, 367);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.buttonPreview);
             this.Controls.Add(this.dateEditTo);

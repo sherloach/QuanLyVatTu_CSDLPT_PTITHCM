@@ -55,6 +55,7 @@
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.barButtonItem_DSVT = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_out = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_DSNV = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -82,9 +83,10 @@
             this.barButtonItem2,
             this.barButtonItem_THNX,
             this.barButtonItem_DSVT,
-            this.barButtonItem_out});
+            this.barButtonItem_out,
+            this.barButtonItem_DSNV});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 19;
+            this.ribbonControl1.MaxItemId = 20;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.DanhSach,
@@ -252,6 +254,7 @@
             // 
             // ribbonPageGroup8
             // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem_DSNV);
             this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem_DSVT);
             this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem_CTSLNX);
             this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem_HDNV);
@@ -276,10 +279,18 @@
             // 
             this.barButtonItem_out.Caption = "Đăng Xuất";
             this.barButtonItem_out.Id = 18;
-            this.barButtonItem_out.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem_out.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem_out.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image1")));
+            this.barButtonItem_out.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage1")));
             this.barButtonItem_out.Name = "barButtonItem_out";
             this.barButtonItem_out.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_out_ItemClick);
+            // 
+            // barButtonItem_DSNV
+            // 
+            this.barButtonItem_DSNV.Caption = "Danh Sách Nhân Viên";
+            this.barButtonItem_DSNV.Id = 19;
+            this.barButtonItem_DSNV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image2")));
+            this.barButtonItem_DSNV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage2")));
+            this.barButtonItem_DSNV.Name = "barButtonItem_DSNV";
             // 
             // FormChinh
             // 
@@ -327,6 +338,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem_THNX;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_DSVT;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_out;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_DSNV;
     }
 }
 

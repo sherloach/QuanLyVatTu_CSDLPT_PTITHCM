@@ -123,4 +123,7 @@
   <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlNQX1JFUE9SVFRvbmdob3BOaGFwWHVhdF9OViI+PEZpZWxkIE5hbWU9Ik5HQVkiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJOSEFQIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlRZTEVOSEFQIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlhVQVQiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iVFlMRVhVQVQiIFR5cGU9IkRvdWJsZSIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
   </data>
+  <metadata name="qlvT_DATHANGDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
 </root>
