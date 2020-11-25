@@ -237,7 +237,7 @@ namespace VatTu.SimpleForm
             } 
             else
             {
-                MessageBox.Show("Bạn không phải là người lập phiếu/đơn này", "Lỗi",
+                MessageBox.Show("Bạn không có quyền xóa phiếu/đơn này!", "Lỗi",
                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -434,11 +434,6 @@ namespace VatTu.SimpleForm
             ((DataRowView)bdsPN[bdsPN.Position])["NGAY"] = DateTime.Today;
         }
 
-        private void MiXoaPN_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MiGhiPN_Click(object sender, EventArgs e)
         {
             string maPN = this.gvPN.GetRowCellValue(bdsPN.Position, "MAPN").ToString();
@@ -508,6 +503,37 @@ namespace VatTu.SimpleForm
             }
         }
 
+        private void MiXoaPN_Click(object sender, EventArgs e)
+        {
+            string maPhieu = "";
+            if (bdsCTPN.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa phiếu nhập này vì đã lập chi tiết phiếu nhập!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Bạn có thực sự muốn xóa phiếu này không?", "Xác nhận",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                try
+                {
+                    maPhieu = ((DataRowView)bdsPN[bdsPN.Position])["MAPN"].ToString();
+                    bdsPN.RemoveCurrent();
+                    this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.phieuNhapTableAdapter.Fill(this.dS.PhieuNhap);
+                    bdsPN.Position = bdsPN.Find("MAPN", maPhieu);
+                    return;
+                }
+            }
+        }
+
         // ______ CTPN ______
         private void MiThemCTPN_Click(object sender, EventArgs e)
         {
@@ -527,6 +553,7 @@ namespace VatTu.SimpleForm
             Program.subFormCTPN.Show();
             Program.formMain.Enabled = false;
         }
+
 
         // ______ CTPX ______
         private void GridCTPX_MouseHover(object sender, EventArgs e)
