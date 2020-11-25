@@ -43,7 +43,6 @@ namespace VatTu.SubForm
                     }
                 }
             }
-            
         }
 
         private void SubFormCTPN_Load(object sender, EventArgs e)

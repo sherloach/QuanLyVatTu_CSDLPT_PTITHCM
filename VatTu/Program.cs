@@ -17,7 +17,7 @@ namespace VatTu
         /// </summary>
 
         // CONTY: site1: TNLMMT || site2: HA
-        // CHINHANH: site1: QLAMMT || site2: TH
+        // CHINHANH: site1: QLAMMT, NQH || site2: TH
 
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;

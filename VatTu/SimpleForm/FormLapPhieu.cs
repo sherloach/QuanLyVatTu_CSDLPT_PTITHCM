@@ -21,6 +21,14 @@ namespace VatTu.SimpleForm
     {
         int position = 0;
         string maCN = "";
+
+        // Do form phiếu thiết kế theo kiểu tổng hợp của 3 loại phiếu,
+        // nên tùy vào user chọn phiếu nào hệ thống sẽ gán binding source tương ứng
+        BindingSource current_bds = null;
+        GridControl current_gc = null;
+        GroupBox current_gb = null; // Khu vực điền thông tin phiếu
+        string type = "";
+
         public FormLapPhieu()
         {
             InitializeComponent();
@@ -71,6 +79,22 @@ namespace VatTu.SimpleForm
             {
                 comboBox_ChiNhanh.Enabled = false;
                 gbInfoDDH.Enabled = gbInfoPX.Enabled = btnGhi.Enabled = false;
+            }
+
+            // Gán DataSource
+            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                current_bds = bdsPX;
+                current_gc = gridPX;
+                current_gb = gbInfoPX;
+                type = "MAPX";
+            }
+            else
+            {
+                current_bds = bdsDH;
+                current_gc = gridDDH;
+                current_gb = gbInfoDDH;
+                type = "MasoDDH";
             }
         }
 
@@ -127,11 +151,7 @@ namespace VatTu.SimpleForm
         // ------ CRUD ------
         private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // Tùy từng type trong Form Lập phiếu mà chọn ra binding source tương ứng.
-            BindingSource current_bds = null;
-            GridControl current_gc = null;
-            GroupBox current_gb = null;
-
+            /*
             if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
             {
                 current_bds = bdsPX;
@@ -143,7 +163,7 @@ namespace VatTu.SimpleForm
                 current_bds = bdsDH;
                 current_gc = gridDDH;
                 current_gb = gbInfoDDH;
-            }
+            }*/
             // Giữ lại vị trí trước khi CRUD
             position = current_bds.Position;
 
@@ -157,12 +177,89 @@ namespace VatTu.SimpleForm
 
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (check_owner(current_bds, type.Equals("MAPX") ? gvPX : gvDDH)) {
+                string maPhieu = "";
+                if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+                {
+                    //type = "MAPX";
+                    if (bdsCTPX.Count > 0)
+                    {
+                        MessageBox.Show("Không thể xóa phiếu này vì đã lập chi tiết phiếu xuất", "Lỗi",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    //type = "MasoDDH";
+                    if (bdsCTDDH.Count > 0)
+                    {
+                        MessageBox.Show("Không thể xóa đơn đặt hàng này vì đã lập chi tiết DDH", "Lỗi",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (bdsPN.Count > 0)
+                    {
+                        MessageBox.Show("Không thể xóa đơn đặt hàng này vì đã lập phiếu nhập", "Lỗi",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
+                DialogResult dr = MessageBox.Show("Bạn có thực sự muốn xóa phiếu/đơn này không?", "Xác nhận",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    try
+                    {
+                        maPhieu = ((DataRowView)current_bds[current_bds.Position])[type].ToString();
+                        current_bds.RemoveCurrent();
+                        if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+                        {
+                            this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
+                        }
+                        else
+                        {
+                            this.datHangTableAdapter.Update(this.dS.DatHang);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.phieuXuatTableAdapter.Fill(this.dS.PhieuXuat);
+                        this.datHangTableAdapter.Fill(this.dS.DatHang);
+                        current_bds.Position = current_bds.Find(type, maPhieu);
+                        return;
+                    }
+                }
+            } 
+            else
+            {
+                MessageBox.Show("Bạn không phải là người lập phiếu/đơn này", "Lỗi",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            if (current_bds.Count == 0) btnXoa.Enabled = false;
         }
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            try
+            {
+                this.datHangTableAdapter.Fill(this.dS.DatHang);
+                this.cTDDHTableAdapter.Fill(this.dS.CTDDH);
+                this.phieuNhapTableAdapter.Fill(this.dS.PhieuNhap);
+                this.cTPNTableAdapter.Fill(this.dS.CTPN);
+                this.phieuXuatTableAdapter.Fill(this.dS.PhieuXuat);
+                this.cTPXTableAdapter.Fill(this.dS.CTPX);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi Reload :" + ex.Message, "", MessageBoxButtons.OK);
+                return;
+            }
         }
 
         private void BtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -170,11 +267,7 @@ namespace VatTu.SimpleForm
             // TODO: thêm ddh, phiếu xuất dùng chung hàm
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                BindingSource current_bds = null;
-                String type = "";
                 TextBox tb_maPhieu = null;
-                GridControl current_gc = null;
-                GroupBox current_gb = null;
                 if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
                 {
                     current_bds = bdsPX;
@@ -288,10 +381,10 @@ namespace VatTu.SimpleForm
 
         private void GridCTDDH_MouseHover(object sender, EventArgs e)
         {
-            gridCTDDH.ContextMenuStrip = check_owner(bdsDH, gvDDH) ? cmsCTDDH : null;
+            gridCTDDH.ContextMenuStrip = check_owner(bdsDH, gvDDH) ? cmsCTDDH : cmsChecked;
         }
 
-        // ______ PN ______
+        // ______ PHIẾU NHẬP ______
         private void GridPN_MouseHover(object sender, EventArgs e)
         {
             if (check_owner(bdsDH, gvDDH))
@@ -299,13 +392,13 @@ namespace VatTu.SimpleForm
                 if (this.bdsPN.Count > 0)
                 {
                     cmsPN.Items[0].Text = "Đã thêm phiếu nhập";
-                    cmsPN.Items[0].Enabled = false;
-                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = true;
+                    cmsPN.Items[0].Enabled = cmsPN.Items[2].Visible = false;
+                    cmsPN.Items[1].Enabled  = cmsPN.Items[3].Enabled = true;
                 }
                 else
                 {
                     cmsPN.Items[0].Text = "Thêm phiếu nhập";
-                    cmsPN.Items[0].Enabled = true;
+                    cmsPN.Items[0].Enabled = cmsPN.Items[2].Visible = true;
                     cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = false;
                 }
                 gridPN.ContextMenuStrip = cmsPN;
@@ -335,6 +428,11 @@ namespace VatTu.SimpleForm
             ((DataRowView)bdsPN[bdsPN.Position])["NGAY"] = DateTime.Today;
         }
 
+        private void MiXoaPN_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void MiGhiPN_Click(object sender, EventArgs e)
         {
             string maPN = this.gvPN.GetRowCellValue(bdsPN.Position, "MAPN").ToString();
@@ -362,9 +460,8 @@ namespace VatTu.SimpleForm
             dataReader.Read();
             int result_value = int.Parse(dataReader.GetValue(0).ToString());
             dataReader.Close();
-
             // Check ràng buộc mã các phiếu
-            //int indexMaPhieu = bdsPN.Find("MAPN", maPN);
+            //int indexMaPhieu = bdsPN.Find("", maPN);
             //int indexCurrent = bdsPN.Position;
             if (result_value == 1)
             {
@@ -389,7 +486,7 @@ namespace VatTu.SimpleForm
                         this.bdsPN.EndEdit();
                         this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
                         gridDDH.Enabled = true;
-                        cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = true;
+                        cmsPN.Items[1].Enabled = cmsPN.Items[3].Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -428,7 +525,7 @@ namespace VatTu.SimpleForm
         // ______ CTPX ______
         private void GridCTPX_MouseHover(object sender, EventArgs e)
         {
-            gridCTPX.ContextMenuStrip = check_owner(bdsPX, gvPX) ? cmsCTPX : null;
+            gridCTPX.ContextMenuStrip = check_owner(bdsPX, gvPX) ? cmsCTPX : cmsChecked;
         }
 
         private void MiThemCTPX_Click(object sender, EventArgs e)
@@ -442,18 +539,30 @@ namespace VatTu.SimpleForm
         {
             switchPanel("Đặt Hàng", gcDDH, gridDDH);
             btnThem.Enabled = btnXoa.Enabled = true;
+
+            // Gán data sources
+            current_bds = bdsDH;
+            current_gc = gridDDH;
+            current_gb = gbInfoDDH;
+            type = "MasoDDH";
         }
 
         private void BtnPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switchPanel("Phiếu Nhập", gcPN, gridDDH);
-            btnThem.Enabled = btnXoa.Enabled = false;
+            btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = false;
         }
 
         private void BtnPX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switchPanel("Phiếu Xuất", gcPX, gridPX);
             btnThem.Enabled = btnXoa.Enabled = true;
+
+            // Gán data sources
+            current_bds = bdsPX;
+            current_gc = gridPX;
+            current_gb = gbInfoPX;
+            type = "MAPX";
         }
 
         private void switchPanel(string type, GroupControl groupControl, GridControl gridControl)
@@ -616,7 +725,7 @@ namespace VatTu.SimpleForm
                     e.Valid = false;
                     e.ErrorText = "Vui lòng nhập mã phiếu nhập!";
                 }
-                else if (val.ToString().Contains(" "))
+                else if (val.ToString().Trim().Contains(" "))
                 {
                     e.Valid = false;
                     e.ErrorText = "Mã phiếu nhập không được chứa khoảng trắng!";
@@ -666,5 +775,6 @@ namespace VatTu.SimpleForm
             return this.dS;
         }
 
+        
     }
 }
