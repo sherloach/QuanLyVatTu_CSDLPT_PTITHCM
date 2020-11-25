@@ -351,6 +351,7 @@
             this.btnThoat.Id = 9;
             this.btnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoat.ImageOptions.SvgImage")));
             this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnThoat_ItemClick);
             // 
             // bar3
             // 
@@ -418,6 +419,7 @@
             // 
             // comboBox_ChiNhanh
             // 
+            this.comboBox_ChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChiNhanh.FormattingEnabled = true;
             this.comboBox_ChiNhanh.Location = new System.Drawing.Point(211, 32);
             this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";

@@ -70,6 +70,7 @@
             this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gcInfoNhanVien = new DevExpress.XtraEditors.GroupControl();
+            this.cbTTXoa = new System.Windows.Forms.CheckBox();
             this.txtMaCN = new DevExpress.XtraEditors.TextEdit();
             this.txtLuong = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -83,7 +84,6 @@
             this.phieuNhapTableAdapter = new VatTu.DSTableAdapters.PhieuNhapTableAdapter();
             this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
             this.phieuXuatTableAdapter = new VatTu.DSTableAdapters.PhieuXuatTableAdapter();
-            this.cbTTXoa = new System.Windows.Forms.CheckBox();
             mANVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -335,6 +335,7 @@
             // 
             // comboBox_ChiNhanh
             // 
+            this.comboBox_ChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChiNhanh.FormattingEnabled = true;
             this.comboBox_ChiNhanh.Location = new System.Drawing.Point(180, 35);
             this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
@@ -506,6 +507,18 @@
             this.gcInfoNhanVien.TabIndex = 10;
             this.gcInfoNhanVien.Text = "Thông Tin";
             // 
+            // cbTTXoa
+            // 
+            this.cbTTXoa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbTTXoa.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsNV, "TrangThaiXoa", true));
+            this.cbTTXoa.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.cbTTXoa.Location = new System.Drawing.Point(698, 103);
+            this.cbTTXoa.Name = "cbTTXoa";
+            this.cbTTXoa.Size = new System.Drawing.Size(104, 24);
+            this.cbTTXoa.TabIndex = 19;
+            this.cbTTXoa.Text = "Trạng thái xóa";
+            this.cbTTXoa.UseVisualStyleBackColor = true;
+            // 
             // txtMaCN
             // 
             this.txtMaCN.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "MACN", true));
@@ -598,18 +611,6 @@
             // phieuXuatTableAdapter
             // 
             this.phieuXuatTableAdapter.ClearBeforeFill = true;
-            // 
-            // cbTTXoa
-            // 
-            this.cbTTXoa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbTTXoa.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsNV, "TrangThaiXoa", true));
-            this.cbTTXoa.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.cbTTXoa.Location = new System.Drawing.Point(698, 103);
-            this.cbTTXoa.Name = "cbTTXoa";
-            this.cbTTXoa.Size = new System.Drawing.Size(104, 24);
-            this.cbTTXoa.TabIndex = 19;
-            this.cbTTXoa.Text = "Trạng thái xóa";
-            this.cbTTXoa.UseVisualStyleBackColor = true;
             // 
             // FormNhanVien
             // 

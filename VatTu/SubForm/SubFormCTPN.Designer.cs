@@ -219,8 +219,8 @@
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn giá";
-            this.colDONGIA.DisplayFormat.FormatString = "c2";
-            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDONGIA.DisplayFormat.FormatString = "VND {0:n3}";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.Name = "colDONGIA";
             this.colDONGIA.Visible = true;

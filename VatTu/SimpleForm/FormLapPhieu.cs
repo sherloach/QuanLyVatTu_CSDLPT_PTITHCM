@@ -74,6 +74,7 @@ namespace VatTu.SimpleForm
             {
                 comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
                 btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = false;
             }
             else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
             {
@@ -358,6 +359,11 @@ namespace VatTu.SimpleForm
             }
         }
 
+        private void BtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
         // ------ POPUP MENU ------
         // ______ CTDDH ______
         private void GvCTDDH_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -392,8 +398,8 @@ namespace VatTu.SimpleForm
                 if (this.bdsPN.Count > 0)
                 {
                     cmsPN.Items[0].Text = "Đã thêm phiếu nhập";
-                    cmsPN.Items[0].Enabled = cmsPN.Items[2].Visible = false;
-                    cmsPN.Items[1].Enabled  = cmsPN.Items[3].Enabled = true;
+                    cmsPN.Items[0].Enabled = false;
+                    cmsPN.Items[1].Enabled = cmsPN.Items[2].Enabled = cmsPN.Items[3].Enabled = true;
                 }
                 else
                 {
@@ -775,6 +781,5 @@ namespace VatTu.SimpleForm
             return this.dS;
         }
 
-        
     }
 }
