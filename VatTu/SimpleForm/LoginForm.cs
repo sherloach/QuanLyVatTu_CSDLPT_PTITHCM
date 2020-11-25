@@ -51,8 +51,8 @@ namespace VatTu
             Program.password = textBox_Password.Text;
             if (Program.KetNoi() == 0) return;
 
-            MessageBox.Show("Đăng nhập thành công.", "", MessageBoxButtons.OK);
-            Program.tenChiNhanh = comboBox_ChiNhanh.Text; //Lay ten chi nhanh da dang nhap
+            //MessageBox.Show("Đăng nhập thành công.", "", MessageBoxButtons.OK);
+            Program.tenChiNhanh = comboBox_ChiNhanh.Text; // Lay ten chi nhanh da dang nhap
             Program.mChinhanh = comboBox_ChiNhanh.SelectedIndex;
             Program.bds_dspm = vDSPHANMANHBindingSource;
             Program.mloginDN = Program.mlogin;
@@ -98,6 +98,15 @@ namespace VatTu
         private void TextBox_Password_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn muốn thoát hoàn toàn chương trình không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

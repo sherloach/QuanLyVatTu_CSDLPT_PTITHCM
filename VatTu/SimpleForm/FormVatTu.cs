@@ -41,7 +41,7 @@ namespace VatTu.SimpleForm
             if (Program.mGroup == "CONGTY")
             {
                 btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
-                btnUndo.Links[0].Visible = btnReload.Links[0].Visible = false;
+                btnUndo.Links[0].Visible = false;
             }
         }
 

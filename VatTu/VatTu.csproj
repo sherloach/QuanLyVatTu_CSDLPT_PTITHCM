@@ -125,6 +125,12 @@
     <Compile Include="Report\XtraReport_ChitietHangNhapXuat.Designer.cs">
       <DependentUpon>XtraReport_ChitietHangNhapXuat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\XtraReport_DSVatTu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_DSVatTu.Designer.cs">
+      <DependentUpon>XtraReport_DSVatTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\XtraReport_TonghopNhapXuat.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_ChitietHangNhapXuat.resx">
       <DependentUpon>XtraReport_ChitietHangNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport_DSVatTu.resx">
+      <DependentUpon>XtraReport_DSVatTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_TonghopNhapXuat.resx">
       <DependentUpon>XtraReport_TonghopNhapXuat.cs</DependentUpon>

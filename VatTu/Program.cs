@@ -45,6 +45,7 @@ namespace VatTu
         // -- FORMS --
         public static FormChinh formMain;
         public static FormLapPhieu formLapPhieu;
+        public static Form2 loginForm;
         public static SubFormCTDDH subFormCTDDH;
         public static SubFormCTPX subFormCTPX;
         public static SubFormPN subFormPN;
@@ -128,7 +129,8 @@ namespace VatTu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
+            loginForm = new Form2();
+            Application.Run(loginForm);
         }
     }
 }

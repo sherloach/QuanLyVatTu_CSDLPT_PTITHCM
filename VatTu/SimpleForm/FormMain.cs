@@ -138,5 +138,18 @@ namespace VatTu
                 f.ShowDialog();
             }
         }
+
+        private void BarButtonItem_DSVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraReport_DSVatTu reportDSVT = new XtraReport_DSVatTu();
+            ReportPrintTool rpt = new ReportPrintTool(reportDSVT);
+            reportDSVT.ShowPreviewDialog();
+        }
+
+        private void BarButtonItem_out_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+            Program.loginForm.Visible = true;
+        }
     }
 }
