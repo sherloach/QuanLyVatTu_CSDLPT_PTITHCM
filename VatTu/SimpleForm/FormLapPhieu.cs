@@ -44,9 +44,9 @@ namespace VatTu.SimpleForm
 
         private void FormLapPhieu_Load(object sender, EventArgs e)
         {
-            gcDDH.Height = 250;
-            gcPX.Height = 250;
-            gcPN.Height = 250;
+            gcDDH.Height = 220;
+            gcPX.Height = 220;
+            gcPN.Height = 220;
 
             // Không kiểm tra khóa ngoại
             dS.EnforceConstraints = false;

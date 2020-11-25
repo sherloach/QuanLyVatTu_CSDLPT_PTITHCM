@@ -269,8 +269,8 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSwitch, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -371,15 +371,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1149, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1132, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 764);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1149, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
             // 
             // barDockControlLeft
             // 
@@ -387,15 +387,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 705);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 740);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1149, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 705);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 740);
             // 
             // groupControl1
             // 
@@ -404,16 +404,17 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1149, 65);
+            this.groupControl1.Size = new System.Drawing.Size(1132, 65);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Chi Nhánh";
             // 
             // label_ChiNhanh
             // 
             this.label_ChiNhanh.AutoSize = true;
-            this.label_ChiNhanh.Location = new System.Drawing.Point(139, 35);
+            this.label_ChiNhanh.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ChiNhanh.Location = new System.Drawing.Point(144, 36);
             this.label_ChiNhanh.Name = "label_ChiNhanh";
-            this.label_ChiNhanh.Size = new System.Drawing.Size(56, 13);
+            this.label_ChiNhanh.Size = new System.Drawing.Size(63, 13);
             this.label_ChiNhanh.TabIndex = 1;
             this.label_ChiNhanh.Text = "Chi Nhánh";
             // 
@@ -468,7 +469,7 @@
             this.gridDDH.MainView = this.gvDDH;
             this.gridDDH.MenuManager = this.barManager1;
             this.gridDDH.Name = "gridDDH";
-            this.gridDDH.Size = new System.Drawing.Size(1149, 215);
+            this.gridDDH.Size = new System.Drawing.Size(1132, 245);
             this.gridDDH.TabIndex = 6;
             this.gridDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDDH});
@@ -483,6 +484,10 @@
             this.colMAKHO});
             this.gvDDH.GridControl = this.gridDDH;
             this.gvDDH.Name = "gvDDH";
+            this.gvDDH.OptionsBehavior.Editable = false;
+            this.gvDDH.OptionsView.ShowGroupPanel = false;
+            this.gvDDH.OptionsView.ShowViewCaption = true;
+            this.gvDDH.ViewCaption = "Đơn Đặt Hàng";
             // 
             // colMasoDDH
             // 
@@ -552,11 +557,11 @@
             // 
             this.gridPX.DataSource = this.bdsPX;
             this.gridPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridPX.Location = new System.Drawing.Point(0, 304);
+            this.gridPX.Location = new System.Drawing.Point(0, 334);
             this.gridPX.MainView = this.gvPX;
             this.gridPX.MenuManager = this.barManager1;
             this.gridPX.Name = "gridPX";
-            this.gridPX.Size = new System.Drawing.Size(1149, 215);
+            this.gridPX.Size = new System.Drawing.Size(1132, 245);
             this.gridPX.TabIndex = 11;
             this.gridPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPX});
@@ -576,6 +581,10 @@
             this.colMAKHO1});
             this.gvPX.GridControl = this.gridPX;
             this.gvPX.Name = "gvPX";
+            this.gvPX.OptionsBehavior.Editable = false;
+            this.gvPX.OptionsView.ShowGroupPanel = false;
+            this.gvPX.OptionsView.ShowViewCaption = true;
+            this.gvPX.ViewCaption = "Phiếu Xuất";
             // 
             // colMAPX
             // 
@@ -659,9 +668,9 @@
             this.gcDDH.Controls.Add(this.gridCTDDH);
             this.gcDDH.Controls.Add(this.gbInfoDDH);
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcDDH.Location = new System.Drawing.Point(0, 519);
+            this.gcDDH.Location = new System.Drawing.Point(0, 579);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1149, 29);
+            this.gcDDH.Size = new System.Drawing.Size(1132, 45);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -674,7 +683,7 @@
             this.gridCTDDH.MainView = this.gvCTDDH;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(652, 4);
+            this.gridCTDDH.Size = new System.Drawing.Size(635, 20);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTDDH});
@@ -689,6 +698,7 @@
             this.colDONGIA});
             this.gvCTDDH.GridControl = this.gridCTDDH;
             this.gvCTDDH.Name = "gvCTDDH";
+            this.gvCTDDH.OptionsBehavior.Editable = false;
             this.gvCTDDH.OptionsView.ShowGroupPanel = false;
             this.gvCTDDH.OptionsView.ShowViewCaption = true;
             this.gvCTDDH.ViewCaption = "Chi Tiết Đơn Đặt Hàng";
@@ -727,6 +737,8 @@
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn giá";
+            this.colDONGIA.DisplayFormat.FormatString = "VND {0:n2}";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.MinWidth = 23;
             this.colDONGIA.Name = "colDONGIA";
@@ -746,7 +758,7 @@
             this.gbInfoDDH.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoDDH.Location = new System.Drawing.Point(2, 23);
             this.gbInfoDDH.Name = "gbInfoDDH";
-            this.gbInfoDDH.Size = new System.Drawing.Size(493, 4);
+            this.gbInfoDDH.Size = new System.Drawing.Size(493, 20);
             this.gbInfoDDH.TabIndex = 0;
             this.gbInfoDDH.TabStop = false;
             this.gbInfoDDH.Text = "Thông Tin";
@@ -795,9 +807,9 @@
             this.gcPX.Controls.Add(this.gridCTPX);
             this.gcPX.Controls.Add(this.gbInfoPX);
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPX.Location = new System.Drawing.Point(0, 548);
+            this.gcPX.Location = new System.Drawing.Point(0, 624);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1149, 38);
+            this.gcPX.Size = new System.Drawing.Size(1132, 37);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -811,7 +823,7 @@
             this.gridCTPX.MainView = this.gvCTPX;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(652, 13);
+            this.gridCTPX.Size = new System.Drawing.Size(635, 12);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTPX});
@@ -826,6 +838,7 @@
             this.colDONGIA2});
             this.gvCTPX.GridControl = this.gridCTPX;
             this.gvCTPX.Name = "gvCTPX";
+            this.gvCTPX.OptionsBehavior.Editable = false;
             this.gvCTPX.OptionsView.ShowGroupPanel = false;
             this.gvCTPX.OptionsView.ShowViewCaption = true;
             this.gvCTPX.ViewCaption = "Chi Tiết Phiếu Xuất";
@@ -863,6 +876,8 @@
             // colDONGIA2
             // 
             this.colDONGIA2.Caption = "Đơn giá";
+            this.colDONGIA2.DisplayFormat.FormatString = "VND {0:n2}";
+            this.colDONGIA2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colDONGIA2.FieldName = "DONGIA";
             this.colDONGIA2.MinWidth = 23;
             this.colDONGIA2.Name = "colDONGIA2";
@@ -882,7 +897,7 @@
             this.gbInfoPX.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbInfoPX.Location = new System.Drawing.Point(2, 23);
             this.gbInfoPX.Name = "gbInfoPX";
-            this.gbInfoPX.Size = new System.Drawing.Size(493, 13);
+            this.gbInfoPX.Size = new System.Drawing.Size(493, 12);
             this.gbInfoPX.TabIndex = 0;
             this.gbInfoPX.TabStop = false;
             this.gbInfoPX.Text = "Thông Tin";
@@ -930,9 +945,9 @@
             // 
             this.gcPN.Controls.Add(this.splitContainer1);
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcPN.Location = new System.Drawing.Point(0, 586);
+            this.gcPN.Location = new System.Drawing.Point(0, 661);
             this.gcPN.Name = "gcPN";
-            this.gcPN.Size = new System.Drawing.Size(1149, 133);
+            this.gcPN.Size = new System.Drawing.Size(1132, 103);
             this.gcPN.TabIndex = 36;
             this.gcPN.Text = "Phiếu Nhập";
             this.gcPN.Visible = false;
@@ -950,8 +965,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridCTPN);
-            this.splitContainer1.Size = new System.Drawing.Size(1145, 108);
-            this.splitContainer1.SplitterDistance = 627;
+            this.splitContainer1.Size = new System.Drawing.Size(1128, 78);
+            this.splitContainer1.SplitterDistance = 617;
             this.splitContainer1.TabIndex = 2;
             // 
             // gridPN
@@ -967,7 +982,7 @@
             this.gridPN.MainView = this.gvPN;
             this.gridPN.MenuManager = this.barManager1;
             this.gridPN.Name = "gridPN";
-            this.gridPN.Size = new System.Drawing.Size(627, 108);
+            this.gridPN.Size = new System.Drawing.Size(617, 78);
             this.gridPN.TabIndex = 1;
             this.gridPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPN});
@@ -1058,7 +1073,7 @@
             this.gridCTPN.MainView = this.gridView5;
             this.gridCTPN.MenuManager = this.barManager1;
             this.gridCTPN.Name = "gridCTPN";
-            this.gridCTPN.Size = new System.Drawing.Size(514, 108);
+            this.gridCTPN.Size = new System.Drawing.Size(507, 78);
             this.gridCTPN.TabIndex = 2;
             this.gridCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1072,6 +1087,7 @@
             this.colDONGIA1});
             this.gridView5.GridControl = this.gridCTPN;
             this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsBehavior.Editable = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
             this.gridView5.OptionsView.ShowViewCaption = true;
             this.gridView5.ViewCaption = "Chi Tiết Phiếu Nhập";
@@ -1110,6 +1126,8 @@
             // colDONGIA1
             // 
             this.colDONGIA1.Caption = "Đơn giá";
+            this.colDONGIA1.DisplayFormat.FormatString = "VND {0:n2}";
+            this.colDONGIA1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colDONGIA1.FieldName = "DONGIA";
             this.colDONGIA1.MinWidth = 23;
             this.colDONGIA1.Name = "colDONGIA1";

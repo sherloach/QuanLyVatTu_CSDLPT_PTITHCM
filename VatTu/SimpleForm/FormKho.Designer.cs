@@ -92,7 +92,7 @@
             // mACNLabel
             // 
             mACNLabel.AutoSize = true;
-            mACNLabel.Location = new System.Drawing.Point(89, 85);
+            mACNLabel.Location = new System.Drawing.Point(210, 101);
             mACNLabel.Name = "mACNLabel";
             mACNLabel.Size = new System.Drawing.Size(38, 13);
             mACNLabel.TabIndex = 14;
@@ -101,7 +101,7 @@
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(273, 85);
+            dIACHILabel.Location = new System.Drawing.Point(392, 101);
             dIACHILabel.Name = "dIACHILabel";
             dIACHILabel.Size = new System.Drawing.Size(41, 13);
             dIACHILabel.TabIndex = 12;
@@ -110,7 +110,7 @@
             // tENKHOLabel
             // 
             tENKHOLabel.AutoSize = true;
-            tENKHOLabel.Location = new System.Drawing.Point(273, 50);
+            tENKHOLabel.Location = new System.Drawing.Point(392, 66);
             tENKHOLabel.Name = "tENKHOLabel";
             tENKHOLabel.Size = new System.Drawing.Size(46, 13);
             tENKHOLabel.TabIndex = 10;
@@ -119,7 +119,7 @@
             // mAKHOLabel
             // 
             mAKHOLabel.AutoSize = true;
-            mAKHOLabel.Location = new System.Drawing.Point(89, 50);
+            mAKHOLabel.Location = new System.Drawing.Point(210, 66);
             mAKHOLabel.Name = "mAKHOLabel";
             mAKHOLabel.Size = new System.Drawing.Size(42, 13);
             mAKHOLabel.TabIndex = 8;
@@ -235,7 +235,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 444);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 530);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(808, 20);
             // 
@@ -245,7 +245,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 420);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 506);
             // 
             // barDockControlRight
             // 
@@ -253,7 +253,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(808, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 420);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 506);
             // 
             // dS
             // 
@@ -291,25 +291,27 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(808, 71);
+            this.groupControl1.Size = new System.Drawing.Size(808, 65);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Chi Nhánh";
             // 
             // label_ChiNhanh
             // 
             this.label_ChiNhanh.AutoSize = true;
-            this.label_ChiNhanh.Location = new System.Drawing.Point(116, 38);
+            this.label_ChiNhanh.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ChiNhanh.Location = new System.Drawing.Point(144, 36);
             this.label_ChiNhanh.Name = "label_ChiNhanh";
-            this.label_ChiNhanh.Size = new System.Drawing.Size(56, 13);
+            this.label_ChiNhanh.Size = new System.Drawing.Size(63, 13);
             this.label_ChiNhanh.TabIndex = 3;
             this.label_ChiNhanh.Text = "Chi Nhánh";
             // 
             // comboBox_ChiNhanh
             // 
+            this.comboBox_ChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ChiNhanh.FormattingEnabled = true;
-            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(178, 35);
+            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(211, 32);
             this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
-            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(266, 21);
+            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(313, 21);
             this.comboBox_ChiNhanh.TabIndex = 2;
             this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ChiNhanh_SelectedIndexChanged);
             // 
@@ -317,11 +319,11 @@
             // 
             this.khoGridControl.DataSource = this.bdsKho;
             this.khoGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.khoGridControl.Location = new System.Drawing.Point(0, 95);
+            this.khoGridControl.Location = new System.Drawing.Point(0, 89);
             this.khoGridControl.MainView = this.gridView1;
             this.khoGridControl.MenuManager = this.barManager1;
             this.khoGridControl.Name = "khoGridControl";
-            this.khoGridControl.Size = new System.Drawing.Size(808, 226);
+            this.khoGridControl.Size = new System.Drawing.Size(808, 305);
             this.khoGridControl.TabIndex = 12;
             this.khoGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -335,6 +337,7 @@
             this.colMACN});
             this.gridView1.GridControl = this.khoGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // colMAKHO
             // 
@@ -383,16 +386,16 @@
             this.gcInfoKho.Controls.Add(mAKHOLabel);
             this.gcInfoKho.Controls.Add(this.txtMaKho);
             this.gcInfoKho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcInfoKho.Location = new System.Drawing.Point(0, 321);
+            this.gcInfoKho.Location = new System.Drawing.Point(0, 394);
             this.gcInfoKho.Name = "gcInfoKho";
-            this.gcInfoKho.Size = new System.Drawing.Size(808, 123);
+            this.gcInfoKho.Size = new System.Drawing.Size(808, 136);
             this.gcInfoKho.TabIndex = 13;
             this.gcInfoKho.Text = "Thông Tin Kho";
             // 
             // txtMaCN
             // 
             this.txtMaCN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "MACN", true));
-            this.txtMaCN.Location = new System.Drawing.Point(135, 82);
+            this.txtMaCN.Location = new System.Drawing.Point(258, 98);
             this.txtMaCN.Name = "txtMaCN";
             this.txtMaCN.Size = new System.Drawing.Size(100, 21);
             this.txtMaCN.TabIndex = 15;
@@ -400,23 +403,23 @@
             // txtDiaChi
             // 
             this.txtDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "DIACHI", true));
-            this.txtDiaChi.Location = new System.Drawing.Point(327, 82);
+            this.txtDiaChi.Location = new System.Drawing.Point(446, 98);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(165, 21);
+            this.txtDiaChi.Size = new System.Drawing.Size(209, 21);
             this.txtDiaChi.TabIndex = 13;
             // 
             // txtTenKho
             // 
             this.txtTenKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "TENKHO", true));
-            this.txtTenKho.Location = new System.Drawing.Point(327, 47);
+            this.txtTenKho.Location = new System.Drawing.Point(446, 63);
             this.txtTenKho.Name = "txtTenKho";
-            this.txtTenKho.Size = new System.Drawing.Size(165, 21);
+            this.txtTenKho.Size = new System.Drawing.Size(209, 21);
             this.txtTenKho.TabIndex = 11;
             // 
             // txtMaKho
             // 
             this.txtMaKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "MAKHO", true));
-            this.txtMaKho.Location = new System.Drawing.Point(135, 47);
+            this.txtMaKho.Location = new System.Drawing.Point(258, 63);
             this.txtMaKho.Name = "txtMaKho";
             this.txtMaKho.Size = new System.Drawing.Size(100, 21);
             this.txtMaKho.TabIndex = 9;
@@ -452,7 +455,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 464);
+            this.ClientSize = new System.Drawing.Size(808, 550);
             this.Controls.Add(this.gcInfoKho);
             this.Controls.Add(this.khoGridControl);
             this.Controls.Add(this.groupControl1);

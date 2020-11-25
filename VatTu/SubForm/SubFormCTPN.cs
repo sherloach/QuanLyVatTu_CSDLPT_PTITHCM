@@ -84,9 +84,10 @@ namespace VatTu.SubForm
             {
                 txtMaPN.Text = ((DataRowView)current_PN[current_PN.Position])["MAPN"].ToString().Trim();
                 txtMaVT.Text = ((DataRowView)bdsCTDDH[bdsCTDDH.Position])["MAVT"].ToString().Trim();
-                numSL.Maximum = int.Parse(gvCTDDH.GetRowCellValue(bdsCTDDH.Position, "SOLUONG").ToString().Trim());
+                // TODO: fix lỗi không nhận được giá trị khi thêm ddh ở lần thứ 2
+                numSL.Maximum = int.Parse(((DataRowView)bdsCTDDH[bdsCTDDH.Position])["SOLUONG"].ToString().Trim());
                 numSL.Value = numSL.Minimum;
-                numDG.Value = int.Parse(gvCTDDH.GetRowCellValue(bdsCTDDH.Position, "DONGIA").ToString().Trim()); ;
+                numDG.Value = int.Parse(((DataRowView)bdsCTDDH[bdsCTDDH.Position])["DONGIA"].ToString().Trim());
             }
         }
 

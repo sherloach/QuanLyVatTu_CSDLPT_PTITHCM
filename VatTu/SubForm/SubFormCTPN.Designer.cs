@@ -194,37 +194,61 @@
             // 
             // colMasoDDH
             // 
+            this.colMasoDDH.AppearanceCell.Options.UseTextOptions = true;
+            this.colMasoDDH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMasoDDH.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colMasoDDH.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMasoDDH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMasoDDH.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.colMasoDDH.Caption = "Mã đơn DH";
             this.colMasoDDH.FieldName = "MasoDDH";
             this.colMasoDDH.Name = "colMasoDDH";
             this.colMasoDDH.Visible = true;
             this.colMasoDDH.VisibleIndex = 0;
+            this.colMasoDDH.Width = 95;
             // 
             // colMAVT
             // 
+            this.colMAVT.AppearanceCell.Options.UseTextOptions = true;
+            this.colMAVT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMAVT.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colMAVT.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMAVT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMAVT.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.colMAVT.Caption = "Mã vật tư";
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 1;
+            this.colMAVT.Width = 95;
             // 
             // colSOLUONG
             // 
+            this.colSOLUONG.AppearanceCell.Options.UseTextOptions = true;
+            this.colSOLUONG.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSOLUONG.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colSOLUONG.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSOLUONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSOLUONG.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.colSOLUONG.Caption = "Số lượng";
             this.colSOLUONG.FieldName = "SOLUONG";
             this.colSOLUONG.Name = "colSOLUONG";
             this.colSOLUONG.Visible = true;
             this.colSOLUONG.VisibleIndex = 2;
+            this.colSOLUONG.Width = 84;
             // 
             // colDONGIA
             // 
+            this.colDONGIA.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDONGIA.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDONGIA.Caption = "Đơn giá";
-            this.colDONGIA.DisplayFormat.FormatString = "VND {0:n3}";
+            this.colDONGIA.DisplayFormat.FormatString = "VND {0:n2}";
             this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.Name = "colDONGIA";
             this.colDONGIA.Visible = true;
             this.colDONGIA.VisibleIndex = 3;
+            this.colDONGIA.Width = 106;
             // 
             // btnGhi
             // 
