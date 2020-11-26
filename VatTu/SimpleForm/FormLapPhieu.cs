@@ -183,6 +183,12 @@ namespace VatTu.SimpleForm
             return indexDataRowUpdated;
         }
 
+        private string[] split_data(string XOABTN)
+        {
+            string[] data = XOABTN.Split(' ');
+            return data;
+        }
+
         private void unClickGhi(int index)
         {
             // Giữ lại mã phiếu đề phòng trường hợp user cancel việc undo
@@ -227,6 +233,28 @@ namespace VatTu.SimpleForm
             else
             {
                 historyDDH.Push(GHI_BTN + " " + maPhieu_backup);
+            }
+        }
+
+        private void unClickXoa(string[] data_backup)
+        {
+            current_bds.AddNew();
+            ((DataRowView)current_bds[current_bds.Position])[0] = data_backup[1];
+            // Khi tách dữ liệu ra thì ngày được tách thành: [2] - mm/dd/yyyy [3] - time [4] - AM/PM
+            string ngay = data_backup[2] + " " + data_backup[3] + " " + data_backup[4];
+            ((DataRowView)current_bds[current_bds.Position])[1] = data_backup[2];
+            ((DataRowView)current_bds[current_bds.Position])[2] = data_backup[5];
+            ((DataRowView)current_bds[current_bds.Position])[3] = Program.maNV;
+            ((DataRowView)current_bds[current_bds.Position])[4] = data_backup[6];
+            current_bds.EndEdit();
+
+            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
+            }
+            else
+            {
+                this.datHangTableAdapter.Update(this.dS.DatHang);
             }
         }
 
@@ -308,15 +336,21 @@ namespace VatTu.SimpleForm
                 {
                     try
                     {
-                        maPhieu = ((DataRowView)current_bds[current_bds.Position])[type].ToString();
+                        maPhieu = ((DataRowView)current_bds[current_bds.Position])[type].ToString().Trim();
+                        string ngay = ((DataRowView)current_bds[current_bds.Position])[1].ToString().Trim();
+                        string name = ((DataRowView)current_bds[current_bds.Position])[2].ToString().Trim();
+                        string maKho = ((DataRowView)current_bds[current_bds.Position])[4].ToString().Trim();
+
                         current_bds.RemoveCurrent();
                         if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
                         {
                             this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
+                            historyPX.Push(XOA_BTN + " " + maPhieu + " " + ngay + " " + name + " " + maKho);
                         }
                         else
                         {
                             this.datHangTableAdapter.Update(this.dS.DatHang);
+                            historyDDH.Push(XOA_BTN + " " + maPhieu + " " + ngay + " " + name + " " + maKho);
                         }
                     }
                     catch (Exception ex)
@@ -367,6 +401,13 @@ namespace VatTu.SimpleForm
             {
                 int index = split_index_ghi(undoHistory);
                 unClickGhi(index);
+                return;
+            }
+
+            if (undoHistory.Contains("xoa"))
+            {
+                string[] data_backup = split_data(undoHistory);
+                unClickXoa(data_backup);
                 return;
             }
         }
@@ -467,14 +508,11 @@ namespace VatTu.SimpleForm
                             if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
                             {
                                 this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
-
                                 historyPX.Push(GHI_BTN + " " + tb_maPhieu.Text);
                             }
                             else
                             {
                                 this.datHangTableAdapter.Update(this.dS.DatHang);
-
-                                
                                 historyDDH.Push(GHI_BTN + " " + tb_maPhieu.Text);
                             }
                             current_bds.Position = position;
