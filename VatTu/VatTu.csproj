@@ -113,6 +113,12 @@
     <Compile Include="Report\Xrpt_HoatDongCuaNhanVien2.Designer.cs">
       <DependentUpon>Xrpt_HoatDongCuaNhanVien2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\XtraReport_DonDatHangChuaPhieuNhap.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_DonDatHangChuaPhieuNhap.Designer.cs">
+      <DependentUpon>XtraReport_DonDatHangChuaPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\XtraReport_DSNhanVien.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_HoatDongCuaNhanVien2.resx">
       <DependentUpon>Xrpt_HoatDongCuaNhanVien2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport_DonDatHangChuaPhieuNhap.resx">
+      <DependentUpon>XtraReport_DonDatHangChuaPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_DSNhanVien.resx">
       <DependentUpon>XtraReport_DSNhanVien.cs</DependentUpon>

@@ -77,12 +77,12 @@ namespace VatTu.Report
                     XtraReport_DSVatTu report_Vattu = new XtraReport_DSVatTu();
                     ReportPrintTool printTool_Vattu = new ReportPrintTool(report_Vattu);
                     printTool_Vattu.ShowPreviewDialog();
-                    break;
+                    break;*/
                 case 4:
-                    XtraReport_DHkhongcoPN report_DSkhongPN = new XtraReport_DHkhongcoPN();
+                    XtraReport_DonDatHangChuaPhieuNhap report_DSkhongPN = new XtraReport_DonDatHangChuaPhieuNhap();
                     ReportPrintTool printTool_DSkhongPN = new ReportPrintTool(report_DSkhongPN);
                     printTool_DSkhongPN.ShowPreviewDialog();
-                    break;*/
+                    break;
                 /*case 6:
                     XtraReport_TonghopNhapXuat report_TonghopNhapXuat = new XtraReport_TonghopNhapXuat();
                     ReportPrintTool printTool_TonghopNhapXuat = new ReportPrintTool(report_TonghopNhapXuat);
@@ -154,10 +154,10 @@ namespace VatTu.Report
                         "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     return;
                 }
-                break;
+                break;*/
 
             case 4:
-                //XtraReport_DHkhongcoPN report_DH = new XtraReport_DHkhongcoPN();
+                XtraReport_DonDatHangChuaPhieuNhap report_DH = new XtraReport_DonDatHangChuaPhieuNhap();
                 try
                 {
                     if (File.Exists(@"D:\ReportDH.pdf"))
@@ -185,7 +185,7 @@ namespace VatTu.Report
                     return;
                 }
                 break;
-                */
+                
                 /*case 6:
                     XtraReport_TonghopNhapXuat report_TonghopNhapXuat = new XtraReport_TonghopNhapXuat();
                     try
@@ -217,6 +217,11 @@ namespace VatTu.Report
                     break;
                     */
             }
+        }
+
+        private void FormSupportReport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.formMain.Enabled = true;
         }
     }
 }

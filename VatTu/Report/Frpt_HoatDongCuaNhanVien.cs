@@ -31,11 +31,14 @@ namespace VatTu.Report
             this.Validate();
             this.bdsNV.EndEdit();
             this.tableAdapterManager.UpdateAll(this.qLVT_DATHANGDataSet_Report);
-
         }
 
         private void Frpt_HoatDongCuaNhanVien_Load(object sender, EventArgs e)
         {
+            String connStrSite3 = "Data Source=" + Program.serverName + ";Initial Catalog=" +
+                      Program.database + ";User ID=" +
+                      Program.mlogin + ";password=" + Program.password;
+
             this.v_DS_NHANVIENTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_DS_NHANVIENTableAdapter.Fill(this.dS_NHANVIEN.V_DS_NHANVIEN);
         }

@@ -110,6 +110,13 @@ namespace VatTu
             }
         }
 
+        private void BarButtonItem_out_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+            Program.loginForm.Visible = true;
+        }
+
+        // ====== REPORT ======
         private void BarButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form form = this.CheckExists(typeof(FormSupportReport3_3));
@@ -121,11 +128,35 @@ namespace VatTu
             }
         }
 
-        private void BarButtonItem_HDNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItem_DHCPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Program.frpt_HoatDongCuaNhanVien = new Frpt_HoatDongCuaNhanVien();
-            Program.frpt_HoatDongCuaNhanVien.Show();
-            Program.formMain.Enabled = false;
+            Form form = this.CheckExists(typeof(FormSupportReport));
+            if (form != null) form.Activate();
+            else
+            {
+                FormSupportReport f = new FormSupportReport(4);
+                Program.formMain.Enabled = false;
+                f.ShowDialog();
+            }
+        }
+
+        private void BarButtonItem_DSNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form form = this.CheckExists(typeof(FormSupportReport));
+            if (form != null) form.Activate();
+            else
+            {
+                FormSupportReport f = new FormSupportReport(1);
+                Program.formMain.Enabled = false;
+                f.ShowDialog();
+            }
+        }
+
+        private void BarButtonItem_DSVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraReport_DSVatTu reportDSVT = new XtraReport_DSVatTu();
+            ReportPrintTool rpt = new ReportPrintTool(reportDSVT);
+            reportDSVT.ShowPreviewDialog();
         }
 
         private void BarButtonItem_THNX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -139,17 +170,11 @@ namespace VatTu
             }
         }
 
-        private void BarButtonItem_DSVT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItem_HDNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraReport_DSVatTu reportDSVT = new XtraReport_DSVatTu();
-            ReportPrintTool rpt = new ReportPrintTool(reportDSVT);
-            reportDSVT.ShowPreviewDialog();
-        }
-
-        private void BarButtonItem_out_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.Close();
-            Program.loginForm.Visible = true;
+            Program.frpt_HoatDongCuaNhanVien = new Frpt_HoatDongCuaNhanVien();
+            Program.frpt_HoatDongCuaNhanVien.Show();
+            Program.formMain.Enabled = false;
         }
     }
 }
