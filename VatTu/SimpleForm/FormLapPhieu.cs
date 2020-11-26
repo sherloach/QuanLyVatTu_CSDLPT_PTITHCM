@@ -29,6 +29,16 @@ namespace VatTu.SimpleForm
         GroupBox current_gb = null; // Khu vực điền thông tin phiếu
         string type = "";
 
+        // Stack
+        Stack<String> historyDDH;
+        Stack<String> historyPX;
+        Stack<String> historyPN;
+
+        // Undo Type
+        String THEM_BTN = "them";
+        String XOA_BTN = "xoa";
+        String GHI_BTN = "ghi";
+
         public FormLapPhieu()
         {
             InitializeComponent();
@@ -97,6 +107,10 @@ namespace VatTu.SimpleForm
                 current_gb = gbInfoDDH;
                 type = "MasoDDH";
             }
+
+            historyDDH = new Stack<string>();
+            historyPX = new Stack<string>();
+            historyPN = new Stack<string>();
         }
 
         private void ComboBox_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,7 +163,93 @@ namespace VatTu.SimpleForm
             Program.formMain.Enabled = false;
         }
 
+        // ------ UNDO ------
+        private void unClickThem()
+        {
+            btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = true;
+            current_gc.Enabled = btnReload.Enabled = true;
+            current_gb.Enabled = btnGhi.Enabled = false;
+            current_bds.CancelEdit();
+            current_bds.Position = position;
+        }
+
+        // Return vị trí của mẩu tin vừa ghi
+        private int split_index_ghi(string GHIBTN)
+        {
+            string[] temp = GHIBTN.Split(' ');
+            string maPhieu = temp[1];
+            int indexDataRowUpdated = current_bds.Find(type, maPhieu);
+
+            return indexDataRowUpdated;
+        }
+
+        private void unClickGhi(int index)
+        {
+            // Giữ lại mã phiếu đề phòng trường hợp user cancel việc undo
+            string maPhieu_backup = ((DataRowView)current_bds[index])[0].ToString().Trim();
+
+            DialogResult dr = MessageBox.Show(index + "Dữ liệu vừa được ghi vào database.\nBạn có chắc muốn quay lại không??", "Xác nhận",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                //int deletedPosition = current_bds.Find(type, maPhieu);
+
+                string name_backup = ((DataRowView)current_bds[index])[2].ToString().Trim();
+                string maKho_backup = ((DataRowView)current_bds[index])[4].ToString().Trim();
+                current_bds.RemoveAt(index);
+                themFunc();
+                if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+                {
+                    this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
+                    txtMaPX.Text = maPhieu_backup;
+                    txtTenKH.Text = name_backup;
+                    txtMaKho_PX.Text = maKho_backup;
+
+                    historyPX.Push(THEM_BTN);
+                }
+                else
+                {
+                    this.datHangTableAdapter.Update(this.dS.DatHang);
+                    txtMaDDH.Text = maPhieu_backup;
+                    txtNhaCC.Text = name_backup;
+                    txtMaKho_DH.Text = maKho_backup;
+
+                    historyDDH.Push(THEM_BTN);
+                }
+
+                return;
+            }
+
+            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                historyPX.Push(GHI_BTN + " " + maPhieu_backup);
+            }
+            else
+            {
+                historyDDH.Push(GHI_BTN + " " + maPhieu_backup);
+            }
+        }
+
         // ------ CRUD ------
+        private void themFunc()
+        {
+            current_bds.AddNew();
+            btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = false;
+            current_gc.Enabled = btnReload.Enabled = false;
+            current_gb.Enabled = btnGhi.Enabled = true;
+            ((DataRowView)current_bds[current_bds.Position])["MANV"] = Program.maNV;
+            ((DataRowView)current_bds[current_bds.Position])["NGAY"] = DateTime.Today;
+
+            if (type.Equals("MasoDDH"))
+            {
+                historyDDH.Push(THEM_BTN);
+            }
+            else
+            {
+                historyPX.Push(THEM_BTN);
+            }
+        }
+
         private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             /*
@@ -165,15 +265,10 @@ namespace VatTu.SimpleForm
                 current_gc = gridDDH;
                 current_gb = gbInfoDDH;
             }*/
+
             // Giữ lại vị trí trước khi CRUD
             position = current_bds.Position;
-
-            current_bds.AddNew();
-            btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = false;
-            current_gc.Enabled = btnReload.Enabled = false;
-            current_gb.Enabled = btnGhi.Enabled = true;
-            ((DataRowView)current_bds[current_bds.Position])["MANV"] = Program.maNV;
-            ((DataRowView)current_bds[current_bds.Position])["NGAY"] = DateTime.Today;
+            themFunc();
         }
 
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -243,6 +338,37 @@ namespace VatTu.SimpleForm
             }
             
             if (current_bds.Count == 0) btnXoa.Enabled = false;
+        }
+
+        private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String undoHistory = "";
+            
+            if (type.Equals("MasoDDH") && historyDDH.Count != 0)
+            {
+                undoHistory = historyDDH.Pop();
+            }
+            else if (type.Equals("MAPX") && historyPX.Count != 0)
+            {
+                undoHistory = historyPX.Pop();
+            }
+            else if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập") && historyPX.Count != 0)
+            {
+                undoHistory = historyPN.Pop();
+            }
+
+            if (undoHistory.Equals(THEM_BTN))
+            {
+                unClickThem();
+                return;
+            }
+            
+            if (undoHistory.Contains("ghi"))
+            {
+                int index = split_index_ghi(undoHistory);
+                unClickGhi(index);
+                return;
+            }
         }
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -337,13 +463,19 @@ namespace VatTu.SimpleForm
                             btnThem.Enabled = btnXoa.Enabled = current_gc.Enabled = true;
                             btnReload.Enabled = btnGhi.Enabled = btnSwitch.Enabled = true;
                             current_bds.EndEdit();
+
                             if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
                             {
                                 this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
+
+                                historyPX.Push(GHI_BTN + " " + tb_maPhieu.Text);
                             }
                             else
                             {
                                 this.datHangTableAdapter.Update(this.dS.DatHang);
+
+                                
+                                historyDDH.Push(GHI_BTN + " " + tb_maPhieu.Text);
                             }
                             current_bds.Position = position;
                         }
@@ -772,6 +904,7 @@ namespace VatTu.SimpleForm
 
             view.ActiveEditor.IsModified = true;
         }
+
 
         // ------ Getter để các form khác có thể sử dụng binding source của form này ------
         public BindingSource getBdsCTDDH()

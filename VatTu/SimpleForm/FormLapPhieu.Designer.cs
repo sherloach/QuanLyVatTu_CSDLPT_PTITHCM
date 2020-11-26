@@ -39,8 +39,8 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btnSwitch = new DevExpress.XtraBars.BarSubItem();
             this.btnDDH = new DevExpress.XtraBars.BarButtonItem();
@@ -135,6 +135,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.cmsChecked = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             mAKHOLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -256,9 +257,10 @@
             this.btnDDH,
             this.btnPN,
             this.btnPX,
-            this.btnThoat});
+            this.btnThoat,
+            this.btnUndo});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 10;
+            this.barManager1.MaxItemId = 11;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -271,6 +273,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSwitch, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -286,14 +289,6 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnThem_ItemClick);
             // 
-            // btnGhi
-            // 
-            this.btnGhi.Caption = "Ghi";
-            this.btnGhi.Id = 2;
-            this.btnGhi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnGhi.ImageOptions.SvgImage")));
-            this.btnGhi.Name = "btnGhi";
-            this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnGhi_ItemClick);
-            // 
             // btnXoa
             // 
             this.btnXoa.Caption = "Xóa";
@@ -301,6 +296,14 @@
             this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXoa_ItemClick);
+            // 
+            // btnGhi
+            // 
+            this.btnGhi.Caption = "Ghi";
+            this.btnGhi.Id = 2;
+            this.btnGhi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnGhi.ImageOptions.SvgImage")));
+            this.btnGhi.Name = "btnGhi";
+            this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnGhi_ItemClick);
             // 
             // btnReload
             // 
@@ -1180,7 +1183,7 @@
             this.miGhiPN,
             this.miThemCTPN});
             this.cmsPN.Name = "cmsPN";
-            this.cmsPN.Size = new System.Drawing.Size(224, 114);
+            this.cmsPN.Size = new System.Drawing.Size(224, 92);
             // 
             // miThemPN
             // 
@@ -1225,6 +1228,14 @@
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Name = "bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem";
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Text = "Bạn không phải người lập phiếu này.";
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Id = 10;
+            this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnUndo_ItemClick);
             // 
             // FormLapPhieu
             // 
@@ -1395,5 +1406,6 @@
         private System.Windows.Forms.ContextMenuStrip cmsChecked;
         private System.Windows.Forms.ToolStripMenuItem bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miThemCTPN;
+        private DevExpress.XtraBars.BarButtonItem btnUndo;
     }
 }
