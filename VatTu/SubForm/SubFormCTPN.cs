@@ -14,6 +14,7 @@ namespace VatTu.SubForm
     public partial class SubFormCTPN : Form
     {
         private bool updateSuccess = false;
+        public string maDDH = "";
         public SubFormCTPN()
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace VatTu.SubForm
 
         }
 
+        // Lọc chi tiết ddh, chỉ hiển thị phiếu chưa lập chi tiết
         private void GvCTDDH_CustomRowFilter(object sender, DevExpress.XtraGrid.Views.Base.RowFilterEventArgs e)
         {
             int count = gvCTDDH.RowCount;
@@ -86,7 +88,7 @@ namespace VatTu.SubForm
                 txtMaVT.Text = ((DataRowView)bdsCTDDH[bdsCTDDH.Position])["MAVT"].ToString().Trim();
                 // TODO: fix lỗi không nhận được giá trị khi thêm ddh ở lần thứ 2
                 numSL.Maximum = int.Parse(((DataRowView)bdsCTDDH[bdsCTDDH.Position])["SOLUONG"].ToString().Trim());
-                numSL.Value = numSL.Minimum;
+                numSL.Value = 1;
                 numDG.Value = int.Parse(((DataRowView)bdsCTDDH[bdsCTDDH.Position])["DONGIA"].ToString().Trim());
             }
         }
@@ -183,6 +185,10 @@ namespace VatTu.SubForm
                         return;
                     }
                     updateSuccess = true;
+
+                    // Push History for Undo
+                    string data_backup = Program.formLapPhieu.GHI_CTP_BTN + " " + maDDH + " " + maVT;
+                    Program.formLapPhieu.historyPN.Push(data_backup);
                     this.Close();
                 }
                 catch (Exception ex)

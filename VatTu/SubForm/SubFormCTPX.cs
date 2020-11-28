@@ -117,6 +117,10 @@ namespace VatTu.SubForm
                             return;
                         }
                         updateSuccess = true;
+
+                        // Push History for Undo
+                        string data_backup = Program.formLapPhieu.GHI_CTP_BTN + " " + txtMaPX.Text.Trim() + " " + maVT;
+                        Program.formLapPhieu.historyPX.Push(data_backup);
                         this.Close();
                     }
                     catch (Exception ex)

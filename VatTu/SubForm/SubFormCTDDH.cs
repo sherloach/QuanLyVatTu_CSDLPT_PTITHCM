@@ -80,9 +80,20 @@ namespace VatTu.SubForm
                 {
                     try
                     {
+                        // Do là bds CTDDH đi theo bds DDH, nên phải giữ lại mã DDH để có thể tìm lại vị trí
+                        // của mẩu tin mà mình vừa thực hiện thêm Chi tiết DDH, rồi sau đó mới thực hiện undo.
+                        // Chứ nếu con trỏ không đứng đúng mẩu tin vừa mới thêm CTDDH, thì nó sẽ sai.
+                        string maDDH = ((DataRowView)bdsCTDDH[bdsCTDDH.Position])[0].ToString().Trim();
+                        string maVatTu = ((DataRowView)bdsCTDDH[bdsCTDDH.Position])[1].ToString().Trim();
+
+                        // Thực hiện việc ghi dữ liệu
                         this.bdsCTDDH.EndEdit();
                         this.cTDDHTableAdapter.Update(Program.formLapPhieu.getDataset().CTDDH);
                         updateSuccess = true;
+
+                        string data_backup = Program.formLapPhieu.GHI_CTP_BTN + " " + maDDH + " " + maVatTu;
+                        Program.formLapPhieu.historyDDH.Push(data_backup);
+                        //Program.formLapPhieu.check_ctp = true;
                         this.Close();
                     }
                     catch (Exception ex)

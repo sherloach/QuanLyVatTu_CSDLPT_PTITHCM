@@ -312,8 +312,8 @@
             this.numSL.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSL.Location = new System.Drawing.Point(104, 106);
             this.numSL.Maximum = new decimal(new int[] {
-            999999999,
-            0,
+            1410065407,
+            2,
             0,
             0});
             this.numSL.Minimum = new decimal(new int[] {

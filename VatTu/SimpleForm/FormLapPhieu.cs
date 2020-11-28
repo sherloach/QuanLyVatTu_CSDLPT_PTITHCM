@@ -30,20 +30,24 @@ namespace VatTu.SimpleForm
         string type = "";
 
         // Stack
-        Stack<String> historyDDH;
-        Stack<String> historyPX;
-        Stack<String> historyPN;
+        public Stack<String> historyDDH;
+        public Stack<String> historyPX;
+        public Stack<String> historyPN;
 
         // Undo Type
-        String THEM_BTN = "them";
-        String XOA_BTN = "xoa";
-        String GHI_BTN = "ghi";
+        String THEM_BTN = "_them"; // Click btn thêm
+        String THEMPN_BTN = "_thempn"; // Click menu item thêm phiếu nhập
+        String XOA_BTN = "_xoa"; // Click btn xóa
+        String GHI_BTN = "_ghi"; // Click btn ghi
+        String GHIPN_BTN = "_pn"; // Click menu item ghi phiếu nhập
+        public string GHI_CTP_BTN = "_ctp"; // Click btn ghi của subform chi tiết phiếu xuất/ddh
+        public bool check_ctp = false; // để biết là đang CRUD trên các table chi tiết phiếu
 
         public FormLapPhieu()
         {
             InitializeComponent();
         }
-        
+
         private void DatHangBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -113,6 +117,25 @@ namespace VatTu.SimpleForm
             historyPN = new Stack<string>();
         }
 
+        private void updateChiTietPhieuTableAdapter()
+        {
+            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                this.cTPXTableAdapter.Update(this.dS.CTPX);
+                return;
+            }
+            if (btnSwitch.Links[0].Caption.Equals("Đặt Hàng"))
+            {
+                this.cTDDHTableAdapter.Update(this.dS.CTDDH);
+                return;
+            }
+            if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập"))
+            {
+                this.cTPNTableAdapter.Update(this.dS.CTPN);
+                return;
+            }
+        }
+
         private void ComboBox_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Trường hợp chưa kịp chọn CN, thuộc tính index ở combobox sẽ thay đổi
@@ -147,23 +170,23 @@ namespace VatTu.SimpleForm
             }
         }
 
-        // ------ pre CRUD ------
-        private void BtnGridKho_Click(object sender, EventArgs e)
-        {
-            Program.subFormKho = new SubFormKho();
-            Program.subFormKho.Show();
-            Program.formMain.Enabled = false;
-        }
-
-        // __ Chọn Kho của PX __
-        private void BtnGridKho2_Click(object sender, EventArgs e)
-        {
-            Program.subFormKho = new SubFormKho();
-            Program.subFormKho.Show();
-            Program.formMain.Enabled = false;
-        }
-
         // ------ UNDO ------
+        private void pushHistory(string data)
+        {
+            if (btnSwitch.Links[0].Caption.Equals("Đặt Hàng"))
+            {
+                historyDDH.Push(data);
+            }
+            else if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+            {
+                historyPX.Push(data);
+            }
+            else if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập"))
+            {
+                historyPN.Push(data);
+            }
+        }
+
         private void unClickThem()
         {
             btnThem.Enabled = btnXoa.Enabled = btnSwitch.Enabled = true;
@@ -173,12 +196,21 @@ namespace VatTu.SimpleForm
             current_bds.Position = position;
         }
 
+        private void unClickThemPhieuNhap()
+        {
+            gridDDH.Enabled = true;
+            cmsPN.Items[2].Enabled = false;
+            //bdsPN.CancelEdit();
+            if (bdsPN.Current != null) bdsPN.RemoveCurrent();
+            //current_bds.Position = position;
+        }
+
         // Return vị trí của mẩu tin vừa ghi
-        private int split_index_ghi(string GHIBTN)
+        private int split_index_ghi(string GHIBTN, BindingSource currBds, string t)
         {
             string[] temp = GHIBTN.Split(' ');
             string maPhieu = temp[1];
-            int indexDataRowUpdated = current_bds.Find(type, maPhieu);
+            int indexDataRowUpdated = currBds.Find(t, maPhieu);
 
             return indexDataRowUpdated;
         }
@@ -194,7 +226,7 @@ namespace VatTu.SimpleForm
             // Giữ lại mã phiếu đề phòng trường hợp user cancel việc undo
             string maPhieu_backup = ((DataRowView)current_bds[index])[0].ToString().Trim();
 
-            DialogResult dr = MessageBox.Show(index + "Dữ liệu vừa được ghi vào database.\nBạn có chắc muốn quay lại không??", "Xác nhận",
+            DialogResult dr = MessageBox.Show("Phiếu '" + maPhieu_backup + "' đã được ghi vào database.\nBạn có chắc muốn Undo không??", "Xác nhận",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
             {
@@ -226,39 +258,160 @@ namespace VatTu.SimpleForm
                 return;
             }
 
-            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
-            {
-                historyPX.Push(GHI_BTN + " " + maPhieu_backup);
-            }
-            else
-            {
-                historyDDH.Push(GHI_BTN + " " + maPhieu_backup);
-            }
+            pushHistory(GHI_BTN + " " + maPhieu_backup);
         }
 
-        private void unClickXoa(string[] data_backup)
+        private void unClickXoa(string[] data_backup, BindingSource currBds)
         {
-            current_bds.AddNew();
-            ((DataRowView)current_bds[current_bds.Position])[0] = data_backup[1];
+            currBds.AddNew();
+            ((DataRowView)currBds[currBds.Position])[0] = data_backup[1];
             // Khi tách dữ liệu ra thì ngày được tách thành: [2] - mm/dd/yyyy [3] - time [4] - AM/PM
-            string ngay = data_backup[2] + " " + data_backup[3] + " " + data_backup[4];
-            ((DataRowView)current_bds[current_bds.Position])[1] = data_backup[2];
-            ((DataRowView)current_bds[current_bds.Position])[2] = data_backup[5];
-            ((DataRowView)current_bds[current_bds.Position])[3] = Program.maNV;
-            ((DataRowView)current_bds[current_bds.Position])[4] = data_backup[6];
-            current_bds.EndEdit();
+            ((DataRowView)currBds[currBds.Position])[1] = data_backup[2];
+            ((DataRowView)currBds[currBds.Position])[2] = data_backup[5];
+            ((DataRowView)currBds[currBds.Position])[3] = Program.maNV;
+            ((DataRowView)currBds[currBds.Position])[4] = data_backup[6];
+            currBds.EndEdit();
 
             if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
             {
                 this.phieuXuatTableAdapter.Update(this.dS.PhieuXuat);
             }
-            else
+            else if (btnSwitch.Links[0].Caption.Equals("Đặt Hàng"))
             {
                 this.datHangTableAdapter.Update(this.dS.DatHang);
             }
+            else
+            {
+                this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
+            }
+        }
+
+        private void unClickMenuItemThemChiTietPhieu(int index, BindingSource currBds)
+        {
+            // Giữ lại mã vật tư đề phòng trường hợp user cancel việc undo
+            string maVatTu_backup = ((DataRowView)currBds[index])[1].ToString().Trim();
+            int soLuong = int.Parse(((DataRowView)currBds[index])[2].ToString().Trim());
+
+            //string maVatTu_backup = index;
+
+            DialogResult dr = MessageBox.Show("Dữ liệu đã được ghi vào database.\nBạn có chắc muốn Undo không??", "Xác nhận",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                currBds.RemoveAt(index);
+                updateChiTietPhieuTableAdapter();
+                if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
+                {
+                    undo_update_SoLuongVT(maVatTu_backup, soLuong, "IMPORT");
+                    /*
+                    String query = "DECLARE	@return_value int " +
+                                    "EXEC @return_value = [dbo].[SP_UpdateSLVatTu] " +
+                                    "@p1, @p2, @p3 " +
+                                    "SELECT 'Return Value' = @return_value";
+
+                    SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
+                    sqlCommand.Parameters.AddWithValue("@p1", maVatTu_backup);
+                    sqlCommand.Parameters.AddWithValue("@p2", soLuong);
+                    sqlCommand.Parameters.AddWithValue("@p3", "IMPORT");
+                    SqlDataReader dataReader = null;
+
+                    try
+                    {
+                        dataReader = sqlCommand.ExecuteReader();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi cập nhật vật tư vào Database!\n" + ex.Message, "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataReader.Close();
+                        return;
+                    }
+
+                    dataReader.Read();
+                    int result_value = int.Parse(dataReader.GetValue(0).ToString());
+                    dataReader.Close();
+                    if (result_value == 0)
+                    {
+                        MessageBox.Show("Lỗi khi cập nhật vật tư vào Database!\n", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }*/
+                }
+                else if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập"))
+                {
+                    undo_update_SoLuongVT(maVatTu_backup, soLuong, "EXPORT");
+                }
+                return;
+            }
+
+            pushHistory(GHI_CTP_BTN + " " + maVatTu_backup);
+        }
+
+        private void undo_update_SoLuongVT(string maVatTu, int soLuong, string type)
+        {
+            String query = "DECLARE	@return_value int " +
+                                    "EXEC @return_value = [dbo].[SP_UpdateSLVatTu] " +
+                                    "@p1, @p2, @p3 " +
+                                    "SELECT 'Return Value' = @return_value";
+
+            SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
+            sqlCommand.Parameters.AddWithValue("@p1", maVatTu);
+            sqlCommand.Parameters.AddWithValue("@p2", soLuong);
+            sqlCommand.Parameters.AddWithValue("@p3", type);
+            SqlDataReader dataReader = null;
+
+            try
+            {
+                dataReader = sqlCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật vật tư vào Database!\n" + ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataReader.Close();
+                return;
+            }
+
+            dataReader.Read();
+            int result_value = int.Parse(dataReader.GetValue(0).ToString());
+            dataReader.Close();
+            if (result_value == 0)
+            {
+                MessageBox.Show("Lỗi khi cập nhật vật tư vào Database!\n", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void unClickMenuItemXoaChiTietPhieu(string[] data_backup)
+        {
+            bdsPN.AddNew();
+            ((DataRowView)current_bds[0])[0] = data_backup[1];
+            // Khi tách dữ liệu ra thì ngày được tách thành: [2] - mm/dd/yyyy [3] - time [4] - AM/PM
+            ((DataRowView)current_bds[0])[1] = data_backup[2];
+            ((DataRowView)current_bds[0])[2] = data_backup[5];
+            ((DataRowView)current_bds[0])[3] = Program.maNV;
+            ((DataRowView)current_bds[0])[4] = data_backup[6];
+            bdsPN.EndEdit();
+            this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
         }
 
         // ------ CRUD ------
+        private void BtnGridKho_Click(object sender, EventArgs e)
+        {
+            Program.subFormKho = new SubFormKho();
+            Program.subFormKho.Show();
+            Program.formMain.Enabled = false;
+        }
+
+        // __ Chọn Kho của PX __
+        private void BtnGridKho2_Click(object sender, EventArgs e)
+        {
+            Program.subFormKho = new SubFormKho();
+            Program.subFormKho.Show();
+            Program.formMain.Enabled = false;
+        }
+
         private void themFunc()
         {
             current_bds.AddNew();
@@ -268,14 +421,7 @@ namespace VatTu.SimpleForm
             ((DataRowView)current_bds[current_bds.Position])["MANV"] = Program.maNV;
             ((DataRowView)current_bds[current_bds.Position])["NGAY"] = DateTime.Today;
 
-            if (type.Equals("MasoDDH"))
-            {
-                historyDDH.Push(THEM_BTN);
-            }
-            else
-            {
-                historyPX.Push(THEM_BTN);
-            }
+            pushHistory(THEM_BTN);
         }
 
         private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -363,53 +509,130 @@ namespace VatTu.SimpleForm
                         return;
                     }
                 }
-            } 
+            }
             else
             {
                 MessageBox.Show("Bạn không có quyền xóa phiếu/đơn này!", "Lỗi",
                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             if (current_bds.Count == 0) btnXoa.Enabled = false;
         }
 
         private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             String undoHistory = "";
-            
+            BindingSource currBds = null;
+
+            // Click thêm btn của DDH
             if (type.Equals("MasoDDH") && historyDDH.Count != 0)
             {
                 undoHistory = historyDDH.Pop();
+                currBds = bdsCTDDH;
             }
-            else if (type.Equals("MAPX") && historyPX.Count != 0)
+            else if (type.Equals("MAPX") && historyPX.Count != 0) // Click thêm btn của PX
             {
                 undoHistory = historyPX.Pop();
+                currBds = bdsCTPX;
             }
-            else if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập") && historyPX.Count != 0)
+            else if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập") && historyPN.Count != 0)
             {
                 undoHistory = historyPN.Pop();
+                currBds = bdsCTPN;
             }
+
+            if (undoHistory.Equals("")) return;
 
             if (undoHistory.Equals(THEM_BTN))
             {
                 unClickThem();
                 return;
             }
-            
-            if (undoHistory.Contains("ghi"))
+
+            if (undoHistory.Equals(THEMPN_BTN))
             {
-                int index = split_index_ghi(undoHistory);
+                unClickThemPhieuNhap();
+                return;
+            }
+
+            if (undoHistory.Contains("_ghi"))
+            {
+                int index = split_index_ghi(undoHistory, current_bds, type);
                 unClickGhi(index);
                 return;
             }
 
-            if (undoHistory.Contains("xoa"))
+            if (undoHistory.Contains("_xoa"))
             {
-                string[] data_backup = split_data(undoHistory);
-                unClickXoa(data_backup);
+                BindingSource bd = current_bds;
+                string data_backup = undoHistory;
+                string[] data_backup_split = split_data(undoHistory);
+                if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập")) {
+                    bd = bdsPN;
+                    int indexLastDataRow = current_bds.Find(type, data_backup_split[5]);
+                    if (current_bds.Position != indexLastDataRow)
+                    {
+                        current_bds.Position = indexLastDataRow;
+                        pushHistory(data_backup);
+                        return;
+                    }
+                }
+                
+                unClickXoa(data_backup_split, bd);
                 return;
             }
+
+            if (undoHistory.Contains("_ctp"))
+            {
+                // Nếu con trỏ không đứng đúng vị trí của mẩu tin vừa mới thêm thì ta phải giữ lại
+                // mã phiếu để sử dụng cho lần undo kế tiếp (sau khi đã về đúng vị trí)
+                string data_backup = undoHistory;
+                string[] data_backup_split = split_data(undoHistory);
+                if (check_position(data_backup, data_backup_split[1]))
+                {
+                    int index = currBds.Find("MAVT", data_backup_split[2]);
+                    unClickMenuItemThemChiTietPhieu(index, currBds);
+                    //check_ctp = false;
+                    return;
+                }
+                return;
+            }
+
+            if (undoHistory.Contains(GHIPN_BTN))
+            {
+                string data_backup = undoHistory;
+                string[] data_backup_split = split_data(undoHistory);
+                if (check_position(data_backup, data_backup_split[1]))
+                {
+                    DialogResult dr = MessageBox.Show("Phiếu '" + data_backup_split[2] + "' đã được ghi vào database.\nBạn có chắc muốn Undo không??", "Xác nhận",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.OK)
+                    {
+                        bdsPN.RemoveAt(0);
+                        this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
+                        return;
+                    }
+                    // Cancel undo.
+                    pushHistory(data_backup);
+                }
+                return;
+            }
+        }
+
+        private bool check_position(string data_backup, string value)
+        {
+            // tìm vị trí của đơn đặt hàng/phiếu mới thêm Chi tiết DDH/phiếu
+            // và set position của bds hiện tại vào đúng vị trí đó 
+            int indexLastDataRow = current_bds.Find(type, value);
+            if (current_bds.Position != indexLastDataRow)
+            {
+                current_bds.Position = indexLastDataRow;
+                pushHistory(data_backup);
+                return false; // Con trỏ chưa nằm đúng vị trí
+            }
+
+            return true; // Con trỏ đã nằm đúng vị trí của mẩu tin cần undo
         }
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -602,6 +825,8 @@ namespace VatTu.SimpleForm
             ((DataRowView)bdsPN[bdsPN.Position])["MAKHO"] = maKho;
             ((DataRowView)bdsPN[bdsPN.Position])["MANV"] = Program.maNV;
             ((DataRowView)bdsPN[bdsPN.Position])["NGAY"] = DateTime.Today;
+
+            pushHistory(THEMPN_BTN);
         }
 
         private void MiGhiPN_Click(object sender, EventArgs e)
@@ -658,6 +883,9 @@ namespace VatTu.SimpleForm
                         this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
                         gridDDH.Enabled = true;
                         cmsPN.Items[1].Enabled = cmsPN.Items[3].Enabled = true;
+
+                        string maSoDDH = this.gvPN.GetRowCellValue(bdsPN.Position, "MasoDDH").ToString().Trim();
+                        pushHistory(GHIPN_BTN + " " + maSoDDH + " " + maPN);
                     }
                     catch (Exception ex)
                     {
@@ -689,9 +917,14 @@ namespace VatTu.SimpleForm
             {
                 try
                 {
-                    maPhieu = ((DataRowView)bdsPN[bdsPN.Position])["MAPN"].ToString();
+                    maPhieu = ((DataRowView)bdsPN[bdsPN.Position])[0].ToString().Trim();
+                    string ngay = ((DataRowView)bdsPN[bdsPN.Position])[1].ToString().Trim();
+                    string maDDH = ((DataRowView)bdsPN[bdsPN.Position])[2].ToString().Trim();
+                    string maKho = ((DataRowView)bdsPN[bdsPN.Position])[4].ToString().Trim();
                     bdsPN.RemoveCurrent();
                     this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
+
+                    pushHistory(XOA_BTN + " " + maPhieu + " " + ngay + " " + maDDH + " " + maKho);
                 }
                 catch (Exception ex)
                 {
@@ -721,6 +954,10 @@ namespace VatTu.SimpleForm
             }
             Program.subFormCTPN = new SubFormCTPN();
             Program.subFormCTPN.Show();
+
+            // Có mã DDH để tìm position của phiếu nhập
+            string maDDH = ((DataRowView)bdsPN[bdsPN.Position])[2].ToString().Trim();
+            Program.subFormCTPN.maDDH = maDDH;
             Program.formMain.Enabled = false;
         }
 
@@ -933,7 +1170,51 @@ namespace VatTu.SimpleForm
                     e.Valid = false;
                     e.ErrorText = "Mã phiếu nhập không được chứa khoảng trắng!";
                 }
+                else if (checkMaPhieuNhap(val.ToString().Trim()) == 1)
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Mã phiếu nhập đã tồn tại ở chi nhánh hiện tại!";
+                }
+                else if (checkMaPhieuNhap(val.ToString().Trim()) == 2)
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Mã phiếu nhập đã tồn tại ở chi nhánh khác!";
+                }
+                else
+                {
+                    e.Valid = true;
+                }
             }
+        }
+
+        private int checkMaPhieuNhap(string maPN)
+        {
+            String query = "DECLARE	@return_value int " +
+                            "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                            "@p1, @p2 " +
+                            "SELECT 'Return Value' = @return_value";
+            SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
+            sqlCommand.Parameters.AddWithValue("@p1", maPN);
+            sqlCommand.Parameters.AddWithValue("@p2", "MAPN");
+            SqlDataReader dataReader = null;
+
+            try
+            {
+                dataReader = sqlCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+
+            // Đọc và lấy result
+            dataReader.Read();
+            int result_value = int.Parse(dataReader.GetValue(0).ToString());
+            dataReader.Close();
+
+            return result_value;
         }
 
         private void GvPN_ShownEditor(object sender, EventArgs e)
@@ -978,6 +1259,5 @@ namespace VatTu.SimpleForm
         {
             return this.dS;
         }
-
     }
 }
