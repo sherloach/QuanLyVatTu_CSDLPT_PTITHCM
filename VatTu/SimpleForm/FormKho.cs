@@ -278,6 +278,7 @@ namespace VatTu.SimpleForm
                         undolist.Push("INSERT");
 
                         bdsKho.Position = position;
+                        Program.formMain.timer1.Enabled = true;
                     }
                     catch (Exception ex)
                     {

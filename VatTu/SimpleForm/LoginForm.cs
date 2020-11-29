@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace VatTu
 {
-    public partial class Form2 : Form
+    public partial class Form2 : DevExpress.XtraEditors.XtraForm
     {
         public Form2()
         {
@@ -81,8 +81,9 @@ namespace VatTu
             myReader.Close();
 
             Program.formMain = new FormChinh();
-            this.Visible = false;
+            Program.formMain.Activate();
             Program.formMain.Show();
+            this.Visible = false;
         }
 
         private void Button1_Click(object sender, EventArgs e)

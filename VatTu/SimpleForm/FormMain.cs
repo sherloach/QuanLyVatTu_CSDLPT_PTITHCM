@@ -40,7 +40,8 @@ namespace VatTu
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            panel2.Location = new Point(0, 738);
+            //panel2.Bottom;
         }
 
         private void BarButtonItem_ListEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -175,6 +176,16 @@ namespace VatTu
             Program.frpt_HoatDongCuaNhanVien = new Frpt_HoatDongCuaNhanVien();
             Program.frpt_HoatDongCuaNhanVien.Show();
             Program.formMain.Enabled = false;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            panel2.Width += 30;
+            if (panel2.Width >= 1380)
+            {
+                timer1.Stop();
+                panel2.Width = 0;
+            }
         }
     }
 }

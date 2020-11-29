@@ -80,8 +80,10 @@
             this.colMANV1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bdsPN = new System.Windows.Forms.BindingSource(this.components);
+            this.fKPhieuNhapDatHangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.phieuNhapTableAdapter = new VatTu.DSTableAdapters.PhieuNhapTableAdapter();
             this.bdsCTPN = new System.Windows.Forms.BindingSource(this.components);
+            this.fKCTPNPhieuNhapBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.cTPNTableAdapter = new VatTu.DSTableAdapters.CTPNTableAdapter();
             this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
             this.fKCTPXPXBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -141,8 +143,6 @@
             this.fKCTPNPhieuNhapBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fKCTPNPhieuNhapBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.fKCTPNPhieuNhapBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.fKPhieuNhapDatHangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.fKCTPNPhieuNhapBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             mAKHOLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -162,7 +162,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPXPXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDDH)).BeginInit();
@@ -194,8 +196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource5)).BeginInit();
             this.SuspendLayout();
             // 
             // mAKHOLabel
@@ -396,15 +396,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1132, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1149, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 740);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1132, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1149, 20);
             // 
             // barDockControlLeft
             // 
@@ -412,15 +412,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 716);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 705);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1132, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1149, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 716);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 705);
             // 
             // groupControl1
             // 
@@ -429,7 +429,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 24);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1132, 65);
+            this.groupControl1.Size = new System.Drawing.Size(1149, 65);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Chi Nhánh";
             // 
@@ -494,7 +494,7 @@
             this.gridDDH.MainView = this.gvDDH;
             this.gridDDH.MenuManager = this.barManager1;
             this.gridDDH.Name = "gridDDH";
-            this.gridDDH.Size = new System.Drawing.Size(1132, 245);
+            this.gridDDH.Size = new System.Drawing.Size(1149, 245);
             this.gridDDH.TabIndex = 6;
             this.gridDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDDH});
@@ -590,7 +590,7 @@
             this.gridPX.MainView = this.gvPX;
             this.gridPX.MenuManager = this.barManager1;
             this.gridPX.Name = "gridPX";
-            this.gridPX.Size = new System.Drawing.Size(1132, 245);
+            this.gridPX.Size = new System.Drawing.Size(1149, 245);
             this.gridPX.TabIndex = 11;
             this.gridPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPX});
@@ -669,6 +669,11 @@
             // 
             this.bdsPN.DataSource = this.fKPhieuNhapDatHangBindingSource1;
             // 
+            // fKPhieuNhapDatHangBindingSource1
+            // 
+            this.fKPhieuNhapDatHangBindingSource1.DataMember = "FK_PhieuNhap_DatHang";
+            this.fKPhieuNhapDatHangBindingSource1.DataSource = this.bdsDH;
+            // 
             // phieuNhapTableAdapter
             // 
             this.phieuNhapTableAdapter.ClearBeforeFill = true;
@@ -676,6 +681,11 @@
             // bdsCTPN
             // 
             this.bdsCTPN.DataSource = this.fKCTPNPhieuNhapBindingSource5;
+            // 
+            // fKCTPNPhieuNhapBindingSource5
+            // 
+            this.fKCTPNPhieuNhapBindingSource5.DataMember = "FK_CTPN_PhieuNhap";
+            this.fKCTPNPhieuNhapBindingSource5.DataSource = this.fKPhieuNhapDatHangBindingSource1;
             // 
             // cTPNTableAdapter
             // 
@@ -701,7 +711,7 @@
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcDDH.Location = new System.Drawing.Point(0, 579);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1132, 46);
+            this.gcDDH.Size = new System.Drawing.Size(1149, 46);
             this.gcDDH.TabIndex = 23;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -714,7 +724,7 @@
             this.gridCTDDH.MainView = this.gvCTDDH;
             this.gridCTDDH.MenuManager = this.barManager1;
             this.gridCTDDH.Name = "gridCTDDH";
-            this.gridCTDDH.Size = new System.Drawing.Size(635, 21);
+            this.gridCTDDH.Size = new System.Drawing.Size(652, 21);
             this.gridCTDDH.TabIndex = 1;
             this.gridCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTDDH});
@@ -840,7 +850,7 @@
             this.gcPX.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcPX.Location = new System.Drawing.Point(0, 625);
             this.gcPX.Name = "gcPX";
-            this.gcPX.Size = new System.Drawing.Size(1132, 36);
+            this.gcPX.Size = new System.Drawing.Size(1149, 36);
             this.gcPX.TabIndex = 31;
             this.gcPX.Text = "Phiếu Xuất";
             this.gcPX.Visible = false;
@@ -854,7 +864,7 @@
             this.gridCTPX.MainView = this.gvCTPX;
             this.gridCTPX.MenuManager = this.barManager1;
             this.gridCTPX.Name = "gridCTPX";
-            this.gridCTPX.Size = new System.Drawing.Size(635, 11);
+            this.gridCTPX.Size = new System.Drawing.Size(652, 11);
             this.gridCTPX.TabIndex = 1;
             this.gridCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTPX});
@@ -978,7 +988,7 @@
             this.gcPN.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcPN.Location = new System.Drawing.Point(0, 661);
             this.gcPN.Name = "gcPN";
-            this.gcPN.Size = new System.Drawing.Size(1132, 79);
+            this.gcPN.Size = new System.Drawing.Size(1149, 33);
             this.gcPN.TabIndex = 36;
             this.gcPN.Text = "Phiếu Nhập";
             this.gcPN.Visible = false;
@@ -996,8 +1006,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridCTPN);
-            this.splitContainer1.Size = new System.Drawing.Size(1128, 54);
-            this.splitContainer1.SplitterDistance = 597;
+            this.splitContainer1.Size = new System.Drawing.Size(1145, 8);
+            this.splitContainer1.SplitterDistance = 605;
             this.splitContainer1.TabIndex = 2;
             // 
             // gridPN
@@ -1013,7 +1023,7 @@
             this.gridPN.MainView = this.gvPN;
             this.gridPN.MenuManager = this.barManager1;
             this.gridPN.Name = "gridPN";
-            this.gridPN.Size = new System.Drawing.Size(597, 54);
+            this.gridPN.Size = new System.Drawing.Size(605, 8);
             this.gridPN.TabIndex = 1;
             this.gridPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPN});
@@ -1104,7 +1114,7 @@
             this.gridCTPN.MainView = this.gridView5;
             this.gridCTPN.MenuManager = this.barManager1;
             this.gridCTPN.Name = "gridCTPN";
-            this.gridCTPN.Size = new System.Drawing.Size(527, 54);
+            this.gridCTPN.Size = new System.Drawing.Size(536, 8);
             this.gridCTPN.TabIndex = 2;
             this.gridCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1172,7 +1182,7 @@
             // 
             // cmsCTDDH
             // 
-            this.cmsCTDDH.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsCTDDH.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmsCTDDH.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miThemCTDDH});
             this.cmsCTDDH.Name = "cmsCTDDH";
@@ -1181,6 +1191,7 @@
             // miThemCTDDH
             // 
             this.miThemCTDDH.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miThemCTDDH.Image = ((System.Drawing.Image)(resources.GetObject("miThemCTDDH.Image")));
             this.miThemCTDDH.Name = "miThemCTDDH";
             this.miThemCTDDH.Size = new System.Drawing.Size(200, 22);
             this.miThemCTDDH.Text = "Thêm chi tiết đơn ĐH";
@@ -1197,6 +1208,7 @@
             // miThemCTPX
             // 
             this.miThemCTPX.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miThemCTPX.Image = ((System.Drawing.Image)(resources.GetObject("miThemCTPX.Image")));
             this.miThemCTPX.Name = "miThemCTPX";
             this.miThemCTPX.Size = new System.Drawing.Size(219, 22);
             this.miThemCTPX.Text = "Thêm chi tiết phiếu xuất";
@@ -1215,6 +1227,7 @@
             // 
             // miThemPN
             // 
+            this.miThemPN.Image = ((System.Drawing.Image)(resources.GetObject("miThemPN.Image")));
             this.miThemPN.Name = "miThemPN";
             this.miThemPN.Size = new System.Drawing.Size(223, 22);
             this.miThemPN.Text = "Thêm phiếu nhập";
@@ -1223,6 +1236,7 @@
             // miXoaPN
             // 
             this.miXoaPN.Enabled = false;
+            this.miXoaPN.Image = ((System.Drawing.Image)(resources.GetObject("miXoaPN.Image")));
             this.miXoaPN.Name = "miXoaPN";
             this.miXoaPN.Size = new System.Drawing.Size(223, 22);
             this.miXoaPN.Text = "Xóa phiếu nhập";
@@ -1231,6 +1245,7 @@
             // miGhiPN
             // 
             this.miGhiPN.Enabled = false;
+            this.miGhiPN.Image = ((System.Drawing.Image)(resources.GetObject("miGhiPN.Image")));
             this.miGhiPN.Name = "miGhiPN";
             this.miGhiPN.Size = new System.Drawing.Size(223, 22);
             this.miGhiPN.Text = "Ghi vào database";
@@ -1238,6 +1253,7 @@
             // 
             // miThemCTPN
             // 
+            this.miThemCTPN.Image = ((System.Drawing.Image)(resources.GetObject("miThemCTPN.Image")));
             this.miThemCTPN.Name = "miThemCTPN";
             this.miThemCTPN.Size = new System.Drawing.Size(223, 22);
             this.miThemCTPN.Text = "Thêm chi tiết phiếu nhập";
@@ -1248,11 +1264,12 @@
             this.cmsChecked.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem});
             this.cmsChecked.Name = "cmsChecked";
-            this.cmsChecked.Size = new System.Drawing.Size(269, 26);
+            this.cmsChecked.Size = new System.Drawing.Size(269, 48);
             // 
             // bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem
             // 
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Enabled = false;
+            this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Image")));
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Name = "bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem";
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem.Text = "Bạn không phải người lập phiếu này.";
@@ -1260,16 +1277,6 @@
             // fKCTPNPhieuNhapBindingSource1
             // 
             this.fKCTPNPhieuNhapBindingSource1.DataSource = this.bdsPN;
-            // 
-            // fKPhieuNhapDatHangBindingSource1
-            // 
-            this.fKPhieuNhapDatHangBindingSource1.DataMember = "FK_PhieuNhap_DatHang";
-            this.fKPhieuNhapDatHangBindingSource1.DataSource = this.bdsDH;
-            // 
-            // fKCTPNPhieuNhapBindingSource5
-            // 
-            this.fKCTPNPhieuNhapBindingSource5.DataMember = "FK_CTPN_PhieuNhap";
-            this.fKCTPNPhieuNhapBindingSource5.DataSource = this.fKPhieuNhapDatHangBindingSource1;
             // 
             // FormLapPhieu
             // 
@@ -1305,7 +1312,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPXPXBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDDH)).EndInit();
@@ -1339,8 +1348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

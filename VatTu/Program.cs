@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using VatTu.SimpleForm;
 using VatTu.SubForm;
 using VatTu.Report;
+using DevExpress.UserSkins;
+using DevExpress.Skins;
 
 namespace VatTu
 {
@@ -129,6 +131,8 @@ namespace VatTu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            BonusSkins.Register();
+            SkinManager.EnableFormSkins();
             loginForm = new Form2();
             Application.Run(loginForm);
         }

@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_NHANVIEN.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QLVT_DATHANGDataSet_Report.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -306,13 +311,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Report\Xrpt_PhieuLapTrongNamTheoLoai.resx">
       <DependentUpon>Xrpt_PhieuLapTrongNamTheoLoai.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +391,28 @@
     </None>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\add-details.png" />
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\building.png" />
+    <Content Include="Resources\dathang.png" />
+    <Content Include="Resources\delete.png" />
+    <Content Include="Resources\diskette.png" />
+    <Content Include="Resources\document.png" />
+    <Content Include="Resources\door-key.png" />
+    <Content Include="Resources\export.png" />
+    <Content Include="Resources\furniture.png" />
+    <Content Include="Resources\import.png" />
+    <Content Include="Resources\import2.png" />
+    <Content Include="Resources\log-out.png" />
+    <Content Include="Resources\login.png" />
+    <Content Include="Resources\loginlogo.png" />
+    <Content Include="Resources\logout.png" />
+    <Content Include="Resources\remove.png" />
+    <Content Include="Resources\staff.png" />
+    <Content Include="Resources\user %281%29.png" />
+    <Content Include="Resources\user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
