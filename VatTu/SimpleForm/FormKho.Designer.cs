@@ -395,6 +395,7 @@
             // txtMaCN
             // 
             this.txtMaCN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "MACN", true));
+            this.txtMaCN.Enabled = false;
             this.txtMaCN.Location = new System.Drawing.Point(258, 98);
             this.txtMaCN.Name = "txtMaCN";
             this.txtMaCN.Size = new System.Drawing.Size(100, 21);

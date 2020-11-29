@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace VatTu.SimpleForm
     public partial class FormVatTu : Form
     {
         int position = 0;
+        Stack undolist = new Stack();
 
         public FormVatTu()
         {
@@ -49,8 +51,8 @@ namespace VatTu.SimpleForm
         {
             position = bdsVatTu.Position;
             this.bdsVatTu.AddNew();
-            btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = false;
-            btnUndo.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = true;
+            btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = btnUndo.Enabled = false;
+            btnGhi.Enabled = gcInfoVatTu.Enabled = true;
 
             //Program.flagCloseFormVT = false; //Bật cờ lên để chặn tắt Form đột ngột khi nhập liệu
             numSLT.Value = 0;

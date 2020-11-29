@@ -228,8 +228,13 @@
             // 
             this.numSLT.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsVatTu, "SOLUONGTON", true));
             this.numSLT.Location = new System.Drawing.Point(491, 99);
+            this.numSLT.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numSLT.Name = "numSLT";
-            this.numSLT.Size = new System.Drawing.Size(120, 21);
+            this.numSLT.Size = new System.Drawing.Size(102, 21);
             this.numSLT.TabIndex = 7;
             // 
             // txtDVT
@@ -245,7 +250,7 @@
             this.txtTenVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "TENVT", true));
             this.txtTenVT.Location = new System.Drawing.Point(491, 62);
             this.txtTenVT.Name = "txtTenVT";
-            this.txtTenVT.Size = new System.Drawing.Size(224, 21);
+            this.txtTenVT.Size = new System.Drawing.Size(189, 21);
             this.txtTenVT.TabIndex = 3;
             // 
             // txtMaVT

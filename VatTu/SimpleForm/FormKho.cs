@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace VatTu.SimpleForm
     {
         int position = 0;
         string maCN = "";
+        Stack undolist = new Stack();
 
         public FormKho()
         {
@@ -33,7 +35,6 @@ namespace VatTu.SimpleForm
             // Không kiểm tra khóa ngoại
             dS.EnforceConstraints = false;
 
-            // TODO: This line of code loads data into the 'dS.Kho' table. You can move, or remove it, as needed.
             this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
             this.khoTableAdapter.Fill(this.dS.Kho);
             this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -79,30 +80,33 @@ namespace VatTu.SimpleForm
             string maKho = "";
             if (bdsDH.Count > 0)
             {
-                MessageBox.Show("Không thể xóa kho này vì đã lập đơn đặt hàng", "Lỗi",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể xóa kho vì đã lập đơn đặt hàng", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (bdsPN.Count > 0)
             {
-                MessageBox.Show("Không thể xóa kho này vì đã lập phiếu nhập", "Lỗi",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể xóa kho vì đã lập phiếu nhập", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (bdsPX.Count > 0)
             {
-                MessageBox.Show("Không thể xóa kho này vì đã lập phiếu xuất", "Lỗi",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể xóa kho vì đã lập phiếu xuất", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             DialogResult dr = MessageBox.Show("Bạn có thực sự muốn xóa kho này không?", "Xác nhận",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
             if (dr == DialogResult.OK)
             {
                 try
                 {
+                    String Kho_info = txtMaKho.Text.Trim() + " " + txtTenKho.Text.Trim() + " " + txtMaCN.Text.Trim() + " " + txtDiaChi.Text.Trim();
+
                     maKho = ((DataRowView)bdsKho[bdsKho.Position])["MAKHO"].ToString();
                     bdsKho.RemoveCurrent();
+                    btnUndo.Enabled = true;
+                    undolist.Push(Kho_info);
+                    undolist.Push("DELETE");
                     this.khoTableAdapter.Update(this.dS.Kho);
                 }
                 catch (Exception ex)
@@ -118,13 +122,39 @@ namespace VatTu.SimpleForm
             if (bdsKho.Count == 0) btnXoa.Enabled = false;
         }
 
+        // TODO: vị trí, non-update
         private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = btnReload.Enabled = true;
+            /*btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = btnReload.Enabled = true;
             btnUndo.Enabled = btnGhi.Enabled = false;
             //Program.flagCloseFormKho = true; //Undo lại thì cho phép thoát mà ko kiểm tra dữ liệu
             bdsKho.CancelEdit();
-            bdsKho.Position = position;
+            bdsKho.Position = position;*/
+
+            if (undolist.Count > 0)
+            {
+                String statement = undolist.Pop().ToString();
+                if (statement.Equals("DELETE"))
+                {
+                    this.bdsKho.AddNew();
+                    String TT = undolist.Pop().ToString();
+                    String[] TT_Kho = TT.Split(' ');
+
+                    txtMaKho.Text = TT_Kho[0];
+                    txtTenKho.Text = TT_Kho[1];
+                    txtMaCN.Text = TT_Kho[2];
+                    txtDiaChi.Text = TT_Kho[3];
+                    this.bdsKho.EndEdit();
+                    this.khoTableAdapter.Update(this.dS.Kho);
+                }
+                else if (statement.Equals("INSERT"))
+                {
+                    int vitrixoa = int.Parse(undolist.Pop().ToString());
+                    bdsKho.Position = vitrixoa;
+                    bdsKho.RemoveCurrent();
+                }
+            }
+            if (undolist.Count == 0) btnUndo.Enabled = false;
         }
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -157,10 +187,10 @@ namespace VatTu.SimpleForm
             }
 
             // == Query tìm MAKHO ==
-            String query_MAKHO = "DECLARE	@return_value int " +
-                           "EXEC @return_value = [dbo].[SP_CHECKID] " +
-                           "@p1, @p2 " +
-                           "SELECT 'Return Value' = @return_value";
+            String query_MAKHO = "DECLARE @return_value int " +
+                                "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                                "@p1, @p2 " +
+                                "SELECT 'Return Value' = @return_value";
             SqlCommand sqlCommand = new SqlCommand(query_MAKHO, Program.conn);
             sqlCommand.Parameters.AddWithValue("@p1", txtMaKho.Text);
             sqlCommand.Parameters.AddWithValue("@p2", "MAKHO");
@@ -182,10 +212,10 @@ namespace VatTu.SimpleForm
             dataReader.Close();
 
             // == Query tìm TENKHO ==
-            String query_TENKHO = "DECLARE	@return_value int " +
-                                  "EXEC @return_value = [dbo].[SP_CHECKID] " +
-                                  "@p1, @p2 " +
-                                  "SELECT 'Return Value' = @return_value";
+            String query_TENKHO = "DECLARE @return_value int " +
+                                   "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                                   "@p1, @p2 " +
+                                   "SELECT 'Return Value' = @return_value";
             sqlCommand = new SqlCommand(query_TENKHO, Program.conn);
             sqlCommand.Parameters.AddWithValue("@p1", txtTenKho.Text);
             sqlCommand.Parameters.AddWithValue("@p2", "TENKHO");
@@ -240,9 +270,13 @@ namespace VatTu.SimpleForm
                         //Program.flagCloseFormKho = true; //Bật cờ cho phép tắt Form NV
                         btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = gcInfoKho.Enabled = true;
                         btnReload.Enabled = btnGhi.Enabled = true;
-                        btnUndo.Enabled = false;
+                        btnUndo.Enabled = true;
                         this.bdsKho.EndEdit();
                         this.khoTableAdapter.Update(this.dS.Kho);
+
+                        undolist.Push(bdsKho.Position.ToString());
+                        undolist.Push("INSERT");
+
                         bdsKho.Position = position;
                     }
                     catch (Exception ex)

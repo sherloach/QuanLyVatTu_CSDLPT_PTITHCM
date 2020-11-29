@@ -200,9 +200,7 @@ namespace VatTu.SimpleForm
         {
             gridDDH.Enabled = true;
             cmsPN.Items[2].Enabled = false;
-            //bdsPN.CancelEdit();
             if (bdsPN.Current != null) bdsPN.RemoveCurrent();
-            //current_bds.Position = position;
         }
 
         // Return vị trí của mẩu tin vừa ghi
@@ -303,39 +301,6 @@ namespace VatTu.SimpleForm
                 if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
                 {
                     undo_update_SoLuongVT(maVatTu_backup, soLuong, "IMPORT");
-                    /*
-                    String query = "DECLARE	@return_value int " +
-                                    "EXEC @return_value = [dbo].[SP_UpdateSLVatTu] " +
-                                    "@p1, @p2, @p3 " +
-                                    "SELECT 'Return Value' = @return_value";
-
-                    SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
-                    sqlCommand.Parameters.AddWithValue("@p1", maVatTu_backup);
-                    sqlCommand.Parameters.AddWithValue("@p2", soLuong);
-                    sqlCommand.Parameters.AddWithValue("@p3", "IMPORT");
-                    SqlDataReader dataReader = null;
-
-                    try
-                    {
-                        dataReader = sqlCommand.ExecuteReader();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi khi cập nhật vật tư vào Database!\n" + ex.Message, "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        dataReader.Close();
-                        return;
-                    }
-
-                    dataReader.Read();
-                    int result_value = int.Parse(dataReader.GetValue(0).ToString());
-                    dataReader.Close();
-                    if (result_value == 0)
-                    {
-                        MessageBox.Show("Lỗi khi cập nhật vật tư vào Database!\n", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }*/
                 }
                 else if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập"))
                 {
@@ -383,19 +348,6 @@ namespace VatTu.SimpleForm
             }
         }
 
-        private void unClickMenuItemXoaChiTietPhieu(string[] data_backup)
-        {
-            bdsPN.AddNew();
-            ((DataRowView)current_bds[0])[0] = data_backup[1];
-            // Khi tách dữ liệu ra thì ngày được tách thành: [2] - mm/dd/yyyy [3] - time [4] - AM/PM
-            ((DataRowView)current_bds[0])[1] = data_backup[2];
-            ((DataRowView)current_bds[0])[2] = data_backup[5];
-            ((DataRowView)current_bds[0])[3] = Program.maNV;
-            ((DataRowView)current_bds[0])[4] = data_backup[6];
-            bdsPN.EndEdit();
-            this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
-        }
-
         // ------ CRUD ------
         private void BtnGridKho_Click(object sender, EventArgs e)
         {
@@ -426,20 +378,6 @@ namespace VatTu.SimpleForm
 
         private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*
-            if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
-            {
-                current_bds = bdsPX;
-                current_gc = gridPX;
-                current_gb = gbInfoPX;
-            }
-            else
-            {
-                current_bds = bdsDH;
-                current_gc = gridDDH;
-                current_gb = gbInfoDDH;
-            }*/
-
             // Giữ lại vị trí trước khi CRUD
             position = current_bds.Position;
             themFunc();
@@ -831,48 +769,13 @@ namespace VatTu.SimpleForm
 
         private void MiGhiPN_Click(object sender, EventArgs e)
         {
-            string maPN = this.gvPN.GetRowCellValue(bdsPN.Position, "MAPN").ToString();
-            String query = "DECLARE	@return_value int " +
-                            "EXEC @return_value = [dbo].[SP_CHECKID] " +
-                            "@p1, @p2 " +
-                            "SELECT 'Return Value' = @return_value";
-            SqlCommand sqlCommand = new SqlCommand(query, Program.conn);
-            sqlCommand.Parameters.AddWithValue("@p1", maPN);
-            sqlCommand.Parameters.AddWithValue("@p2", "MAPN");
-            SqlDataReader dataReader = null;
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                string maPN = this.gvPN.GetRowCellValue(bdsPN.Position, "MAPN").ToString();
 
-            try
-            {
-                dataReader = sqlCommand.ExecuteReader();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Đọc và lấy result
-            dataReader.Read();
-            int result_value = int.Parse(dataReader.GetValue(0).ToString());
-            dataReader.Close();
-            // Check ràng buộc mã các phiếu
-            //int indexMaPhieu = bdsPN.Find("", maPN);
-            //int indexCurrent = bdsPN.Position;
-            if (result_value == 1)
-            {
-                MessageBox.Show("Mã phiếu đã tồn tại ở chi chánh hiện tại!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else if (result_value == 2)
-            {
-                MessageBox.Show("Mã phiếu đã tồn tại ở chi chánh khác!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
+                // Check ràng buộc mã các phiếu
+                //int indexMaPhieu = bdsPN.Find("", maPN);
+                //int indexCurrent = bdsPN.Position;
                 DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dr == DialogResult.OK)
