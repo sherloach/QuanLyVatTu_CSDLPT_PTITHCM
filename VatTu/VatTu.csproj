@@ -245,12 +245,6 @@
     <Compile Include="SubForm\SubFormKho.Designer.cs">
       <DependentUpon>SubFormKho.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForm\SubFormPN.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubForm\SubFormPN.Designer.cs">
-      <DependentUpon>SubFormPN.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Report\FormSupportReport.resx">
       <DependentUpon>FormSupportReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,9 +325,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\SubFormKho.resx">
       <DependentUpon>SubFormKho.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SubForm\SubFormPN.resx">
-      <DependentUpon>SubFormPN.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DS.xsc">

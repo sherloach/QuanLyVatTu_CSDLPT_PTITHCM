@@ -187,7 +187,7 @@ namespace VatTu.SubForm
                     updateSuccess = true;
 
                     // Push History for Undo
-                    string data_backup = Program.formLapPhieu.GHI_CTP_BTN + " " + maDDH + " " + maVT;
+                    string data_backup = Program.formLapPhieu.GHI_CTP_BTN + "#%" + maDDH + "#%" + maVT;
                     Program.formLapPhieu.historyPN.Push(data_backup);
                     this.Close();
                     Program.formMain.timer1.Enabled = true;

@@ -50,7 +50,6 @@ namespace VatTu
         public static Form2 loginForm;
         public static SubFormCTDDH subFormCTDDH;
         public static SubFormCTPX subFormCTPX;
-        public static SubFormPN subFormPN;
         public static SubFormCTPN subFormCTPN;
         public static SubFormKho subFormKho;
         public static Frpt_HoatDongCuaNhanVien frpt_HoatDongCuaNhanVien;

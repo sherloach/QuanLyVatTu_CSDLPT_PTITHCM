@@ -91,7 +91,7 @@ namespace VatTu.SubForm
                         this.cTDDHTableAdapter.Update(Program.formLapPhieu.getDataset().CTDDH);
                         updateSuccess = true;
 
-                        string data_backup = Program.formLapPhieu.GHI_CTP_BTN + " " + maDDH + " " + maVatTu;
+                        string data_backup = Program.formLapPhieu.GHI_CTP_BTN + "#%" + maDDH + "#%" + maVatTu;
                         Program.formLapPhieu.historyDDH.Push(data_backup);
                         //Program.formLapPhieu.check_ctp = true;
                         this.Close();
