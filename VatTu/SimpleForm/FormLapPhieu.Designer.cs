@@ -389,6 +389,7 @@
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            this.bar3.Visible = false;
             // 
             // barDockControlTop
             // 
@@ -1264,7 +1265,7 @@
             this.cmsChecked.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem});
             this.cmsChecked.Name = "cmsChecked";
-            this.cmsChecked.Size = new System.Drawing.Size(269, 48);
+            this.cmsChecked.Size = new System.Drawing.Size(269, 26);
             // 
             // bạnKhôngPhảiNgườiLậpPhiếuNàyToolStripMenuItem
             // 

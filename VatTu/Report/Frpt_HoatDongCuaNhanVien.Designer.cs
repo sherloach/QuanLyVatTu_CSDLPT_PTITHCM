@@ -105,7 +105,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("SF Pro Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(186, 87);
+            this.label5.Location = new System.Drawing.Point(194, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 15);
             this.label5.TabIndex = 3;
@@ -140,7 +140,7 @@
             this.txtTenNV.Location = new System.Drawing.Point(263, 85);
             this.txtTenNV.Name = "txtTenNV";
             this.txtTenNV.ReadOnly = true;
-            this.txtTenNV.Size = new System.Drawing.Size(137, 20);
+            this.txtTenNV.Size = new System.Drawing.Size(137, 21);
             this.txtTenNV.TabIndex = 7;
             // 
             // deFrom
@@ -180,9 +180,10 @@
             // btnExit
             // 
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.Location = new System.Drawing.Point(241, 217);
+            this.btnExit.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExit.Location = new System.Drawing.Point(222, 217);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 27);
+            this.btnExit.Size = new System.Drawing.Size(119, 27);
             this.btnExit.TabIndex = 15;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -191,9 +192,10 @@
             // btnPreview
             // 
             this.btnPreview.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPreview.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold);
             this.btnPreview.Location = new System.Drawing.Point(89, 217);
             this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(100, 27);
+            this.btnPreview.Size = new System.Drawing.Size(126, 27);
             this.btnPreview.TabIndex = 14;
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
@@ -249,6 +251,8 @@
             // 
             // Frpt_HoatDongCuaNhanVien
             // 
+            this.Appearance.BackColor = System.Drawing.Color.White;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 270);
@@ -266,6 +270,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.IconOptions.Image = global::VatTu.Properties.Resources.role;
             this.Name = "Frpt_HoatDongCuaNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hoạt Động Nhân Viên";

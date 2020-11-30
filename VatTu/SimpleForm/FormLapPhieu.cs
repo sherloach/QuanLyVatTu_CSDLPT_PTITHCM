@@ -436,6 +436,7 @@ namespace VatTu.SimpleForm
                             this.datHangTableAdapter.Update(this.dS.DatHang);
                             historyDDH.Push(XOA_BTN + " " + maPhieu + " " + ngay + " " + name + " " + maKho);
                         }
+                        Program.formMain.timer1.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -677,6 +678,7 @@ namespace VatTu.SimpleForm
                                 historyDDH.Push(GHI_BTN + " " + tb_maPhieu.Text);
                             }
                             current_bds.Position = position;
+                            Program.formMain.timer1.Enabled = true;
                         }
                         catch (Exception ex)
                         {
@@ -789,6 +791,7 @@ namespace VatTu.SimpleForm
 
                         string maSoDDH = this.gvPN.GetRowCellValue(bdsPN.Position, "MasoDDH").ToString().Trim();
                         pushHistory(GHIPN_BTN + " " + maSoDDH + " " + maPN);
+                        Program.formMain.timer1.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -828,6 +831,7 @@ namespace VatTu.SimpleForm
                     this.phieuNhapTableAdapter.Update(this.dS.PhieuNhap);
 
                     pushHistory(XOA_BTN + " " + maPhieu + " " + ngay + " " + maDDH + " " + maKho);
+                    Program.formMain.timer1.Enabled = true;
                 }
                 catch (Exception ex)
                 {

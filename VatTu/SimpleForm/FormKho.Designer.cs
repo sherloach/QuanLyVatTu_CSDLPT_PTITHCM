@@ -94,36 +94,36 @@
             mACNLabel.AutoSize = true;
             mACNLabel.Location = new System.Drawing.Point(210, 101);
             mACNLabel.Name = "mACNLabel";
-            mACNLabel.Size = new System.Drawing.Size(38, 13);
+            mACNLabel.Size = new System.Drawing.Size(42, 13);
             mACNLabel.TabIndex = 14;
-            mACNLabel.Text = "Mã CN";
+            mACNLabel.Text = "Mã CN:";
             // 
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
             dIACHILabel.Location = new System.Drawing.Point(392, 101);
             dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(41, 13);
+            dIACHILabel.Size = new System.Drawing.Size(45, 13);
             dIACHILabel.TabIndex = 12;
-            dIACHILabel.Text = "Địa Chỉ";
+            dIACHILabel.Text = "Địa Chỉ:";
             // 
             // tENKHOLabel
             // 
             tENKHOLabel.AutoSize = true;
             tENKHOLabel.Location = new System.Drawing.Point(392, 66);
             tENKHOLabel.Name = "tENKHOLabel";
-            tENKHOLabel.Size = new System.Drawing.Size(46, 13);
+            tENKHOLabel.Size = new System.Drawing.Size(50, 13);
             tENKHOLabel.TabIndex = 10;
-            tENKHOLabel.Text = "Tên Kho";
+            tENKHOLabel.Text = "Tên Kho:";
             // 
             // mAKHOLabel
             // 
             mAKHOLabel.AutoSize = true;
             mAKHOLabel.Location = new System.Drawing.Point(210, 66);
             mAKHOLabel.Name = "mAKHOLabel";
-            mAKHOLabel.Size = new System.Drawing.Size(42, 13);
+            mAKHOLabel.Size = new System.Drawing.Size(46, 13);
             mAKHOLabel.TabIndex = 8;
-            mAKHOLabel.Text = "Mã Kho";
+            mAKHOLabel.Text = "Mã Kho:";
             // 
             // barManager1
             // 
@@ -222,6 +222,7 @@
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            this.bar3.Visible = false;
             // 
             // barDockControlTop
             // 
@@ -377,6 +378,8 @@
             // 
             // gcInfoKho
             // 
+            this.gcInfoKho.Appearance.BorderColor = System.Drawing.Color.Transparent;
+            this.gcInfoKho.Appearance.Options.UseBorderColor = true;
             this.gcInfoKho.Controls.Add(mACNLabel);
             this.gcInfoKho.Controls.Add(this.txtMaCN);
             this.gcInfoKho.Controls.Add(dIACHILabel);

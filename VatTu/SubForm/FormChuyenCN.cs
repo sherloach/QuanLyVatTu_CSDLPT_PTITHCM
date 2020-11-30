@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace VatTu.SubForm
 {
-    public partial class FormChuyenCN : Form
+    public partial class FormChuyenCN : DevExpress.XtraEditors.XtraForm
     {
         public FormChuyenCN()
         {
             InitializeComponent();
-            comboBox_ChiNhanh.Items.RemoveAt(Program.mChinhanh);
+            //comboBox_ChiNhanh.Items.RemoveAt(Program.mChinhanh);
         }
 
         private void FormChuyenCN_Load(object sender, EventArgs e)
@@ -46,5 +46,9 @@ namespace VatTu.SubForm
             }
         }
 
+        private void FormChuyenCN_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.formMain.Enabled = true;
+        }
     }
 }

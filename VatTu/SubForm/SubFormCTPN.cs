@@ -190,6 +190,7 @@ namespace VatTu.SubForm
                     string data_backup = Program.formLapPhieu.GHI_CTP_BTN + " " + maDDH + " " + maVT;
                     Program.formLapPhieu.historyPN.Push(data_backup);
                     this.Close();
+                    Program.formMain.timer1.Enabled = true;
                 }
                 catch (Exception ex)
                 {

@@ -40,8 +40,7 @@ namespace VatTu
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            panel2.Location = new Point(0, 738);
-            //panel2.Bottom;
+            panel2.Location = new Point(0, statusStrip1.Location.Y - panel2.Height);
         }
 
         private void BarButtonItem_ListEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -181,11 +180,16 @@ namespace VatTu
         private void Timer1_Tick(object sender, EventArgs e)
         {
             panel2.Width += 30;
-            if (panel2.Width >= 1380)
+            if (panel2.Width >= 1400)
             {
                 timer1.Stop();
                 panel2.Width = 0;
             }
+        }
+
+        private void BarButtonItem1_ItemClick_2(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            timer1.Enabled = true;
         }
     }
 }

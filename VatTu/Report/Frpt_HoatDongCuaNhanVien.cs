@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace VatTu.Report
 {
-    public partial class Frpt_HoatDongCuaNhanVien : Form
+    public partial class Frpt_HoatDongCuaNhanVien : DevExpress.XtraEditors.XtraForm
     {
         public static int maNV;
         public static String tenNV;

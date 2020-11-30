@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace VatTu.Report
 {
-    public partial class FormSupportReport : Form
+    public partial class FormSupportReport : DevExpress.XtraEditors.XtraForm
     {
         private int choice;
         public FormSupportReport(int choice)
@@ -23,15 +23,15 @@ namespace VatTu.Report
                 if (Program.mGroup != "CONGTY")
                 {
                     comboBox_ChiNhanh.Visible = false;
-                    label2.Visible = false;
+                    pictureBox2.Visible = false;
                 }
             }
             else
             {
                 comboBox_ChiNhanh.Enabled = false;
                 comboBox_ChiNhanh.Visible = false;
-                label2.Enabled = false;
-                label2.Visible = false;
+                pictureBox2.Enabled = false;
+                pictureBox2.Visible = false;
             }
             this.choice = choice;
         }

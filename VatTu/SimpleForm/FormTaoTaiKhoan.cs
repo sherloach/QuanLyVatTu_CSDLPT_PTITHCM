@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace VatTu.SimpleForm
 {
-    public partial class FormTaoTaiKhoan : Form
+    public partial class FormTaoTaiKhoan : DevExpress.XtraEditors.XtraForm
     {
         public FormTaoTaiKhoan()
         {

@@ -32,6 +32,8 @@ namespace VatTu.SimpleForm
 
         private void FormKho_Load(object sender, EventArgs e)
         {
+            gcInfoKho.Height = 222;
+
             // Không kiểm tra khóa ngoại
             dS.EnforceConstraints = false;
 
@@ -108,6 +110,7 @@ namespace VatTu.SimpleForm
                     undolist.Push(Kho_info);
                     undolist.Push("DELETE");
                     this.khoTableAdapter.Update(this.dS.Kho);
+                    Program.formMain.timer1.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -272,13 +275,13 @@ namespace VatTu.SimpleForm
                         btnReload.Enabled = btnGhi.Enabled = true;
                         btnUndo.Enabled = true;
                         this.bdsKho.EndEdit();
+                        Program.formMain.timer1.Enabled = true;
                         this.khoTableAdapter.Update(this.dS.Kho);
 
                         undolist.Push(bdsKho.Position.ToString());
                         undolist.Push("INSERT");
 
                         bdsKho.Position = position;
-                        Program.formMain.timer1.Enabled = true;
                     }
                     catch (Exception ex)
                     {

@@ -123,10 +123,18 @@
   <metadata name="qLVT_DATHANGDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="qLVT_DATHANGDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="v_DS_PHANMANHTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>430, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        dgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADVSURBVDhPndM7
+        igJBFIXh9v1CxFQQxcegIIoOTK64At2AWzFX3IWBG3ALBm5gAnEJoomR6H+ghKal4OKFD251VZ2uLugg
+        Uklc8AxZwlxdaNOvs8EuNJYGvHXDGScPzV3hrTvKSKCOmKM+Ds1pjbfeAX/4h46rz1I/gDkgjSF0El2s
+        +hTMASMcoKP/uL4Hc0AeE+itGYyRgzmgjz2qaLq+A3NACXNkUcAMRZgDdPNbVFBzfQvmAF3cNKINc8Aa
+        Dxwd9SuYA6ILfc8/6uuABcK/sAV7guAFOqtK+mFNdPkAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

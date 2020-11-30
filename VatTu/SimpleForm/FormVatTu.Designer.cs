@@ -90,38 +90,38 @@
             // mAVTLabel
             // 
             mAVTLabel.AutoSize = true;
-            mAVTLabel.Location = new System.Drawing.Point(210, 66);
+            mAVTLabel.Location = new System.Drawing.Point(201, 66);
             mAVTLabel.Name = "mAVTLabel";
-            mAVTLabel.Size = new System.Drawing.Size(54, 13);
+            mAVTLabel.Size = new System.Drawing.Size(60, 13);
             mAVTLabel.TabIndex = 0;
-            mAVTLabel.Text = "Mã vật tư";
+            mAVTLabel.Text = "Mã Vật Tư:";
             // 
             // tENVTLabel
             // 
             tENVTLabel.AutoSize = true;
-            tENVTLabel.Location = new System.Drawing.Point(419, 65);
+            tENVTLabel.Location = new System.Drawing.Point(408, 66);
             tENVTLabel.Name = "tENVTLabel";
-            tENVTLabel.Size = new System.Drawing.Size(58, 13);
+            tENVTLabel.Size = new System.Drawing.Size(64, 13);
             tENVTLabel.TabIndex = 2;
-            tENVTLabel.Text = "Tên vật tư";
+            tENVTLabel.Text = "Tên Vật Tư:";
             // 
             // dVTLabel
             // 
             dVTLabel.AutoSize = true;
-            dVTLabel.Location = new System.Drawing.Point(210, 101);
+            dVTLabel.Location = new System.Drawing.Point(201, 102);
             dVTLabel.Name = "dVTLabel";
-            dVTLabel.Size = new System.Drawing.Size(59, 13);
+            dVTLabel.Size = new System.Drawing.Size(63, 13);
             dVTLabel.TabIndex = 4;
-            dVTLabel.Text = "Đơn vị tính";
+            dVTLabel.Text = "Đơn vị tính:";
             // 
             // sOLUONGTONLabel
             // 
             sOLUONGTONLabel.AutoSize = true;
-            sOLUONGTONLabel.Location = new System.Drawing.Point(419, 101);
+            sOLUONGTONLabel.Location = new System.Drawing.Point(408, 103);
             sOLUONGTONLabel.Name = "sOLUONGTONLabel";
-            sOLUONGTONLabel.Size = new System.Drawing.Size(68, 13);
+            sOLUONGTONLabel.Size = new System.Drawing.Size(77, 13);
             sOLUONGTONLabel.TabIndex = 6;
-            sOLUONGTONLabel.Text = "Số lượng tồn";
+            sOLUONGTONLabel.Text = "Số Lượng Tồn:";
             // 
             // dS
             // 
@@ -234,7 +234,7 @@
             0,
             0});
             this.numSLT.Name = "numSLT";
-            this.numSLT.Size = new System.Drawing.Size(102, 21);
+            this.numSLT.Size = new System.Drawing.Size(47, 21);
             this.numSLT.TabIndex = 7;
             // 
             // txtDVT
@@ -378,6 +378,7 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Status bar";
+            this.bar5.Visible = false;
             // 
             // barDockControlTop
             // 

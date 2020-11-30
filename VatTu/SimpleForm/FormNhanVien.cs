@@ -430,6 +430,7 @@ namespace VatTu
             int trangThaiXoa = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["TrangThaiXoa"].ToString());
             if (trangThaiXoa == 0)
             {
+                Program.formMain.Enabled = false;
                 FormChuyenCN pickCN = new FormChuyenCN();
                 pickCN.mydata = new FormChuyenCN.GETDATA(GETVALUE);
                 pickCN.ShowDialog();

@@ -95,6 +95,7 @@ namespace VatTu.SubForm
                         Program.formLapPhieu.historyDDH.Push(data_backup);
                         //Program.formLapPhieu.check_ctp = true;
                         this.Close();
+                        Program.formMain.timer1.Enabled = true;
                     }
                     catch (Exception ex)
                     {

@@ -395,6 +395,7 @@
     <Content Include="Resources\add-details.png" />
     <Content Include="Resources\add.png" />
     <Content Include="Resources\building.png" />
+    <Content Include="Resources\create-login.png" />
     <Content Include="Resources\dathang.png" />
     <Content Include="Resources\delete.png" />
     <Content Include="Resources\diskette.png" />
@@ -404,11 +405,13 @@
     <Content Include="Resources\furniture.png" />
     <Content Include="Resources\import.png" />
     <Content Include="Resources\import2.png" />
+    <Content Include="Resources\info-user.png" />
     <Content Include="Resources\log-out.png" />
     <Content Include="Resources\login.png" />
     <Content Include="Resources\loginlogo.png" />
     <Content Include="Resources\logout.png" />
     <Content Include="Resources\remove.png" />
+    <Content Include="Resources\role.png" />
     <Content Include="Resources\staff.png" />
     <Content Include="Resources\user %281%29.png" />
     <Content Include="Resources\user.png" />
