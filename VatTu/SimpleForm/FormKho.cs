@@ -115,10 +115,13 @@ namespace VatTu.SimpleForm
                 try
                 {
                     maKho = ((DataRowView)bdsKho[bdsKho.Position])["MAKHO"].ToString();
+                    string tenKho = ((DataRowView)bdsKho[bdsKho.Position])["TENKHO"].ToString();
+                    string diaChi = ((DataRowView)bdsKho[bdsKho.Position])["DIACHI"].ToString();
+
                     bdsKho.RemoveCurrent();
                     btnUndo.Enabled = true;
-                    Program.formMain.timer1.Enabled = true;
                     this.khoTableAdapter.Update(this.dS.Kho);
+                    history_kho.Push(XOA_BTN + "#%" + maKho + "#%" + tenKho + "#%" + diaChi);
                 }
                 catch (Exception ex)
                 {
@@ -167,6 +170,18 @@ namespace VatTu.SimpleForm
             history_kho.Push(GHI_BTN + "#%" + maKho_backup);
         }
 
+        private void unClickXoa(string[] data_backup)
+        {
+            bdsKho.AddNew();
+            ((DataRowView)bdsKho[bdsKho.Position])[0] = data_backup[1];
+            // Khi tách dữ liệu ra thì ngày được tách thành: [2] - mm/dd/yyyy [3] - time [4] - AM/PM
+            ((DataRowView)bdsKho[bdsKho.Position])[1] = data_backup[2];
+            ((DataRowView)bdsKho[bdsKho.Position])[2] = data_backup[3];
+            ((DataRowView)bdsKho[bdsKho.Position])[3] = maCN;
+            bdsKho.EndEdit();
+            this.khoTableAdapter.Update(this.dS.Kho);
+        }
+
         public int split_index_ghi(string GHIBTN)
         {
             char[] separators = new char[] { '#', '%' };
@@ -177,14 +192,16 @@ namespace VatTu.SimpleForm
             return indexDataRowUpdated;
         }
 
+        private string[] split_data(string XOABTN)
+        {
+            char[] separators = new char[] { '#', '%' };
+            string[] data = XOABTN.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            return data;
+        }
+
         // TODO: vị trí, non-update
         private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = btnReload.Enabled = true;
-            btnUndo.Enabled = btnGhi.Enabled = false;
-            //Program.flagCloseFormKho = true; //Undo lại thì cho phép thoát mà ko kiểm tra dữ liệu
-            bdsKho.CancelEdit();
-            bdsKho.Position = position;*/
             String undoHistory = "";
             undoHistory = history_kho.Pop();
             if (history_kho.Count == 0) btnUndo.Enabled = false;
@@ -205,6 +222,13 @@ namespace VatTu.SimpleForm
             {
                 int index = split_index_ghi(undoHistory);
                 unClickGhi(index);
+                return;
+            }
+
+            if (undoHistory.Contains(XOA_BTN))
+            {
+                string[] data_backup_split = split_data(undoHistory);
+                unClickXoa(data_backup_split);
                 return;
             }
         }
