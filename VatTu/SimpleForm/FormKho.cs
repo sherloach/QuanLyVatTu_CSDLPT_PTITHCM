@@ -140,8 +140,8 @@ namespace VatTu.SimpleForm
         // ------ UNDO ------
         private void unClickThem()
         {
-            btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = btnReload.Enabled = true;
-            gcInfoKho.Enabled = btnGhi.Enabled = false;
+            btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = btnReload.Enabled = gcInfoKho.Enabled = true;
+            btnGhi.Enabled = false;
             this.bdsKho.CancelEdit();
             bdsKho.Position = position;
         }
@@ -347,6 +347,7 @@ namespace VatTu.SimpleForm
                         btnThem.Enabled = btnXoa.Enabled = khoGridControl.Enabled = gcInfoKho.Enabled = true;
                         btnReload.Enabled = btnGhi.Enabled = true;
                         btnUndo.Enabled = true;
+                        txtMaCN.Enabled = false;
                         this.bdsKho.EndEdit();
                         Program.formMain.timer1.Enabled = true;
                         this.khoTableAdapter.Update(this.dS.Kho);

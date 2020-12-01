@@ -401,6 +401,7 @@
             this.colTrangThaiXoa});
             this.gridView1.GridControl = this.gridNhanVien;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // colMANV

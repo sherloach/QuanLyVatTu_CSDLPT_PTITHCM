@@ -60,42 +60,65 @@ namespace VatTu.SimpleForm
 
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string maVT = "";
-            if (bdsCTDDH.Count > 0)
-            {
-                MessageBox.Show("Không thể xóa vật tư này vì đã lập chi tiết đặt hàng", "Lỗi",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (bdsCTPN.Count > 0)
-            {
-                MessageBox.Show("Không thể xóa vật tư này vì đã lập chi tiết phiếu nhập", "Lỗi",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (bdsCTPX.Count > 0)
-            {
-                MessageBox.Show("Không thể xóa vật tư này vì đã lập chi tiết phiếu xuất", "Lỗi",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            String maVT = "";
             DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa vật tư này?", "Xác nhận",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
             {
+                // == Query tìm MAVT ==
+                String query_MAVT = "DECLARE	@return_value int " +
+                               "EXEC @return_value = [dbo].[SP_CHECKTT_MAVT] " +
+                               "@p1 " +
+                               "SELECT 'Return Value' = @return_value";
+                SqlCommand sqlCommand = new SqlCommand(query_MAVT, Program.conn);
+                sqlCommand.Parameters.AddWithValue("@p1", txtMaVT.Text);
+                SqlDataReader dataReader = null;
+
                 try
                 {
-                    maVT = ((DataRowView)bdsVatTu[bdsVatTu.Position])["MAVT"].ToString(); // Giữ lại mã để khi bị lỗi có thể quay về
-                    bdsVatTu.RemoveCurrent();
-                    this.vattuTableAdapter.Update(this.dS.Vattu);
+                    dataReader = sqlCommand.ExecuteReader();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                    MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.vattuTableAdapter.Fill(this.dS.Vattu);
-                    bdsVatTu.Position = bdsVatTu.Find("MAVT", maVT);
                     return;
+                }
+                // Đọc và lấy result
+                dataReader.Read();
+                int result_value_MAVT = int.Parse(dataReader.GetValue(0).ToString());
+                dataReader.Close();
+                if (result_value_MAVT == 1)
+                {
+                    MessageBox.Show("Vật tư đang được sử dụng ở chi chánh hiện tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (result_value_MAVT == 2)
+                {
+                    MessageBox.Show("Vật tư đang được sử dụng ở chi nhánh khác!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    try
+                    {
+                        String VT_info = txtMaVT.Text.Trim() + "#" + txtTenVT.Text.Trim() + "#" + txtDVT.Text.Trim() + "#" + numSLT.Text.Trim();
+                        Console.WriteLine(VT_info);
+                        maVT = ((DataRowView)bdsVatTu[bdsVatTu.Position])["MAVT"].ToString(); // Giữ lại mã để khi bị lỗi có thể quay về
+                        bdsVatTu.RemoveCurrent();
+                        btnUndo.Enabled = true;
+                        undolist.Push(VT_info);
+                        undolist.Push("DELETE");
+                        this.vattuTableAdapter.Update(this.dS.Vattu);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.vattuTableAdapter.Fill(this.dS.Vattu);
+                        bdsVatTu.Position = bdsVatTu.Find("MAVT", maVT);
+                        return;
+                    }
                 }
             }
 
@@ -105,11 +128,38 @@ namespace VatTu.SimpleForm
 
         private void BtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = true;
+            /*btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = true;
             btnUndo.Enabled = false;
             //Program.flagCloseFormVT = true; // Undo lại thì cho phép thoát mà ko kiểm tra dữ liệu
             bdsVatTu.CancelEdit();
-            bdsVatTu.Position = position;
+            bdsVatTu.Position = position;*/
+
+            if (undolist.Count > 0)
+            {
+                String statement = undolist.Pop().ToString();
+                if (statement.Equals("DELETE"))
+                {
+                    this.bdsVatTu.AddNew();
+                    String TT = undolist.Pop().ToString();
+                    Console.WriteLine(TT);
+                    String[] TT_VT = TT.Split('#');
+
+                    txtMaVT.Text = TT_VT[0];
+                    txtTenVT.Text = TT_VT[1];
+                    txtDVT.Text = TT_VT[2];
+                    numSLT.Text = TT_VT[3];
+                    this.bdsVatTu.EndEdit();
+                    this.vattuTableAdapter.Update(this.dS.Vattu);
+                }
+                else if (statement.Equals("INSERT"))
+                {
+                    int vitrixoa = int.Parse(undolist.Pop().ToString());
+                    bdsVatTu.Position = vitrixoa;
+                    bdsVatTu.RemoveCurrent();
+                    this.vattuTableAdapter.Update(this.dS.Vattu);
+                }
+            }
+            if (undolist.Count == 0) btnUndo.Enabled = false;
         }
 
         private void BtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -128,7 +178,7 @@ namespace VatTu.SimpleForm
             if (!Validate(txtMaVT, "Mã vật tư không được để trống!")) return;
             if (!Validate(txtTenVT, "Tên vật tư không được để trống!")) return;
             if (!Validate(txtDVT, "Đơn vị tính không được để trống!")) return;
-
+            txtMaVT.Text = txtMaVT.Text.Trim();
             if (txtMaVT.Text.Trim().Length > 4)
             {
                 MessageBox.Show("Mã vật tư không được quá 4 kí tự!", "Thông báo",
@@ -194,9 +244,11 @@ namespace VatTu.SimpleForm
                     {
                         //Program.flagCloseFormVT = true; // Bật cờ cho phép tắt Form NV
                         btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = true;
-                        btnUndo.Enabled = false;
+                        btnUndo.Enabled = true;
                         this.bdsVatTu.EndEdit();
                         this.vattuTableAdapter.Update(this.dS.Vattu);
+                        undolist.Push(bdsVatTu.Position.ToString());
+                        undolist.Push("INSERT");
                         bdsVatTu.Position = position;
                     }
                     catch (Exception ex)

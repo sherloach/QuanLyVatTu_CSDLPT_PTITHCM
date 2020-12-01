@@ -41,8 +41,7 @@ namespace VatTu.SubForm
             }
             else
             {
-                mydata(comboBox_ChiNhanh.Text);
-                //this.Close();
+                mydata(comboBox_ChiNhanh.SelectedValue.ToString());
             }
         }
 

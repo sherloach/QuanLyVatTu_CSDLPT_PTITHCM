@@ -138,6 +138,7 @@
             this.button_confirm.TabIndex = 12;
             this.button_confirm.Text = "TẠO";
             this.button_confirm.UseVisualStyleBackColor = false;
+            this.button_confirm.Click += new System.EventHandler(this.Button_confirm_Click_1);
             // 
             // radioButton_User
             // 

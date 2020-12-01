@@ -110,5 +110,10 @@ namespace VatTu.SimpleForm
         {
             if (radioButton_ChiNhanh.Checked == true) radioButton_ChiNhanh.Checked = false;
         }
+
+        private void Button_confirm_Click_1(object sender, EventArgs e)
+        {
+            createAccount();
+        }
     }
 }

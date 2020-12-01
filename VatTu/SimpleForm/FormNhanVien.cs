@@ -127,6 +127,7 @@ namespace VatTu
             bdsNV.AddNew();
             txtMaCN.Text = maCN;
             dteNgaySinh.EditValue = "";
+            cbTTXoa.Checked = false;
 
             btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = gridNhanVien.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
@@ -161,8 +162,8 @@ namespace VatTu
             {
                 try
                 {
-                    String NV_info = txtMaNV.Text.Trim() + "-" + txtHo.Text.Trim() + "-" + txtTen.Text.Trim() + "-" + txtMaCN.Text.Trim() + "-" +
-                            dteNgaySinh.Text + "-" + txtDiaChi.Text.Trim() + "-" + txtLuong.Text.Trim();
+                    String NV_info = txtMaNV.Text.Trim() + "#" + txtHo.Text.Trim() + "#" + txtTen.Text.Trim() + "#" + txtMaCN.Text.Trim() + "#" +
+                            dteNgaySinh.Text + "#" + txtDiaChi.Text.Trim() + "#" + txtLuong.Text.Trim();
                     Console.WriteLine(NV_info);
                     maNV = ((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString();
                     bdsNV.RemoveCurrent();
@@ -303,7 +304,7 @@ namespace VatTu
                     //btnUndo.Enabled = gcInfoNhanVien.Enabled = btnGhi.Enabled = true;
                     this.bdsNV.AddNew();
                     String TT = undolist.Pop().ToString();
-                    String[] TT_NV = TT.Split('-');
+                    String[] TT_NV = TT.Split('#');
                     txtMaNV.Text = TT_NV[0];
                     txtHo.Text = TT_NV[1];
                     txtTen.Text = TT_NV[2];
@@ -324,7 +325,7 @@ namespace VatTu
                 else if (statement.Equals("CHUYENCN"))
                 {
                     String info = undolist.Pop().ToString();
-                    String[] info_CN = info.Split('-');
+                    String[] info_CN = info.Split('#');
                     Console.WriteLine(info_CN[0] + " " + info_CN[1]);
                     String servername_temp = Program.serverName;
 
@@ -413,7 +414,7 @@ namespace VatTu
                 {
                     myReader = cmd.ExecuteReader();
                     MessageBox.Show("Chuyển nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    undolist.Push(maNV + "-" + CNchuyen);
+                    undolist.Push(maNV + "#" + CNchuyen);
                     undolist.Push("CHUYENCN");
                     this.nhanVienTableAdapter.Fill(this.dS.NhanVien);
                     btnUndo.Enabled = true;
@@ -430,7 +431,6 @@ namespace VatTu
             int trangThaiXoa = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["TrangThaiXoa"].ToString());
             if (trangThaiXoa == 0)
             {
-                Program.formMain.Enabled = false;
                 FormChuyenCN pickCN = new FormChuyenCN();
                 pickCN.mydata = new FormChuyenCN.GETDATA(GETVALUE);
                 pickCN.ShowDialog();
