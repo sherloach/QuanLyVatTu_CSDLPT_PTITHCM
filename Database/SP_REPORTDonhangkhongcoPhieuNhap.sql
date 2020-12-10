@@ -1,0 +1,11 @@
+ALTER PROC [dbo].[SP_REPORTDonhangkhongcoPhieuNhap]
+AS
+SELECT DH.MasoDDH,Ngay,NhaCC,TenNV, TENVT, SOLUONG, DONGIA 
+FROM
+	(SELECT MasoDDH,Ngay,NhaCC, MANV FROM dbo.DatHang
+	WHERE DatHang.MasoDDH not in (
+	SELECT MasoDDH FROM dbo.PhieuNhap)) DH,
+	(SELECT MANV,TENNV = HO +' ' +Ten FROM dbo.NhanVien) NV,
+	(SELECT MAVT,TENVT FROM dbo.Vattu) VT,
+	CTDDH CT
+WHERE (NV.MANV = DH.MANV) AND (VT.MAVT =CT.MAVT) AND (CT.MasoDDH = DH.MasoDDH)
