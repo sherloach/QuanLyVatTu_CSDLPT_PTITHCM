@@ -70,6 +70,7 @@
             this.cTPNTableAdapter = new VatTu.DSTableAdapters.CTPNTableAdapter();
             this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHTableAdapter = new VatTu.DSTableAdapters.CTDDHTableAdapter();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             mAVTLabel = new System.Windows.Forms.Label();
             tENVTLabel = new System.Windows.Forms.Label();
             dVTLabel = new System.Windows.Forms.Label();
@@ -85,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // mAVTLabel
@@ -236,6 +238,7 @@
             this.numSLT.Name = "numSLT";
             this.numSLT.Size = new System.Drawing.Size(47, 21);
             this.numSLT.TabIndex = 7;
+            this.numSLT.Validating += new System.ComponentModel.CancelEventHandler(this.NumSLT_Validating);
             // 
             // txtDVT
             // 
@@ -244,6 +247,7 @@
             this.txtDVT.Name = "txtDVT";
             this.txtDVT.Size = new System.Drawing.Size(120, 21);
             this.txtDVT.TabIndex = 5;
+            this.txtDVT.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDVT_Validating);
             // 
             // txtTenVT
             // 
@@ -252,14 +256,17 @@
             this.txtTenVT.Name = "txtTenVT";
             this.txtTenVT.Size = new System.Drawing.Size(189, 21);
             this.txtTenVT.TabIndex = 3;
+            this.txtTenVT.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTenVT_Validating);
             // 
             // txtMaVT
             // 
             this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "MAVT", true));
             this.txtMaVT.Location = new System.Drawing.Point(270, 62);
+            this.txtMaVT.MaxLength = 4;
             this.txtMaVT.Name = "txtMaVT";
             this.txtMaVT.Size = new System.Drawing.Size(120, 21);
             this.txtMaVT.TabIndex = 1;
+            this.txtMaVT.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaVT_Validating);
             // 
             // bar2
             // 
@@ -439,6 +446,10 @@
             // 
             this.cTDDHTableAdapter.ClearBeforeFill = true;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,6 +477,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -509,5 +521,6 @@
         private DSTableAdapters.CTPNTableAdapter cTPNTableAdapter;
         private System.Windows.Forms.BindingSource bdsCTDDH;
         private DSTableAdapters.CTDDHTableAdapter cTDDHTableAdapter;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

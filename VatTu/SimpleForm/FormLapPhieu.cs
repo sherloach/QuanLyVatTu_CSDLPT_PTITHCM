@@ -885,7 +885,7 @@ namespace VatTu.SimpleForm
         // ------ SWITCH TYPE ------
         private void BtnDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switchPanel("Đặt Hàng", gcDDH, gridDDH);
+            switchPanel("Đặt Hàng", gcDDH, gridDDH, Properties.Resources.dathang);
             btnThem.Enabled = btnXoa.Enabled = true;
 
             // Gán data sources
@@ -897,7 +897,7 @@ namespace VatTu.SimpleForm
 
         private void BtnPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switchPanel("Phiếu Nhập", gcPN, gridDDH);
+            switchPanel("Phiếu Nhập", gcPN, gridDDH, Properties.Resources.import2);
             btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = false;
 
             current_bds = bdsDH;
@@ -906,7 +906,7 @@ namespace VatTu.SimpleForm
 
         private void BtnPX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switchPanel("Phiếu Xuất", gcPX, gridPX);
+            switchPanel("Phiếu Xuất", gcPX, gridPX, Properties.Resources.export);
             btnThem.Enabled = btnXoa.Enabled = true;
 
             // Gán data sources
@@ -916,10 +916,10 @@ namespace VatTu.SimpleForm
             type = "MAPX";
         }
 
-        private void switchPanel(string type, GroupControl groupControl, GridControl gridControl)
+        private void switchPanel(string type, GroupControl groupControl, GridControl gridControl, Bitmap image)
         {
             btnSwitch.Links[0].Caption = type;
-            //btnSwitch.Links[0].ImageOptions.Image = image;
+            btnSwitch.Links[0].ImageOptions.Image = image;
             gcDDH.Visible = false;
             gcPX.Visible = false;
             gcPN.Visible = false;
@@ -969,7 +969,7 @@ namespace VatTu.SimpleForm
                 txtMaDDH.Focus();
                 errorProvider.SetError(txtMaDDH, "Mã DH không được để trống!");
             }
-            else if (txtMaDDH.Text.Contains(" "))
+            else if (txtMaDDH.Text.Trim().Contains(" "))
             {
                 e.Cancel = true;
                 txtMaDDH.Focus();
@@ -1005,7 +1005,7 @@ namespace VatTu.SimpleForm
                 txtMaPX.Focus();
                 errorProvider.SetError(txtMaPX, "Mã PX không được để trống!");
             }
-            else if (txtMaPX.Text.Contains(" "))
+            else if (txtMaPX.Text.Trim().Contains(" "))
             {
                 e.Cancel = true;
                 txtMaPX.Focus();

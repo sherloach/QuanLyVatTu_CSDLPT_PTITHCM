@@ -350,7 +350,7 @@
             // 
             this.btnDDH.Caption = "Đặt Hàng";
             this.btnDDH.Id = 6;
-            this.btnDDH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDDH.ImageOptions.Image")));
+            this.btnDDH.ImageOptions.Image = global::VatTu.Properties.Resources.dathang1;
             this.btnDDH.Name = "btnDDH";
             this.btnDDH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDDH_ItemClick);
             // 
@@ -358,7 +358,7 @@
             // 
             this.btnPN.Caption = "Phiếu Nhập";
             this.btnPN.Id = 7;
-            this.btnPN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPN.ImageOptions.Image")));
+            this.btnPN.ImageOptions.Image = global::VatTu.Properties.Resources.import2;
             this.btnPN.Name = "btnPN";
             this.btnPN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnPN_ItemClick);
             // 
@@ -366,7 +366,7 @@
             // 
             this.btnPX.Caption = "Phiếu Xuất";
             this.btnPX.Id = 8;
-            this.btnPX.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPX.ImageOptions.Image")));
+            this.btnPX.ImageOptions.Image = global::VatTu.Properties.Resources.export;
             this.btnPX.Name = "btnPX";
             this.btnPX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnPX_ItemClick);
             // 
@@ -450,7 +450,7 @@
             this.comboBox_ChiNhanh.FormattingEnabled = true;
             this.comboBox_ChiNhanh.Location = new System.Drawing.Point(211, 32);
             this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
-            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(313, 21);
+            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(269, 21);
             this.comboBox_ChiNhanh.TabIndex = 0;
             this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ChiNhanh_SelectedIndexChanged);
             // 

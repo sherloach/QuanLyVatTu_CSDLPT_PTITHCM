@@ -181,6 +181,7 @@
             // 
             // Form2
             // 
+            this.AcceptButton = this.button_Login;
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
