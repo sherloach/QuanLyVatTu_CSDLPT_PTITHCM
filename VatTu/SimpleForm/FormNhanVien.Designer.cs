@@ -572,6 +572,7 @@
             // 
             this.txtDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsNV, "DIACHI", true));
             this.txtDiaChi.Location = new System.Drawing.Point(718, 62);
+            this.txtDiaChi.MaxLength = 100;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(139, 21);
             this.txtDiaChi.TabIndex = 9;
@@ -599,6 +600,7 @@
             // 
             this.txtTen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsNV, "TEN", true));
             this.txtTen.Location = new System.Drawing.Point(504, 62);
+            this.txtTen.MaxLength = 10;
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(110, 21);
             this.txtTen.TabIndex = 5;
@@ -608,6 +610,7 @@
             // 
             this.txtHo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsNV, "HO", true));
             this.txtHo.Location = new System.Drawing.Point(327, 62);
+            this.txtHo.MaxLength = 40;
             this.txtHo.Name = "txtHo";
             this.txtHo.Size = new System.Drawing.Size(100, 21);
             this.txtHo.TabIndex = 3;

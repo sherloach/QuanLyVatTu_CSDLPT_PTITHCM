@@ -251,7 +251,7 @@ namespace VatTu.SimpleForm
             {
                 // == Query tìm MAKHO ==
                 String query_MAKHO = "DECLARE @return_value int " +
-                                    "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                                    "EXEC @return_value = [dbo].[SP_CHECKID_TRACUU] " +
                                     "@p1, @p2 " +
                                     "SELECT 'Return Value' = @return_value";
                 SqlCommand sqlCommand = new SqlCommand(query_MAKHO, Program.conn);
@@ -276,7 +276,7 @@ namespace VatTu.SimpleForm
 
                 // == Query tìm TENKHO ==
                 String query_TENKHO = "DECLARE @return_value int " +
-                                       "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                                       "EXEC @return_value = [dbo].[SP_CHECKID_TRACUU] " +
                                        "@p1, @p2 " +
                                        "SELECT 'Return Value' = @return_value";
                 sqlCommand = new SqlCommand(query_TENKHO, Program.conn);
@@ -302,24 +302,14 @@ namespace VatTu.SimpleForm
                 int indexMaKHO = bdsKho.Find("MAKHO", txtMaKho.Text);
                 int indexTENKHO = bdsKho.Find("TENKHO", txtTenKho.Text);
                 int indexCurrent = bdsKho.Position;
-                if (result_value_MAKHO == 1 && (indexMaKHO != indexCurrent))
+                if (result_value_MAKHO == 1 && (indexMaKHO != indexCurrent)) // điều kiện sau là nhằm trường hợp sửa thông tin sẽ không xét chính nó
                 {
-                    MessageBox.Show("Mã kho đã tồn tại ở chi chánh hiện tại!", "Thông báo",
+                    MessageBox.Show("Mã kho đã tồn tại!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if (result_value_TENKHO == 1 && (indexTENKHO != indexCurrent))
                 {
-                    MessageBox.Show("Tên kho đã tồn tại ở chi nhánh hiện tại!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (result_value_MAKHO == 2)
-                {
-                    MessageBox.Show("Mã kho đã tồn tại ở chi nhánh khác!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (result_value_TENKHO == 2)
-                {
-                    MessageBox.Show("Tên kho đã tồn tại ở chi nhánh khác!", "Thông báo",
+                    MessageBox.Show("Tên kho đã tồn tại!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
@@ -351,24 +341,6 @@ namespace VatTu.SimpleForm
                     }
                 }
             }
-            // Check ràng buộc text box
-            /*if (!Validate(txtMaKho, "Mã kho không được để trống!")) return;
-            if (!Validate(txtTenKho, "Tên kho không được để trống!")) return;
-            if (!Validate(txtDiaChi, "Địa chỉ không được để trống!")) return;
-            if (txtMaKho.Text.Trim().Length > 4)
-            {
-                MessageBox.Show("Mã kho không được quá 4 kí tự!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else if (txtMaKho.Text.Contains(" "))
-            {
-                MessageBox.Show("Mã kho không được chứa khoảng trắng!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            */
-            
         }
 
         private void ComboBox_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)

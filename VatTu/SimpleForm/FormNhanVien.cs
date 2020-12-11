@@ -225,8 +225,8 @@ namespace VatTu
                 String maNV = txtMaNV.Text;
 
                 // == Query tìm MANV ==
-                String query_MANV = "DECLARE	@return_value int " +
-                               "EXEC @return_value = [dbo].[SP_CHECKID] " +
+                String query_MANV = "DECLARE @return_value int " +
+                               "EXEC @return_value = [dbo].[SP_CHECKID_TRACUU] " +
                                "@p1, @p2 " +
                                "SELECT 'Return Value' = @return_value";
                 SqlCommand sqlCommand = new SqlCommand(query_MANV, Program.conn);
@@ -254,12 +254,7 @@ namespace VatTu
                 int indexCurrent = bdsNV.Position;
                 if (result_value_MANV == 1 && (indexMaNV != indexCurrent))
                 {
-                    MessageBox.Show("Mã NV đã tồn tại ở chi chánh hiện tại!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (result_value_MANV == 2)
-                {
-                    MessageBox.Show("Mã NV đã tồn tại ở chi nhánh khác!", "Thông báo",
+                    MessageBox.Show("Mã nhân viên đã tồn tại!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
@@ -426,7 +421,7 @@ namespace VatTu
                     MessageBox.Show(ex.Message);
                 }
             }
-            else MessageBox.Show("Vui lòng chọn CN khác chi nhánh hiện tại", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else MessageBox.Show("Vui lòng chọn chi nhánh khác chi nhánh hiện tại", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void BtnChuyenChiNhanh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

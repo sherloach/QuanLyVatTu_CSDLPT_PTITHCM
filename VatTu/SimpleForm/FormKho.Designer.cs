@@ -410,6 +410,7 @@
             // 
             this.txtDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "DIACHI", true));
             this.txtDiaChi.Location = new System.Drawing.Point(446, 98);
+            this.txtDiaChi.MaxLength = 100;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(209, 21);
             this.txtDiaChi.TabIndex = 13;
@@ -419,6 +420,7 @@
             // 
             this.txtTenKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKho, "TENKHO", true));
             this.txtTenKho.Location = new System.Drawing.Point(446, 63);
+            this.txtTenKho.MaxLength = 30;
             this.txtTenKho.Name = "txtTenKho";
             this.txtTenKho.Size = new System.Drawing.Size(209, 21);
             this.txtTenKho.TabIndex = 11;

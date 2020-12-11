@@ -829,6 +829,7 @@
             // 
             this.txtNhaCC.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDH, "NhaCC", true));
             this.txtNhaCC.Location = new System.Drawing.Point(167, 92);
+            this.txtNhaCC.MaxLength = 100;
             this.txtNhaCC.Name = "txtNhaCC";
             this.txtNhaCC.Size = new System.Drawing.Size(164, 21);
             this.txtNhaCC.TabIndex = 10;
@@ -958,6 +959,7 @@
             // 
             this.txtTenKH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPX, "HOTENKH", true));
             this.txtTenKH.Location = new System.Drawing.Point(164, 97);
+            this.txtTenKH.MaxLength = 100;
             this.txtTenKH.Name = "txtTenKH";
             this.txtTenKH.Size = new System.Drawing.Size(166, 21);
             this.txtTenKH.TabIndex = 15;
