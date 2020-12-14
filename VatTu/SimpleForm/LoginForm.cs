@@ -18,41 +18,20 @@ namespace VatTu
             InitializeComponent();
         }
 
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ComboBox_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'qLVT_DATHANGDataSet.V_DS_PHANMANH' table. You can move, or remove it, as needed.
             this.v_DS_PHANMANHTableAdapter.Fill(this.qLVT_DATHANGDataSet.V_DS_PHANMANH);
-            comboBox_ChiNhanh.SelectedIndex = 1;
-            comboBox_ChiNhanh.SelectedIndex = 0;
-        }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Program.serverName = comboBox_ChiNhanh.SelectedValue.ToString();
+            //comboBox_ChiNhanh.SelectedIndex = 1;
+            //comboBox_ChiNhanh.SelectedIndex = 0;
         }
 
         private void Login() {
             Program.mlogin = textBox_Username.Text;
             Program.password = textBox_Password.Text;
-            if (Program.KetNoi() == 0) return;
+            Program.serverName = this.comboBox_ChiNhanh.SelectedValue.ToString();
+            if (Program.KetNoi() == 0) return; // Bắt đầu kết nối tới database
 
-            //MessageBox.Show("Đăng nhập thành công.", "", MessageBoxButtons.OK);
-            Program.tenChiNhanh = comboBox_ChiNhanh.Text; // Lay ten chi nhanh da dang nhap
+            //Program.tenChiNhanh = comboBox_ChiNhanh.Text; // Lay ten chi nhanh da dang nhap
             Program.mChinhanh = comboBox_ChiNhanh.SelectedIndex;
             Program.bds_dspm = vDSPHANMANHBindingSource;
             Program.mloginDN = Program.mlogin;
@@ -91,16 +70,6 @@ namespace VatTu
             Login();
         }
 
-        private void TextBox_Username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox_Password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn muốn thoát hoàn toàn chương trình không?", "Thông báo", MessageBoxButtons.YesNo);
@@ -112,11 +81,7 @@ namespace VatTu
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn muốn thoát hoàn toàn chương trình không?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
     }
 }

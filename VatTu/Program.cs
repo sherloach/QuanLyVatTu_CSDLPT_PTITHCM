@@ -85,7 +85,6 @@ namespace VatTu
             try
             {
                 myreader = sqlcmd.ExecuteReader(); return myreader;
-
             }
             catch (SqlException ex)
             {
@@ -95,7 +94,7 @@ namespace VatTu
             }
         }
 
-        public static DataTable ExecSqlDataTable(String cmd)
+        /*public static DataTable ExecSqlDataTable(String cmd)
         {
             DataTable dt = new DataTable();
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
@@ -103,9 +102,9 @@ namespace VatTu
             da.Fill(dt);
             conn.Close();
             return dt;
-        }
+        }*/
 
-        public static int ExecSqlNonQuery(String strlenh)
+        /*public static int ExecSqlNonQuery(String strlenh)
         {
             SqlCommand Sqlcmd = new SqlCommand(strlenh, conn);
             Sqlcmd.CommandType = CommandType.Text;
@@ -124,7 +123,7 @@ namespace VatTu
                 conn.Close();
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }
-        }
+        }*/
 
         [STAThread]
         static void Main()

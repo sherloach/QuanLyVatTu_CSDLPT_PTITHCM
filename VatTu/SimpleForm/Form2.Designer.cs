@@ -60,7 +60,6 @@
             this.label1.Size = new System.Drawing.Size(105, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Đăng Nhập";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // textBox_Username
             // 
@@ -69,7 +68,6 @@
             this.textBox_Username.Name = "textBox_Username";
             this.textBox_Username.Size = new System.Drawing.Size(280, 27);
             this.textBox_Username.TabIndex = 3;
-            this.textBox_Username.TextChanged += new System.EventHandler(this.TextBox_Username_TextChanged);
             // 
             // textBox_Password
             // 
@@ -79,7 +77,6 @@
             this.textBox_Password.Size = new System.Drawing.Size(280, 27);
             this.textBox_Password.TabIndex = 4;
             this.textBox_Password.UseSystemPasswordChar = true;
-            this.textBox_Password.TextChanged += new System.EventHandler(this.TextBox_Password_TextChanged);
             // 
             // button_Login
             // 
@@ -110,7 +107,6 @@
             this.comboBox_ChiNhanh.Size = new System.Drawing.Size(280, 27);
             this.comboBox_ChiNhanh.TabIndex = 7;
             this.comboBox_ChiNhanh.ValueMember = "TENSERVER";
-            this.comboBox_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // vDSPHANMANHBindingSource
             // 
