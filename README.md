@@ -1,7 +1,7 @@
 # Đồ án môn Cơ Sở Dữ Liệu Phân Tán (PTITHCM) - Đề Tài: Quản lý vật tư.
 
 
-Phần mềm và các công cụ sử dụng trong đồ án:
+## Phần mềm và các công cụ sử dụng trong đồ án:
 ### `SQL Server 2012 Enterprise edition`
 ### `DevExpress 19.2`
 ### `Visual Studio 2019`
@@ -21,7 +21,14 @@ Phần mềm và các công cụ sử dụng trong đồ án:
 ```
 ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
 
-Database:
+## Chức năng
+- Đầy đủ các chức năng cơ bản (thêm, xóa, sửa, reload, chuyển chi nhánh).
+- UNDO: khôi phục lại dữ liệu (tương tự như trong Word).
+- Lập các phiếu và chi tiết các phiếu.
+- Tạo tài khoản.
+- 6 báo cáo (Store Procedure trong folder database).
+
+## Database
 
 3 site phân mảnh.
 
