@@ -9,14 +9,14 @@
 Để run được project thì phải config database, sửa lại file App.config
 ```
 <add name="VatTu.Properties.Settings.QLVT_DATHANGConnectionString"
-      connectionString="Data Source=ten_subscriber_server;Initial Catalog=QLVT_DATHANG;Integrated Security=True"
+      connectionString="Data Source=ten_subscriber_server_chủ;Initial Catalog=QLVT_DATHANG;Integrated Security=True"
       providerName="System.Data.SqlClient" />
     <add name="VatTu.Properties.Settings.QLVT_DATHANGConnectionString1"
-      connectionString="Data Source=ten_subscriber_server;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123"
+      connectionString="Data Source=ten_subscriber_server_1;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123"
       providerName="System.Data.SqlClient" />
-    <add name="QLVT_DATHANGConnectionString1" connectionString="XpoProvider=MSSqlServer;data source=ten_subscriber_server;user id=sa;password=123;initial catalog=QLVT_DATHANG;Persist Security Info=true" />
+    <add name="QLVT_DATHANGConnectionString1" connectionString="XpoProvider=MSSqlServer;data source=ten_subscriber_server_1;user id=sa;password=123;initial catalog=QLVT_DATHANG;Persist Security Info=true" />
     <add name="VatTu.Properties.Settings.QLVT_DATHANGConnectionString2"
-      connectionString="Data Source=ten_subscriber_server;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123"
+      connectionString="Data Source=ten_subscriber_server_chủ;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123"
       providerName="System.Data.SqlClient" />
 ```
 ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
@@ -76,6 +76,8 @@ Một số hình ảnh
 
 ## Lời Khuyên
 > LÀM ĐỒ ÁN ÍT THÔI, HỌC LÝ THUYẾT NHIỀU VÀO :)
+> Để lại tin nhắn vào mục [Issues](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/issues). nếu bạn cần giúp đỡ.
+> Hãy star vì nó miễn phí :(
 
 
 
@@ -83,3 +85,5 @@ Một số hình ảnh
 <a href="https://github.com/QuangHuy239/QLVT_DATHANG/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=QuangHuy239/QLVT_DATHANG" />
 </a>
+
+
