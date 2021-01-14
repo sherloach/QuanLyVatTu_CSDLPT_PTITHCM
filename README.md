@@ -67,3 +67,19 @@ Một số hình ảnh
 
 
 ![alt text](img/4.PNG?raw=true)
+
+
+## Bugs
+> Đồ án sẽ có một số lỗi mà mình chưa fix (lỗi khi thoát khỏi form Login để tắt chương trình, lỗi khi nhập Phiếu Nhập, lỗi chuyển chi nhánh,...). Bên cạnh đó, giao diện đồ án này chỉ phù hợp với laptop có độ phân giải fullHD =)), nên đôi khi bạn phải chỉnh lại chút xíu).
+
+
+
+## Lời Khuyên
+> LÀM ĐỒ ÁN ÍT THÔI, HỌC LÝ THUYẾT NHIỀU VÀO :)
+
+
+
+## Contributors
+<a href="https://github.com/QuangHuy239/QLVT_DATHANG/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=QuangHuy239/QLVT_DATHANG" />
+</a>
