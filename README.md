@@ -24,11 +24,16 @@ ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptio
 Database:
 
 3 site phân mảnh.
+
 ![alt text](img/publi.PNG?raw=true)
 
+
 Cây dẫn xuất của site 1 và 2
+
 ![alt text](img/filter.PNG?raw=true)
 
+
 Articles của site 3
+
 ![alt text](img/site3.PNG?raw=true)
 
