@@ -19,9 +19,9 @@
       connectionString="Data Source=ten_subscriber_server_chủ;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123"
       providerName="System.Data.SqlClient" />
 ```
-ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
-ten_subscriber_server_1: là tên subscriber_server của site 1
-ten_subscriber_server_chủ: là tên subscriber_server của tên chủ
+1. ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
+2. *ten_subscriber_server_1: là tên subscriber_server của site 1*
+3. *ten_subscriber_server_chủ: là tên subscriber_server của tên chủ*
 
 ## Chức năng
 - Đầy đủ các chức năng cơ bản (thêm, xóa, sửa, reload, chuyển chi nhánh).
