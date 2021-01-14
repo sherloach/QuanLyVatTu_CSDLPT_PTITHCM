@@ -50,7 +50,7 @@ namespace VatTu.SubForm
             txtMaDDH.Text = maSoDDH;
             txtMaVT.Text = getDataRow(bdsVT, "MAVT");
             numSL.Value = 1;
-            numDG.Value = 0;
+            numDG.Value = numDG.Minimum;
         }
 
         private void GvVT_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

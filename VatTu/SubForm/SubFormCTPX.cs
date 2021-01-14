@@ -56,7 +56,7 @@ namespace VatTu.SubForm
                 //txtMaVT.Text = getDataRow(bdsVT, "MAVT"); // không cần xét mã vt để tránh trường hợp mẩu tin đầu của vật tư có sl bằng 0.
                 numSL.Maximum = int.Parse(gvVT.GetRowCellValue(bdsVT.Position, "SOLUONGTON").ToString().Trim());
                 numSL.Value = numSL.Minimum;
-                numDG.Value = 0;
+                numDG.Value = numDG.Minimum;
             }
         }
 

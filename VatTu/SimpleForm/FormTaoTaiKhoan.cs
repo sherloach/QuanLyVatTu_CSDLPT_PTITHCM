@@ -23,15 +23,25 @@ namespace VatTu.SimpleForm
                 this.radioButton_User.Visible = false;
                 this.radioButton_ChiNhanh.Text = "CÔNG TY";
                 this.radioButton_ChiNhanh.Checked = true;
+                this.comboBox_ChiNhanh.Enabled = true;
+            }
+            else
+            {
+                this.comboBox_ChiNhanh.Enabled = false;
+                this.radioButton_ChiNhanh.Checked = true;
             }
         }
 
         private void FormTaoTaiKhoan_Load(object sender, EventArgs e)
         {
-
+            this.v_DS_PHANMANHTableAdapter.Fill(this.qLVT_DATHANGDataSet.V_DS_PHANMANH);
             this.v_DS_NHANVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-            // TODO: This line of code loads data into the 'dS_NHANVIEN.V_DS_NHANVIEN' table. You can move, or remove it, as needed.
             this.v_DS_NHANVIENTableAdapter.Fill(this.dS_NHANVIEN.V_DS_NHANVIEN);
+
+            comboBox_ChiNhanh.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
+            comboBox_ChiNhanh.DisplayMember = "TENCN";
+            comboBox_ChiNhanh.ValueMember = "TENSERVER";
+            comboBox_ChiNhanh.SelectedIndex = Program.mChinhanh;
         }
 
         private void createAccount()
@@ -67,7 +77,7 @@ namespace VatTu.SimpleForm
 
             Program.conn = new SqlConnection(Program.connstr);
             Program.conn.Open();
-            SqlCommand cmd = new SqlCommand("SP_TAOACCOUNT", Program.conn);
+            SqlCommand cmd = new SqlCommand("SP_TAOTAIKHOAN", Program.conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@LGNAME", login));
             cmd.Parameters.Add(new SqlParameter("@PASS", password));
@@ -114,6 +124,11 @@ namespace VatTu.SimpleForm
         private void Button_confirm_Click_1(object sender, EventArgs e)
         {
             createAccount();
+        }
+
+        private void comboBox_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

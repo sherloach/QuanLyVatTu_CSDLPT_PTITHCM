@@ -52,7 +52,7 @@ namespace VatTu.SimpleForm
 
             if (Program.mGroup == "CONGTY")
             {
-                btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = btnUndo.Links[0].Visible = false;
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
                 txtTenKho.Enabled = txtMaKho.Enabled = txtDiaChi.Enabled = false;
             }
             else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
@@ -386,7 +386,7 @@ namespace VatTu.SimpleForm
             return true;
         }
 
-        private void TxtMaKho_Validating(object sender, CancelEventArgs e)
+        private void txtMaKho_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMaKho.Text))
             {
@@ -413,7 +413,7 @@ namespace VatTu.SimpleForm
             }
         }
 
-        private void TxtTenKho_Validating(object sender, CancelEventArgs e)
+        private void txtTenKho_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenKho.Text))
             {
@@ -434,7 +434,7 @@ namespace VatTu.SimpleForm
             }
         }
 
-        private void TxtDiaChi_Validating(object sender, CancelEventArgs e)
+        private void txtDiaChi_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
             {

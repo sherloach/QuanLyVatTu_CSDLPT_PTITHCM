@@ -106,12 +106,6 @@
     <Compile Include="Report\Frpt_HoatDongCuaNhanVien.Designer.cs">
       <DependentUpon>Frpt_HoatDongCuaNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\Xrpt_HoatDongCuaNhanVien1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\Xrpt_HoatDongCuaNhanVien1.Designer.cs">
-      <DependentUpon>Xrpt_HoatDongCuaNhanVien1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\Xrpt_HoatDongCuaNhanVien2.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -253,9 +247,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Frpt_HoatDongCuaNhanVien.resx">
       <DependentUpon>Frpt_HoatDongCuaNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\Xrpt_HoatDongCuaNhanVien1.resx">
-      <DependentUpon>Xrpt_HoatDongCuaNhanVien1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_HoatDongCuaNhanVien2.resx">
       <DependentUpon>Xrpt_HoatDongCuaNhanVien2.cs</DependentUpon>

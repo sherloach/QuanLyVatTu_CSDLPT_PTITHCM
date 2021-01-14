@@ -43,6 +43,11 @@
             this.textBox_Password = new System.Windows.Forms.TextBox();
             this.textBox_LoginName = new System.Windows.Forms.TextBox();
             this.comboBox_NV = new System.Windows.Forms.ComboBox();
+            this.comboBox_ChiNhanh = new System.Windows.Forms.ComboBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.qLVT_DATHANGDataSet = new VatTu.QLVT_DATHANGDataSet();
+            this.vDSPHANMANHBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DS_PHANMANHTableAdapter = new VatTu.QLVT_DATHANGDataSetTableAdapters.V_DS_PHANMANHTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.vDSNHANVIENBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_NHANVIEN)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -50,6 +55,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLVT_DATHANGDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vDSPHANMANHBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // vDSNHANVIENBindingSource
@@ -68,6 +76,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBox5);
+            this.groupBox1.Controls.Add(this.comboBox_ChiNhanh);
             this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.pictureBox2);
@@ -80,7 +90,7 @@
             this.groupBox1.Controls.Add(this.comboBox_NV);
             this.groupBox1.Location = new System.Drawing.Point(40, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(516, 402);
+            this.groupBox1.Size = new System.Drawing.Size(516, 432);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Login";
@@ -88,7 +98,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::VatTu.Properties.Resources.door_key;
-            this.pictureBox4.Location = new System.Drawing.Point(451, 252);
+            this.pictureBox4.Location = new System.Drawing.Point(451, 294);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -98,7 +108,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::VatTu.Properties.Resources.user__1_;
-            this.pictureBox3.Location = new System.Drawing.Point(451, 218);
+            this.pictureBox3.Location = new System.Drawing.Point(451, 260);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -108,7 +118,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::VatTu.Properties.Resources.info_user;
-            this.pictureBox2.Location = new System.Drawing.Point(451, 185);
+            this.pictureBox2.Location = new System.Drawing.Point(451, 227);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -132,7 +142,7 @@
             this.button_confirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_confirm.Font = new System.Drawing.Font("SF Pro Text", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_confirm.ForeColor = System.Drawing.Color.White;
-            this.button_confirm.Location = new System.Drawing.Point(94, 341);
+            this.button_confirm.Location = new System.Drawing.Point(94, 383);
             this.button_confirm.Name = "button_confirm";
             this.button_confirm.Size = new System.Drawing.Size(288, 31);
             this.button_confirm.TabIndex = 12;
@@ -144,7 +154,7 @@
             // 
             this.radioButton_User.AutoSize = true;
             this.radioButton_User.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_User.Location = new System.Drawing.Point(277, 296);
+            this.radioButton_User.Location = new System.Drawing.Point(277, 338);
             this.radioButton_User.Name = "radioButton_User";
             this.radioButton_User.Size = new System.Drawing.Size(52, 18);
             this.radioButton_User.TabIndex = 11;
@@ -156,7 +166,7 @@
             // 
             this.radioButton_ChiNhanh.AutoSize = true;
             this.radioButton_ChiNhanh.Font = new System.Drawing.Font("SF Pro Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_ChiNhanh.Location = new System.Drawing.Point(178, 296);
+            this.radioButton_ChiNhanh.Location = new System.Drawing.Point(178, 338);
             this.radioButton_ChiNhanh.Name = "radioButton_ChiNhanh";
             this.radioButton_ChiNhanh.Size = new System.Drawing.Size(84, 18);
             this.radioButton_ChiNhanh.TabIndex = 10;
@@ -167,7 +177,7 @@
             // textBox_Password
             // 
             this.textBox_Password.Font = new System.Drawing.Font("SF Pro Text", 11.25F);
-            this.textBox_Password.Location = new System.Drawing.Point(94, 253);
+            this.textBox_Password.Location = new System.Drawing.Point(94, 295);
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.Size = new System.Drawing.Size(287, 25);
             this.textBox_Password.TabIndex = 9;
@@ -175,7 +185,7 @@
             // textBox_LoginName
             // 
             this.textBox_LoginName.Font = new System.Drawing.Font("SF Pro Text", 11.25F);
-            this.textBox_LoginName.Location = new System.Drawing.Point(94, 219);
+            this.textBox_LoginName.Location = new System.Drawing.Point(94, 261);
             this.textBox_LoginName.Name = "textBox_LoginName";
             this.textBox_LoginName.Size = new System.Drawing.Size(287, 25);
             this.textBox_LoginName.TabIndex = 8;
@@ -187,11 +197,49 @@
             this.comboBox_NV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_NV.Font = new System.Drawing.Font("SF Pro Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_NV.FormattingEnabled = true;
-            this.comboBox_NV.Location = new System.Drawing.Point(94, 185);
+            this.comboBox_NV.Location = new System.Drawing.Point(94, 227);
             this.comboBox_NV.Name = "comboBox_NV";
             this.comboBox_NV.Size = new System.Drawing.Size(287, 26);
             this.comboBox_NV.TabIndex = 7;
             this.comboBox_NV.ValueMember = "MANV";
+            // 
+            // comboBox_ChiNhanh
+            // 
+            this.comboBox_ChiNhanh.DataSource = this.vDSPHANMANHBindingSource;
+            this.comboBox_ChiNhanh.DisplayMember = "TENCN";
+            this.comboBox_ChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ChiNhanh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_ChiNhanh.FormattingEnabled = true;
+            this.comboBox_ChiNhanh.Location = new System.Drawing.Point(95, 195);
+            this.comboBox_ChiNhanh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox_ChiNhanh.Name = "comboBox_ChiNhanh";
+            this.comboBox_ChiNhanh.Size = new System.Drawing.Size(287, 25);
+            this.comboBox_ChiNhanh.TabIndex = 18;
+            this.comboBox_ChiNhanh.ValueMember = "TENSERVER";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::VatTu.Properties.Resources.building;
+            this.pictureBox5.Location = new System.Drawing.Point(451, 193);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(32, 27);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox5.TabIndex = 19;
+            this.pictureBox5.TabStop = false;
+            // 
+            // qLVT_DATHANGDataSet
+            // 
+            this.qLVT_DATHANGDataSet.DataSetName = "QLVT_DATHANGDataSet";
+            this.qLVT_DATHANGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vDSPHANMANHBindingSource
+            // 
+            this.vDSPHANMANHBindingSource.DataMember = "V_DS_PHANMANH";
+            this.vDSPHANMANHBindingSource.DataSource = this.qLVT_DATHANGDataSet;
+            // 
+            // v_DS_PHANMANHTableAdapter
+            // 
+            this.v_DS_PHANMANHTableAdapter.ClearBeforeFill = true;
             // 
             // FormTaoTaiKhoan
             // 
@@ -200,7 +248,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 453);
+            this.ClientSize = new System.Drawing.Size(607, 493);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("SF Pro Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormTaoTaiKhoan";
@@ -215,6 +263,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLVT_DATHANGDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vDSPHANMANHBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,5 +285,10 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.ComboBox comboBox_ChiNhanh;
+        private QLVT_DATHANGDataSet qLVT_DATHANGDataSet;
+        private System.Windows.Forms.BindingSource vDSPHANMANHBindingSource;
+        private QLVT_DATHANGDataSetTableAdapters.V_DS_PHANMANHTableAdapter v_DS_PHANMANHTableAdapter;
     }
 }

@@ -35,12 +35,12 @@ namespace VatTu.Report
 
         private void Frpt_HoatDongCuaNhanVien_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS_NHANVIEN.V_DS_NHANVIEN_REPORT' table. You can move, or remove it, as needed.
+            this.v_DS_NHANVIEN_REPORTTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.v_DS_NHANVIEN_REPORTTableAdapter.Fill(this.dS_NHANVIEN.V_DS_NHANVIEN_REPORT);
             String connStrSite3 = "Data Source=" + Program.serverName + ";Initial Catalog=" +
                       Program.database + ";User ID=" +
                       Program.mlogin + ";password=" + Program.password;
-
-            this.v_DS_NHANVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.v_DS_NHANVIENTableAdapter.Fill(this.dS_NHANVIEN.V_DS_NHANVIEN);
         }
 
         private void BtnPreview_Click(object sender, EventArgs e)
@@ -48,14 +48,14 @@ namespace VatTu.Report
             String type = (rbNhap.Checked) ? "N" : "X";
 
             Xrpt_HoatDongCuaNhanVien2 rpt = new Xrpt_HoatDongCuaNhanVien2(maNV, deFrom.DateTime, deTo.DateTime, type);
-            /*rpt.xrlMaNV.Text = maNV.ToString().Trim();
+            rpt.xrlMaNV.Text = maNV.ToString().Trim();
             rpt.xrlHoTen.Text = tenNV;
             rpt.xrlNgaySinh.Text = ngaySinh;
             rpt.xrlDiaChi.Text = diaChi;
             rpt.xrlLuong.Text = luong.ToString().Trim();
             rpt.xrlCN.Text = maCN;
             rpt.xrTitle.Text = "BẢNG KÊ CHỨNG TỪ PHIẾU ";
-            rpt.xrTitle.Text += (type == "N") ? "NHẬP" : "XUẤT";*/
+            rpt.xrTitle.Text += (type == "N") ? "NHẬP" : "XUẤT";
 
             ReportPrintTool print = new ReportPrintTool(rpt);
             rpt.ShowPreviewDialog();

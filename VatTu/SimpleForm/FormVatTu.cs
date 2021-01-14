@@ -42,8 +42,7 @@ namespace VatTu.SimpleForm
 
             if (Program.mGroup == "CONGTY")
             {
-                btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
-                
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = false;
             }
 
             txtMaVT.Enabled = btnUndo.Enabled = false;
@@ -156,7 +155,8 @@ namespace VatTu.SimpleForm
                 }
                 else if (statement.Equals("INSERT"))
                 {
-                    int vitrixoa = int.Parse(undolist.Pop().ToString());
+                    String maVT = undolist.Pop().ToString();
+                    int vitrixoa = bdsVatTu.Find("MAVT", maVT);
                     bdsVatTu.Position = vitrixoa;
                     bdsVatTu.RemoveCurrent();
                     this.vattuTableAdapter.Update(this.dS.Vattu);
@@ -179,6 +179,41 @@ namespace VatTu.SimpleForm
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
+                String query_MAVT = "DECLARE @return_value int " +
+                               "EXEC @return_value = [dbo].[SP_CHECKTT_MAVT] " +
+                               "@p1 " +
+                               "SELECT 'Return Value' = @return_value";
+                SqlCommand sqlCommand1 = new SqlCommand(query_MAVT, Program.conn);
+                sqlCommand1.Parameters.AddWithValue("@p1", txtMaVT.Text);
+                SqlDataReader dataReader1 = null;
+
+                try
+                {
+                    dataReader1 = sqlCommand1.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Thực thi database thất bại!\n" + ex.Message, "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Đọc và lấy result
+                dataReader1.Read();
+                int result_value_MAVT = int.Parse(dataReader1.GetValue(0).ToString());
+                dataReader1.Close();
+                if (result_value_MAVT == 1)
+                {
+                    MessageBox.Show("Không thể sửa vì vật tư đang được sử dụng ở chi chánh hiện tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else if (result_value_MAVT == 2)
+                {
+                    MessageBox.Show("Không thể sửa vì vật tư đang được sử dụng ở chi nhánh khác!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 int checkMaVT = bdsVatTu.Find("TENVT", txtTenVT.Text);
                 if (checkMaVT != -1 && (checkMaVT != bdsVatTu.Position))
                 {
@@ -187,6 +222,7 @@ namespace VatTu.SimpleForm
                     return;
                 }
 
+                // Có cần thiết chạy SP không trong khi VATTU là nhân bản???
                 String query = "DECLARE	@return_value int " +
                                "EXEC @return_value = [dbo].[SP_CHECKID] " +
                                "@p1, @p2 " +
@@ -214,7 +250,7 @@ namespace VatTu.SimpleForm
 
                 int indexMaVT = bdsVatTu.Find("MAVT", txtMaVT.Text);
                 int indexCurrent = bdsVatTu.Position;
-
+                String maVT = txtMaVT.Text;
                 if (result_value == 1 && (indexMaVT != indexCurrent))
                 {
                     MessageBox.Show("Mã vật tư đã tồn tại!", "Thông báo",
@@ -229,12 +265,11 @@ namespace VatTu.SimpleForm
                         try
                         {
                             //Program.flagCloseFormVT = true; // Bật cờ cho phép tắt Form NV
-                            btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = true;
-                            btnUndo.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = true;
-                            txtMaVT.Enabled = false;
+                            btnThem.Enabled = btnXoa.Enabled = gridVatTu.Enabled = btnReload.Enabled = btnGhi.Enabled = gcInfoVatTu.Enabled = true;
+                            btnUndo.Enabled = true;
                             this.bdsVatTu.EndEdit();
                             this.vattuTableAdapter.Update(this.dS.Vattu);
-                            undolist.Push(bdsVatTu.Position.ToString());
+                            undolist.Push(maVT);
                             undolist.Push("INSERT");
                             bdsVatTu.Position = position;
                         }
@@ -248,23 +283,6 @@ namespace VatTu.SimpleForm
                     }
                 }
             }
-            // Check ràng buộc
-            /*if (!Validate(txtMaVT, "Mã vật tư không được để trống!")) return;
-            if (!Validate(txtTenVT, "Tên vật tư không được để trống!")) return;
-            if (!Validate(txtDVT, "Đơn vị tính không được để trống!")) return;
-            txtMaVT.Text = txtMaVT.Text.Trim();
-            if (txtMaVT.Text.Trim().Length > 4)
-            {
-                MessageBox.Show("Mã vật tư không được quá 4 kí tự!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else if (txtMaVT.Text.Contains(" "))
-            {
-                MessageBox.Show("Mã vật tư không được chứa khoảng trắng!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }*/
         }
 
         private bool Validate(TextBox tb, string str)
@@ -359,6 +377,14 @@ namespace VatTu.SimpleForm
             {
                 e.Cancel = false;
                 errorProvider1.SetError(numSLT, "");
+            }
+        }
+
+        private void txtDVT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -44,7 +44,7 @@ namespace VatTu
         public static int mChinhanh = 0;
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
-
+        
         // -- FORMS --
         public static FormChinh formMain;
         public static FormLapPhieu formLapPhieu;
@@ -84,7 +84,8 @@ namespace VatTu
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
             try
             {
-                myreader = sqlcmd.ExecuteReader(); return myreader;
+                myreader = sqlcmd.ExecuteReader();
+                return myreader;
             }
             catch (SqlException ex)
             {

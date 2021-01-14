@@ -46,7 +46,7 @@ namespace VatTu.SubForm
             {
                 Program.formLapPhieu.txtMaKho_DH.Text = maKho;
             }
-            
+
             this.Close();
         }
 

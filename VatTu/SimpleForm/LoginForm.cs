@@ -26,6 +26,18 @@ namespace VatTu
         }
 
         private void Login() {
+            if (textBox_Username.Text.Trim() == "")
+            {
+                MessageBox.Show("Vui lòng điền login name!", "Error message", MessageBoxButtons.OK);
+                textBox_Username.Focus();
+                return;
+            }
+            if (textBox_Password.Text.Trim() == "")
+            {
+                MessageBox.Show("Vui lòng điền password!", "Error message", MessageBoxButtons.OK);
+                textBox_Username.Focus();
+                return;
+            }
             Program.mlogin = textBox_Username.Text;
             Program.password = textBox_Password.Text;
             Program.serverName = this.comboBox_ChiNhanh.SelectedValue.ToString();

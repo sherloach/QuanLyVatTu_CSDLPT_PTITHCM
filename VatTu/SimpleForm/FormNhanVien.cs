@@ -57,25 +57,23 @@ namespace VatTu
             if (Program.mGroup == "CONGTY")
             {
                 comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
-                btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
-                btnUndo.Links[0].Visible = btnChuyenChiNhanh.Links[0].Visible = gcInfoNhanVien.Enabled = false;
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = false;
+                btnUndo.Enabled = btnChuyenChiNhanh.Enabled = gcInfoNhanVien.Enabled = false;
             }
             else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
             {
                 comboBox_ChiNhanh.Enabled = btnUndo.Enabled = txtMaNV.Enabled = false;
             }
-
             /*if (Program.mGroup == "CONGTY")
             {
                 comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
-                gcInfoNhanVien.Enabled = false;
-                //btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = btnUndo.Links[0].Visible = false;
+                btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
+                btnUndo.Links[0].Visible = btnChuyenChiNhanh.Links[0].Visible = gcInfoNhanVien.Enabled = false;
             }
             else comboBox_ChiNhanh.Enabled = false;
             if (Program.mGroup != "CHINHANH")
             {
-                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
-                btnChuyenChiNhanh.Enabled = txtMaNV.Enabled = false;
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = btnChuyenChiNhanh.Enabled = false;
             }
             else btnUndo.Enabled = false;*/
         }
@@ -130,7 +128,6 @@ namespace VatTu
             gcInfoNhanVien.Enabled = txtMaNV.Enabled = true;
             bdsNV.AddNew();
             txtMaCN.Text = maCN;
-            txtLuong.Value = 4000000;
             dteNgaySinh.EditValue = "";
             cbTTXoa.Checked = false;
 
@@ -225,7 +222,7 @@ namespace VatTu
                 String maNV = txtMaNV.Text;
 
                 // == Query tìm MANV ==
-                String query_MANV = "DECLARE @return_value int " +
+                String query_MANV = "DECLARE	@return_value int " +
                                "EXEC @return_value = [dbo].[SP_CHECKID_TRACUU] " +
                                "@p1, @p2 " +
                                "SELECT 'Return Value' = @return_value";
@@ -268,15 +265,14 @@ namespace VatTu
                         {
                             //Program.flagCloseFormKho = true; //Bật cờ cho phép tắt Form NV
                             btnThem.Enabled = btnXoa.Enabled = gridNhanVien.Enabled = gcInfoNhanVien.Enabled = true;
-                            btnReload.Enabled = btnGhi.Enabled = btnThoat.Enabled = true;
+                            btnReload.Enabled = btnGhi.Enabled = true;
                             btnUndo.Enabled = true;
-                            txtMaNV.Enabled = false;
                             this.bdsNV.EndEdit();
                             this.nhanVienTableAdapter.Update(this.dS.NhanVien);
-
-                            undolist.Push(bdsNV.Position.ToString());
+                            undolist.Push(maNV);
                             undolist.Push("INSERT");
                             bdsNV.Position = position;
+                            Program.formMain.timer1.Enabled = true;
                         }
                         catch (Exception ex)
                         {
@@ -315,7 +311,8 @@ namespace VatTu
                 }
                 else if (statement.Equals("INSERT"))
                 {
-                    int vitrixoa = int.Parse(undolist.Pop().ToString());
+                    String maNV = undolist.Pop().ToString();
+                    int vitrixoa = bdsNV.Find("MANV", maNV);
                     bdsNV.Position = vitrixoa;
                     bdsNV.RemoveCurrent();
                 }
@@ -421,7 +418,7 @@ namespace VatTu
                     MessageBox.Show(ex.Message);
                 }
             }
-            else MessageBox.Show("Vui lòng chọn chi nhánh khác chi nhánh hiện tại", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else MessageBox.Show("Vui lòng chọn CN khác chi nhánh hiện tại", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void BtnChuyenChiNhanh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -465,7 +462,6 @@ namespace VatTu
             return true;
         }
 
-        /*
         private void TxtLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -479,7 +475,7 @@ namespace VatTu
             {
                 e.Handled = true;
             }
-        }*/
+        }
 
         private void TxtMaNV_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -608,6 +604,23 @@ namespace VatTu
         private void DteNgaySinh_InvalidValue(object sender, DevExpress.XtraEditors.Controls.InvalidValueExceptionEventArgs e)
         {
             e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.NoAction;
+        }
+
+        private void txtTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if ( !char.IsNumber(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtHo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

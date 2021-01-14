@@ -47,17 +47,17 @@
             this.nhanVienTableAdapter = new VatTu.QLVT_DATHANGDataSet_ReportTableAdapters.NhanVienTableAdapter();
             this.tableAdapterManager = new VatTu.QLVT_DATHANGDataSet_ReportTableAdapters.TableAdapterManager();
             this.cbMaNV = new System.Windows.Forms.ComboBox();
-            this.vDSNHANVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dS_NHANVIEN = new VatTu.DS_NHANVIEN();
-            this.v_DS_NHANVIENTableAdapter = new VatTu.DS_NHANVIENTableAdapters.V_DS_NHANVIENTableAdapter();
+            this.vDSNHANVIENREPORTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DS_NHANVIEN_REPORTTableAdapter = new VatTu.DS_NHANVIENTableAdapters.V_DS_NHANVIEN_REPORTTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.deFrom.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFrom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deTo.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLVT_DATHANGDataSet_Report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vDSNHANVIENBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_NHANVIEN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vDSNHANVIENREPORTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -224,7 +224,7 @@
             // cbMaNV
             // 
             this.cbMaNV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsNV, "MANV", true));
-            this.cbMaNV.DataSource = this.vDSNHANVIENBindingSource;
+            this.cbMaNV.DataSource = this.vDSNHANVIENREPORTBindingSource;
             this.cbMaNV.DisplayMember = "MANV";
             this.cbMaNV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaNV.FormattingEnabled = true;
@@ -235,19 +235,19 @@
             this.cbMaNV.ValueMember = "MANV";
             this.cbMaNV.SelectionChangeCommitted += new System.EventHandler(this.CbMaNV_SelectionChangeCommitted);
             // 
-            // vDSNHANVIENBindingSource
-            // 
-            this.vDSNHANVIENBindingSource.DataMember = "V_DS_NHANVIEN";
-            this.vDSNHANVIENBindingSource.DataSource = this.dS_NHANVIEN;
-            // 
             // dS_NHANVIEN
             // 
             this.dS_NHANVIEN.DataSetName = "DS_NHANVIEN";
             this.dS_NHANVIEN.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // v_DS_NHANVIENTableAdapter
+            // vDSNHANVIENREPORTBindingSource
             // 
-            this.v_DS_NHANVIENTableAdapter.ClearBeforeFill = true;
+            this.vDSNHANVIENREPORTBindingSource.DataMember = "V_DS_NHANVIEN_REPORT";
+            this.vDSNHANVIENREPORTBindingSource.DataSource = this.dS_NHANVIEN;
+            // 
+            // v_DS_NHANVIEN_REPORTTableAdapter
+            // 
+            this.v_DS_NHANVIEN_REPORTTableAdapter.ClearBeforeFill = true;
             // 
             // Frpt_HoatDongCuaNhanVien
             // 
@@ -282,8 +282,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLVT_DATHANGDataSet_Report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vDSNHANVIENBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_NHANVIEN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vDSNHANVIENREPORTBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,7 +310,7 @@
         private QLVT_DATHANGDataSet_ReportTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ComboBox cbMaNV;
         private DS_NHANVIEN dS_NHANVIEN;
-        private System.Windows.Forms.BindingSource vDSNHANVIENBindingSource;
-        private DS_NHANVIENTableAdapters.V_DS_NHANVIENTableAdapter v_DS_NHANVIENTableAdapter;
+        private System.Windows.Forms.BindingSource vDSNHANVIENREPORTBindingSource;
+        private DS_NHANVIENTableAdapters.V_DS_NHANVIEN_REPORTTableAdapter v_DS_NHANVIEN_REPORTTableAdapter;
     }
 }

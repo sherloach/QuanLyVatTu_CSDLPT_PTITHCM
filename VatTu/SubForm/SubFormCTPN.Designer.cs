@@ -56,6 +56,9 @@
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaPN = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.fKCTDDHDatHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fKPhieuNhapDatHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fKCTPNPhieuNhapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             mAPNLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -71,6 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCTDDHDatHangBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mAPNLabel
@@ -122,6 +128,7 @@
             // 
             this.bdsDH.DataMember = "DatHang";
             this.bdsDH.DataSource = this.dS;
+            
             // 
             // datHangTableAdapter
             // 
@@ -156,13 +163,11 @@
             // 
             // bdsPN
             // 
-            this.bdsPN.DataMember = "FK_PhieuNhap_DatHang";
-            this.bdsPN.DataSource = this.bdsDH;
+            this.bdsPN.DataSource = this.fKPhieuNhapDatHangBindingSource;
             // 
             // bdsCTDDH
             // 
-            this.bdsCTDDH.DataMember = "FK_CTDDH_DatHang";
-            this.bdsCTDDH.DataSource = this.bdsDH;
+            this.bdsCTDDH.DataSource = this.fKCTDDHDatHangBindingSource;
             // 
             // cTDDHGridControl
             // 
@@ -190,7 +195,6 @@
             this.gvCTDDH.OptionsView.ShowViewCaption = true;
             this.gvCTDDH.ViewCaption = "Chi Tiết Đơn Đặt Hàng";
             this.gvCTDDH.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GvCTDDH_RowClick);
-            this.gvCTDDH.CustomRowFilter += new DevExpress.XtraGrid.Views.Base.RowFilterEventHandler(this.GvCTDDH_CustomRowFilter);
             // 
             // colMasoDDH
             // 
@@ -300,11 +304,11 @@
             this.numDG.Size = new System.Drawing.Size(174, 21);
             this.numDG.TabIndex = 7;
             this.numDG.ThousandsSeparator = true;
+            
             // 
             // bdsCTPN
             // 
-            this.bdsCTPN.DataMember = "FK_CTPN_PhieuNhap";
-            this.bdsCTPN.DataSource = this.bdsPN;
+            this.bdsCTPN.DataSource = this.fKCTPNPhieuNhapBindingSource;
             // 
             // numSL
             // 
@@ -355,6 +359,21 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // fKCTDDHDatHangBindingSource
+            // 
+            this.fKCTDDHDatHangBindingSource.DataMember = "FK_CTDDH_DatHang";
+            this.fKCTDDHDatHangBindingSource.DataSource = this.bdsDH;
+            // 
+            // fKPhieuNhapDatHangBindingSource
+            // 
+            this.fKPhieuNhapDatHangBindingSource.DataMember = "FK_PhieuNhap_DatHang";
+            this.fKPhieuNhapDatHangBindingSource.DataSource = this.bdsDH;
+            // 
+            // fKCTPNPhieuNhapBindingSource
+            // 
+            this.fKCTPNPhieuNhapBindingSource.DataMember = "FK_CTPN_PhieuNhap";
+            this.fKCTPNPhieuNhapBindingSource.DataSource = this.fKPhieuNhapDatHangBindingSource;
+            // 
             // SubFormCTPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +400,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCTDDHDatHangBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCTPNPhieuNhapBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,5 +432,8 @@
         private System.Windows.Forms.TextBox txtMaVT;
         private System.Windows.Forms.TextBox txtMaPN;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.BindingSource fKCTDDHDatHangBindingSource;
+        private System.Windows.Forms.BindingSource fKPhieuNhapDatHangBindingSource;
+        private System.Windows.Forms.BindingSource fKCTPNPhieuNhapBindingSource;
     }
 }

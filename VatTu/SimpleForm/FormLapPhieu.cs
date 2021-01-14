@@ -58,9 +58,11 @@ namespace VatTu.SimpleForm
 
         private void FormLapPhieu_Load(object sender, EventArgs e)
         {
-            gcDDH.Height = 220;
-            gcPX.Height = 220;
-            gcPN.Height = 220;
+            gridDDH.Height = 435;
+            gridPX.Height = 435;
+            gcDDH.Height = 240;
+            gcPX.Height = 240;
+            gcPN.Height = 240;
 
             // Không kiểm tra khóa ngoại
             dS.EnforceConstraints = false;
@@ -87,7 +89,7 @@ namespace VatTu.SimpleForm
             if (Program.mGroup == "CONGTY")
             {
                 comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
-                btnThem.Links[0].Visible = btnXoa.Links[0].Visible = btnGhi.Links[0].Visible = false;
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
                 gbInfoDDH.Enabled = gbInfoPX.Enabled = false;
             }
             else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
@@ -142,6 +144,7 @@ namespace VatTu.SimpleForm
             // "System.Data.DataRowView" sẽ xuất hiện và tất nhiên hệ thống sẽ không thể
             // nhận diện được tên server "System.Data.DataRowView".
             if (comboBox_ChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView") return;
+            if (comboBox_ChiNhanh.SelectedValue.ToString() == null) return;
 
             // Lấy tên server
             Program.serverName = comboBox_ChiNhanh.SelectedValue.ToString();
@@ -166,6 +169,10 @@ namespace VatTu.SimpleForm
                 this.cTDDHTableAdapter.Fill(this.dS.CTDDH);
                 this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.datHangTableAdapter.Fill(this.dS.DatHang);
+                this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.phieuXuatTableAdapter.Fill(this.dS.PhieuXuat);
+                this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.cTPXTableAdapter.Fill(this.dS.CTPX);
                 //maCN = ((DataRowView)bdsDH[0])["MACN"].ToString();
             }
         }
@@ -242,8 +249,6 @@ namespace VatTu.SimpleForm
                     txtMaPX.Text = maPhieu_backup;
                     txtTenKH.Text = name_backup;
                     txtMaKho_PX.Text = maKho_backup;
-
-                    historyPX.Push(THEM_BTN);
                 }
                 else
                 {
@@ -251,8 +256,6 @@ namespace VatTu.SimpleForm
                     txtMaDDH.Text = maPhieu_backup;
                     txtNhaCC.Text = name_backup;
                     txtMaKho_DH.Text = maKho_backup;
-
-                    historyDDH.Push(THEM_BTN);
                 }
 
                 return;
@@ -376,8 +379,6 @@ namespace VatTu.SimpleForm
             current_gb.Enabled = btnGhi.Enabled = true;
             ((DataRowView)current_bds[current_bds.Position])["MANV"] = Program.maNV;
             ((DataRowView)current_bds[current_bds.Position])["NGAY"] = DateTime.Today;
-
-            pushHistory(THEM_BTN);
         }
 
         private void BtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -385,11 +386,17 @@ namespace VatTu.SimpleForm
             // Giữ lại vị trí trước khi CRUD
             position = current_bds.Position;
             themFunc();
+
+            pushHistory(THEM_BTN);
         }
 
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (check_owner(current_bds, type.Equals("MAPX") ? gvPX : gvDDH)) {
+            int maNhanVien = int.Parse(((DataRowView)current_bds[current_bds.Position])["MANV"].ToString());
+
+            //if (check_owner(current_bds, type.Equals("MAPX") ? gvPX : gvDDH)) {
+            if (Program.maNV == maNhanVien)
+            {
                 string maPhieu = "";
                 if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất"))
                 {
@@ -468,12 +475,12 @@ namespace VatTu.SimpleForm
             BindingSource currBds = null;
 
             // Click thêm btn của DDH
-            if (type.Equals("MasoDDH") && historyDDH.Count != 0)
+            if (btnSwitch.Links[0].Caption.Equals("Đặt Hàng") && historyDDH.Count != 0)
             {
                 undoHistory = historyDDH.Pop();
                 currBds = bdsCTDDH;
             }
-            else if (type.Equals("MAPX") && historyPX.Count != 0) // Click thêm btn của PX
+            else if (btnSwitch.Links[0].Caption.Equals("Phiếu Xuất") && historyPX.Count != 0) // Click thêm btn của PX
             {
                 undoHistory = historyPX.Pop();
                 currBds = bdsCTPX;
@@ -510,7 +517,8 @@ namespace VatTu.SimpleForm
                 BindingSource bd = current_bds;
                 string data_backup = undoHistory;
                 string[] data_backup_split = split_data(undoHistory);
-                if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập")) {
+                if (btnSwitch.Links[0].Caption.Equals("Phiếu Nhập"))
+                {
                     bd = bdsPN;
                     int indexLastDataRow = current_bds.Find(type, data_backup_split[5]);
                     if (current_bds.Position != indexLastDataRow)
@@ -520,7 +528,7 @@ namespace VatTu.SimpleForm
                         return;
                     }
                 }
-                
+
                 unClickXoa(data_backup_split, bd);
                 return;
             }
@@ -885,9 +893,20 @@ namespace VatTu.SimpleForm
         // ------ SWITCH TYPE ------
         private void BtnDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switchPanel("Đặt Hàng", gcDDH, gridDDH, Properties.Resources.dathang);
-            btnThem.Enabled = btnXoa.Enabled = true;
-
+            switchPanel("Đặt Hàng", gcDDH, gridDDH);
+            //btnThem.Enabled = btnXoa.Enabled = true;
+            if (Program.mGroup == "CONGTY")
+            {
+                comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = false;
+            }
+            else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
+            {
+                comboBox_ChiNhanh.Enabled = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = btnGhi.Enabled = false;
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = true;
+            }
             // Gán data sources
             current_bds = bdsDH;
             current_gc = gridDDH;
@@ -897,7 +916,7 @@ namespace VatTu.SimpleForm
 
         private void BtnPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switchPanel("Phiếu Nhập", gcPN, gridDDH, Properties.Resources.import2);
+            switchPanel("Phiếu Nhập", gcPN, gridDDH);
             btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = false;
 
             current_bds = bdsDH;
@@ -906,8 +925,20 @@ namespace VatTu.SimpleForm
 
         private void BtnPX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switchPanel("Phiếu Xuất", gcPX, gridPX, Properties.Resources.export);
-            btnThem.Enabled = btnXoa.Enabled = true;
+            switchPanel("Phiếu Xuất", gcPX, gridPX);
+            //btnThem.Enabled = btnXoa.Enabled = true;
+            if (Program.mGroup == "CONGTY")
+            {
+                comboBox_ChiNhanh.Enabled = true;  // bật tắt theo phân quyền
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = false;
+            }
+            else if (Program.mGroup == "CHINHANH" || Program.mGroup == "USER")
+            {
+                comboBox_ChiNhanh.Enabled = false;
+                gbInfoDDH.Enabled = gbInfoPX.Enabled = btnGhi.Enabled = false;
+                btnThem.Enabled = btnXoa.Enabled = btnGhi.Enabled = true;
+            }
 
             // Gán data sources
             current_bds = bdsPX;
@@ -916,10 +947,10 @@ namespace VatTu.SimpleForm
             type = "MAPX";
         }
 
-        private void switchPanel(string type, GroupControl groupControl, GridControl gridControl, Bitmap image)
+        private void switchPanel(string type, GroupControl groupControl, GridControl gridControl)
         {
             btnSwitch.Links[0].Caption = type;
-            btnSwitch.Links[0].ImageOptions.Image = image;
+            //btnSwitch.Links[0].ImageOptions.Image = image;
             gcDDH.Visible = false;
             gcPX.Visible = false;
             gcPN.Visible = false;

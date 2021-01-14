@@ -244,6 +244,7 @@
             // 
             this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "DVT", true));
             this.txtDVT.Location = new System.Drawing.Point(270, 98);
+            this.txtDVT.MaxLength = 15;
             this.txtDVT.Name = "txtDVT";
             this.txtDVT.Size = new System.Drawing.Size(120, 21);
             this.txtDVT.TabIndex = 5;
@@ -253,6 +254,7 @@
             // 
             this.txtTenVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVatTu, "TENVT", true));
             this.txtTenVT.Location = new System.Drawing.Point(491, 62);
+            this.txtTenVT.MaxLength = 30;
             this.txtTenVT.Name = "txtTenVT";
             this.txtTenVT.Size = new System.Drawing.Size(189, 21);
             this.txtTenVT.TabIndex = 3;

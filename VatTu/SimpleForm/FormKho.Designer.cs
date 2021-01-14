@@ -414,7 +414,7 @@
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(209, 21);
             this.txtDiaChi.TabIndex = 13;
-            this.txtDiaChi.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDiaChi_Validating);
+            
             // 
             // txtTenKho
             // 
@@ -424,7 +424,7 @@
             this.txtTenKho.Name = "txtTenKho";
             this.txtTenKho.Size = new System.Drawing.Size(209, 21);
             this.txtTenKho.TabIndex = 11;
-            this.txtTenKho.Validating += new System.ComponentModel.CancelEventHandler(this.TxtTenKho_Validating);
+            
             // 
             // txtMaKho
             // 
@@ -434,7 +434,7 @@
             this.txtMaKho.Name = "txtMaKho";
             this.txtMaKho.Size = new System.Drawing.Size(100, 21);
             this.txtMaKho.TabIndex = 9;
-            this.txtMaKho.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaKho_Validating);
+            
             // 
             // bdsPX
             // 
