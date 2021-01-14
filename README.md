@@ -20,6 +20,8 @@
       providerName="System.Data.SqlClient" />
 ```
 ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
+ten_subscriber_server_1: là tên subscriber_server của site 1
+ten_subscriber_server_chủ: là tên subscriber_server của tên chủ
 
 ## Chức năng
 - Đầy đủ các chức năng cơ bản (thêm, xóa, sửa, reload, chuyển chi nhánh).
@@ -69,7 +71,7 @@ Một số hình ảnh
 ![alt text](img/4.PNG?raw=true)
 
 
-## Bugs
+## Bugs :bug:
 > Đồ án sẽ có một số lỗi mà mình chưa fix (lỗi khi thoát khỏi form Login để tắt chương trình, lỗi khi nhập Phiếu Nhập, lỗi chuyển chi nhánh,...). Bên cạnh đó, giao diện đồ án này chỉ phù hợp với laptop có độ phân giải fullHD =)), nên đôi khi bạn phải chỉnh lại chút xíu).
 
 
@@ -81,11 +83,12 @@ Một số hình ảnh
 
 
 
-## Contributors
+## Contributors :guardsman:
 <a href="https://github.com/QuangHuy239/QLVT_DATHANG/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=QuangHuy239/QLVT_DATHANG" />
 </a>
 
 
-Video cho bạn nào cần <3
+
+## Video :tv:
 https://www.youtube.com/watch?v=jBkZzBGdkMw
