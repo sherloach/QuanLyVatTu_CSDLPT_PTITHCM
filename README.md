@@ -1,11 +1,10 @@
-Đồ án môn Cơ Sở Dữ Liệu Phân Tán (PTITHCM) - Đề Tài: Quản lý Vật tư - Giáo viên: thầy Kỳ Thư.
+# Đồ án môn Cơ Sở Dữ Liệu Phân Tán (PTITHCM) - Đề Tài: Quản lý vật tư.
 
 
 Phần mềm và các công cụ sử dụng trong đồ án:
 ### `SQL Server 2012 Enterprise edition`
 ### `DevExpress 19.2`
 ### `Visual Studio 2019`
-
 
 Để run được project thì phải config database, sửa lại file App.config
 ```
