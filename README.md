@@ -24,6 +24,6 @@ ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptio
 
 Database:
 ![alt text](img/publi.PNG?raw=true)
-![alt text](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/tree/main/img/filter.PNG?raw=true)
-![alt text](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/tree/main/img/site3.PNG?raw=true)
+![alt text](img/filter.PNG?raw=true)
+![alt text](img/site3.PNG?raw=true)
 
