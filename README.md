@@ -28,12 +28,35 @@ Database:
 ![alt text](img/publi.PNG?raw=true)
 
 
+
 Cây dẫn xuất của site 1 và 2
 
 ![alt text](img/filter.PNG?raw=true)
+
 
 
 Articles của site 3
 
 ![alt text](img/site3.PNG?raw=true)
 
+
+
+Một số hình ảnh
+
+
+![alt text](img/1.PNG?raw=true)
+
+
+![alt text](img/2.PNG?raw=true)
+
+
+![alt text](img/3.PNG?raw=true)
+
+
+![alt text](img/kho.PNG?raw=true)
+
+
+![alt text](img/nhanvien.PNG?raw=true)
+
+
+![alt text](img/4.PNG?raw=true)
