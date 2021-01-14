@@ -19,7 +19,7 @@
       connectionString="Data Source=ten_subscriber_server_chủ;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123"
       providerName="System.Data.SqlClient" />
 ```
-1. ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
+1. *ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).*
 2. *ten_subscriber_server_1: là tên subscriber_server của site 1*
 3. *ten_subscriber_server_chủ: là tên subscriber_server của tên chủ*
 
