@@ -22,4 +22,7 @@ Phần mềm và các công cụ sử dụng trong đồ án:
 ten_subscriber_server: check bằng lệnh SELECT * FROM dbo.sysmergesubscriptions trong SQL Server (query ở ngay csdl Vật tư thì nó mới work).
 
 Database:
+![alt text](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/tree/main/img/publi.PNG?raw=true)
+![alt text](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/tree/main/img/filter.PNG?raw=true)
+![alt text](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/tree/main/img/site3.PNG?raw=true)
 
