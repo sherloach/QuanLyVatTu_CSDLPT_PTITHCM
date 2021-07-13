@@ -84,8 +84,8 @@ Một số hình ảnh
 
 
 ## Contributors :guardsman:
-<a href="https://github.com/QuangHuy239/QLVT_DATHANG/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=QuangHuy239/QLVT_DATHANG" />
+<a href="https://github.com/QuangHuy239/">
+  <img src="https://avatars.githubusercontent.com/u/67304761?v=4" width="100px;" style="border-radius: 50%;" />
 </a>
 
 
