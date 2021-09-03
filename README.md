@@ -77,7 +77,7 @@ Một số hình ảnh
 
 
 ## Lời Khuyên
-> Để lại tin nhắn vào mục [Issues](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/issues) nếu bạn cần giúp đỡ. Và hãy star vì nó miễn phí :(
+> Để lại tin nhắn vào mục [Issues](https://github.com/itialan/QuanLyVatTu_CSDLPT_PTITHCM/issues) nếu bạn cần giúp đỡ.
 
 > HIỂU BÀI VÀ LÀM BÀI, QUAN TRỌNG NHẤT VẪN LÀ LÝ THUYẾT TRÊN LỚP :)
 
